@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/speed_slider.gd" type="Script" id=1]
+
+[node name="SpeedSlider" type="VSlider"]
+margin_right = 16.0
+margin_bottom = 272.0
+max_value = 20.0
+value = 1.0
+tick_count = 20
+ticks_on_borders = true
+script = ExtResource( 1 )
+
+[connection signal="value_changed" from="." to="." method="_on_SpeedSlider_value_changed"]

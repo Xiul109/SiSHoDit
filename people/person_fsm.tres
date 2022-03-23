@@ -1,0 +1,89 @@
+[gd_resource type="Resource" load_steps=15 format=2]
+
+[ext_resource path="res://addons/imjp94.yafsm/src/states/StateMachine.gd" type="Script" id=1]
+[ext_resource path="res://addons/imjp94.yafsm/src/transitions/Transition.gd" type="Script" id=2]
+[ext_resource path="res://addons/imjp94.yafsm/src/states/State.gd" type="Script" id=3]
+[ext_resource path="res://addons/imjp94.yafsm/src/conditions/FloatCondition.gd" type="Script" id=4]
+[ext_resource path="res://addons/imjp94.yafsm/src/conditions/Condition.gd" type="Script" id=5]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 3 )
+__meta__ = {
+"graph_offset": Vector2( 148, 180 )
+}
+name = "Entry"
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+__meta__ = {
+"graph_offset": Vector2( 330.5, 180 )
+}
+name = "traveling_to_need"
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 3 )
+__meta__ = {
+"graph_offset": Vector2( 666, 180 )
+}
+name = "solving_need"
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 4 )
+name = "time_left"
+comparation = 5
+value = 0.0
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 2 )
+from = "solving_need"
+to = "traveling_to_need"
+conditions = {
+"time_left": SubResource( 9 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 5 )
+name = "need_location_reached"
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 2 )
+from = "traveling_to_need"
+to = "solving_need"
+conditions = {
+"need_location_reached": SubResource( 10 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 5 )
+name = "start"
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 2 )
+from = "Entry"
+to = "traveling_to_need"
+conditions = {
+"start": SubResource( 11 )
+}
+priority = 0
+
+[resource]
+script = ExtResource( 1 )
+name = ""
+states = {
+"Entry": SubResource( 1 ),
+"solving_need": SubResource( 4 ),
+"traveling_to_need": SubResource( 2 )
+}
+transitions = {
+"Entry": {
+"traveling_to_need": SubResource( 12 )
+},
+"solving_need": {
+"traveling_to_need": SubResource( 8 )
+},
+"traveling_to_need": {
+"solving_need": SubResource( 7 )
+}
+}

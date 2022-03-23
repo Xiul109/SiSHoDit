@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://people/needs/need.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+need_key = "sleepy"
+min_duration = 21600.0
+max_duration = 36000.0
+time_to_fill_level = 61200.0
+level = 0.0

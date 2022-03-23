@@ -1,0 +1,603 @@
+[gd_scene load_steps=59 format=2]
+
+[ext_resource path="res://scenary/objects/structure/floorFull.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenary/objects/structure/wallHalf.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenary/objects/structure/wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenary/objects/structure/floorCorner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenary/objects/structure/wallCorner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenary/objects/structure/floorHalf.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenary/objects/structure/wallDoorway.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenary/objects/structure/doorway.tscn" type="PackedScene" id=8]
+[ext_resource path="res://people/basic_person.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenary/house.gd" type="Script" id=10]
+[ext_resource path="res://scenary/objects/living_room/loungeDesignSofaCorner.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenary/objects/living_room/cabinetTelevision.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenary/objects/living_room/televisionModern.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenary/objects/living_room/tableCloth.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenary/objects/living_room/chairCushion.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenary/objects/living_room/loungeChair.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenary/objects/living_room/lampRoundFloor.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenary/objects/living_room/bookcaseOpen.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenary/objects/living_room/books.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenary/objects/living_room/tableGlass.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenary/objects/kitchen/kitchenCabinet.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenary/objects/kitchen/kitchenFridgeLarge.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenary/objects/kitchen/kitchenBarEnd.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenary/objects/kitchen/kitchenBar.tscn" type="PackedScene" id=24]
+[ext_resource path="res://scenary/objects/kitchen/kitchenCabinetCornerInner.tscn" type="PackedScene" id=25]
+[ext_resource path="res://scenary/objects/kitchen/kitchenCoffeeMachine.tscn" type="PackedScene" id=26]
+[ext_resource path="res://scenary/objects/kitchen/kitchenStove.tscn" type="PackedScene" id=27]
+[ext_resource path="res://scenary/objects/kitchen/kitchenMicrowave.tscn" type="PackedScene" id=28]
+[ext_resource path="res://scenary/objects/kitchen/stoolBarSquare.tscn" type="PackedScene" id=29]
+[ext_resource path="res://scenary/objects/kitchen/kitchenCabinetUpperCorner.tscn" type="PackedScene" id=30]
+[ext_resource path="res://scenary/objects/kitchen/kitchenSink.tscn" type="PackedScene" id=31]
+[ext_resource path="res://scenary/objects/kitchen/kitchenCabinetUpper.tscn" type="PackedScene" id=32]
+[ext_resource path="res://scenary/objects/kitchen/toaster.tscn" type="PackedScene" id=33]
+[ext_resource path="res://scenary/objects/kitchen/trashcan.tscn" type="PackedScene" id=34]
+[ext_resource path="res://scenary/objects/bedroom/computerMouse.tscn" type="PackedScene" id=35]
+[ext_resource path="res://scenary/objects/bedroom/lampSquareTable.tscn" type="PackedScene" id=36]
+[ext_resource path="res://scenary/objects/bedroom/computerKeyboard.tscn" type="PackedScene" id=37]
+[ext_resource path="res://scenary/objects/bedroom/computerScreen.tscn" type="PackedScene" id=38]
+[ext_resource path="res://scenary/objects/bedroom/chairDesk.tscn" type="PackedScene" id=39]
+[ext_resource path="res://scenary/objects/bedroom/bedDouble.tscn" type="PackedScene" id=40]
+[ext_resource path="res://scenary/objects/bedroom/deskCorner.tscn" type="PackedScene" id=41]
+[ext_resource path="res://scenary/objects/bedroom/cabinetBedDrawer.tscn" type="PackedScene" id=42]
+[ext_resource path="res://scenary/objects/bedroom/cabinetBedDrawerTable.tscn" type="PackedScene" id=43]
+[ext_resource path="res://scenary/objects/other/pottedPlant.tscn" type="PackedScene" id=44]
+[ext_resource path="res://scenary/objects/other/cardboardBoxOpen.tscn" type="PackedScene" id=45]
+[ext_resource path="res://scenary/objects/other/radio.tscn" type="PackedScene" id=46]
+[ext_resource path="res://scenary/objects/bathroom/bathroomCabinet.tscn" type="PackedScene" id=47]
+[ext_resource path="res://scenary/objects/kitchen/kitchenCabinetDrawer.tscn" type="PackedScene" id=48]
+[ext_resource path="res://scenary/objects/bathroom/rugDoormat.tscn" type="PackedScene" id=49]
+[ext_resource path="res://scenary/objects/bathroom/dryer.tscn" type="PackedScene" id=50]
+[ext_resource path="res://scenary/objects/bathroom/bathroomMirror.tscn" type="PackedScene" id=51]
+[ext_resource path="res://scenary/objects/bathroom/washer.tscn" type="PackedScene" id=52]
+[ext_resource path="res://scenary/objects/bathroom/bathroomCabinetDrawer.tscn" type="PackedScene" id=53]
+[ext_resource path="res://scenary/objects/bathroom/shower.tscn" type="PackedScene" id=54]
+[ext_resource path="res://scenary/objects/bathroom/toiletSquare.tscn" type="PackedScene" id=55]
+[ext_resource path="res://UI/speed_slider.tscn" type="PackedScene" id=56]
+[ext_resource path="res://UI/time_widget.tscn" type="PackedScene" id=57]
+
+[sub_resource type="NavigationMesh" id=1]
+vertices = PoolVector3Array( -30.2511, 1.5, -52.6, -29.8011, 1.5, -52, -27.1011, 1.5, -54.7, -30.2511, 1.5, -52.6, -27.1011, 1.5, -54.7, -28.0011, 1.5, -55.75, -31.1511, 1.5, -53.05, -33.4011, 1.5, -57.4, -33.4011, 1.5, -53.2, -31.1511, 1.5, -53.05, -28.0011, 1.5, -55.75, -28.0011, 1.5, -57.4, -11.5011, 1.5, -43.6, -10.3011, 1.5, -43.9, -10.3011, 1.5, -45.1, -11.5011, 1.5, -45.4, -26.6511, 1.5, -54.4, -29.5011, 1.5, -48.85, -29.8011, 1.5, -48.25, -12.2511, 1.5, -42.55, -11.5011, 1.5, -43.6, -11.5011, 1.5, -45.4, -12.2511, 1.5, -46.45, -22.3011, 1.5, -31.6, -20.0511, 1.5, -31.6, -20.0511, 1.5, -33.7, -22.3011, 1.5, -35.95, -22.3011, 1.5, -31.6, -20.0511, 1.5, -33.7, -19.7511, 1.5, -34.3, -12.2511, 1.5, -46.45, -16.9011, 1.5, -54.7, -17.5011, 1.5, -54.4, -22.3011, 1.5, -35.95, -19.7511, 1.5, -34.3, -18.7011, 1.5, -35.05, -23.0511, 1.5, -37, -12.2511, 1.5, -42.55, -12.2511, 1.5, -46.45, -17.5011, 1.5, -54.4, -26.6511, 1.5, -54.4, -29.8011, 1.5, -48.25, -23.6511, 1.5, -37.3, -27.1011, 1.5, -54.7, -29.8011, 1.5, -52, -29.5011, 1.5, -51.55, -26.6511, 1.5, -54.4, -27.1011, 1.5, -54.7, -29.5011, 1.5, -51.55, -29.5011, 1.5, -48.85, -12.1011, 1.5, -57.4, -16.1511, 1.5, -57.4, -16.1511, 1.5, -55.75, -29.8011, 1.5, -48.25, -31.0011, 1.5, -47.35, -33.4011, 1.5, -37.3, -23.6511, 1.5, -37.3, -23.6511, 1.5, -37.3, -23.0511, 1.5, -37, -18.7011, 1.5, -35.05, -12.1011, 1.5, -35.05, -12.2511, 1.5, -42.55, -12.1011, 1.5, -57.4, -16.1511, 1.5, -55.75, -16.9011, 1.5, -54.7, -12.2511, 1.5, -46.45, -31.0011, 1.5, -47.35, -33.4011, 1.5, -47.2, -33.4011, 1.5, -37.3, -8.2011, 1.5, -46.45, -1.7511, 1.5, -46.45, -1.6011, 1.5, -57.4, -8.3511, 1.5, -57.4, 4.6989, 1.5, -56.5, 4.5489, 1.5, -57.4, 4.5489, 1.5, -56.2, 5.4489, 1.5, -55.45, 4.6989, 1.5, -56.5, 4.5489, 1.5, -56.2, 5.4489, 1.5, -55.45, 4.5489, 1.5, -56.2, 4.2489, 1.5, -55.6, 6.0489, 1.5, -55.15, 5.4489, 1.5, -55.45, 4.2489, 1.5, -55.6, 2.5989, 1.5, -54.55, 2.5989, 1.5, -54.55, 2.1489, 1.5, -54.55, 2.1489, 1.5, -47.8, 7.3989, 1.5, -55.15, 6.0489, 1.5, -55.15, 2.5989, 1.5, -54.55, 2.1489, 1.5, -47.8, 7.3989, 1.5, -48.1, 10.8489, 2, -57.4, 10.8489, 2, -49.45, 16.6989, 2, -49.45, 16.6989, 2, -57.4, 23.4489, 1.5, -57.4, 22.9989, 1.5, -57.4, 22.9989, 1.5, -56.5, 23.4489, 1.5, -48.25, 21.6489, 1.5, -55.15, 19.9989, 1.5, -55.15, 19.9989, 1.5, -48.4, 21.6489, 1.5, -55.15, 19.9989, 1.5, -48.4, 23.4489, 1.5, -48.25, 22.2489, 1.5, -55.45, 23.4489, 1.5, -48.25, 22.9989, 1.5, -56.5, 22.2489, 1.5, -55.45, 23.4489, 1.5, -48.25, 19.9989, 1.5, -48.4, 19.6989, 1.5, -46.9, 18.4989, 1.5, -46.15, 19.8489, 1.5, -40.45, 20.8989, 1.5, -41.35, 23.4489, 1.5, -48.25, 19.6989, 1.5, -46.9, 18.4989, 1.5, -46.15, 20.8989, 1.5, -41.35, 23.4489, 1.5, -41.2, 16.9989, 1.5, -34.75, 17.4489, 1.5, -35.05, 17.1489, 1.5, -35.5, 19.5489, 1.5, -37.9, 19.9989, 1.5, -37.6, 20.2989, 1.5, -38.05, 15.9489, 1.5, -35.5, 16.9989, 1.5, -34.75, 17.1489, 1.5, -35.5, 17.1489, 1.5, -36.4, 19.5489, 1.5, -37.9, 20.2989, 1.5, -38.05, 19.5489, 1.5, -39.1, 18.6489, 1.5, -37.9, 0.948902, 1.5, -45.1, 0.348904, 1.5, -45.1, 0.348904, 1.5, -43.9, 2.2989, 1.5, -42.55, 3.0489, 1.5, -35.2, 5.2989, 1.5, -34, 13.9989, 1.5, -34.75, 15.0489, 1.5, -35.5, 19.8489, 1.5, -40.45, 0.948902, 1.5, -45.1, 0.348904, 1.5, -43.9, 1.5489, 1.5, -43.6, 1.9989, 1.5, -45.85, 15.9489, 1.5, -35.5, 17.1489, 1.5, -36.4, 17.4489, 1.5, -37, 18.6489, 1.5, -37.9, 19.5489, 1.5, -39.1, 19.5489, 1.5, -40, 17.4489, 1.5, -37, 6.1989, 1.5, -32.8, 13.6989, 1.5, -34.15, 13.9989, 1.5, -34.75, 5.2989, 1.5, -34, 15.0489, 1.5, -35.5, 15.9489, 1.5, -35.5, 17.4489, 1.5, -37, 19.5489, 1.5, -40, 19.8489, 1.5, -40.45, 2.2989, 1.5, -46.45, 1.9989, 1.5, -45.85, 1.5489, 1.5, -43.6, 2.2989, 1.5, -42.55, 8.7489, 1.5, -46.15, 7.6989, 1.5, -46.9, 13.9989, 1.5, -34.75, 19.8489, 1.5, -40.45, 18.4989, 1.5, -46.15, 8.7489, 1.5, -46.15, 2.2989, 1.5, -42.55, 5.2989, 1.5, -34, 6.1989, 1.5, -32.8, 5.7489, 1.5, -31.6, 13.8489, 1.5, -31.6, 13.6989, 1.5, -34.15, 2.2989, 1.5, -42.55, 2.1489, 1.5, -35.05, 3.0489, 1.5, -35.2, 7.3989, 1.5, -48.1, 2.1489, 1.5, -47.8, 2.2989, 1.5, -46.45, 7.6989, 1.5, -46.9, -10.3011, 1.5, -45.1, -10.3011, 1.5, -43.9, -8.9511, 1.5, -43.6, -8.9511, 1.5, -45.4, -8.2011, 1.5, -42.55, -1.7511, 1.5, -42.55, -1.0011, 1.5, -45.4, -1.7511, 1.5, -46.45, -8.2011, 1.5, -46.45, -8.9511, 1.5, -43.6, -1.0011, 1.5, -43.6, 0.348904, 1.5, -43.9, 0.348904, 1.5, -45.1, -1.0011, 1.5, -45.4, -8.2011, 1.5, -46.45, -8.9511, 1.5, -45.4, -8.9511, 1.5, -43.6, -1.7511, 1.5, -42.55, -1.0011, 1.5, -43.6, -1.0011, 1.5, -45.4, -8.3511, 1.5, -23.35, -8.2011, 1.5, -16.9, -1.7511, 1.5, -16.9, -1.6011, 1.5, -23.2, -1.6011, 1.5, -29.8, -8.3511, 1.5, -29.8, -8.3511, 1.5, -36.25, -8.3511, 1.5, -29.8, -1.6011, 1.5, -29.8, -1.6011, 1.5, -36.25, -1.7511, 1.5, -42.55, -8.2011, 1.5, -42.55, 19.3989, 5, -32.5, 19.2489, 5, -31.9, 19.2489, 5, -31.6, 23.4489, 5, -31.6, 21.0489, 5, -32.5, 22.3989, 5, -33.85, 22.0989, 5, -33.25, 23.4489, 5, -31.6, 23.4489, 5, -38.35, 22.3989, 5, -38.35, 22.3989, 5, -33.85, 23.4489, 5, -31.6, 22.0989, 5, -33.25, 21.0489, 5, -32.5, 23.4489, 5, -31.6, 17.4489, 1.5, -35.05, 16.9989, 1.5, -34.75, 17.2989, 1.5, -34.15, 17.8989, 1.5, -34.45, 19.9989, 1.5, -34.3, 18.7989, 1.5, -34, 17.1489, 1.5, -32.05, 22.9989, 1.5, -32.05, 20.8989, 1.5, -37.75, 20.2989, 1.5, -38.05, 19.9989, 1.5, -37.6, 20.5989, 1.5, -37.15, 22.9989, 1.5, -37.9, 21.0489, 1.5, -36.25, 20.7489, 1.5, -35.05, 22.9989, 1.5, -32.05, 18.7989, 1.5, -34, 17.8989, 1.5, -34.45, 17.2989, 1.5, -34.15, 17.1489, 1.5, -32.05, 20.8989, 1.5, -37.75, 20.5989, 1.5, -37.15, 21.0489, 1.5, -36.25, 22.9989, 1.5, -37.9, 20.7489, 1.5, -35.05, 19.9989, 1.5, -34.3, 22.9989, 1.5, -32.05, -26.6511, 2, -33.55, -26.3511, 2, -33.85, -26.5011, 2, -34.3, -32.0511, 2, -34.3, -32.0511, 2, -34.3, -32.2011, 2, -32.95, -32.0511, 2, -31.9, -26.6511, 2, -31.9, -26.6511, 2, -33.55, -17.0511, 6, -31.9, -17.0511, 6, -31.6, -12.1011, 6, -31.6, -12.1011, 6, -31.9, -29.9511, 1.5, -25.9, -30.7011, 1.5, -24.55, -29.8011, 1.5, -23.5, -29.9511, 1.5, -26.65, -29.9511, 1.5, -25.9, -29.8011, 1.5, -23.5, -29.8011, 1.5, -23.5, -29.8011, 1.5, -19.15, -29.0511, 1.5, -18.25, -29.0511, 1.5, -17.2, -23.2011, 1.5, -17.2, -23.2011, 1.5, -18.25, -29.0511, 1.5, -18.25, -20.6511, 1.5, -27.85, -30.5511, 1.5, -27.85, -29.9511, 1.5, -26.65, -29.0511, 1.5, -18.25, -23.2011, 1.5, -18.25, -22.7511, 1.5, -19.15, -21.4011, 1.5, -20.05, -20.6511, 1.5, -20.05, -20.6511, 1.5, -27.85, -29.0511, 1.5, -18.25, -22.7511, 1.5, -19.15, -21.4011, 1.5, -20.05, -20.6511, 1.5, -27.85, -29.9511, 1.5, -26.65, -29.8011, 1.5, -23.5, -18.5511, 1.5, -18.85, -18.2511, 1.5, -17.35, -12.2511, 1.5, -17.35, -19.4511, 1.5, -19.75, -18.5511, 1.5, -18.85, -12.2511, 1.5, -17.35, -12.1011, 1.5, -27.85, -20.6511, 1.5, -27.85, -20.6511, 1.5, -27.85, -20.6511, 1.5, -20.05, -19.4511, 1.5, -19.75, 10.3989, 1.5, -22.9, 11.4489, 1.5, -22.9, 11.5989, 1.5, -23.5, 10.2489, 1.5, -23.8, 9.0489, 1.5, -21.55, 9.3489, 1.5, -22.15, 9.4989, 1.5, -24.85, 9.4989, 1.5, -27.85, 4.6989, 1.5, -27.85, 4.6989, 1.5, -18.85, 9.3489, 1.5, -22.15, 10.3989, 1.5, -22.9, 10.2489, 1.5, -23.8, 9.4989, 1.5, -24.85, 4.6989, 1.5, -18.85, 9.0489, 1.5, -18.7, 9.0489, 1.5, -21.55, 21.9489, 2, -17.65, 22.2489, 2, -17.05, 22.9989, 2, -17.05, 22.9989, 2, -27.4, 21.9489, 2, -25.15, 12.6489, 2, -27.4, 12.7989, 2, -26.5, 20.5989, 2, -26.5, 22.9989, 2, -27.4, 22.9989, 2, -27.4, 21.1989, 2, -26.2, 21.9489, 2, -25.15, 22.9989, 2, -27.4, 20.5989, 2, -26.5, 21.1989, 2, -26.2, 17.8989, 1.5, -21.55, 17.8989, 1.5, -16.6, 18.9489, 1.5, -16.75, 18.7989, 1.5, -23.35, 16.5489, 1.5, -22.9, 18.7989, 1.5, -23.35, 11.5989, 1.5, -23.5, 11.4489, 1.5, -22.9, 17.1489, 1.5, -22.6, 17.8989, 1.5, -21.55, 18.7989, 1.5, -23.35, 16.5489, 1.5, -22.9, 17.1489, 1.5, -22.6, 18.7989, 1.5, -23.35, 12.0489, 4.5, -19.9, 12.0489, 4.5, -17.05, 14.8989, 4.5, -17.05, 14.8989, 4.5, -19.9, 12.1989, 1.5, -19.75, 12.1989, 1.5, -17.2, 14.7489, 1.5, -17.2, 14.7489, 1.5, -19.75, 2.1489, 1.5, -9.55, 2.4489, 1.5, -9.4, 2.8989, 1.5, -9.55, 3.1989, 1.5, -11.2, 2.2989, 1.5, -13.15, 0.348904, 1.5, -15.55, 0.348904, 1.5, -14.5, 1.5489, 1.5, -14.2, 1.5489, 1.5, -15.85, 11.5989, 1.5, -11.95, 10.3989, 1.5, -14.05, 9.3489, 1.5, -14.8, 3.3489, 1.5, -16.6, 1.9989, 1.5, -16.6, 1.5489, 1.5, -15.85, 1.5489, 1.5, -14.2, 2.2989, 1.5, -13.15, 9.0489, 1.5, -15.4, 4.6989, 1.5, -17.95, 3.9489, 1.5, -16.9, 9.3489, 1.5, -14.8, 9.0489, 1.5, -18.7, 4.6989, 1.5, -18.85, 4.6989, 1.5, -17.95, 9.0489, 1.5, -15.4, 2.2989, 1.5, -13.15, 3.1989, 1.5, -11.2, 4.2489, 1.5, -11.95, 11.5989, 1.5, -11.95, 11.5989, 1.5, -14.05, 10.3989, 1.5, -14.05, 3.9489, 1.5, -16.9, 3.3489, 1.5, -16.6, 2.2989, 1.5, -13.15, 4.2489, 1.5, -11.95, 11.5989, 1.5, -11.95, 9.3489, 1.5, -14.8, -10.9011, 1.5, -14.5, -10.3011, 1.5, -14.5, -10.1511, 1.5, -15.55, -10.9011, 1.5, -14.5, -10.1511, 1.5, -15.55, -11.5011, 1.5, -15.85, -11.9511, 1.5, -13.75, -16.0011, 1.5, -12.85, -16.0011, 1.5, -12.1, -12.2511, 1.5, -12.55, -11.9511, 1.5, -13.75, -11.5011, 1.5, -15.85, -12.2511, 1.5, -16.9, -16.7511, 1.5, -13.9, -16.0011, 1.5, -12.85, -12.2511, 1.5, -12.55, -18.2511, 1.5, -17.35, -18.2511, 1.5, -14.2, -16.7511, 1.5, -13.9, -12.2511, 1.5, -16.9, -12.2511, 1.5, -17.35, -23.2011, 1.5, -17.2, -29.0511, 1.5, -17.2, -29.0511, 1.5, -6.4, -23.2011, 1.5, -6.4, -10.1511, 1.5, -15.55, -10.3011, 1.5, -14.5, -8.9511, 1.5, -14.2, -8.9511, 1.5, -15.85, -8.2011, 1.5, -16.9, -8.9511, 1.5, -15.85, -8.9511, 1.5, -14.2, -1.0011, 1.5, -14.2, 0.348904, 1.5, -14.5, 0.348904, 1.5, -15.55, -1.0011, 1.5, -15.85, -8.2011, 1.5, -13.15, -1.7511, 1.5, -13.15, -1.0011, 1.5, -15.85, -1.7511, 1.5, -16.9, -8.2011, 1.5, -16.9, -8.9511, 1.5, -14.2, -1.7511, 1.5, -13.15, -1.0011, 1.5, -14.2, -1.0011, 1.5, -15.85, 15.4989, 1.5, -2.8, 14.2989, 1.5, -2.5, 14.2989, 1.5, -2.2, 17.8989, 1.5, -2.05, 16.8489, 1.5, -3.1, 18.9489, 1.5, -16.75, 17.8989, 1.5, -16.6, 17.8989, 1.5, -15.4, 19.3989, 1.5, -14.65, 16.5489, 1.5, -14.05, 15.9489, 1.5, -11.2, 16.2489, 1.5, -10.6, 19.3989, 1.5, -14.65, 17.8989, 1.5, -15.4, 17.5989, 1.5, -14.8, 16.5489, 1.5, -14.05, 14.8989, 1.5, -11.95, 15.9489, 1.5, -11.2, 16.2489, 1.5, -10.6, 17.2989, 1.5, -5.65, 19.8489, 1.5, -8.2, 16.2489, 1.5, -3.85, 15.4989, 1.5, -2.8, 16.8489, 1.5, -3.1, 16.2489, 1.5, -3.85, 16.8489, 1.5, -3.1, 16.5489, 1.5, -4.3, 16.2489, 1.5, -3.85, 16.5489, 1.5, -4.3, 17.2989, 1.5, -5.65, 16.2489, 1.5, -10.6, 19.3989, 1.5, -14.65, 17.5989, 1.5, -14.8, 16.5489, 1.5, -14.05, 20.4489, 1.5, -13.9, 19.3989, 1.5, -14.65, 16.5489, 1.5, -14.05, 16.2489, 1.5, -10.6, 19.8489, 1.5, -8.2, 21.0489, 1.5, -8.8, 11.5989, 1.5, -14.05, 11.5989, 1.5, -11.95, 14.8989, 1.5, -11.95, 16.5489, 1.5, -14.05, 21.0489, 1.5, -8.8, 21.0489, 1.5, -13.9, 20.4489, 1.5, -13.9, -33.4011, 1.5, -16.45, -33.4011, 1.5, -15.25, -32.2011, 1.5, -15.25, -32.2011, 1.5, -16.45, -6.8511, 1.5, -2.2, -5.9511, 1.5, -1.45, -4.0011, 1.5, -1.45, -3.1011, 1.5, -2.2, -1.7511, 1.5, -13.15, -8.2011, 1.5, -13.15, -3.1011, 1.5, -2.2, -1.6011, 1.5, -2.05, -1.7511, 1.5, -13.15, -8.2011, 1.5, -13.15, -8.3511, 1.5, -2.05, -6.8511, 1.5, -2.2, -17.3511, 1.5, -9.85, -18.2511, 1.5, -9.7, -16.6011, 1.5, -9.4, -16.3011, 1.5, -10.6, -17.3511, 1.5, -9.85, -16.6011, 1.5, -9.4, -16.3011, 1.5, -10.6, -16.6011, 1.5, -9.4, -15.8511, 1.5, -8.35, -16.0011, 1.5, -12.1, -16.3011, 1.5, -10.6, -15.8511, 1.5, -8.35, -12.1011, 1.5, -7.45, -12.2511, 1.5, -12.55, -15.8511, 1.5, -8.35, -15.8511, 1.5, -7.45, -12.1011, 1.5, -7.45, 5.8989, 5.5, -8.95, 5.8989, 5.5, -5.5, 13.2489, 5.5, -5.5, 13.2489, 5.5, -8.95, 6.0489, 1.5, -8.8, 6.0489, 1.5, -5.65, 13.0989, 1.5, -5.65, 13.0989, 1.5, -8.8, -12.1011, 1.5, -7.45, -15.8511, 1.5, -7.45, -15.8511, 1.5, -6.7, -16.6011, 1.5, -5.65, -18.2511, 1.5, -5.35, -18.2511, 1.5, -2.05, -12.1011, 1.5, -7.45, -15.8511, 1.5, -6.7, -16.6011, 1.5, -5.65, -18.2511, 1.5, -2.05, -12.1011, 1.5, -2.05, 20.2989, 2, -4.15, 20.2989, 2, -3.85, 21.0489, 2, -3.4, 22.2489, 2, -4.6, 21.4989, 2, -5.35, 4.6989, 1.5, -2.2, 4.6989, 1.5, -2.5, 3.6489, 1.5, -2.8, 2.1489, 1.5, -2.05, 2.1489, 1.5, -4.6, 2.1489, 1.5, -2.05, 3.1989, 1.5, -3.25, 2.8989, 1.5, -4.6, 2.1489, 1.5, -2.05, 3.6489, 1.5, -2.8, 3.1989, 1.5, -3.25, -33.4011, 1.5, -3.55, -33.4011, 1.5, -2.05, -31.9011, 1.5, -2.05, -31.9011, 1.5, -3.55, -24.5511, 1.5, -3.25, -24.5511, 1.5, -2.05, -23.3511, 1.5, -2.05, -23.3511, 1.5, -3.25 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 6, 5, 3 ), PoolIntArray( 3, 5, 4 ), PoolIntArray( 10, 9, 11 ), PoolIntArray( 11, 9, 8 ), PoolIntArray( 11, 8, 7 ), PoolIntArray( 13, 12, 14 ), PoolIntArray( 14, 12, 15 ), PoolIntArray( 18, 17, 16 ), PoolIntArray( 20, 19, 21 ), PoolIntArray( 21, 19, 22 ), PoolIntArray( 25, 24, 23 ), PoolIntArray( 29, 28, 26 ), PoolIntArray( 26, 28, 27 ), PoolIntArray( 32, 31, 30 ), PoolIntArray( 34, 33, 35 ), PoolIntArray( 35, 33, 36 ), PoolIntArray( 38, 37, 39 ), PoolIntArray( 39, 37, 40 ), PoolIntArray( 40, 37, 41 ), PoolIntArray( 41, 37, 42 ), PoolIntArray( 45, 44, 43 ), PoolIntArray( 47, 46, 48 ), PoolIntArray( 48, 46, 49 ), PoolIntArray( 50, 52, 51 ), PoolIntArray( 54, 53, 55 ), PoolIntArray( 55, 53, 56 ), PoolIntArray( 58, 57, 59 ), PoolIntArray( 59, 57, 60 ), PoolIntArray( 60, 57, 61 ), PoolIntArray( 63, 62, 64 ), PoolIntArray( 64, 62, 65 ), PoolIntArray( 68, 67, 66 ), PoolIntArray( 69, 72, 70 ), PoolIntArray( 70, 72, 71 ), PoolIntArray( 75, 74, 73 ), PoolIntArray( 78, 77, 76 ), PoolIntArray( 81, 80, 79 ), PoolIntArray( 83, 82, 84 ), PoolIntArray( 84, 82, 85 ), PoolIntArray( 88, 87, 86 ), PoolIntArray( 90, 89, 91 ), PoolIntArray( 91, 89, 93 ), PoolIntArray( 91, 93, 92 ), PoolIntArray( 97, 96, 94 ), PoolIntArray( 94, 96, 95 ), PoolIntArray( 99, 98, 100 ), PoolIntArray( 100, 98, 101 ), PoolIntArray( 104, 103, 102 ), PoolIntArray( 105, 108, 106 ), PoolIntArray( 106, 108, 107 ), PoolIntArray( 111, 110, 109 ), PoolIntArray( 114, 113, 112 ), PoolIntArray( 117, 116, 115 ), PoolIntArray( 119, 118, 120 ), PoolIntArray( 120, 118, 121 ), PoolIntArray( 121, 118, 122 ), PoolIntArray( 125, 124, 123 ), PoolIntArray( 126, 128, 127 ), PoolIntArray( 130, 129, 131 ), PoolIntArray( 131, 129, 132 ), PoolIntArray( 134, 133, 135 ), PoolIntArray( 135, 133, 136 ), PoolIntArray( 139, 138, 137 ), PoolIntArray( 142, 141, 140 ), PoolIntArray( 145, 144, 143 ), PoolIntArray( 147, 146, 148 ), PoolIntArray( 148, 146, 149 ), PoolIntArray( 152, 151, 150 ), PoolIntArray( 154, 153, 155 ), PoolIntArray( 155, 153, 156 ), PoolIntArray( 158, 157, 159 ), PoolIntArray( 159, 157, 160 ), PoolIntArray( 162, 161, 163 ), PoolIntArray( 163, 161, 164 ), PoolIntArray( 164, 161, 165 ), PoolIntArray( 167, 166, 168 ), PoolIntArray( 168, 166, 169 ), PoolIntArray( 169, 166, 171 ), PoolIntArray( 169, 171, 170 ), PoolIntArray( 173, 172, 174 ), PoolIntArray( 174, 172, 175 ), PoolIntArray( 175, 172, 177 ), PoolIntArray( 175, 177, 176 ), PoolIntArray( 179, 178, 180 ), PoolIntArray( 180, 178, 181 ), PoolIntArray( 184, 183, 182 ), PoolIntArray( 186, 185, 187 ), PoolIntArray( 187, 185, 188 ), PoolIntArray( 189, 192, 190 ), PoolIntArray( 190, 192, 191 ), PoolIntArray( 198, 197, 193 ), PoolIntArray( 193, 197, 196 ), PoolIntArray( 193, 196, 195 ), PoolIntArray( 193, 195, 194 ), PoolIntArray( 200, 199, 201 ), PoolIntArray( 201, 199, 202 ), PoolIntArray( 205, 204, 203 ), PoolIntArray( 208, 207, 206 ), PoolIntArray( 211, 210, 212 ), PoolIntArray( 212, 210, 209 ), PoolIntArray( 212, 209, 214 ), PoolIntArray( 212, 214, 213 ), PoolIntArray( 220, 219, 215 ), PoolIntArray( 215, 219, 218 ), PoolIntArray( 215, 218, 217 ), PoolIntArray( 215, 217, 216 ), PoolIntArray( 222, 221, 223 ), PoolIntArray( 223, 221, 225 ), PoolIntArray( 223, 225, 224 ), PoolIntArray( 228, 227, 226 ), PoolIntArray( 230, 229, 231 ), PoolIntArray( 231, 229, 232 ), PoolIntArray( 235, 234, 233 ), PoolIntArray( 237, 236, 238 ), PoolIntArray( 238, 236, 239 ), PoolIntArray( 241, 240, 242 ), PoolIntArray( 242, 240, 243 ), PoolIntArray( 245, 244, 246 ), PoolIntArray( 246, 244, 247 ), PoolIntArray( 249, 248, 250 ), PoolIntArray( 250, 248, 251 ), PoolIntArray( 253, 252, 254 ), PoolIntArray( 254, 252, 255 ), PoolIntArray( 257, 256, 258 ), PoolIntArray( 258, 256, 259 ), PoolIntArray( 262, 261, 260 ), PoolIntArray( 264, 263, 265 ), PoolIntArray( 265, 263, 266 ), PoolIntArray( 268, 267, 269 ), PoolIntArray( 269, 267, 271 ), PoolIntArray( 269, 271, 270 ), PoolIntArray( 275, 274, 272 ), PoolIntArray( 272, 274, 273 ), PoolIntArray( 278, 277, 276 ), PoolIntArray( 281, 280, 279 ), PoolIntArray( 284, 283, 282 ), PoolIntArray( 288, 287, 285 ), PoolIntArray( 285, 287, 286 ), PoolIntArray( 291, 290, 289 ), PoolIntArray( 294, 293, 292 ), PoolIntArray( 297, 296, 295 ), PoolIntArray( 299, 298, 300 ), PoolIntArray( 300, 298, 303 ), PoolIntArray( 300, 303, 302 ), PoolIntArray( 300, 302, 301 ), PoolIntArray( 306, 305, 304 ), PoolIntArray( 308, 307, 309 ), PoolIntArray( 309, 307, 310 ), PoolIntArray( 310, 307, 311 ), PoolIntArray( 314, 313, 312 ), PoolIntArray( 316, 315, 317 ), PoolIntArray( 317, 315, 318 ), PoolIntArray( 320, 319, 321 ), PoolIntArray( 321, 319, 322 ), PoolIntArray( 322, 319, 323 ), PoolIntArray( 323, 319, 324 ), PoolIntArray( 326, 325, 327 ), PoolIntArray( 327, 325, 328 ), PoolIntArray( 331, 330, 329 ), PoolIntArray( 333, 332, 334 ), PoolIntArray( 334, 332, 336 ), PoolIntArray( 334, 336, 335 ), PoolIntArray( 338, 337, 339 ), PoolIntArray( 339, 337, 340 ), PoolIntArray( 343, 342, 341 ), PoolIntArray( 346, 345, 344 ), PoolIntArray( 348, 347, 349 ), PoolIntArray( 349, 347, 350 ), PoolIntArray( 354, 353, 351 ), PoolIntArray( 351, 353, 352 ), PoolIntArray( 357, 356, 355 ), PoolIntArray( 358, 360, 359 ), PoolIntArray( 364, 363, 361 ), PoolIntArray( 361, 363, 362 ), PoolIntArray( 368, 367, 365 ), PoolIntArray( 365, 367, 366 ), PoolIntArray( 370, 369, 371 ), PoolIntArray( 371, 369, 372 ), PoolIntArray( 372, 369, 373 ), PoolIntArray( 374, 377, 375 ), PoolIntArray( 375, 377, 376 ), PoolIntArray( 380, 379, 378 ), PoolIntArray( 382, 381, 383 ), PoolIntArray( 383, 381, 384 ), PoolIntArray( 384, 381, 385 ), PoolIntArray( 386, 389, 387 ), PoolIntArray( 387, 389, 388 ), PoolIntArray( 391, 390, 392 ), PoolIntArray( 392, 390, 393 ), PoolIntArray( 394, 396, 395 ), PoolIntArray( 399, 398, 397 ), PoolIntArray( 401, 400, 402 ), PoolIntArray( 402, 400, 403 ), PoolIntArray( 403, 400, 405 ), PoolIntArray( 403, 405, 404 ), PoolIntArray( 408, 407, 406 ), PoolIntArray( 410, 409, 411 ), PoolIntArray( 411, 409, 412 ), PoolIntArray( 415, 414, 413 ), PoolIntArray( 417, 416, 418 ), PoolIntArray( 418, 416, 421 ), PoolIntArray( 418, 421, 420 ), PoolIntArray( 418, 420, 419 ), PoolIntArray( 423, 422, 424 ), PoolIntArray( 424, 422, 425 ), PoolIntArray( 425, 422, 426 ), PoolIntArray( 430, 429, 427 ), PoolIntArray( 427, 429, 428 ), PoolIntArray( 431, 434, 432 ), PoolIntArray( 432, 434, 433 ), PoolIntArray( 437, 436, 435 ), PoolIntArray( 440, 439, 441 ), PoolIntArray( 441, 439, 438 ), PoolIntArray( 447, 446, 442 ), PoolIntArray( 442, 446, 445 ), PoolIntArray( 442, 445, 444 ), PoolIntArray( 442, 444, 443 ), PoolIntArray( 450, 449, 448 ), PoolIntArray( 452, 451, 453 ), PoolIntArray( 453, 451, 455 ), PoolIntArray( 453, 455, 454 ), PoolIntArray( 457, 456, 458 ), PoolIntArray( 458, 456, 459 ), PoolIntArray( 460, 462, 461 ), PoolIntArray( 465, 464, 463 ), PoolIntArray( 468, 467, 466 ), PoolIntArray( 471, 470, 469 ), PoolIntArray( 474, 473, 472 ), PoolIntArray( 477, 476, 475 ), PoolIntArray( 479, 478, 480 ), PoolIntArray( 480, 478, 481 ), PoolIntArray( 484, 483, 482 ), PoolIntArray( 486, 485, 487 ), PoolIntArray( 487, 485, 488 ), PoolIntArray( 488, 485, 489 ), PoolIntArray( 489, 485, 490 ), PoolIntArray( 492, 491, 493 ), PoolIntArray( 493, 491, 494 ), PoolIntArray( 497, 496, 495 ), PoolIntArray( 501, 500, 498 ), PoolIntArray( 498, 500, 499 ), PoolIntArray( 503, 502, 504 ), PoolIntArray( 504, 502, 505 ), PoolIntArray( 505, 502, 507 ), PoolIntArray( 505, 507, 506 ), PoolIntArray( 510, 509, 508 ), PoolIntArray( 513, 512, 511 ), PoolIntArray( 516, 515, 514 ), PoolIntArray( 519, 518, 517 ), PoolIntArray( 522, 521, 520 ), PoolIntArray( 524, 523, 525 ), PoolIntArray( 525, 523, 527 ), PoolIntArray( 525, 527, 526 ), PoolIntArray( 530, 529, 528 ), PoolIntArray( 534, 533, 531 ), PoolIntArray( 531, 533, 532 ), PoolIntArray( 538, 537, 535 ), PoolIntArray( 535, 537, 536 ), PoolIntArray( 541, 540, 539 ), PoolIntArray( 544, 543, 542 ), PoolIntArray( 546, 545, 547 ), PoolIntArray( 547, 545, 549 ), PoolIntArray( 547, 549, 548 ), PoolIntArray( 551, 550, 552 ), PoolIntArray( 552, 550, 554 ), PoolIntArray( 552, 554, 553 ), PoolIntArray( 556, 555, 557 ), PoolIntArray( 557, 555, 558 ), PoolIntArray( 562, 561, 559 ), PoolIntArray( 559, 561, 560 ), PoolIntArray( 563, 565, 564 ), PoolIntArray( 569, 568, 566 ), PoolIntArray( 566, 568, 567 ), PoolIntArray( 573, 572, 570 ), PoolIntArray( 570, 572, 571 ) ]
+geometry/parsed_geometry_type = 1
+geometry/collision_mask = 4294967295
+geometry/source_geometry_mode = 1
+geometry/source_group_name = "navmesh"
+cell/size = 0.15
+cell/height = 0.5
+agent/height = 1.0
+agent/radius = 1.5
+
+[node name="House" type="Spatial"]
+script = ExtResource( 10 )
+
+[node name="Rooms" type="Spatial" parent="." groups=["navmesh"]]
+
+[node name="living_room" type="Spatial" parent="Rooms"]
+
+[node name="floor" type="Spatial" parent="Rooms/living_room"]
+
+[node name="floorFull" parent="Rooms/living_room/floor" instance=ExtResource( 1 )]
+
+[node name="floorFull4" parent="Rooms/living_room/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -10 )
+
+[node name="floorFull5" parent="Rooms/living_room/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0, -10 )
+
+[node name="floorFull2" parent="Rooms/living_room/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0, 0 )
+
+[node name="floorFull3" parent="Rooms/living_room/floor" instance=ExtResource( 1 )]
+transform = Transform( 5.5, 0, 0, 0, 10, 0, 0, 0, 4.5, 20, 0, -5.5 )
+
+[node name="floorCorner" parent="Rooms/living_room/floor" instance=ExtResource( 4 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, 0 )
+
+[node name="floorHalf" parent="Rooms/living_room/floor" instance=ExtResource( 6 )]
+transform = Transform( 11, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, -10 )
+
+[node name="floorFull6" parent="Rooms/living_room/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -20 )
+
+[node name="floorFull7" parent="Rooms/living_room/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0, -20 )
+
+[node name="floorHalf2" parent="Rooms/living_room/floor" instance=ExtResource( 6 )]
+transform = Transform( 11, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, -20 )
+
+[node name="walls" type="Spatial" parent="Rooms/living_room"]
+
+[node name="wall" parent="Rooms/living_room/walls" instance=ExtResource( 3 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0.545269, 0 )
+
+[node name="wall7" parent="Rooms/living_room/walls" instance=ExtResource( 3 )]
+transform = Transform( -10, 0, -4.76837e-07, 0, 10, 0, 4.76837e-07, 0, -10, 10, 0.545269, -30 )
+
+[node name="wall8" parent="Rooms/living_room/walls" instance=ExtResource( 3 )]
+transform = Transform( -10, 0, -4.76837e-07, 0, 10, 0, 4.76837e-07, 0, -10, 20, 0.545269, -30 )
+
+[node name="wall5" parent="Rooms/living_room/walls" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-06, 0, -10, 0, 10, 0, 10, 0, 1.31134e-06, -8.74228e-07, 0.545269, -30 )
+
+[node name="wall6" parent="Rooms/living_room/walls" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-06, 0, -10, 0, 10, 0, 10, 0, 1.31134e-06, 8.74228e-07, 0.545269, -10 )
+
+[node name="wall2" parent="Rooms/living_room/walls" instance=ExtResource( 3 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0.545269, 0 )
+
+[node name="wall3" parent="Rooms/living_room/walls" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 25.5011, 0.545269, -10 )
+
+[node name="wall4" parent="Rooms/living_room/walls" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 25.5011, 0.545269, -20 )
+
+[node name="wallCorner" parent="Rooms/living_room/walls" instance=ExtResource( 5 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0.540169, 0 )
+
+[node name="wallHalf" parent="Rooms/living_room/walls" instance=ExtResource( 2 )]
+transform = Transform( -3.93403e-07, 0, 10, 0, 10, 0, -9, 0, -4.37114e-07, 25.5002, 0.541, -5.49989 )
+
+[node name="wallDoorway" parent="Rooms/living_room/walls" instance=ExtResource( 7 )]
+transform = Transform( -3.17865e-07, -4.37114e-07, -10, 4.37114e-07, 10, -4.37114e-07, 10, -4.37114e-07, -3.17865e-07, 1.13687e-13, 0.545, -20 )
+
+[node name="wallHalf2" parent="Rooms/living_room/walls" instance=ExtResource( 2 )]
+transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 25, 0.540281, -30 )
+
+[node name="furnitures" type="Spatial" parent="Rooms/living_room"]
+
+[node name="loungeDesignSofaCorner" parent="Rooms/living_room/furnitures" instance=ExtResource( 11 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 11.0013, 0.541332, -15.5429 )
+
+[node name="cabinetTelevision" parent="Rooms/living_room/furnitures" instance=ExtResource( 12 )]
+transform = Transform( -6.11959e-07, 0, 10, 0, 10, 0, -14, 0, -4.37114e-07, 3.09468, 0.543605, -18.1262 )
+
+[node name="televisionModern" parent="Rooms/living_room/furnitures" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 1.96667, 3.68613, -22.236 )
+
+[node name="tableCloth" parent="Rooms/living_room/furnitures" instance=ExtResource( 14 )]
+transform = Transform( 12, 0, 0, 0, 13, 0, 0, 0, 14, 4.51309, 0.541258, -4.05403 )
+
+[node name="chairCushion" parent="Rooms/living_room/furnitures" instance=ExtResource( 15 )]
+transform = Transform( -4.80825e-07, 0, 11, 0, 12, 0, -11, 0, -4.80825e-07, 3.6118, 0.541067, -5.97231 )
+
+[node name="chairCushion2" parent="Rooms/living_room/furnitures" instance=ExtResource( 15 )]
+transform = Transform( -11, 0, -9.61651e-07, 0, 12, 0, 9.61651e-07, 0, -11, 8.13038, 0.541067, -3.49808 )
+
+[node name="chairCushion3" parent="Rooms/living_room/furnitures" instance=ExtResource( 15 )]
+transform = Transform( -11, 0, -9.61651e-07, 0, 12, 0, 9.61651e-07, 0, -11, 13.0208, 0.541067, -3.49808 )
+
+[node name="loungeChair" parent="Rooms/living_room/furnitures" instance=ExtResource( 16 )]
+transform = Transform( -7.07107, 0, -7.07107, 0, 10, 0, 7.07107, 0, -7.07107, 21.4178, 0.542736, -7.59915 )
+
+[node name="lampRoundFloor" parent="Rooms/living_room/furnitures" instance=ExtResource( 17 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 22.8356, 0.542494, -1.49886 )
+
+[node name="bookcaseOpen" parent="Rooms/living_room/furnitures" instance=ExtResource( 18 )]
+transform = Transform( -4.37114e-07, 0, -10, 0, 10, 0, 10, 0, -4.37114e-07, 22.5125, 0.54108, -13.3685 )
+
+[node name="books" parent="Rooms/living_room/furnitures/bookcaseOpen" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.214821, 0.141997, -0.0536072 )
+
+[node name="books2" parent="Rooms/living_room/furnitures/bookcaseOpen" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.227634, 0.380107, -0.0536072 )
+
+[node name="books3" parent="Rooms/living_room/furnitures/bookcaseOpen" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0.0753412, 0.380107, -0.0729444 )
+
+[node name="books4" parent="Rooms/living_room/furnitures/bookcaseOpen" instance=ExtResource( 19 )]
+transform = Transform( 1.9013, 0, -2.518e-08, 0, 1.45336, 0, -2.51799e-08, 0, 1.32525, 0.0584127, 0.628979, -0.0416114 )
+
+[node name="tableGlass" parent="Rooms/living_room/furnitures" instance=ExtResource( 20 )]
+transform = Transform( -5.5444e-07, 0, -12.6841, 0, 10, 0, 6.80421, 0, -2.97422e-07, 10.6172, 0.540979, -21.3212 )
+
+[node name="bedroom" type="Spatial" parent="Rooms"]
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0 )
+
+[node name="floor" type="Spatial" parent="Rooms/bedroom"]
+
+[node name="floorFull" parent="Rooms/bedroom/floor" instance=ExtResource( 1 )]
+
+[node name="floorFull4" parent="Rooms/bedroom/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -10 )
+
+[node name="floorFull5" parent="Rooms/bedroom/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0, -10 )
+
+[node name="floorFull2" parent="Rooms/bedroom/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0, 0 )
+
+[node name="floorFull3" parent="Rooms/bedroom/floor" instance=ExtResource( 1 )]
+transform = Transform( 5.5, 0, 0, 0, 10, 0, 0, 0, 4.5, 20, 0, -5.5 )
+
+[node name="floorCorner" parent="Rooms/bedroom/floor" instance=ExtResource( 4 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, 0 )
+
+[node name="floorHalf" parent="Rooms/bedroom/floor" instance=ExtResource( 6 )]
+transform = Transform( 11, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, -10 )
+
+[node name="floorFull6" parent="Rooms/bedroom/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -20 )
+
+[node name="floorFull7" parent="Rooms/bedroom/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0, -20 )
+
+[node name="floorHalf2" parent="Rooms/bedroom/floor" instance=ExtResource( 6 )]
+transform = Transform( 11, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, -20 )
+
+[node name="walls" type="Spatial" parent="Rooms/bedroom"]
+
+[node name="wall" parent="Rooms/bedroom/walls" instance=ExtResource( 3 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0.545269, 0 )
+
+[node name="wall7" parent="Rooms/bedroom/walls" instance=ExtResource( 3 )]
+transform = Transform( -10, 0, -4.76837e-07, 0, 10, 0, 4.76837e-07, 0, -10, 10, 0.545269, -30 )
+
+[node name="wall8" parent="Rooms/bedroom/walls" instance=ExtResource( 3 )]
+transform = Transform( -10, 0, -4.76837e-07, 0, 10, 0, 4.76837e-07, 0, -10, 20, 0.545269, -30 )
+
+[node name="wall5" parent="Rooms/bedroom/walls" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-06, 0, -10, 0, 10, 0, 10, 0, 1.31134e-06, -8.74228e-07, 0.545269, -30 )
+
+[node name="wall6" parent="Rooms/bedroom/walls" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-06, 0, -10, 0, 10, 0, 10, 0, 1.31134e-06, 8.74228e-07, 0.545269, -10 )
+
+[node name="wall2" parent="Rooms/bedroom/walls" instance=ExtResource( 3 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0.545269, 0 )
+
+[node name="wall3" parent="Rooms/bedroom/walls" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 25.5011, 0.545269, -10 )
+
+[node name="wall4" parent="Rooms/bedroom/walls" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 25.5011, 0.545269, -20 )
+
+[node name="wallCorner" parent="Rooms/bedroom/walls" instance=ExtResource( 5 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0.540169, 0 )
+
+[node name="wallHalf" parent="Rooms/bedroom/walls" instance=ExtResource( 2 )]
+transform = Transform( -3.93403e-07, 0, 10, 0, 10, 0, -9, 0, -4.37114e-07, 25.5002, 0.541, -5.49989 )
+
+[node name="wallDoorway" parent="Rooms/bedroom/walls" instance=ExtResource( 7 )]
+transform = Transform( -3.17865e-07, -4.37114e-07, -10, 4.37114e-07, 10, -4.37114e-07, 10, -4.37114e-07, -3.17865e-07, 1.13687e-13, 0.545, -20 )
+
+[node name="wallHalf2" parent="Rooms/bedroom/walls" instance=ExtResource( 2 )]
+transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 25, 0.540281, -30 )
+
+[node name="furnitures" type="Spatial" parent="Rooms/bedroom"]
+
+[node name="bedDouble" parent="Rooms/bedroom/furnitures" instance=ExtResource( 40 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -28.523, 0.541803, -47.6986 )
+
+[node name="cabinetBedDrawer" parent="Rooms/bedroom/furnitures" instance=ExtResource( 42 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -18.7088, 0.541358, -56.7599 )
+
+[node name="cabinetBedDrawerTable" parent="Rooms/bedroom/furnitures" instance=ExtResource( 43 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -31.432, 0.540418, -56.799 )
+
+[node name="lampSquareTable" parent="Rooms/bedroom/furnitures" instance=ExtResource( 36 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -30.8107, 3.24274, -57.0606 )
+
+[node name="pottedPlant" parent="Rooms/bedroom/furnitures" instance=ExtResource( 44 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -12.1802, 0.542819, -56.9849 )
+
+[node name="deskCorner" parent="Rooms/bedroom/furnitures" instance=ExtResource( 41 )]
+transform = Transform( -10, 0, 8.74228e-07, 0, 10, 0, -8.74228e-07, 0, -10, -25.1926, 0.539997, -39.8242 )
+
+[node name="chairDesk" parent="Rooms/bedroom/furnitures" instance=ExtResource( 39 )]
+transform = Transform( 7.07107, 0, -7.07107, 0, 10, 0, 7.07107, 0, 7.07107, -31.3251, 0.541891, -36.066 )
+
+[node name="computerKeyboard" parent="Rooms/bedroom/furnitures" instance=ExtResource( 37 )]
+transform = Transform( -7.07107, 0, 7.07107, 0, 10, 0, -7.07107, 0, -7.07107, -30.924, 4.76973, -33.7853 )
+
+[node name="computerMouse" parent="Rooms/bedroom/furnitures" instance=ExtResource( 35 )]
+transform = Transform( 8.66025, 0, -5, 0, 10, 0, 5, 0, 8.66025, -30.043, 4.76973, -31.986 )
+
+[node name="computerScreen" parent="Rooms/bedroom/furnitures" instance=ExtResource( 38 )]
+transform = Transform( -7.07107, 0, 7.07107, 0, 10, 0, -7.07107, 0, -7.07107, -31.4276, 4.45798, -30.6192 )
+
+[node name="radio" parent="Rooms/bedroom/furnitures" instance=ExtResource( 46 )]
+transform = Transform( 5, 0, 8.66025, 0, 10, 0, -8.66025, 0, 5, -33.8946, 4.46935, -36.349 )
+
+[node name="cardboardBoxOpen" parent="Rooms/bedroom/furnitures" instance=ExtResource( 45 )]
+transform = Transform( 8.66025, 0, 5, 0, 10, 0, -5, 0, 8.66025, -13.4894, 0.540761, -30.7466 )
+
+[node name="bathroom" type="Spatial" parent="Rooms"]
+transform = Transform( -1, 0, 0, 0, 1, 1.50996e-07, 0, 1.50996e-07, -1, -10, 0, -59.5 )
+
+[node name="floor" type="Spatial" parent="Rooms/bathroom"]
+
+[node name="floorFull" parent="Rooms/bathroom/floor" instance=ExtResource( 1 )]
+
+[node name="floorFull4" parent="Rooms/bathroom/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 9.09495e-13, -10 )
+
+[node name="floorFull5" parent="Rooms/bathroom/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0, -10 )
+
+[node name="floorFull2" parent="Rooms/bathroom/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0, 0 )
+
+[node name="floorFull3" parent="Rooms/bathroom/floor" instance=ExtResource( 1 )]
+transform = Transform( 5.5, 0, 0, 0, 10, 0, 0, 0, 4.5, 20, 0, -5.5 )
+
+[node name="floorCorner" parent="Rooms/bathroom/floor" instance=ExtResource( 4 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, 0 )
+
+[node name="floorHalf" parent="Rooms/bathroom/floor" instance=ExtResource( 6 )]
+transform = Transform( 11, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, -10 )
+
+[node name="floorFull6" parent="Rooms/bathroom/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -20 )
+
+[node name="floorFull7" parent="Rooms/bathroom/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0, -20 )
+
+[node name="floorHalf2" parent="Rooms/bathroom/floor" instance=ExtResource( 6 )]
+transform = Transform( 11, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, -20 )
+
+[node name="walls" type="Spatial" parent="Rooms/bathroom"]
+
+[node name="wall" parent="Rooms/bathroom/walls" instance=ExtResource( 3 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0.545269, 0 )
+
+[node name="wall5" parent="Rooms/bathroom/walls" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-06, 0, -10, 0, 10, 0, 10, 0, 1.31134e-06, -9.53674e-07, 0.545269, -30 )
+
+[node name="wall6" parent="Rooms/bathroom/walls" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-06, 0, -10, 0, 10, 0, 10, 0, 1.31134e-06, 8.74228e-07, 0.545269, -10 )
+
+[node name="wall2" parent="Rooms/bathroom/walls" instance=ExtResource( 3 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0.545269, 0 )
+
+[node name="wall3" parent="Rooms/bathroom/walls" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 25.5011, 0.545269, -10 )
+
+[node name="wall4" parent="Rooms/bathroom/walls" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 25.5011, 0.545269, -20 )
+
+[node name="wallCorner" parent="Rooms/bathroom/walls" instance=ExtResource( 5 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0.540169, 0 )
+
+[node name="wallHalf" parent="Rooms/bathroom/walls" instance=ExtResource( 2 )]
+transform = Transform( -3.93403e-07, 0, 10, 0, 10, 0, -9, 0, -4.37114e-07, 25.5002, 0.541, -5.49989 )
+
+[node name="wallDoorway" parent="Rooms/bathroom/walls" instance=ExtResource( 7 )]
+transform = Transform( -3.17865e-07, -4.37114e-07, -10, 4.37114e-07, 10, -4.37114e-07, 10, -4.37114e-07, -3.17865e-07, 1.13687e-13, 0.545, -20 )
+
+[node name="furnitures" type="Spatial" parent="Rooms/bathroom"]
+
+[node name="bathroomCabinet" parent="Rooms/bathroom/furnitures" instance=ExtResource( 47 )]
+transform = Transform( -10, 1.32005e-13, -8.74228e-07, -1.32005e-13, 10, 3.01992e-06, 8.74228e-07, 3.01992e-06, -10, 5.15075, 6.97387, -2.70741 )
+
+[node name="bathroomCabinet2" parent="Rooms/bathroom/furnitures" instance=ExtResource( 47 )]
+transform = Transform( -10, 1.32005e-13, -8.74228e-07, -1.32005e-13, 10, 3.01992e-06, 8.74228e-07, 3.01992e-06, -10, 7.58487, 7.85105, -2.70741 )
+
+[node name="bathroomCabinetDrawer" parent="Rooms/bathroom/furnitures" instance=ExtResource( 53 )]
+transform = Transform( -10, 1.32005e-13, -8.74228e-07, -1.32005e-13, 10, 3.01992e-06, 8.74228e-07, 3.01992e-06, -10, 12.0588, -0.0412609, -5.04935 )
+
+[node name="bathroomMirror" parent="Rooms/bathroom/furnitures" instance=ExtResource( 51 )]
+transform = Transform( -10, 1.32005e-13, -8.74228e-07, -1.32005e-13, 10, 3.01992e-06, 8.74228e-07, 3.01992e-06, -10, 15.7089, 4.06773, -1.01345 )
+
+[node name="shower" parent="Rooms/bathroom/furnitures" instance=ExtResource( 54 )]
+transform = Transform( 19.6434, 3.12639e-13, -9.53674e-07, -1.44001e-13, 10, 0, 9.53674e-07, 1.13687e-13, 10, 24.867, 0.541808, -23.7321 )
+
+[node name="rugDoormat" parent="Rooms/bathroom/furnitures" instance=ExtResource( 49 )]
+transform = Transform( -12.3939, 1.87874e-13, -1.03307e-06, -1.5599e-13, 10, 3.20715e-06, 1.03307e-06, 3.20715e-06, -11.24, 22.4638, 0.54219, -22.7346 )
+
+[node name="washer" parent="Rooms/bathroom/furnitures" instance=ExtResource( 52 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0.580513, 0.540873, -25.974 )
+
+[node name="dryer" parent="Rooms/bathroom/furnitures" instance=ExtResource( 50 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 4.54925, 0.540873, -25.974 )
+
+[node name="kitchenCabinetDrawer" parent="Rooms/bathroom/furnitures" instance=ExtResource( 48 )]
+transform = Transform( -10, 1.32005e-13, -8.74228e-07, -9.86658e-14, 10, 2.63857e-06, 6.53433e-07, 2.63857e-06, -7.4744, 16.4222, 5.41469e-07, -3.58589 )
+
+[node name="toiletSquare" parent="Rooms/bathroom/furnitures" instance=ExtResource( 55 )]
+transform = Transform( -4.37114e-07, 1.50996e-06, -10, -1.50996e-06, 10, 1.50996e-06, 10, 1.50996e-06, -4.37114e-07, 21.0275, 1.63558e-06, -10.8319 )
+
+[node name="kitchen" type="Spatial" parent="Rooms"]
+transform = Transform( 1, 1.32005e-14, -8.74228e-08, 0, 1, 1.50996e-07, -8.74228e-08, 1.50996e-07, -1, 0, 0, -59.5 )
+
+[node name="floor" type="Spatial" parent="Rooms/kitchen"]
+
+[node name="floorFull" parent="Rooms/kitchen/floor" instance=ExtResource( 1 )]
+
+[node name="floorFull4" parent="Rooms/kitchen/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -10 )
+
+[node name="floorFull5" parent="Rooms/kitchen/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0, -10 )
+
+[node name="floorFull2" parent="Rooms/kitchen/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0, 0 )
+
+[node name="floorFull3" parent="Rooms/kitchen/floor" instance=ExtResource( 1 )]
+transform = Transform( 5.5, 0, 0, 0, 10, 0, 0, 0, 4.5, 20, 0, -5.5 )
+
+[node name="floorCorner" parent="Rooms/kitchen/floor" instance=ExtResource( 4 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, 0 )
+
+[node name="floorHalf" parent="Rooms/kitchen/floor" instance=ExtResource( 6 )]
+transform = Transform( 11, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, -10 )
+
+[node name="floorFull6" parent="Rooms/kitchen/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -20 )
+
+[node name="floorFull7" parent="Rooms/kitchen/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0, -20 )
+
+[node name="floorHalf2" parent="Rooms/kitchen/floor" instance=ExtResource( 6 )]
+transform = Transform( 11, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0, -20 )
+
+[node name="walls" type="Spatial" parent="Rooms/kitchen"]
+
+[node name="wall" parent="Rooms/kitchen/walls" instance=ExtResource( 3 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0.545269, 0 )
+
+[node name="wall5" parent="Rooms/kitchen/walls" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-06, 0, -10, 0, 10, 0, 10, 0, 1.31134e-06, -8.74228e-07, 0.545269, -30 )
+
+[node name="wall6" parent="Rooms/kitchen/walls" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-06, 0, -10, 0, 10, 0, 10, 0, 1.31134e-06, 8.74228e-07, 0.545269, -10 )
+
+[node name="wall2" parent="Rooms/kitchen/walls" instance=ExtResource( 3 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 10, 0.545269, 0 )
+
+[node name="wall3" parent="Rooms/kitchen/walls" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 25.5011, 0.545269, -10 )
+
+[node name="wall4" parent="Rooms/kitchen/walls" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 25.5011, 0.545269, -20 )
+
+[node name="wallCorner" parent="Rooms/kitchen/walls" instance=ExtResource( 5 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0.540169, 0 )
+
+[node name="wallHalf" parent="Rooms/kitchen/walls" instance=ExtResource( 2 )]
+transform = Transform( -3.93403e-07, 0, 10, 0, 10, 0, -9, 0, -4.37114e-07, 25.5002, 0.541, -5.49989 )
+
+[node name="wallDoorway" parent="Rooms/kitchen/walls" instance=ExtResource( 7 )]
+transform = Transform( -3.17865e-07, -4.37114e-07, -10, 4.37114e-07, 10, -4.37114e-07, 10, -4.37114e-07, -3.17865e-07, 1.13687e-13, 0.545, -20 )
+
+[node name="furnitures" type="Spatial" parent="Rooms/kitchen"]
+
+[node name="kitchenBar" parent="Rooms/kitchen/furnitures" instance=ExtResource( 24 )]
+transform = Transform( -1.31134e-06, -2.11758e-19, -10, 1.50996e-06, 10, -1.98007e-13, -10, 1.50996e-06, 1.31134e-06, -21.7963, 0.541163, -54.6694 )
+
+[node name="kitchenBar2" parent="Rooms/kitchen/furnitures" instance=ExtResource( 24 )]
+transform = Transform( -1.31134e-06, -2.65968e-19, -10, 1.50996e-06, 10, -1.98007e-13, -10, 1.50996e-06, 1.31134e-06, -21.7963, 0.541162, -50.3695 )
+
+[node name="kitchenBar3" parent="Rooms/kitchen/furnitures" instance=ExtResource( 24 )]
+transform = Transform( -1.31134e-06, -3.20178e-19, -10, 1.50996e-06, 10, -1.98007e-13, -10, 1.50996e-06, 1.31134e-06, -21.7963, 0.541162, -46.0805 )
+
+[node name="kitchenBar4" parent="Rooms/kitchen/furnitures" instance=ExtResource( 24 )]
+transform = Transform( -1.31134e-06, -4.15046e-19, -10, 1.50996e-06, 10, -1.98007e-13, -10, 1.50996e-06, 1.31134e-06, -21.7963, 0.541161, -41.8131 )
+
+[node name="kitchenCabinet" parent="Rooms/kitchen/furnitures" instance=ExtResource( 21 )]
+transform = Transform( -4.37114e-07, -1.50996e-06, 10, 1.50996e-06, 10, 1.50996e-06, -10, 1.50996e-06, -4.37114e-07, -30.4931, 0.54166, -50.0911 )
+
+[node name="kitchenCabinet3" parent="Rooms/kitchen/furnitures" instance=ExtResource( 21 )]
+transform = Transform( 10, 4.76841e-14, 0, 0, 10, -3.75167e-12, 0, 0, 10, -26.0954, 0.54166, -54.4864 )
+
+[node name="kitchenCabinet2" parent="Rooms/kitchen/furnitures" instance=ExtResource( 21 )]
+transform = Transform( -4.37114e-07, -1.50996e-06, 10, 1.50996e-06, 10, 1.50996e-06, -10, 1.50996e-06, -4.37114e-07, -30.4931, 0.541658, -41.5024 )
+
+[node name="kitchenCabinetCornerInner" parent="Rooms/kitchen/furnitures" instance=ExtResource( 25 )]
+transform = Transform( -4.37114e-07, -1.50996e-06, 10, 1.50996e-06, 10, 1.50996e-06, -10, 1.50996e-06, -4.37114e-07, -30.3771, 0.540643, -54.3932 )
+
+[node name="kitchenFridgeLarge" parent="Rooms/kitchen/furnitures" instance=ExtResource( 22 )]
+transform = Transform( -4.37114e-07, -1.50996e-06, 10, 1.50996e-06, 10, 1.50996e-06, -10, 1.50996e-06, -4.37114e-07, -31.5418, 5.47051e-06, -36.2295 )
+
+[node name="kitchenSink" parent="Rooms/kitchen/furnitures" instance=ExtResource( 31 )]
+transform = Transform( 10, -3.93023e-19, 0, 0, 10, 0, 0, 0, 10, -30.3755, 0.5427, -54.4836 )
+
+[node name="kitchenStove" parent="Rooms/kitchen/furnitures" instance=ExtResource( 27 )]
+transform = Transform( -4.37114e-07, -1.50996e-06, 10, 1.50996e-06, 10, 1.50996e-06, -10, 1.50996e-06, -4.37114e-07, -30.4915, 0.540426, -45.8005 )
+
+[node name="kitchenMicrowave" parent="Rooms/kitchen/furnitures" instance=ExtResource( 28 )]
+transform = Transform( 7.53621, -9.92511e-07, 6.57309, 9.92512e-07, 10, 3.72023e-07, -6.57309, 3.72023e-07, 7.53621, -33.566, 4.87754, -55.3772 )
+
+[node name="kitchenCoffeeMachine" parent="Rooms/kitchen/furnitures" instance=ExtResource( 26 )]
+transform = Transform( -4.37114e-07, -1.50996e-06, 10, 1.50996e-06, 10, 1.50996e-06, -10, 1.50996e-06, -4.37114e-07, -31.832, 4.81219, -42.6745 )
+
+[node name="kitchenBarEnd" parent="Rooms/kitchen/furnitures" instance=ExtResource( 23 )]
+transform = Transform( -4.37114e-07, -1.50996e-06, 10, 1.50996e-06, 10, 1.50996e-06, -10, 1.50996e-06, -4.37114e-07, -19.6971, 0.541663, -40.818 )
+
+[node name="stoolBarSquare" parent="Rooms/kitchen/furnitures" instance=ExtResource( 29 )]
+transform = Transform( 10, -1.35525e-19, 0, 0, 10, 0, 0, 0, 10, -19.3347, 0.552428, -50.8189 )
+
+[node name="stoolBarSquare2" parent="Rooms/kitchen/furnitures" instance=ExtResource( 29 )]
+transform = Transform( 10, -2.98156e-19, 0, 0, 10, 0, 0, 0, 10, -19.5052, 0.552427, -46.312 )
+
+[node name="kitchenCabinetUpperCorner" parent="Rooms/kitchen/furnitures" instance=ExtResource( 30 )]
+transform = Transform( -4.37114e-07, -1.50996e-06, 10, 1.50996e-06, 10, 1.50996e-06, -10, 1.50996e-06, -4.37114e-07, -32.8493, 8.40541, -56.8257 )
+
+[node name="kitchenCabinetUpper" parent="Rooms/kitchen/furnitures" instance=ExtResource( 32 )]
+transform = Transform( 10, -3.11708e-19, 0, 0, 10, 0, 0, 0, 10, -26.2904, 8.50082, -56.8518 )
+
+[node name="trashcan" parent="Rooms/kitchen/furnitures" instance=ExtResource( 34 )]
+transform = Transform( 10, -1.21973e-19, 0, 0, 10, 0, 0, 0, 10, -32.5554, 0.544933, -33.1648 )
+
+[node name="toaster" parent="Rooms/kitchen/furnitures" instance=ExtResource( 33 )]
+transform = Transform( 5, -1.30767e-06, 8.66025, 1.30767e-06, 10, 7.5498e-07, -8.66025, 7.5498e-07, 5, -21.1527, 4.83794, -56.3356 )
+
+[node name="corridor" type="Spatial" parent="Rooms"]
+
+[node name="floor" type="Spatial" parent="Rooms/corridor"]
+
+[node name="floorFull" parent="Rooms/corridor/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -10, 0, 0 )
+
+[node name="floorFull2" parent="Rooms/corridor/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -10, 0, -10 )
+
+[node name="floorFull3" parent="Rooms/corridor/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -10, 0, -20 )
+
+[node name="floorFull4" parent="Rooms/corridor/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -10, 0, -30 )
+
+[node name="floorFull5" parent="Rooms/corridor/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -10, 0, -40 )
+
+[node name="floorFull6" parent="Rooms/corridor/floor" instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 9.5, -10, 0, -50 )
+
+[node name="walls" type="Spatial" parent="Rooms/corridor"]
+
+[node name="wallDoorway3" parent="Rooms/corridor/walls" instance=ExtResource( 7 )]
+transform = Transform( 10, -4.37114e-07, 1.19249e-07, 4.37114e-07, 10, -4.37114e-07, -1.19249e-07, 4.37114e-07, 10, -10, 0.545, -1.90735e-06 )
+
+[node name="wall" parent="Rooms/corridor/walls" instance=ExtResource( 3 )]
+transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 0, 0.54, -59.5 )
+
+[node name="NoNavObjects" type="Spatial" parent="."]
+
+[node name="Doors" type="Spatial" parent="."]
+
+[node name="doorway" parent="Doors" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-07, 0, -10, 0, 10, 0, 10, 0, -4.37114e-07, -0.173836, 0.538027, -17.4296 )
+
+[node name="doorway2" parent="Doors" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-07, 0, -10, 0, 10, 0, 10, 0, -4.37114e-07, -0.173836, 0.538027, -46.9242 )
+
+[node name="doorway3" parent="Doors" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-07, 0, -10, 0, 10, 0, 10, 0, -4.37114e-07, -10.6853, 0.538027, -46.9242 )
+
+[node name="doorway4" parent="Doors" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-07, 0, -10, 0, 10, 0, 10, 0, -4.37114e-07, -10.6853, 0.538027, -17.4369 )
+
+[node name="doorway5" parent="Doors" instance=ExtResource( 8 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -7.4307, 0.538027, 0.193947 )
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 60, -30 )
+current = true
+fov = 80.0
+
+[node name="Lights" type="Spatial" parent="."]
+
+[node name="People" type="Spatial" parent="."]
+
+[node name="person" parent="People" groups=["person"] instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.101, 0, -2.78416 )
+
+[node name="Position3D" type="Position3D" parent="People"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.723, 2.31037, -12.674 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SpeedSlider" parent="CanvasLayer" instance=ExtResource( 56 )]
+
+[node name="time_widget" parent="CanvasLayer" instance=ExtResource( 57 )]
+margin_left = 18.0
+margin_top = 3.0
+margin_right = 18.0
+margin_bottom = 3.0

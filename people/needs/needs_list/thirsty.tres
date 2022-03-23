@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://people/needs/need.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+need_key = "thirsty"
+min_duration = 10.0
+max_duration = 60.0
+time_to_fill_level = 10800.0
+level = 1.0

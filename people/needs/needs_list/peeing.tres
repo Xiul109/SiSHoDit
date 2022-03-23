@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://people/needs/need.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+need_key = "peeing"
+min_duration = 20.0
+max_duration = 60.0
+time_to_fill_level = 14400.0
+level = 0.0
