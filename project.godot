@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody",
+"class": "BasicPerson",
+"language": "GDScript",
+"path": "res://people/basic_person.gd"
+}, {
 "base": "Resource",
 "class": "Need",
 "language": "GDScript",
 "path": "res://people/needs/need.gd"
 } ]
 _global_script_class_icons={
+"BasicPerson": "",
 "Need": ""
 }
 

@@ -33,7 +33,7 @@ size = Vector3( 1, 1, 0.5 )
 [node name="person" type="KinematicBody"]
 collision_layer = 0
 script = ExtResource( 2 )
-needs = [ ExtResource( 12 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 8 ) ]
+needs = [ ExtResource( 14 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ) ]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 3.22518, 0 )

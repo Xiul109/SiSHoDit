@@ -1,3 +1,4 @@
+class_name BasicPerson
 extends KinematicBody
 
 export var speed = 10
@@ -35,15 +36,16 @@ func _movement(delta):
 		var velocity = speed*(path[0]-global_transform.origin).normalized()
 		if translation.distance_to(path[0]) < delta * speed:
 			velocity = path[0]-global_transform.origin
-			# Por lo que sea a veces se queda pillado llegando a los sitios
 			path.remove(0)
-		elif translation.distance_to(to) < distance_to_objective:
-			print("Objective reached")
-			path = []
 		
-# warning-ignore:return_value_discarded
+		if translation.distance_to(to) < distance_to_objective:
+			path = []
+			return
+		
+		# warning-ignore:return_value_discarded
 		move_and_slide(velocity)
-		look_at(global_transform.origin+velocity, Vector3.UP)
+		if Vector3.UP.cross(velocity) != Vector3():
+			look_at(global_transform.origin+velocity, Vector3.UP)
 	else:
 		smp.set_trigger("need_location_reached")
 
@@ -98,7 +100,13 @@ func _set_place_to_solve_need(need : Need):
 		if n.need_key in needs_of_object:
 			current_needs.append(n)
 
-func _solve_current_needs():
+func _solve_current_needs():	
+	TimeSim.fast_forward(_time_left_in_current_need)
+	_process_needs(_time_left_in_current_need)
+	
+	_time_left_in_current_need = 0
+	smp.set_param("time_left", _time_left_in_current_need)
+	
 	for need in current_needs:
 		need.level = 0
 	current_needs = []
@@ -117,16 +125,14 @@ func _on_StateMachinePlayer_updated(state, delta):
 func _on_StateMachinePlayer_transited(from_state, to_state):
 		match from_state:
 			"solving_need":
-				_solve_current_needs()
+				pass
 			
 		match to_state:
 			"traveling_to_need":
 				var need = _get_next_need_to_cover()
 				_set_place_to_solve_need(need)
-				print("Traveling to ", to, " to solve needs:", current_needs)
+				print("Traveling to ", to, " to solve needs:", need.need_key, ", p ", need.get_probability())
 			"solving_need":
 				_set_duration_for_current_needs()
 				print("solving ", current_needs, " will take ", _time_left_in_current_need, " s")
-				TimeSim.fast_forward(_time_left_in_current_need)
-				_time_left_in_current_need = 0
-				smp.set_param("time_left", _time_left_in_current_need)
+				_solve_current_needs()

@@ -8,19 +8,22 @@ export var min_duration: float
 export var max_duration: float
 
 export var time_to_fill_level : float
-
-var mean_duration = (min_duration+max_duration)/2
  
 export(float, 1) var level : float = 0
+export(float, 1) var min_level_before_solve : float
+
 
 func increase_level(delta):
-	level += delta/time_to_fill_level
+	level = clamp(level+delta/time_to_fill_level, 0, 1)
 
 func generate_duration():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
+	var mean_duration = (min_duration+max_duration)/2
 	return clamp(rng.randfn(mean_duration, (max_duration-mean_duration)/4),
 					  min_duration, max_duration)
 
 func get_probability():
-	return 1/(1+ pow(level/(1.000001-level), -2.5))
+	if level <= min_level_before_solve:
+		return 0.0
+	return 1/(1+ pow(level/(1.0001-level), -2.5))
