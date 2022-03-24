@@ -18,10 +18,22 @@ _global_script_classes=[ {
 "class": "Need",
 "language": "GDScript",
 "path": "res://people/needs/need.gd"
+}, {
+"base": "Resource",
+"class": "Solution",
+"language": "GDScript",
+"path": "res://people/needs/solution.gd"
+}, {
+"base": "Resource",
+"class": "SolutionStep",
+"language": "GDScript",
+"path": "res://people/needs/solution_step.gd"
 } ]
 _global_script_class_icons={
 "BasicPerson": "",
-"Need": ""
+"Need": "",
+"Solution": "",
+"SolutionStep": ""
 }
 
 [application]

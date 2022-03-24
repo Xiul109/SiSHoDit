@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://people/needs/need.gd" type="Script" id=1]
+[ext_resource path="res://people/needs/need_solutions/bored_sol.tres" type="Resource" id=2]
 
 [resource]
 script = ExtResource( 1 )
 need_key = "bored"
-min_duration = 900.0
-max_duration = 3600.0
+solutions = [ ExtResource( 2 ) ]
 time_to_fill_level = 7200.0
 level = 0.0
 min_level_before_solve = 0.0

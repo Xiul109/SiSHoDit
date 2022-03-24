@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://people/needs/need_solutions/steps/sleep_in_bed.tres" type="Resource" id=1]
+[ext_resource path="res://people/needs/solution.gd" type="Script" id=2]
+[ext_resource path="res://people/needs/need_solutions/steps/change_clothes.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 2 )
+steps = [ ExtResource( 3 ), ExtResource( 1 ) ]
+needs_solved = [ "sleepy", "tired", "bored" ]

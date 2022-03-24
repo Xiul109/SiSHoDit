@@ -13,10 +13,21 @@ var navigation : Navigation setget navigation_set
 var to
 var path
 
-var current_needs : Array
-var _time_left_in_current_need : float = 0
+var current_need : Need
+var current_solution
+var current_step
+var _time_left_in_current_step : float = 0
 
 # Overriden methods
+func _ready():
+	var unsolvable_needs = []
+	for need in needs:
+		if not need.can_be_solved(get_tree()):
+			unsolvable_needs.append(need)
+	# Delete unsolvable needs
+	for need in unsolvable_needs:
+		needs.erase(need)
+
 func _process(delta):
 	_process_needs(delta)
 
@@ -24,6 +35,7 @@ func _process(delta):
 # Public methods
 func new_path():
 	path = navigation.get_simple_path(global_transform.origin, to, true)
+
 
 # Setgets
 func navigation_set(new_nav):
@@ -77,62 +89,60 @@ func _get_random_i_based_on_probs(probs):
 	
 	return 0
 
-func _set_duration_for_current_needs():
-	if not current_needs.empty():
-		_time_left_in_current_need = 0
-		for n in current_needs:
-			var dur = n.generate_duration()
-			if dur > _time_left_in_current_need:
-				_time_left_in_current_need = dur
-		smp.set_param("time_left", _time_left_in_current_need)
+func _set_duration_for_current_step():
+	if current_step:
+		_time_left_in_current_step = current_step.generate_duration()
+		smp.set_param("time_left", _time_left_in_current_step)
 
-func _set_place_to_solve_need(need : Need):
-	var objects = get_tree().get_nodes_in_group(need.need_key)
+func _set_place_of_next_step(object_key):
+	var objects = get_tree().get_nodes_in_group(object_key)
 	var object = objects[randi() % objects.size()] as Spatial
 	
 	# Path
 	to = object.global_transform.origin
 	new_path()
-	
-	# Current needs
-	var needs_of_object = object.get_groups()
-	for n in needs:
-		if n.need_key in needs_of_object:
-			current_needs.append(n)
 
-func _solve_current_needs():	
-	TimeSim.fast_forward(_time_left_in_current_need)
-	_process_needs(_time_left_in_current_need)
+func _apply_current_solution():	
+	smp.set_trigger("need_solved")
+	for need in needs:
+		if need.need_key in current_solution.needs_solved:
+			need.level = 0
+	print("Following needs has been solved: ", current_solution.needs_solved)
+	current_solution = null
+
+func _wait():
+	TimeSim.fast_forward(_time_left_in_current_step)
+	_process_needs(_time_left_in_current_step)
 	
-	_time_left_in_current_need = 0
-	smp.set_param("time_left", _time_left_in_current_need)
-	
-	for need in current_needs:
-		need.level = 0
-	current_needs = []
+	_time_left_in_current_step = 0
+	smp.set_param("time_left", _time_left_in_current_step)
 
 # Callbacks
 func _on_StateMachinePlayer_updated(state, delta):
 	match state:
-		"traveling_to_need":
+		"traveling":
 			_movement(delta)
-		"solving_need":
-			pass
-#			_time_left_in_current_need -= delta
-#			smp.set_param("time_left", _time_left_in_current_need)
 
 
-func _on_StateMachinePlayer_transited(from_state, to_state):
-		match from_state:
-			"solving_need":
-				pass
-			
+func _on_StateMachinePlayer_transited(_from_state, to_state):
 		match to_state:
-			"traveling_to_need":
-				var need = _get_next_need_to_cover()
-				_set_place_to_solve_need(need)
-				print("Traveling to ", to, " to solve needs:", need.need_key, ", p ", need.get_probability())
-			"solving_need":
-				_set_duration_for_current_needs()
-				print("solving ", current_needs, " will take ", _time_left_in_current_need, " s")
-				_solve_current_needs()
+			"new_need":
+				current_need = _get_next_need_to_cover()
+				current_solution = current_need.get_solution()
+				print("-------------------------")
+				print("New need: ", current_need.need_key, ". It can be solved in ",
+				 current_solution.steps.size(), " steps.")
+				smp.set_trigger("solution_chosen")
+			"check_next_step":
+				current_step = current_solution.get_next_step()
+				if current_step:
+					_set_place_of_next_step(current_step.object_key)
+					print("Current step can be solved with ", current_step.object_key)
+					smp.set_trigger("next_step_chosen")
+				else:
+					_apply_current_solution()
+			"traveling":
+				pass#_set_place_to_solve_need(need)
+			"waiting":
+				_set_duration_for_current_step()
+				_wait()

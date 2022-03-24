@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=15 format=2]
+[gd_resource type="Resource" load_steps=23 format=2]
 
 [ext_resource path="res://addons/imjp94.yafsm/src/states/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://addons/imjp94.yafsm/src/transitions/Transition.gd" type="Script" id=2]
@@ -9,36 +9,48 @@
 [sub_resource type="Resource" id=1]
 script = ExtResource( 3 )
 __meta__ = {
-"graph_offset": Vector2( 148, 180 )
+"graph_offset": Vector2( 108, 100 )
 }
 name = "Entry"
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 3 )
+__meta__ = {
+"graph_offset": Vector2( 276, 100 )
+}
+name = "new_need"
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 3 )
 __meta__ = {
-"graph_offset": Vector2( 330.5, 180 )
+"graph_offset": Vector2( 700, -20 )
 }
-name = "traveling_to_need"
+name = "traveling"
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 3 )
 __meta__ = {
-"graph_offset": Vector2( 666, 180 )
+"graph_offset": Vector2( 705, 220 )
 }
-name = "solving_need"
+name = "waiting"
 
-[sub_resource type="Resource" id=9]
-script = ExtResource( 4 )
-name = "time_left"
-comparation = 5
-value = 0.0
+[sub_resource type="Resource" id=14]
+script = ExtResource( 3 )
+__meta__ = {
+"graph_offset": Vector2( 496, 100 )
+}
+name = "check_next_step"
 
-[sub_resource type="Resource" id=8]
+[sub_resource type="Resource" id=11]
+script = ExtResource( 5 )
+name = "start"
+
+[sub_resource type="Resource" id=12]
 script = ExtResource( 2 )
-from = "solving_need"
-to = "traveling_to_need"
+from = "Entry"
+to = "new_need"
 conditions = {
-"time_left": SubResource( 9 )
+"start": SubResource( 11 )
 }
 priority = 0
 
@@ -48,23 +60,64 @@ name = "need_location_reached"
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 2 )
-from = "traveling_to_need"
-to = "solving_need"
+from = "traveling"
+to = "waiting"
 conditions = {
 "need_location_reached": SubResource( 10 )
 }
 priority = 0
 
-[sub_resource type="Resource" id=11]
-script = ExtResource( 5 )
-name = "start"
+[sub_resource type="Resource" id=9]
+script = ExtResource( 4 )
+name = "time_left"
+comparation = 5
+value = 0.0
 
-[sub_resource type="Resource" id=12]
+[sub_resource type="Resource" id=8]
 script = ExtResource( 2 )
-from = "Entry"
-to = "traveling_to_need"
+from = "waiting"
+to = "check_next_step"
 conditions = {
-"start": SubResource( 11 )
+"time_left": SubResource( 9 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 5 )
+name = "solution_chosen"
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 2 )
+from = "new_need"
+to = "check_next_step"
+conditions = {
+"solution_chosen": SubResource( 15 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=17]
+script = ExtResource( 5 )
+name = "next_step_chosen"
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 2 )
+from = "check_next_step"
+to = "traveling"
+conditions = {
+"next_step_chosen": SubResource( 17 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 5 )
+name = "need_solved"
+
+[sub_resource type="Resource" id=20]
+script = ExtResource( 2 )
+from = "check_next_step"
+to = "new_need"
+conditions = {
+"need_solved": SubResource( 19 )
 }
 priority = 0
 
@@ -73,17 +126,26 @@ script = ExtResource( 1 )
 name = ""
 states = {
 "Entry": SubResource( 1 ),
-"solving_need": SubResource( 4 ),
-"traveling_to_need": SubResource( 2 )
+"check_next_step": SubResource( 14 ),
+"new_need": SubResource( 13 ),
+"traveling": SubResource( 2 ),
+"waiting": SubResource( 4 )
 }
 transitions = {
 "Entry": {
-"traveling_to_need": SubResource( 12 )
+"new_need": SubResource( 12 )
 },
-"solving_need": {
-"traveling_to_need": SubResource( 8 )
+"check_next_step": {
+"new_need": SubResource( 20 ),
+"traveling": SubResource( 18 )
 },
-"traveling_to_need": {
-"solving_need": SubResource( 7 )
+"new_need": {
+"check_next_step": SubResource( 16 )
+},
+"traveling": {
+"waiting": SubResource( 7 )
+},
+"waiting": {
+"check_next_step": SubResource( 8 )
 }
 }

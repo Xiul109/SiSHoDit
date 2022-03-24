@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://people/needs/solution_step.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+object_key = "bed"
+min_duration = 21600.0
+max_duration = 36000.0
