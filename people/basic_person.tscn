@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://people/CameraOrbit.gd" type="Script" id=1]
 [ext_resource path="res://people/basic_person.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://people/needs/needs_list/bored.tres" type="Resource" id=12]
 [ext_resource path="res://people/needs/needs_list/hungry.tres" type="Resource" id=13]
 [ext_resource path="res://people/needs/needs_list/peeing.tres" type="Resource" id=14]
+[ext_resource path="res://people/needs/needs_list/dirty_clothes.tres" type="Resource" id=15]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.9
@@ -33,7 +34,7 @@ size = Vector3( 1, 1, 0.5 )
 [node name="person" type="KinematicBody"]
 collision_layer = 0
 script = ExtResource( 2 )
-needs = [ ExtResource( 14 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ) ]
+needs = [ ExtResource( 14 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 15 ) ]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, 1.5, 0, -1.5, -6.55671e-08, 0, 3.22518, 0 )

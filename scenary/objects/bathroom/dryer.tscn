@@ -5,7 +5,7 @@
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( 0, 0, -0.35, 0.389962, 0, -0.35, 0, 0, -0.0200078, 0, 0.47, -0.35, 0.389962, 0, -0.0200078, 0.389962, 0.47, -0.35, 0, 0.0625225, -3.42429e-05, 0, 0.47, -0.0192198, 0.389962, 0.0625225, -3.42429e-05, 0.389962, 0.47, -0.0192198, 0, 0.388983, -3.42429e-05, 0.229816, 0.423948, -0.00829092, 0.0169117, 0.405453, -0.00390562, 0.389962, 0.388983, -3.42429e-05, 0.37305, 0.405453, -0.00390562 )
 
-[node name="dryer" instance=ExtResource( 1 )]
+[node name="dryer" groups=["dryer"] instance=ExtResource( 1 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 shape = SubResource( 1 )
