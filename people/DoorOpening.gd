@@ -12,3 +12,5 @@ func _process(_delta):
 					collider.get_parent().open()
 				else:
 					collider.open()
+			else:
+				current_door = null
