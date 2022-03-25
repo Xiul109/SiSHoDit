@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-object_key = "peeing"
-min_duration = 20.0
-max_duration = 90.0
+object_key = "tv"
+min_duration = 1.0
+max_duration = 5.0

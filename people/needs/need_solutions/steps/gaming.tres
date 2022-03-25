@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-object_key = "tired"
-min_duration = 600.0
-max_duration = 1800.0
+object_key = "gaming"
+min_duration = 2100.0
+max_duration = 5400.0

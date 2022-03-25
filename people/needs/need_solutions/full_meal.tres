@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://people/needs/solution.gd" type="Script" id=1]
+[ext_resource path="res://people/needs/need_solutions/steps/sit_to_eat.tres" type="Resource" id=2]
+[ext_resource path="res://people/needs/need_solutions/steps/get_food.tres" type="Resource" id=3]
+[ext_resource path="res://people/needs/need_solutions/steps/heat_food.tres" type="Resource" id=4]
+[ext_resource path="res://people/needs/need_solutions/steps/get_drink.tres" type="Resource" id=5]
+
+[resource]
+script = ExtResource( 1 )
+steps = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ]
+needs_solved = [ "thirsty", "hungry" ]

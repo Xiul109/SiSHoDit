@@ -46,7 +46,7 @@ surfaces/0 = {
 "vertex_count": 96
 }
 
-[node name="kitchenCoffeeMachine" type="Spatial" groups=["thirsty"]]
+[node name="kitchenCoffeeMachine" type="Spatial" groups=["drink_source"]]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="kitchenCoffeeMachine(Clone)" type="MeshInstance" parent="."]

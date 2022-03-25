@@ -30,7 +30,7 @@ surfaces/1 = {
 "vertex_count": 326
 }
 
-[node name="toaster" type="Spatial" groups=["hungry"]]
+[node name="toaster" type="Spatial" groups=["toaster"]]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="toaster(Clone)" type="MeshInstance" parent="."]

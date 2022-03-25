@@ -30,7 +30,7 @@ surfaces/1 = {
 "vertex_count": 114
 }
 
-[node name="computerScreen" type="Spatial"]
+[node name="computerScreen" type="Spatial" groups=["entertaiment", "gaming", "work"]]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="computerScreen(Clone)" type="MeshInstance" parent="."]

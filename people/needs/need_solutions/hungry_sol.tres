@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=3 format=2]
-
-[ext_resource path="res://people/needs/need_solutions/steps/hungry.tres" type="Resource" id=1]
-[ext_resource path="res://people/needs/solution.gd" type="Script" id=2]
-
-[resource]
-script = ExtResource( 2 )
-steps = [ ExtResource( 1 ) ]
-needs_solved = [ "hungry" ]

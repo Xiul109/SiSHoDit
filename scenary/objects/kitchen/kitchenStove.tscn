@@ -5,7 +5,7 @@
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( 0.43, 0.419959, 0, 0, 0.419959, 0, 0.43, 0.389962, 0, 0.43, 0.45, -0.420003, 0.383237, 0.439957, -0.117081, 0.351122, 0.434979, -0.076248, 0, 0.389962, 0, 0.0788361, 0.434979, -0.076248, 0.0467208, 0.439957, -0.117081, 0, 0.45, -0.420003, 0.43, 0.0582322, -0.0200421, 0.43, 0.45, -0.45, 0, 0.0582322, -0.0200421, 0, 0.45, -0.45, 0.43, 0, -0.0400401, 0.43, 0, -0.45, 0, 0, -0.0400401, 0, 0, -0.45 )
 
-[node name="kitchenStove" groups=["hungry"] instance=ExtResource( 1 )]
+[node name="kitchenStove" groups=["heat_food", "stove"] instance=ExtResource( 1 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 shape = SubResource( 1 )

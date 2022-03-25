@@ -150,7 +150,7 @@ transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 25, 
 
 [node name="furnitures" type="Spatial" parent="Rooms/living_room"]
 
-[node name="loungeDesignSofaCorner" parent="Rooms/living_room/furnitures" instance=ExtResource( 11 )]
+[node name="loungeDesignSofaCorner" parent="Rooms/living_room/furnitures" groups=["tv_sit"] instance=ExtResource( 11 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 11.0013, 0.541332, -15.5429 )
 
 [node name="cabinetTelevision" parent="Rooms/living_room/furnitures" instance=ExtResource( 12 )]
@@ -171,7 +171,7 @@ transform = Transform( -11, 0, -9.61651e-07, 0, 12, 0, 9.61651e-07, 0, -11, 8.13
 [node name="chairCushion3" parent="Rooms/living_room/furnitures" instance=ExtResource( 15 )]
 transform = Transform( -11, 0, -9.61651e-07, 0, 12, 0, 9.61651e-07, 0, -11, 13.0208, 0.541067, -3.49808 )
 
-[node name="loungeChair" parent="Rooms/living_room/furnitures" instance=ExtResource( 16 )]
+[node name="loungeChair" parent="Rooms/living_room/furnitures" groups=["tv_sit"] instance=ExtResource( 16 )]
 transform = Transform( -7.07107, 0, -7.07107, 0, 10, 0, 7.07107, 0, -7.07107, 21.4178, 0.542736, -7.59915 )
 
 [node name="lampRoundFloor" parent="Rooms/living_room/furnitures" instance=ExtResource( 17 )]

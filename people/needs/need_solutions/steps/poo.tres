@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-object_key = "pooping"
+object_key = "toilet"
 min_duration = 60.0
 max_duration = 300.0
