@@ -16,6 +16,7 @@ var path
 var current_need : Need
 var current_solution
 var current_step
+var current_object
 var _time_left_in_current_step : float = 0
 
 # Overriden methods
@@ -96,10 +97,10 @@ func _set_duration_for_current_step():
 
 func _set_place_of_next_step(object_key):
 	var objects = get_tree().get_nodes_in_group(object_key)
-	var object = objects[randi() % objects.size()] as Spatial
+	current_object = objects[randi() % objects.size()] as Spatial
 	
 	# Path
-	to = object.global_transform.origin
+	to = current_object.global_transform.origin
 	new_path()
 
 func _apply_current_solution():	
@@ -122,9 +123,17 @@ func _on_StateMachinePlayer_updated(state, delta):
 	match state:
 		"traveling":
 			_movement(delta)
+		"doing_step":
+			if current_object.has_node("Usable"):
+				current_object.get_node("Usable").being_used(self, delta)
 
 
-func _on_StateMachinePlayer_transited(_from_state, to_state):
+func _on_StateMachinePlayer_transited(from_state, to_state):
+		match from_state:
+			"doing_step":
+				if current_object.has_node("Usable"):
+					current_object.get_node("Usable").finish_using(self)
+		
 		match to_state:
 			"new_need":
 				current_need = _get_next_need_to_cover()
@@ -143,6 +152,9 @@ func _on_StateMachinePlayer_transited(_from_state, to_state):
 					_apply_current_solution()
 			"traveling":
 				pass#_set_place_to_solve_need(need)
-			"waiting":
+			"doing_step":
 				_set_duration_for_current_step()
-				_wait()
+				if current_object.has_node("Usable"):
+					current_object.get_node("Usable").start_using(self)
+				else:
+					_wait()

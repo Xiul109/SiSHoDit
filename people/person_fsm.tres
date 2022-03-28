@@ -13,6 +13,13 @@ __meta__ = {
 }
 name = "Entry"
 
+[sub_resource type="Resource" id=14]
+script = ExtResource( 3 )
+__meta__ = {
+"graph_offset": Vector2( 496, 100 )
+}
+name = "check_next_step"
+
 [sub_resource type="Resource" id=13]
 script = ExtResource( 3 )
 __meta__ = {
@@ -32,14 +39,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "graph_offset": Vector2( 705, 220 )
 }
-name = "waiting"
-
-[sub_resource type="Resource" id=14]
-script = ExtResource( 3 )
-__meta__ = {
-"graph_offset": Vector2( 496, 100 )
-}
-name = "check_next_step"
+name = "doing_step"
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 5 )
@@ -51,60 +51,6 @@ from = "Entry"
 to = "new_need"
 conditions = {
 "start": SubResource( 11 )
-}
-priority = 0
-
-[sub_resource type="Resource" id=10]
-script = ExtResource( 5 )
-name = "need_location_reached"
-
-[sub_resource type="Resource" id=7]
-script = ExtResource( 2 )
-from = "traveling"
-to = "waiting"
-conditions = {
-"need_location_reached": SubResource( 10 )
-}
-priority = 0
-
-[sub_resource type="Resource" id=9]
-script = ExtResource( 4 )
-name = "time_left"
-comparation = 5
-value = 0.0
-
-[sub_resource type="Resource" id=8]
-script = ExtResource( 2 )
-from = "waiting"
-to = "check_next_step"
-conditions = {
-"time_left": SubResource( 9 )
-}
-priority = 0
-
-[sub_resource type="Resource" id=15]
-script = ExtResource( 5 )
-name = "solution_chosen"
-
-[sub_resource type="Resource" id=16]
-script = ExtResource( 2 )
-from = "new_need"
-to = "check_next_step"
-conditions = {
-"solution_chosen": SubResource( 15 )
-}
-priority = 0
-
-[sub_resource type="Resource" id=17]
-script = ExtResource( 5 )
-name = "next_step_chosen"
-
-[sub_resource type="Resource" id=18]
-script = ExtResource( 2 )
-from = "check_next_step"
-to = "traveling"
-conditions = {
-"next_step_chosen": SubResource( 17 )
 }
 priority = 0
 
@@ -121,15 +67,69 @@ conditions = {
 }
 priority = 0
 
+[sub_resource type="Resource" id=17]
+script = ExtResource( 5 )
+name = "next_step_chosen"
+
+[sub_resource type="Resource" id=18]
+script = ExtResource( 2 )
+from = "check_next_step"
+to = "traveling"
+conditions = {
+"next_step_chosen": SubResource( 17 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 5 )
+name = "solution_chosen"
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 2 )
+from = "new_need"
+to = "check_next_step"
+conditions = {
+"solution_chosen": SubResource( 15 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 5 )
+name = "need_location_reached"
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 2 )
+from = "traveling"
+to = "doing_step"
+conditions = {
+"need_location_reached": SubResource( 10 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 4 )
+name = "time_left"
+comparation = 5
+value = 0.0
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 2 )
+from = "doing_step"
+to = "check_next_step"
+conditions = {
+"time_left": SubResource( 9 )
+}
+priority = 0
+
 [resource]
 script = ExtResource( 1 )
 name = ""
 states = {
 "Entry": SubResource( 1 ),
 "check_next_step": SubResource( 14 ),
+"doing_step": SubResource( 4 ),
 "new_need": SubResource( 13 ),
-"traveling": SubResource( 2 ),
-"waiting": SubResource( 4 )
+"traveling": SubResource( 2 )
 }
 transitions = {
 "Entry": {
@@ -139,13 +139,13 @@ transitions = {
 "new_need": SubResource( 20 ),
 "traveling": SubResource( 18 )
 },
+"doing_step": {
+"check_next_step": SubResource( 8 )
+},
 "new_need": {
 "check_next_step": SubResource( 16 )
 },
 "traveling": {
-"waiting": SubResource( 7 )
-},
-"waiting": {
-"check_next_step": SubResource( 8 )
+"doing_step": SubResource( 7 )
 }
 }
