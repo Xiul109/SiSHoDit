@@ -16,9 +16,8 @@ func increase_level(delta):
 	level = clamp(level+delta/time_to_fill_level, 0, 1)
 
 func get_probability():
-	if level <= min_level_before_solve:
-		return 0.0
-	return 1/(1+ pow(level/(1.0001-level), -2.5))
+	var prob = smoothstep(min_level_before_solve, 1, level)
+	return prob
 
 func can_be_solved(tree: SceneTree):
 	if solutions.size() == 0:

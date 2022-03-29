@@ -71,7 +71,7 @@ func _get_next_need_to_cover():
 	for need in needs:
 		probs.append(need.get_probability())
 	
-	var next_need_i = probs.find(1)
+	var next_need_i = probs.find(1.0)
 	if next_need_i == -1:
 		next_need_i = _get_random_i_based_on_probs(probs)
 
