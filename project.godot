@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AbstractUsable",
+"language": "GDScript",
+"path": "res://scenary/tools/abstract_usable.gd"
+}, {
 "base": "KinematicBody",
 "class": "BasicPerson",
 "language": "GDScript",
@@ -22,7 +27,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Sensor",
 "language": "GDScript",
-"path": "res://scenary/tools/sensor.gd"
+"path": "res://sensors/sensor.gd"
+}, {
+"base": "AbstractUsable",
+"class": "SingleTriggerUsable",
+"language": "GDScript",
+"path": "res://scenary/tools/single_trigger_usable.gd"
 }, {
 "base": "Resource",
 "class": "Solution",
@@ -34,17 +44,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://people/needs/solution_step.gd"
 }, {
-"base": "Node",
+"base": "AbstractUsable",
+"class": "SwitchUsable",
+"language": "GDScript",
+"path": "res://scenary/tools/switch_usable.gd"
+}, {
+"base": "AbstractUsable",
 "class": "Usable",
 "language": "GDScript",
 "path": "res://scenary/tools/usable.gd"
 } ]
 _global_script_class_icons={
+"AbstractUsable": "",
 "BasicPerson": "",
 "Need": "",
 "Sensor": "",
+"SingleTriggerUsable": "",
 "Solution": "",
 "SolutionStep": "",
+"SwitchUsable": "",
 "Usable": ""
 }
 

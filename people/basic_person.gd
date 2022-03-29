@@ -118,21 +118,33 @@ func _wait():
 	_time_left_in_current_step = 0
 	smp.set_param("time_left", _time_left_in_current_step)
 
+func _get_usable_of(object: Node):
+	if object == null:
+		return null
+	
+	var usable = object.find_parent("*Usable*")
+	if usable == null or not usable is Usable:
+		return false
+	
+	return usable
+
 # Callbacks
 func _on_StateMachinePlayer_updated(state, delta):
 	match state:
 		"traveling":
 			_movement(delta)
 		"doing_step":
-			if current_object.has_node("Usable"):
-				current_object.get_node("Usable").being_used(self, delta)
+			var usable = _get_usable_of(current_object)
+			if usable != null:
+				usable.being_used(self, delta)
 
 
 func _on_StateMachinePlayer_transited(from_state, to_state):
 		match from_state:
 			"doing_step":
-				if current_object.has_node("Usable"):
-					current_object.get_node("Usable").finish_using(self)
+				var usable = _get_usable_of(current_object)
+				if usable != null:
+					usable.finish_using(self)
 		
 		match to_state:
 			"new_need":
@@ -154,7 +166,8 @@ func _on_StateMachinePlayer_transited(from_state, to_state):
 				pass#_set_place_to_solve_need(need)
 			"doing_step":
 				_set_duration_for_current_step()
-				if current_object.has_node("Usable"):
-					current_object.get_node("Usable").start_using(self)
+				var usable = _get_usable_of(current_object)
+				if usable != null:
+					usable.start_using(self)
 				else:
 					_wait()

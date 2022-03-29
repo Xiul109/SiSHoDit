@@ -19,7 +19,6 @@ func _ready():
 	var path = final_dir + file_name
 	
 	file = File.new()
-	# init log timer
 	if file.open(path, File.WRITE) == OK:
 		# init file content
 		file.store_line("[")

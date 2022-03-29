@@ -1,8 +1,9 @@
-class_name Usable
+class_name SingleTriggerUsable
 extends AbstractUsable
 
-export var start_event_value : float
-export var end_event_value : float
+export var trigger_value : float
+
+export(String, "start", "end") var trigger_on = "start"
 
 var _sensor : Sensor
 
@@ -15,11 +16,13 @@ func _ready():
 	
 ### To be overriden if needed ###
 func start_using(_user: BasicPerson):
-	_sensor.activate(start_event_value)
+	if trigger_on == "start":
+		_sensor.activate(trigger_value)
 	.start_using(_user)
 	
 func finish_using(_user: BasicPerson):
-	_sensor.activate(end_event_value)
+	if trigger_on == "end":
+		_sensor.activate(trigger_value)
 	.finish_using(_user)
 
 func being_used(_user: BasicPerson, _delta):
