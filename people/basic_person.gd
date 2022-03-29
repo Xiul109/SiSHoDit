@@ -122,9 +122,7 @@ func _get_usable_of(object: Node):
 	if object == null:
 		return null
 	
-	var usable = object.find_parent("*Usable*")
-	if usable == null or not usable is Usable:
-		return false
+	var usable = object.find_node("*Usable*", false)
 	
 	return usable
 
