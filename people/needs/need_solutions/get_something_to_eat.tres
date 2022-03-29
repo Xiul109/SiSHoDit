@@ -5,6 +5,7 @@
 [ext_resource path="res://people/needs/need_solutions/steps/sit_to_eat.tres" type="Resource" id=3]
 
 [resource]
+resource_name = "get_something_to_eat"
 script = ExtResource( 1 )
 steps = [ ExtResource( 2 ), ExtResource( 3 ) ]
 needs_solved = [ "hungry" ]

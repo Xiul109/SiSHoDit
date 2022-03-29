@@ -4,6 +4,7 @@
 [ext_resource path="res://people/needs/need_solutions/steps/poo.tres" type="Resource" id=2]
 
 [resource]
+resource_name = "poo"
 script = ExtResource( 1 )
 steps = [ ExtResource( 2 ) ]
 needs_solved = [ "peeing", "pooping" ]

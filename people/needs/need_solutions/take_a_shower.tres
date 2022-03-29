@@ -5,6 +5,7 @@
 [ext_resource path="res://people/needs/need_solutions/steps/take_a_shower.tres" type="Resource" id=3]
 
 [resource]
+resource_name = "take_a_shower"
 script = ExtResource( 1 )
 steps = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ) ]
 needs_solved = [ "dirty" ]

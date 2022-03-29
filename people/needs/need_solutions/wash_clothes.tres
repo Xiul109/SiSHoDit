@@ -7,6 +7,7 @@
 [ext_resource path="res://people/needs/need_solutions/steps/put_dryer.tres" type="Resource" id=5]
 
 [resource]
+resource_name = "wash_clothes"
 script = ExtResource( 1 )
 steps = [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ) ]
 needs_solved = [ "dirthy_clothes" ]

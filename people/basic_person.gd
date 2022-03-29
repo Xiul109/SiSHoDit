@@ -19,7 +19,7 @@ var current_step
 var current_object
 var _time_left_in_current_step : float = 0
 
-# Overriden methods
+### Overriden methods ###
 func _ready():
 	var unsolvable_needs = []
 	for need in needs:
@@ -33,17 +33,17 @@ func _process(delta):
 	_process_needs(delta)
 
 
-# Public methods
+### Public methods ###
 func new_path():
 	path = navigation.get_simple_path(global_transform.origin, to, true)
 
 
-# Setgets
+### Setgets ###
 func navigation_set(new_nav):
 	navigation = new_nav
 	smp.set_trigger("start")
 
-# Aux methods
+# Aux### methods ###
 func _movement(delta):
 	if path and len(path) > 0:
 		var velocity = speed*(path[0]-global_transform.origin).normalized()
@@ -108,7 +108,7 @@ func _apply_current_solution():
 	for need in needs:
 		if need.need_key in current_solution.needs_solved:
 			need.level = 0
-	print("Following needs has been solved: ", current_solution.needs_solved)
+	#print("Following needs has been solved: ", current_solution.needs_solved)
 	current_solution = null
 
 func _wait():
@@ -126,7 +126,7 @@ func _get_usable_of(object: Node):
 	
 	return usable
 
-# Callbacks
+### Callbacks ###
 func _on_StateMachinePlayer_updated(state, delta):
 	match state:
 		"traveling":
@@ -148,15 +148,16 @@ func _on_StateMachinePlayer_transited(from_state, to_state):
 			"new_need":
 				current_need = _get_next_need_to_cover()
 				current_solution = current_need.get_solution()
-				print("-------------------------")
-				print("New need: ", current_need.need_key, ". It can be solved in ",
-				 current_solution.steps.size(), " steps.")
+				EventLogger.log_event(self.name, current_solution.resource_name)
+#				print("-------------------------")
+#				print("New need: ", current_need.need_key, ". It can be solved in ",
+#						current_solution.steps.size(), " steps.")
 				smp.set_trigger("solution_chosen")
 			"check_next_step":
 				current_step = current_solution.get_next_step()
 				if current_step:
 					_set_place_of_next_step(current_step.object_key)
-					print("Current step can be solved with ", current_step.object_key)
+					#print("Current step can be solved with ", current_step.object_key)
 					smp.set_trigger("next_step_chosen")
 				else:
 					_apply_current_solution()

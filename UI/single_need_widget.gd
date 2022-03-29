@@ -8,7 +8,6 @@ onready var level_progress_bar = $NeedLevel
 
 
 func neeed_name_set(nname : String):
-	print("name ", nname)
 	need_name = nname
 	if name_label:
 		name_label.text = need_name
