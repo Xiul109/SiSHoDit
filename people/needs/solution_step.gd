@@ -3,6 +3,8 @@ extends Resource
 
 export var object_key: String
 
+export var use_object : bool = true
+
 export var min_duration: float
 export var max_duration: float
 

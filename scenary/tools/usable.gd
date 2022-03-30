@@ -1,8 +1,8 @@
 class_name Usable
 extends AbstractUsable
 
-export var start_event_value : float
-export var end_event_value : float
+export var start_event_value : float = 1
+export var end_event_value : float = 0
 
 var _sensor : Sensor
 
@@ -22,5 +22,4 @@ func finish_using(_user: BasicPerson):
 	_sensor.activate(end_event_value)
 	.finish_using(_user)
 
-func being_used(_user: BasicPerson, _delta):
-	_user._wait()
+

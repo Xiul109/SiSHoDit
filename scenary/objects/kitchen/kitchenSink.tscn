@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/furnitures_kenney/kitchenSink.glb" type="PackedScene" id=1]
+[ext_resource path="res://scenary/tools/usable.gd" type="Script" id=2]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( 0.43, 0.419973, 0, 0, 0.419973, 0, 0.43, 0.389995, 0, 0.43, 0.449998, -0.420003, 0.233183, 0.49, -0.301689, 0.233183, 0.489712, -0.297768, 0.233183, 0.488945, -0.293936, 0, 0.389995, 0, 0.203172, 0.488945, -0.293936, 0.203172, 0.489712, -0.297768, 0.203172, 0.49, -0.301689, 0, 0.449998, -0.420003, 0.43, 0.0582283, -0.0200421, 0.43, 0.449998, -0.45, 0.233183, 0.49, -0.361683, 0, 0.0582283, -0.0200421, 0.203172, 0.49, -0.361683, 0, 0.449998, -0.45, 0.43, 0, -0.0400401, 0.233183, 0.485971, -0.376703, 0.233183, 0.487698, -0.373179, 0.233183, 0.488945, -0.369435, 0.233183, 0.489712, -0.365603, 0.43, 0, -0.45, 0, 0, -0.0400401, 0.203172, 0.489712, -0.365603, 0.203172, 0.488945, -0.369435, 0.203172, 0.487698, -0.373179, 0.203172, 0.485971, -0.376703, 0, 0, -0.45 )
@@ -9,3 +10,7 @@ points = PoolVector3Array( 0.43, 0.419973, 0, 0, 0.419973, 0, 0.43, 0.389995, 0,
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 shape = SubResource( 1 )
+
+[node name="Usable" type="Node" parent="." index="2"]
+script = ExtResource( 2 )
+start_event_value = 1.0

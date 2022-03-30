@@ -5,7 +5,7 @@
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( 0, 0, -0.447373, 0, 0, 0, 0, 0.326734, -0.447373, 0.841488, 0, -0.447373, 0, 0.326734, 0, 0.841488, 0, 0, 0.841488, 0.326734, -0.447373, 0.841488, 0.326734, 0 )
 
-[node name="tableCloth" groups=["hungry"] instance=ExtResource( 1 )]
+[node name="tableCloth" instance=ExtResource( 1 )]
 transform = Transform( 10, 0, 0, 0, 13, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]

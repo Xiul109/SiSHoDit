@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/furnitures_kenney/metalDark.material" type="Material" id=1]
 [ext_resource path="res://assets/furnitures_kenney/metal.material" type="Material" id=2]
+[ext_resource path="res://scenary/tools/usable.gd" type="Script" id=3]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "computerScreen_Mesh computerScreen"
@@ -37,3 +38,6 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 material/1 = null
+
+[node name="Usable" type="Node" parent="."]
+script = ExtResource( 3 )

@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource( 1 )
 object_key = "toilet"
+use_object = true
 min_duration = 20.0
 max_duration = 40.0

@@ -166,7 +166,7 @@ func _on_StateMachinePlayer_transited(from_state, to_state):
 			"doing_step":
 				_set_duration_for_current_step()
 				var usable = _get_usable_of(current_object)
-				if usable != null:
+				if usable != null and current_step.use_object:
 					usable.start_using(self)
 				else:
 					_wait()

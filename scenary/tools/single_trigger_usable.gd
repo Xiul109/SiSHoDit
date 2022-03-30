@@ -1,11 +1,13 @@
 class_name SingleTriggerUsable
 extends AbstractUsable
 
-export var trigger_value : float
+export var trigger_value : float = 1
 
 export(String, "start", "end") var trigger_on = "start"
 
 var _sensor : Sensor
+
+signal triggered
 
 ### overriden methods ###
 func _ready():
@@ -17,13 +19,15 @@ func _ready():
 ### To be overriden if needed ###
 func start_using(_user: BasicPerson):
 	if trigger_on == "start":
-		_sensor.activate(trigger_value)
+		trigger()
 	.start_using(_user)
 	
 func finish_using(_user: BasicPerson):
 	if trigger_on == "end":
-		_sensor.activate(trigger_value)
+		trigger()
 	.finish_using(_user)
 
-func being_used(_user: BasicPerson, _delta):
-	_user._wait()
+### Aux methods ###
+func trigger():
+	_sensor.activate(trigger_value)
+	emit_signal("triggered")

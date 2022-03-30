@@ -1,8 +1,8 @@
 class_name SwitchUsable
 extends AbstractUsable
 
-export var switch_on_value : float
-export var switch_off_value : float
+export var switch_on_value : float = 1
+export var switch_off_value : float = 0
 
 export var is_switched : bool
 
@@ -27,9 +27,6 @@ func finish_using(_user: BasicPerson):
 	if switch_on == "end":
 		switch()
 	.finish_using(_user)
-
-func being_used(_user: BasicPerson, _delta):
-	_user._wait()
 
 ### Aux methods ###
 func switch():

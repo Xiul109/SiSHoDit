@@ -11,5 +11,5 @@ func start_using(_user: BasicPerson):
 func finish_using(_user: BasicPerson):
 	emit_signal("using_finished")
 
-func being_used(_user: BasicPerson, _delta):
-	pass
+func being_used(user: BasicPerson, _delta):
+	user._wait()

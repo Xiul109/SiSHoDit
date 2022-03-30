@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource( 1 )
 object_key = "bed"
+use_object = true
 min_duration = 21600.0
 max_duration = 36000.0

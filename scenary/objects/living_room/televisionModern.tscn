@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/furnitures_kenney/televisionModern.glb" type="PackedScene" id=1]
+[ext_resource path="res://scenary/tools/switch_usable.gd" type="Script" id=2]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( 0.3424, 0.45475, 0.0267458, 0.176496, 0, 0.0641874, 0.3424, 0.0695301, 0.0267458, 0.3424, 0.45475, -0.00404706, -0.3424, 0.45475, 0.0267458, 0.176496, 0, -0.0642, -0.176563, 0, 0.0641874, 0.3424, 0.0695301, -0.00404706, 0.0347226, 0.218072, -0.0415013, -0.3424, 0.45475, -0.00404706, -0.3424, 0.0695301, 0.0267458, -0.176563, 0, -0.0642, -0.0347897, 0.218072, -0.0415013, -0.3424, 0.0695301, -0.00404706 )
@@ -9,3 +10,6 @@ points = PoolVector3Array( 0.3424, 0.45475, 0.0267458, 0.176496, 0, 0.0641874, 0
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 shape = SubResource( 1 )
+
+[node name="SwitchUsable" type="Node" parent="." index="2"]
+script = ExtResource( 2 )

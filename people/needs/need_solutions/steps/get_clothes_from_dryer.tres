@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-object_key = "gaming"
-use_object = true
-min_duration = 2100.0
-max_duration = 5400.0
+object_key = "dryer"
+use_object = false
+min_duration = 20.0
+max_duration = 120.0

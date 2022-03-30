@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=23 format=2]
+[gd_resource type="Resource" load_steps=30 format=2]
 
 [ext_resource path="res://addons/imjp94.yafsm/src/states/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://addons/imjp94.yafsm/src/transitions/Transition.gd" type="Script" id=2]
@@ -34,12 +34,19 @@ __meta__ = {
 }
 name = "traveling"
 
-[sub_resource type="Resource" id=4]
+[sub_resource type="Resource" id=21]
 script = ExtResource( 3 )
 __meta__ = {
 "graph_offset": Vector2( 705, 220 )
 }
 name = "doing_step"
+
+[sub_resource type="Resource" id=22]
+script = ExtResource( 3 )
+__meta__ = {
+"graph_offset": Vector2( 671.5, 400 )
+}
+name = "managing_interruption"
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 5 )
@@ -80,6 +87,34 @@ conditions = {
 }
 priority = 0
 
+[sub_resource type="Resource" id=9]
+script = ExtResource( 4 )
+name = "time_left"
+comparation = 5
+value = 0.0
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 2 )
+from = "doing_step"
+to = "check_next_step"
+conditions = {
+"time_left": SubResource( 9 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=23]
+script = ExtResource( 5 )
+name = "interruption"
+
+[sub_resource type="Resource" id=24]
+script = ExtResource( 2 )
+from = "doing_step"
+to = "managing_interruption"
+conditions = {
+"interruption": SubResource( 23 )
+}
+priority = 0
+
 [sub_resource type="Resource" id=15]
 script = ExtResource( 5 )
 name = "solution_chosen"
@@ -106,18 +141,29 @@ conditions = {
 }
 priority = 0
 
-[sub_resource type="Resource" id=9]
-script = ExtResource( 4 )
-name = "time_left"
-comparation = 5
-value = 0.0
+[sub_resource type="Resource" id=25]
+script = ExtResource( 5 )
+name = "interruption_managed"
 
-[sub_resource type="Resource" id=8]
+[sub_resource type="Resource" id=26]
 script = ExtResource( 2 )
-from = "doing_step"
-to = "check_next_step"
+from = "managing_interruption"
+to = "doing_step"
 conditions = {
-"time_left": SubResource( 9 )
+"interruption_managed": SubResource( 25 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=27]
+script = ExtResource( 5 )
+name = "cancel_solution"
+
+[sub_resource type="Resource" id=28]
+script = ExtResource( 2 )
+from = "managing_interruption"
+to = "new_need"
+conditions = {
+"cancel_solution": SubResource( 27 )
 }
 priority = 0
 
@@ -127,7 +173,8 @@ name = ""
 states = {
 "Entry": SubResource( 1 ),
 "check_next_step": SubResource( 14 ),
-"doing_step": SubResource( 4 ),
+"doing_step": SubResource( 21 ),
+"managing_interruption": SubResource( 22 ),
 "new_need": SubResource( 13 ),
 "traveling": SubResource( 2 )
 }
@@ -140,7 +187,12 @@ transitions = {
 "traveling": SubResource( 18 )
 },
 "doing_step": {
-"check_next_step": SubResource( 8 )
+"check_next_step": SubResource( 8 ),
+"managing_interruption": SubResource( 24 )
+},
+"managing_interruption": {
+"doing_step": SubResource( 26 ),
+"new_need": SubResource( 28 )
 },
 "new_need": {
 "check_next_step": SubResource( 16 )
