@@ -8,12 +8,12 @@ var viable_solutions = []
 
 export var time_to_fill_level : float
  
-export(float, 1) var level : float = 0
+export(float, 1) var level : float = 0 setget level_set
 export(float, 1) var min_level_before_solve : float
 
 
 func increase_level(delta):
-	level = clamp(level+delta/time_to_fill_level, 0, 1)
+	level_set(level+delta/time_to_fill_level)
 
 func get_probability():
 	var prob = smoothstep(min_level_before_solve, 1, level)
@@ -33,3 +33,7 @@ func can_be_solved(tree: SceneTree):
 
 func get_solution():
 	return viable_solutions[randi()%viable_solutions.size()]
+
+### Setters ###
+func level_set(new_level):
+	level = clamp(new_level, 0, 1)

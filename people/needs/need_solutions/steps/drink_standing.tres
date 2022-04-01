@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource( 1 )
-object_key = "drink_source"
+object_key = ""
 use_object = true
-min_duration = 20.0
-max_duration = 60.0
-needs_solved = [  ]
+min_duration = 5.0
+max_duration = 30.0
+needs_solved = [ "thirsty" ]

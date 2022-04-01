@@ -8,3 +8,4 @@ object_key = "dryer"
 use_object = false
 min_duration = 20.0
 max_duration = 120.0
+needs_solved = [ "dirty_clothes" ]

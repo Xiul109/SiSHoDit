@@ -8,3 +8,4 @@ object_key = "wait"
 use_object = true
 min_duration = 1800.0
 max_duration = 2700.0
+needs_solved = [ "tired" ]

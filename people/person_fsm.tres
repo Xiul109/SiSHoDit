@@ -20,20 +20,6 @@ __meta__ = {
 }
 name = "check_next_step"
 
-[sub_resource type="Resource" id=13]
-script = ExtResource( 3 )
-__meta__ = {
-"graph_offset": Vector2( 276, 100 )
-}
-name = "new_need"
-
-[sub_resource type="Resource" id=2]
-script = ExtResource( 3 )
-__meta__ = {
-"graph_offset": Vector2( 700, -20 )
-}
-name = "traveling"
-
 [sub_resource type="Resource" id=21]
 script = ExtResource( 3 )
 __meta__ = {
@@ -47,6 +33,20 @@ __meta__ = {
 "graph_offset": Vector2( 671.5, 400 )
 }
 name = "managing_interruption"
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 3 )
+__meta__ = {
+"graph_offset": Vector2( 276, 100 )
+}
+name = "new_need"
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 3 )
+__meta__ = {
+"graph_offset": Vector2( 700, -20 )
+}
+name = "traveling"
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 5 )
@@ -115,32 +115,6 @@ conditions = {
 }
 priority = 0
 
-[sub_resource type="Resource" id=15]
-script = ExtResource( 5 )
-name = "solution_chosen"
-
-[sub_resource type="Resource" id=16]
-script = ExtResource( 2 )
-from = "new_need"
-to = "check_next_step"
-conditions = {
-"solution_chosen": SubResource( 15 )
-}
-priority = 0
-
-[sub_resource type="Resource" id=10]
-script = ExtResource( 5 )
-name = "need_location_reached"
-
-[sub_resource type="Resource" id=7]
-script = ExtResource( 2 )
-from = "traveling"
-to = "doing_step"
-conditions = {
-"need_location_reached": SubResource( 10 )
-}
-priority = 0
-
 [sub_resource type="Resource" id=25]
 script = ExtResource( 5 )
 name = "interruption_managed"
@@ -164,6 +138,32 @@ from = "managing_interruption"
 to = "new_need"
 conditions = {
 "cancel_solution": SubResource( 27 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 5 )
+name = "solution_chosen"
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 2 )
+from = "new_need"
+to = "check_next_step"
+conditions = {
+"solution_chosen": SubResource( 15 )
+}
+priority = 0
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 5 )
+name = "need_location_reached"
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 2 )
+from = "traveling"
+to = "doing_step"
+conditions = {
+"need_location_reached": SubResource( 10 )
 }
 priority = 0
 

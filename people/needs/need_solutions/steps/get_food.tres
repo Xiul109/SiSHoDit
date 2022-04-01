@@ -8,3 +8,4 @@ object_key = "food_provider"
 use_object = true
 min_duration = 10.0
 max_duration = 120.0
+needs_solved = [  ]

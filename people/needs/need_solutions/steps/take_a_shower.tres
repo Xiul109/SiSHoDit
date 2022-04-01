@@ -8,3 +8,4 @@ object_key = "shower"
 use_object = true
 min_duration = 300.0
 max_duration = 900.0
+needs_solved = [ "dirty" ]

@@ -8,6 +8,8 @@ export var use_object : bool = true
 export var min_duration: float
 export var max_duration: float
 
+export(Array, String) var needs_solved
+
 func generate_duration():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()

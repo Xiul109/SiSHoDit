@@ -8,3 +8,4 @@ object_key = "sit_relax"
 use_object = true
 min_duration = 600.0
 max_duration = 1800.0
+needs_solved = [ "tired" ]

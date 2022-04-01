@@ -8,3 +8,4 @@ object_key = "dryer"
 use_object = true
 min_duration = 120.0
 max_duration = 240.0
+needs_solved = [  ]

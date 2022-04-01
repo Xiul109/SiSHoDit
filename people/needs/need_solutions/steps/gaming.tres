@@ -8,3 +8,4 @@ object_key = "gaming"
 use_object = true
 min_duration = 2100.0
 max_duration = 5400.0
+needs_solved = [ "bored", "tired" ]

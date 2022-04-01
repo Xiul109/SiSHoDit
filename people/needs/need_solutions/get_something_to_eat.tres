@@ -8,4 +8,3 @@
 resource_name = "get_something_to_eat"
 script = ExtResource( 1 )
 steps = [ ExtResource( 2 ), ExtResource( 3 ) ]
-needs_solved = [ "hungry" ]

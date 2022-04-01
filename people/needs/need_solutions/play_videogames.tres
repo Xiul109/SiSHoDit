@@ -7,4 +7,3 @@
 resource_name = "play_videogames"
 script = ExtResource( 1 )
 steps = [ ExtResource( 2 ) ]
-needs_solved = [ "bored", "tired" ]

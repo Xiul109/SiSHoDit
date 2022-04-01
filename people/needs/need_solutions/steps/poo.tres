@@ -8,3 +8,4 @@ object_key = "toilet"
 use_object = true
 min_duration = 60.0
 max_duration = 300.0
+needs_solved = [ "pooping" ]

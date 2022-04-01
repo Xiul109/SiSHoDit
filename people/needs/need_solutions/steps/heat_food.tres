@@ -8,3 +8,4 @@ object_key = "heat_food"
 use_object = true
 min_duration = 180.0
 max_duration = 1200.0
+needs_solved = [  ]

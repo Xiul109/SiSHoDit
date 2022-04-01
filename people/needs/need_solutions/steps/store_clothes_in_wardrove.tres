@@ -8,3 +8,4 @@ object_key = "wardrove"
 use_object = true
 min_duration = 120.0
 max_duration = 300.0
+needs_solved = [  ]

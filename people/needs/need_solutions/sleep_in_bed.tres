@@ -8,4 +8,3 @@
 resource_name = "sleep_in_bed"
 script = ExtResource( 2 )
 steps = [ ExtResource( 3 ), ExtResource( 1 ) ]
-needs_solved = [ "sleepy", "tired", "bored" ]

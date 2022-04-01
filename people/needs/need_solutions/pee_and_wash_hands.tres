@@ -8,4 +8,3 @@
 resource_name = "pee_and_wash_hands"
 script = ExtResource( 1 )
 steps = [ ExtResource( 2 ), ExtResource( 3 ) ]
-needs_solved = [ "peeing" ]

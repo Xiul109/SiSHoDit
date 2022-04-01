@@ -8,3 +8,4 @@ object_key = "washer"
 use_object = true
 min_duration = 2400.0
 max_duration = 3600.0
+needs_solved = [ "tired" ]

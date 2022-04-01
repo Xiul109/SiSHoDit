@@ -4,6 +4,8 @@ extends KinematicBody
 export var speed = 10
 export var distance_to_objective = 4
 
+export var step_total_divisions : int = 20
+
 export(Array, Resource) var needs
 
 onready var smp = $StateMachinePlayer
@@ -13,11 +15,9 @@ var navigation : Navigation setget navigation_set
 var to
 var path
 
-var current_need : Need
-var current_solution
-var current_step
-var current_object
-var _time_left_in_current_step : float = 0
+var current_solutions = []
+var current_steps = []
+var steps_divisions = []
 
 ### Overriden methods ###
 func _ready():
@@ -43,27 +43,11 @@ func navigation_set(new_nav):
 	navigation = new_nav
 	smp.set_trigger("start")
 
-# Aux### methods ###
-func _movement(delta):
-	if path and len(path) > 0:
-		var velocity = speed*(path[0]-global_transform.origin).normalized()
-		if translation.distance_to(path[0]) < delta * speed:
-			velocity = path[0]-global_transform.origin
-			path.remove(0)
-		
-		if translation.distance_to(to) < distance_to_objective:
-			path = []
-			return
-		
-		# warning-ignore:return_value_discarded
-		move_and_slide(velocity)
-		if Vector3.UP.cross(velocity) != Vector3():
-			look_at(global_transform.origin+velocity, Vector3.UP)
-	else:
-		smp.set_trigger("need_location_reached")
-
+### Aux methods ###
 func _process_needs(delta):
 	for need in needs:
+		if smp.get_current() == "doing_step" and need.need_key in current_steps.back()["step"].needs_solved:
+			continue
 		need.increase_level(delta)
 
 func _get_next_need_to_cover():
@@ -91,32 +75,32 @@ func _get_random_i_based_on_probs(probs):
 	return 0
 
 func _set_duration_for_current_step():
+	var current_step = current_steps.back()
 	if current_step:
-		_time_left_in_current_step = current_step.generate_duration()
-		smp.set_param("time_left", _time_left_in_current_step)
+		current_step["time"] = current_step["step"].generate_duration()
+		smp.set_param("time_left", current_step["time"])
 
 func _set_place_of_next_step(object_key):
-	var objects = get_tree().get_nodes_in_group(object_key)
-	current_object = objects[randi() % objects.size()] as Spatial
-	
-	# Path
-	to = current_object.global_transform.origin
+	if object_key != "":
+		var objects = get_tree().get_nodes_in_group(object_key)
+		current_steps.back()["object"] = objects[randi() % objects.size()] as Spatial
+		to = current_steps.back()["object"].global_transform.origin
+	else:
+		current_steps.back()["object"] = null
+		to = global_transform.origin
 	new_path()
 
-func _apply_current_solution():	
+func _apply_current_solution():
 	smp.set_trigger("need_solved")
-	for need in needs:
-		if need.need_key in current_solution.needs_solved:
-			need.level = 0
-	#print("Following needs has been solved: ", current_solution.needs_solved)
-	current_solution = null
+	# Esto hay que cambiarlo al step y modificarlo en cada paso de la simulación
+	current_solutions.pop_back()
 
-func _wait():
-	TimeSim.fast_forward(_time_left_in_current_step)
-	_process_needs(_time_left_in_current_step)
+func wait():
+	var time = current_steps.back()["time"] / step_total_divisions
+	TimeSim.fast_forward(time)
+	_process_needs(time)
 	
-	_time_left_in_current_step = 0
-	smp.set_param("time_left", _time_left_in_current_step)
+	smp.set_param("time_left", smp.get_param("time_left") - time)
 
 func _get_usable_of(object: Node):
 	if object == null:
@@ -126,47 +110,98 @@ func _get_usable_of(object: Node):
 	
 	return usable
 
+func _solve_needs(needs_to_solve, quantity = 1):
+	for need in needs:
+		if need.need_key in needs_to_solve:
+			need.level -= quantity
+
+## State Machine transitions ##
+func _from_doing_step():
+	var usable = _get_usable_of(current_steps.back()["object"])
+	if usable != null:
+		usable.finish_using(self)
+	
+	current_steps.pop_back()
+
+func _to_doing_step():
+	_set_duration_for_current_step()
+	var usable = _get_usable_of(current_steps.back()["object"])
+	if usable != null and current_steps.back()["step"].use_object:
+		usable.start_using(self)
+
+
+func _to_new_need():
+	var current_need = _get_next_need_to_cover()
+	current_solutions.append(current_need.get_solution())
+	EventLogger.log_event(self.name, current_solutions.back().resource_name)
+	print("-------------------------")
+	print("New need: ", current_need.need_key, ". It can be solved in ",
+			current_solutions.back().steps.size(), " steps.")
+	smp.set_trigger("solution_chosen")
+
+func _to_check_next_step():
+	var current_step = current_solutions.back().get_next_step()
+	current_steps.append({step = current_step})
+	if current_step:
+		_set_place_of_next_step(current_step.object_key)
+		print("Current step can be solved with ", current_step.object_key,
+			  " and solves: ", current_step.needs_solved)
+		smp.set_trigger("next_step_chosen")
+	else:
+		_apply_current_solution()
+
+## State Machine states ##
+func _traveling(delta):
+	if path and len(path) > 0:
+		var velocity = speed*(path[0]-global_transform.origin).normalized()
+		if translation.distance_to(path[0]) < delta * speed:
+			velocity = path[0]-global_transform.origin
+			path.remove(0)
+		
+		if translation.distance_to(to) < distance_to_objective:
+			path = []
+			return
+		
+		# warning-ignore:return_value_discarded
+		move_and_slide(velocity)
+		if Vector3.UP.cross(velocity) != Vector3():
+			look_at(global_transform.origin+velocity, Vector3.UP)
+	else:
+		smp.set_trigger("need_location_reached")
+
+func _doing_step(delta):
+	var step = current_steps.back()
+	var usable = _get_usable_of(step["object"])
+	# Do activity defined by object
+	if usable != null:
+		usable.being_used(self, delta)
+	else:
+		wait()
+	# Solve needs partially
+	var advance = 1.0/step_total_divisions
+	_solve_needs(step["step"].needs_solved, 
+				advance+rand_range(-advance/4, advance/4)) # This should be parametrized
+
 ### Callbacks ###
 func _on_StateMachinePlayer_updated(state, delta):
 	match state:
 		"traveling":
-			_movement(delta)
+			_traveling(delta)
 		"doing_step":
-			var usable = _get_usable_of(current_object)
-			if usable != null:
-				usable.being_used(self, delta)
+			_doing_step(delta)
 
 
 func _on_StateMachinePlayer_transited(from_state, to_state):
 		match from_state:
 			"doing_step":
-				var usable = _get_usable_of(current_object)
-				if usable != null:
-					usable.finish_using(self)
+				_from_doing_step()
 		
 		match to_state:
 			"new_need":
-				current_need = _get_next_need_to_cover()
-				current_solution = current_need.get_solution()
-				EventLogger.log_event(self.name, current_solution.resource_name)
-#				print("-------------------------")
-#				print("New need: ", current_need.need_key, ". It can be solved in ",
-#						current_solution.steps.size(), " steps.")
-				smp.set_trigger("solution_chosen")
+				_to_new_need()
 			"check_next_step":
-				current_step = current_solution.get_next_step()
-				if current_step:
-					_set_place_of_next_step(current_step.object_key)
-					#print("Current step can be solved with ", current_step.object_key)
-					smp.set_trigger("next_step_chosen")
-				else:
-					_apply_current_solution()
+				_to_check_next_step()
 			"traveling":
 				pass#_set_place_to_solve_need(need)
 			"doing_step":
-				_set_duration_for_current_step()
-				var usable = _get_usable_of(current_object)
-				if usable != null and current_step.use_object:
-					usable.start_using(self)
-				else:
-					_wait()
+				_to_doing_step()

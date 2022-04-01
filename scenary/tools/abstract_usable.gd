@@ -12,4 +12,4 @@ func finish_using(_user: BasicPerson):
 	emit_signal("using_finished")
 
 func being_used(user: BasicPerson, _delta):
-	user._wait()
+	user.wait()
