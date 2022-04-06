@@ -8,5 +8,9 @@ points = PoolVector3Array( 0, 0, -0.447373, 0, 0, 0, 0, 0.326734, -0.447373, 0.8
 [node name="tableCloth" instance=ExtResource( 1 )]
 transform = Transform( 10, 0, 0, 0, 13, 0, 0, 0, 10, 0, 0, 0 )
 
+[node name="tableCloth(Clone)" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426047, 0, 0.224069 )
+
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426047, 0, 0.224069 )
 shape = SubResource( 1 )

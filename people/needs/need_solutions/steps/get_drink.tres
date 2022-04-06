@@ -9,3 +9,5 @@ use_object = true
 min_duration = 20.0
 max_duration = 60.0
 needs_solved = [  ]
+probability_of_being_interrupted = 0.0
+min_value_to_be_interrupted = 1.0

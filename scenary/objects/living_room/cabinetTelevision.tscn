@@ -7,5 +7,9 @@ points = PoolVector3Array( 0.8, 0.31, 0, 0.8, 0, 0, 0.8, 0.31, -0.25, 0, 0.31, 0
 
 [node name="cabinetTelevision" instance=ExtResource( 1 )]
 
+[node name="cabinetTelevision(Clone)" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.398947, 0, -0.0139212 )
+
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.398947, 0, -0.0139212 )
 shape = SubResource( 1 )

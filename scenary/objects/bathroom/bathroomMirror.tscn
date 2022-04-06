@@ -47,6 +47,7 @@ surfaces/2 = {
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="bathroomMirror(Clone)" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.152257, 0, -0.0359246 )
 mesh = SubResource( 1 )
 material/0 = null
 material/1 = null

@@ -8,9 +8,12 @@ points = PoolVector3Array( 0.246676, 0.22769, 0, 0.0569139, 0.22769, 0, 0.246676
 
 [node name="toiletSquare" groups=["toilet"] instance=ExtResource( 1 )]
 
+[node name="toiletSquare(Clone)" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.138906, 0, 0.102352 )
+
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.138906, 0, 0.102352 )
 shape = SubResource( 1 )
 
 [node name="Usable" type="Node" parent="." index="2"]
 script = ExtResource( 2 )
-start_event_value = 1.0

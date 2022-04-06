@@ -50,7 +50,7 @@ surfaces/0 = {
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="kitchenCoffeeMachine(Clone)" type="MeshInstance" parent="."]
-transform = Transform( 0.78975, 0, 0, 0, 0.585, 0, 0, 0, 0.78975, 0, 0, 0 )
+transform = Transform( 0.78975, 0, 0, 0, 0.585, 0, 0, 0, 0.78975, -0.0949839, 0, -0.0141096 )
 mesh = SubResource( 1 )
 material/0 = null
 material/1 = null

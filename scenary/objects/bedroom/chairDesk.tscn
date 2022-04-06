@@ -7,5 +7,9 @@ data = PoolVector3Array( 0.1897, 0, -0.1231, 0.1453, 0, -0.1231, 0.1453, 0, -0.0
 
 [node name="chairDesk" groups=["bored", "tired"] instance=ExtResource( 1 )]
 
+[node name="chairDesk(Clone)" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167852, 0.008602, 0.139938 )
+
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167852, 0.008602, 0.139938 )
 shape = SubResource( 1 )

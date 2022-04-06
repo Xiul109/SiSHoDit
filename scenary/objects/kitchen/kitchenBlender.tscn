@@ -65,6 +65,7 @@ surfaces/0 = {
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="kitchenBlender(Clone)" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0380586, 0, 0.0509783 )
 mesh = SubResource( 1 )
 material/0 = null
 material/1 = null

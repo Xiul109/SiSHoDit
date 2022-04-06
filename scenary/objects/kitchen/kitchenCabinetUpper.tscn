@@ -7,5 +7,9 @@ points = PoolVector3Array( 0.43, 0.389962, 0, 0.43, 0, 0, 0.43, 0.389962, -0.21,
 
 [node name="kitchenCabinetUpper" groups=["food_provider"] instance=ExtResource( 1 )]
 
+[node name="kitchenCabinetUpper(Clone)" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200781, 0, -0.0296235 )
+
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200781, 0, -0.0296235 )
 shape = SubResource( 1 )

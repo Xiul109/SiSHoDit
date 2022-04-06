@@ -9,3 +9,5 @@ use_object = true
 min_duration = 21600.0
 max_duration = 36000.0
 needs_solved = [ "sleepy", "tired", "bored" ]
+probability_of_being_interrupted = 0.2
+min_value_to_be_interrupted = 1.0

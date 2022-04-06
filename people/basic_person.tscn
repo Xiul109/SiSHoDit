@@ -33,6 +33,7 @@ size = Vector3( 1, 1, 0.5 )
 
 [node name="person" type="KinematicBody"]
 collision_layer = 0
+collision_mask = 0
 script = ExtResource( 2 )
 needs = [ ExtResource( 14 ), ExtResource( 7 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 15 ) ]
 

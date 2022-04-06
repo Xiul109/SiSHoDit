@@ -2,7 +2,6 @@ class_name BasicPerson
 extends KinematicBody
 
 export var speed = 10
-export var distance_to_objective = 4
 
 export var step_total_divisions : int = 20
 
@@ -15,6 +14,7 @@ var navigation : Navigation setget navigation_set
 var to
 var path
 
+var current_needs = []
 var current_solutions = []
 var current_steps = []
 var steps_divisions = []
@@ -28,14 +28,35 @@ func _ready():
 	# Delete unsolvable needs
 	for need in unsolvable_needs:
 		needs.erase(need)
+	# Init SMP parameters
+	smp.set_param("pending_needs", 0)
 
-func _process(delta):
+func _physics_process(delta):
 	_process_needs(delta)
 
 
 ### Public methods ###
 func new_path():
-	path = navigation.get_simple_path(global_transform.origin, to, true)
+	var closest = navigation.get_closest_point(global_transform.origin)
+#	var nav_mesh = navigation.get_children()[0].navmesh as NavigationMesh
+#	var rad = nav_mesh.get_agent_radius()
+	var p0 = closest
+	path = navigation.get_simple_path(p0,
+									  navigation.get_closest_point(to), true)
+	print(global_transform.origin, " -> ", p0)
+	if path.empty():
+		path.append(navigation.get_closest_point(to))
+
+
+func wait():
+	var time = current_steps.back()["time"] / current_steps.back()["divisions_left"]
+	#print("divisions: ", current_steps.back()["divisions_left"])
+	current_steps.back()["time"] -= time
+	current_steps.back()["divisions_left"] -= 1
+	TimeSim.fast_forward(time)
+	_process_needs(time)
+	
+	smp.set_param("time_left", smp.get_param("time_left") - time)
 
 
 ### Setgets ###
@@ -51,15 +72,21 @@ func _process_needs(delta):
 		need.increase_level(delta)
 
 func _get_next_need_to_cover():
+	var min_level = 0.0
+	if not current_steps.empty():
+		 min_level = current_steps.back()["step"].min_value_to_be_interrupted
 	var probs = []
+	var choosable_needs = []
 	for need in needs:
-		probs.append(need.get_probability())
+		if need.level >= min_level:
+			probs.append(need.get_probability())
+			choosable_needs.append(need)
 	
 	var next_need_i = probs.find(1.0)
 	if next_need_i == -1:
 		next_need_i = _get_random_i_based_on_probs(probs)
 
-	return needs[next_need_i]
+	return choosable_needs[next_need_i]
 
 func _get_random_i_based_on_probs(probs):
 	var total = 0
@@ -77,7 +104,9 @@ func _get_random_i_based_on_probs(probs):
 func _set_duration_for_current_step():
 	var current_step = current_steps.back()
 	if current_step:
-		current_step["time"] = current_step["step"].generate_duration()
+		if not "time" in current_step:
+			current_step["time"] = current_step["step"].generate_duration()
+			current_step["divisions_left"] = step_total_divisions
 		smp.set_param("time_left", current_step["time"])
 
 func _set_place_of_next_step(object_key):
@@ -91,16 +120,10 @@ func _set_place_of_next_step(object_key):
 	new_path()
 
 func _apply_current_solution():
-	smp.set_trigger("need_solved")
-	# Esto hay que cambiarlo al step y modificarlo en cada paso de la simulación
+	current_needs.pop_back()
 	current_solutions.pop_back()
-
-func wait():
-	var time = current_steps.back()["time"] / step_total_divisions
-	TimeSim.fast_forward(time)
-	_process_needs(time)
-	
-	smp.set_param("time_left", smp.get_param("time_left") - time)
+	smp.set_param("pending_needs", smp.get_param("pending_needs")-1)
+	smp.set_trigger("need_solved")
 
 func _get_usable_of(object: Node):
 	if object == null:
@@ -115,13 +138,23 @@ func _solve_needs(needs_to_solve, quantity = 1):
 		if need.need_key in needs_to_solve:
 			need.level -= quantity
 
+func _check_interruptions(step : SolutionStep):
+	if (1 - step.probability_of_being_interrupted) > randf():
+		return false
+	
+	for need in needs:
+		if not need in current_needs and need.level >= step.min_value_to_be_interrupted:
+			smp.set_trigger("interrupted")
+			print("Interrupted")
+			return true
+	
+	return false
+
 ## State Machine transitions ##
 func _from_doing_step():
 	var usable = _get_usable_of(current_steps.back()["object"])
 	if usable != null:
 		usable.finish_using(self)
-	
-	current_steps.pop_back()
 
 func _to_doing_step():
 	_set_duration_for_current_step()
@@ -132,23 +165,32 @@ func _to_doing_step():
 
 func _to_new_need():
 	var current_need = _get_next_need_to_cover()
+	current_needs.append(current_need)
 	current_solutions.append(current_need.get_solution())
 	EventLogger.log_event(self.name, current_solutions.back().resource_name)
 	print("-------------------------")
 	print("New need: ", current_need.need_key, ". It can be solved in ",
 			current_solutions.back().steps.size(), " steps.")
+	
+	smp.set_param("pending_needs", smp.get_param("pending_needs")+1)
 	smp.set_trigger("solution_chosen")
 
 func _to_check_next_step():
 	var current_step = current_solutions.back().get_next_step()
-	current_steps.append({step = current_step})
 	if current_step:
+		current_steps.append({step = current_step})
 		_set_place_of_next_step(current_step.object_key)
 		print("Current step can be solved with ", current_step.object_key,
 			  " and solves: ", current_step.needs_solved)
 		smp.set_trigger("next_step_chosen")
 	else:
 		_apply_current_solution()
+
+func _to_pending_need():
+	to = current_steps.back()["object"].global_transform.origin
+	new_path()
+	_set_duration_for_current_step()
+	smp.set_trigger("next_step_chosen")
 
 ## State Machine states ##
 func _traveling(delta):
@@ -157,20 +199,21 @@ func _traveling(delta):
 		if translation.distance_to(path[0]) < delta * speed:
 			velocity = path[0]-global_transform.origin
 			path.remove(0)
-		
-		if translation.distance_to(to) < distance_to_objective:
-			path = []
-			return
+			if path.empty():
+				smp.set_trigger("need_location_reached")
 		
 		# warning-ignore:return_value_discarded
 		move_and_slide(velocity)
 		if Vector3.UP.cross(velocity) != Vector3():
 			look_at(global_transform.origin+velocity, Vector3.UP)
 	else:
-		smp.set_trigger("need_location_reached")
+		new_path()
 
 func _doing_step(delta):
 	var step = current_steps.back()
+	if _check_interruptions(step["step"]):
+		return
+	
 	var usable = _get_usable_of(step["object"])
 	# Do activity defined by object
 	if usable != null:
@@ -181,6 +224,8 @@ func _doing_step(delta):
 	var advance = 1.0/step_total_divisions
 	_solve_needs(step["step"].needs_solved, 
 				advance+rand_range(-advance/4, advance/4)) # This should be parametrized
+	
+
 
 ### Callbacks ###
 func _on_StateMachinePlayer_updated(state, delta):
@@ -202,6 +247,10 @@ func _on_StateMachinePlayer_transited(from_state, to_state):
 			"check_next_step":
 				_to_check_next_step()
 			"traveling":
-				pass#_set_place_to_solve_need(need)
+				print("Traveling")
 			"doing_step":
 				_to_doing_step()
+			"finish_step":
+				current_steps.pop_back()
+			"pending_need":
+				_to_pending_need()

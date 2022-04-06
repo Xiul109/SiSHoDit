@@ -8,9 +8,15 @@ data = PoolVector3Array( 0.928, 0.125, -1.025, 0.928, 0.125, -0.025, 0.928, 0.22
 
 [node name="bedDouble" groups=["bed"] instance=ExtResource( 1 )]
 
+[node name="bedDouble(Clone)" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.474194, 0, 0.638337 )
+
+[node name="cover" parent="bedDouble(Clone)" index="0"]
+transform = Transform( 2.98023e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 2.98023e-08, 0.01, 0.215, -0.792302 )
+
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.474194, 0, 0.638337 )
 shape = SubResource( 1 )
 
 [node name="Usable" type="Node" parent="." index="2"]
 script = ExtResource( 2 )
-start_event_value = 1.0
