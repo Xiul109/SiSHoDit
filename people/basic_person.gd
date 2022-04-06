@@ -3,7 +3,7 @@ extends KinematicBody
 
 export var speed = 10
 
-export var step_total_divisions : int = 20
+export var simulation_total_divisions : int = 20
 
 export(Array, Resource) var needs
 
@@ -49,15 +49,11 @@ func new_path():
 
 
 func wait():
-	var time = current_steps.back()["time"] / current_steps.back()["divisions_left"]
-	#print("divisions: ", current_steps.back()["divisions_left"])
-	current_steps.back()["time"] -= time
-	current_steps.back()["divisions_left"] -= 1
+	var step = current_steps.back()
+	var time = step["total_time"]/simulation_total_divisions
+	step["time_left"] -= time
 	TimeSim.fast_forward(time)
 	_process_needs(time)
-	
-	smp.set_param("time_left", smp.get_param("time_left") - time)
-
 
 ### Setgets ###
 func navigation_set(new_nav):
@@ -104,10 +100,11 @@ func _get_random_i_based_on_probs(probs):
 func _set_duration_for_current_step():
 	var current_step = current_steps.back()
 	if current_step:
-		if not "time" in current_step:
-			current_step["time"] = current_step["step"].generate_duration()
-			current_step["divisions_left"] = step_total_divisions
-		smp.set_param("time_left", current_step["time"])
+		if not "time_left" in current_step:
+			current_step["total_time"] = current_step["step"].generate_duration()
+			current_step["time_left"] = current_step["total_time"]
+			current_step["divisions_simulated"] = 0
+		smp.set_param("time_left", current_step["time_left"])
 
 func _set_place_of_next_step(object_key):
 	if object_key != "":
@@ -211,21 +208,21 @@ func _traveling(delta):
 
 func _doing_step(delta):
 	var step = current_steps.back()
-	if _check_interruptions(step["step"]):
-		return
+	while not _check_interruptions(step["step"]) and step["divisions_simulated"]<simulation_total_divisions:
+		step["divisions_simulated"] += 1
+		var usable = _get_usable_of(step["object"])
+		# Do activity defined by object
+		if usable != null:
+			usable.being_used(self, delta)
+		else:
+			wait()
+		# Solve needs partially
+		var advance = 1.0/simulation_total_divisions
+		_solve_needs(step["step"].needs_solved, 
+					advance+rand_range(-advance/4.0, advance/4.0))
 	
-	var usable = _get_usable_of(step["object"])
-	# Do activity defined by object
-	if usable != null:
-		usable.being_used(self, delta)
-	else:
-		wait()
-	# Solve needs partially
-	var advance = 1.0/step_total_divisions
-	_solve_needs(step["step"].needs_solved, 
-				advance+rand_range(-advance/4, advance/4)) # This should be parametrized
-	
-
+	if step["divisions_simulated"]>=simulation_total_divisions:
+		smp.set_trigger("step_finished")
 
 ### Callbacks ###
 func _on_StateMachinePlayer_updated(state, delta):

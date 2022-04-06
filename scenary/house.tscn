@@ -600,7 +600,7 @@ fov = 80.0
 [node name="People" type="Spatial" parent="."]
 
 [node name="person" parent="People" groups=["person"] instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.101, 0, 12.374 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.101, 0, -5.17093 )
 
 [node name="Sensors" type="Spatial" parent="."]
 
