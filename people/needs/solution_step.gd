@@ -9,6 +9,7 @@ export var min_duration: float
 export var max_duration: float
 
 export(Array, String) var needs_solved
+export(Dictionary) var needs_with_modified_rate
 
 export(float, 1) var probability_of_being_interrupted = 0.0
 export(float, 1) var min_value_to_be_interrupted = 1.0

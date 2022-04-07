@@ -43,7 +43,7 @@ func new_path():
 	var p0 = closest
 	path = navigation.get_simple_path(p0,
 									  navigation.get_closest_point(to), true)
-	print(global_transform.origin, " -> ", p0)
+	
 	if path.empty():
 		path.append(navigation.get_closest_point(to))
 
@@ -63,9 +63,14 @@ func navigation_set(new_nav):
 ### Aux methods ###
 func _process_needs(delta):
 	for need in needs:
-		if smp.get_current() == "doing_step" and need.need_key in current_steps.back()["step"].needs_solved:
-			continue
-		need.increase_level(delta)
+		var modified_delta = delta
+		if smp.get_current() == "doing_step":
+			var step = current_steps.back()["step"] as SolutionStep
+			if need.need_key in step.needs_solved:
+				continue
+			elif need.need_key in step.needs_with_modified_rate:
+				modified_delta *= step.needs_with_modified_rate[need.need_key]
+		need.increase_level(modified_delta)
 
 func _get_next_need_to_cover():
 	var min_level = 0.0
@@ -244,7 +249,7 @@ func _on_StateMachinePlayer_transited(from_state, to_state):
 			"check_next_step":
 				_to_check_next_step()
 			"traveling":
-				print("Traveling")
+				pass#print("Traveling")
 			"doing_step":
 				_to_doing_step()
 			"finish_step":

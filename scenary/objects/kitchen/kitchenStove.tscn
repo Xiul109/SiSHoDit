@@ -11,6 +11,9 @@ points = PoolVector3Array( 0.43, 0.419959, 0, 0, 0.419959, 0, 0.43, 0.389962, 0,
 [node name="kitchenStove(Clone)" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200781, 0, -0.0394978 )
 
+[node name="door" parent="kitchenStove(Clone)" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0268442, 0.085086, -0.03 )
+
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200781, 0, -0.0394978 )
 shape = SubResource( 1 )

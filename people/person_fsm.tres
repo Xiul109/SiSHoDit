@@ -30,14 +30,14 @@ name = "check_next_step"
 [sub_resource type="Resource" id=21]
 script = ExtResource( 3 )
 __meta__ = {
-"graph_offset": Vector2( 733, 300 )
+"graph_offset": Vector2( 713, 240 )
 }
 name = "doing_step"
 
 [sub_resource type="Resource" id=38]
 script = ExtResource( 3 )
 __meta__ = {
-"graph_offset": Vector2( 593.5, 100 )
+"graph_offset": Vector2( 593.5, 80 )
 }
 name = "finish_step"
 
@@ -51,14 +51,14 @@ name = "new_need"
 [sub_resource type="Resource" id=22]
 script = ExtResource( 3 )
 __meta__ = {
-"graph_offset": Vector2( 521.5, -200 )
+"graph_offset": Vector2( 441.5, -200 )
 }
 name = "pending_need"
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 3 )
 __meta__ = {
-"graph_offset": Vector2( 780, -200 )
+"graph_offset": Vector2( 720, -200 )
 }
 name = "traveling"
 
