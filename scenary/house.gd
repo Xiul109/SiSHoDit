@@ -10,7 +10,7 @@ var camera_i = 0
 func _ready():
 	cameras.append($Camera)
 	cameras.append(person.get_node("CameraOrbit/ClippedCamera"))
-	$CanvasLayer/needs_widget.person = person
+	$CanvasLayer/ui/needs_widget.person = person
 	
 	person.navigation = $Navigation
 
