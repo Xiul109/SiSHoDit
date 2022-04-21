@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/furnitures_kenney/stoolBarSquare.glb" type="PackedScene" id=1]
+[ext_resource path="res://scenary/tools/usable.tscn" type="PackedScene" id=2]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( 0.05597, 0.35497, -0.188751, 0.05597, 0.35497, -0.0411269, 0.05597, 0.405, -0.188751, 0.20947, 0.35497, -0.188751, 0.0659619, 0, -0.178751, 0.20947, 0.35497, -0.0411269, 0.05597, 0.405, -0.0411269, 0.0659619, 0, -0.0511409, 0.20947, 0.405, -0.188751, 0.199463, 0, -0.178751, 0.20947, 0.405, -0.0411269, 0.199463, 0, -0.0511409 )
@@ -13,3 +14,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132255, 0, 0.114013 )
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 transform = Transform( 0.795312, 0, 0, 0, 1, 0, 0, 0, 0.795312, -0.102833, -0.00124197, 0.0899156 )
 shape = SubResource( 1 )
+
+[node name="Usable" parent="." index="2" instance=ExtResource( 2 )]

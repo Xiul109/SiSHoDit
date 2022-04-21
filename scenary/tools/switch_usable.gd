@@ -8,13 +8,11 @@ export var is_switched : bool
 
 export(String, "start", "end") var switch_on = "start"
 
-var _sensor : Sensor
+onready var _sensor : Sensor = $Sensor
 
 ### overriden methods ###
 func _ready():
-	_sensor = Sensor.new()
 	_sensor.sensor_name = get_parent().name
-	add_child(_sensor)
 
 	
 ### To be overriden if needed ###

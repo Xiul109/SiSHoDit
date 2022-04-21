@@ -15,8 +15,8 @@ func _ready():
 			
 
 ### Public methods ###
-func log_event(from, value):
-	var log_data = {"time": TimeSim.elapsed_seconds, "from": from, 
+func log_event(from, value, delta : float = 0):
+	var log_data = {"time": TimeSim.elapsed_seconds + delta, "from": from, 
 					"value": value}
 	
 	file_manager.store_line(to_json(log_data) + ", ")

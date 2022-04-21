@@ -2,9 +2,22 @@ extends Node
 
 
 var elapsed_seconds : float = 0
+var sensors = []
+
+func _ready():
+	sensors = get_tree().get_nodes_in_group("sensor")
+	print(sensors)
 
 func _process(delta):
-	elapsed_seconds += delta
+	simulate(delta)
 
 func fast_forward(seconds):
-	elapsed_seconds += seconds
+	simulate(seconds)
+
+func simulate(delta):
+	elapsed_seconds += delta
+	for sensor in sensors:
+		sensor.simulate(delta)
+
+func register_sensor(sensor):
+	sensors.append(sensor)

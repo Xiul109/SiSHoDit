@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/furnitures_kenney/metalDark.material" type="Material" id=1]
 [ext_resource path="res://assets/furnitures_kenney/metal.material" type="Material" id=2]
-[ext_resource path="res://scenary/tools/usable.gd" type="Script" id=3]
+[ext_resource path="res://scenary/tools/usable.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "computerScreen_Mesh computerScreen"
@@ -40,5 +40,4 @@ mesh = SubResource( 1 )
 material/0 = null
 material/1 = null
 
-[node name="Usable" type="Node" parent="."]
-script = ExtResource( 3 )
+[node name="Usable" parent="." instance=ExtResource( 3 )]

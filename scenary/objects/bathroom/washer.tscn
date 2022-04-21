@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/furnitures_kenney/washer.glb" type="PackedScene" id=1]
-[ext_resource path="res://scenary/tools/duration_usable.gd" type="Script" id=2]
+[ext_resource path="res://scenary/tools/duration_usable.tscn" type="PackedScene" id=2]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( 0, 0, -0.35, 0.389962, 0, -0.35, 0, 0, -0.0200078, 0, 0.47, -0.35, 0.389962, 0, -0.0200078, 0.389962, 0.47, -0.35, 0, 0.0625225, -3.42429e-05, 0, 0.47, -0.0192198, 0.389962, 0.0625225, -3.42429e-05, 0.389962, 0.47, -0.0192198, 0, 0.388983, -3.42429e-05, 0.0169117, 0.405453, -0.00390562, 0.389962, 0.388983, -3.42429e-05, 0.37305, 0.405453, -0.00390562 )
@@ -15,7 +15,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206, 0, -0.0393823 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206, 0, -0.0393823 )
 shape = SubResource( 1 )
 
-[node name="DurationUsable" type="Node" parent="." index="2"]
-script = ExtResource( 2 )
+[node name="DurationUsable" parent="." index="2" instance=ExtResource( 2 )]
 trigger_on = "end"
 duration = 2100.0

@@ -1,8 +1,10 @@
+tool
 class_name AbstractUsable
 extends Node
 
 signal using_started
 signal using_finished
+
 
 ### To be overriden if needed ###
 func start_using(_user: BasicPerson):

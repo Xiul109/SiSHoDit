@@ -532,7 +532,7 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 20, 0.540169, 0 )
 transform = Transform( -3.93403e-07, 0, 10, 0, 10, 0, -9, 0, -4.37114e-07, 25.5002, 0.541, -5.49989 )
 
 [node name="wallDoorway" parent="Rooms/kitchen/walls" instance=ExtResource( 7 )]
-transform = Transform( -3.17865e-07, -4.37114e-07, -10, 4.37114e-07, 10, -4.37114e-07, 10, -4.37114e-07, -3.17865e-07, 1.13687e-13, 0.545, -20 )
+transform = Transform( -3.17865e-07, -4.37114e-07, -10, 4.37114e-07, 10, -4.37114e-07, 10, -4.37114e-07, -3.17865e-07, 0, 0.545, -20 )
 
 [node name="wallHalf2" parent="Rooms/kitchen/walls" instance=ExtResource( 2 )]
 transform = Transform( -10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 25, 0.540281, -30 )
