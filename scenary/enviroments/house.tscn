@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://scenary/objects/structure/floorFull.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenary/objects/structure/wallHalf.tscn" type="PackedScene" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://scenary/objects/structure/wallDoorway.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenary/objects/structure/doorway.tscn" type="PackedScene" id=8]
 [ext_resource path="res://people/basic_person.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenary/house.gd" type="Script" id=10]
+[ext_resource path="res://scenary/enviroments/house.gd" type="Script" id=10]
 [ext_resource path="res://scenary/objects/living_room/loungeDesignSofaCorner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenary/objects/living_room/cabinetTelevision.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenary/objects/living_room/televisionModern.tscn" type="PackedScene" id=13]
@@ -74,8 +74,6 @@ agent/height = 3.0
 agent/radius = 1.0
 agent/max_climb = 1.0
 region/min_size = 75.2
-
-[sub_resource type="CylinderMesh" id=2]
 
 [node name="House" type="Spatial"]
 script = ExtResource( 10 )
@@ -605,21 +603,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.101, 0, -5.17093 )
 
 [node name="Sensors" type="Spatial" parent="."]
 
-[node name="PresenceSensor" type="Spatial" parent="Sensors"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11267, 13.2208, -6.03463 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Sensors/PresenceSensor"]
-transform = Transform( -2.70057e-08, -0.617819, 0, 0.26534, -1.15984e-08, 0, 0, 0, 0.26534, 0.459209, 0, 0 )
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="Area" type="Area" parent="Sensors/PresenceSensor"]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ui" type="Control" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1028.0
+margin_bottom = 602.0
 theme = ExtResource( 60 )
 
 [node name="SpeedSlider" parent="CanvasLayer/ui" instance=ExtResource( 56 )]
@@ -633,10 +621,10 @@ margin_bottom = 63.0
 [node name="needs_widget" parent="CanvasLayer/ui" instance=ExtResource( 58 )]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = 662.0
-margin_top = 19.0
-margin_right = 969.0
-margin_bottom = 438.0
+margin_left = -350.0
+margin_top = 18.0
+margin_right = -16.0
+margin_bottom = 582.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 0

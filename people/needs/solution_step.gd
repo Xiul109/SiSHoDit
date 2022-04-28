@@ -16,7 +16,7 @@ export(float, 1) var min_value_to_be_interrupted = 1.0
 
 func generate_duration():
 	var rng = RandomNumberGenerator.new()
-	rng.randomize()
+	rng.seed = GlobalVar.rnd_seed
 	var mean_duration = (min_duration+max_duration)/2
 	return clamp(rng.randfn(mean_duration, (max_duration-mean_duration)/4),
 					  min_duration, max_duration)

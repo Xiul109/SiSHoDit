@@ -8,6 +8,7 @@ var full_dir : String
 var file_name
 
 var file : File
+var timer
 
 ### Overriden methods ###
 func init_file(filename_base, directory = ""):
@@ -28,18 +29,21 @@ func init_file(filename_base, directory = ""):
 		# init file content
 		file.store_line("[")
 		# timer to save the date once every 10 seconds
-		var timer = Timer.new()
+		timer = Timer.new()
 		timer.wait_time = 10
 		timer.connect("timeout", file, "flush")
 		add_child(timer)
 		timer.start()
 
-
-func _exit_tree():
+func save_file():
 	if file.is_open():
+		timer.queue_free()
 		file.seek_end(-3)
 		file.store_line("]")
 		file.close()
+
+func _exit_tree():
+		save_file()
 
 ### Private methods ###
 func _check_directory():

@@ -31,7 +31,7 @@ func _ready():
 ### Aux methods ###
 func get_time_until_wrong_trigger():
 	var rng = RandomNumberGenerator.new()
-	rng.randomize()
+	rng.seed = GlobalVar.rnd_seed
 	return max(rng.randfn(average_time_between_wrong_triggers,
 					  std_time_between_wrong_triggers), 0.001)
 	
