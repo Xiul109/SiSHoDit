@@ -41,3 +41,8 @@ material/0 = null
 material/1 = null
 
 [node name="Usable" parent="." instance=ExtResource( 3 )]
+
+[node name="Sensor" parent="Usable" index="0"]
+sensor_type = "device"
+
+[editable path="Usable"]

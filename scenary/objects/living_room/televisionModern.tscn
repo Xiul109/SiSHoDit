@@ -16,3 +16,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0846637 )
 shape = SubResource( 1 )
 
 [node name="SwitchUsable" parent="." index="2" instance=ExtResource( 2 )]
+
+[node name="Sensor" parent="SwitchUsable" index="0"]
+sensor_type = "device"
+
+[editable path="SwitchUsable"]

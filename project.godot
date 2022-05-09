@@ -99,7 +99,7 @@ _global_script_class_icons={
 [application]
 
 config/name="SADL"
-run/main_scene="res://scenary/enviroments/house.tscn"
+run/main_scene="res://UI/main_menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -115,7 +115,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/imjp94.yafsm/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/imjp94.yafsm/plugin.cfg", "res://addons/imrp/plugin.cfg" )
 
 [physics]
 

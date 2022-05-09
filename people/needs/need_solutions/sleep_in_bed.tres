@@ -7,4 +7,4 @@
 [resource]
 resource_name = "sleep_in_bed"
 script = ExtResource( 2 )
-steps = [ ExtResource( 3 ), ExtResource( 1 ) ]
+steps = [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 3 ) ]

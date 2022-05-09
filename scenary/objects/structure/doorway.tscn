@@ -27,3 +27,4 @@ shape = SubResource( 2 )
 
 [node name="Sensor" type="Node" parent="." index="3"]
 script = ExtResource( 3 )
+sensor_type = "contact"

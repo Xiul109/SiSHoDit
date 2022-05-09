@@ -169,7 +169,7 @@ func _to_new_need():
 	var current_need = _get_next_need_to_cover()
 	current_needs.append(current_need)
 	current_solutions.append(current_need.get_solution())
-	EventLogger.log_event(self.name, current_solutions.back().resource_name)
+	EventLogger.log_event(self.name, "activity", current_solutions.back().resource_name)
 	print("-------------------------")
 	print("New need: ", current_need.need_key, ". It can be solved in ",
 			current_solutions.back().steps.size(), " steps.")

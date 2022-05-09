@@ -18,3 +18,8 @@ shape = SubResource( 1 )
 [node name="DurationUsable" parent="." index="2" instance=ExtResource( 4 )]
 trigger_on = "end"
 duration = 2400.0
+
+[node name="Sensor" parent="DurationUsable" index="0"]
+sensor_type = "device"
+
+[editable path="DurationUsable"]

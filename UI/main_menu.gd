@@ -3,7 +3,7 @@ extends Control
 const enviroment_launcher = preload("res://UI/enviroment_launcher.tscn")
 const enviroments_path = "res://scenary/enviroments/"
 
-var enviroments = {}
+export var enviroments = {}
 
 func _ready():
 	enviroments = _load_scenes_from(enviroments_path)

@@ -2,6 +2,7 @@ class_name Sensor
 extends Node
 
 export var sensor_name : String = "sensor"
+export var sensor_type: String = "generic"
 
 export(float, 1) var not_triggered_prob : float = 0
 export(float, 1) var wrong_value_prob: float = 0
@@ -47,7 +48,7 @@ func activate(value, delta = 0):
 	if randf() >= not_triggered_prob:
 		if randf() < wrong_value_prob:
 			value = value_range.get_random_valid_value()
-		EventLogger.log_event(sensor_name, value, delta)
+		EventLogger.log_event(sensor_name, sensor_type, value, delta)
 
 func override_malfunction_params(nt_prob, wv_prob, atb_wrong_triggers, stb_wrong_triggers):
 	stored_not_triggered_prob = not_triggered_prob

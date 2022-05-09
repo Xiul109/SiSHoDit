@@ -36,7 +36,7 @@ func init_file(filename_base, directory = ""):
 		timer.start()
 
 func save_file():
-	if file.is_open():
+	if file != null and file.is_open():
 		timer.queue_free()
 		file.seek_end(-3)
 		file.store_line("]")
