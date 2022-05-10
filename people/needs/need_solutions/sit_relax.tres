@@ -7,3 +7,4 @@
 resource_name = "sit_relax"
 script = ExtResource( 1 )
 steps = [ ExtResource( 2 ) ]
+weight = 1.0

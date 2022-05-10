@@ -8,3 +8,4 @@
 resource_name = "watch_tv"
 script = ExtResource( 1 )
 steps = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ) ]
+weight = 1.0

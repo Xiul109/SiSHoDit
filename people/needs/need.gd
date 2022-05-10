@@ -32,8 +32,30 @@ func can_be_solved(tree: SceneTree):
 	return false
 
 func get_solution():
-	return viable_solutions[randi()%viable_solutions.size()]
+	var weights = _get_solutions_weights(viable_solutions)
+	return viable_solutions[_get_random_weighted(weights)]
 
 ### Setters ###
 func level_set(new_level):
 	level = clamp(new_level, 0, 1)
+
+### Aux methods ###
+func _get_solutions_weights(sols):
+	var total_weight = 0
+	for sol in sols:
+		total_weight += sol.weight
+		
+	var weights = []
+	var prev_weight = 0
+	for sol in sols:
+		prev_weight += sol.weight/total_weight
+		weights.append(prev_weight)
+	return weights
+
+func _get_random_weighted(weights):
+	var rn = randf()
+	for i in len(weights):
+		var w = weights[i]
+		if rn <= w:
+			return i
+	return randi()%weights.size()

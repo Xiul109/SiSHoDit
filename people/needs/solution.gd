@@ -2,6 +2,7 @@ class_name Solution
 extends Resource
 
 export(Array, Resource) var steps = []
+export var weight : float = 1.0
 
 var current_step = -1
 

@@ -8,3 +8,4 @@
 resource_name = "sleep_dementia"
 script = ExtResource( 3 )
 steps = [ ExtResource( 2 ), ExtResource( 1 ) ]
+weight = 1.0

@@ -8,3 +8,4 @@
 resource_name = "have_a_drink"
 script = ExtResource( 1 )
 steps = [ ExtResource( 2 ), ExtResource( 3 ) ]
+weight = 1.0

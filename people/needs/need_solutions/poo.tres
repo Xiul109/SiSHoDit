@@ -7,3 +7,4 @@
 resource_name = "poo"
 script = ExtResource( 1 )
 steps = [ ExtResource( 2 ) ]
+weight = 1.0
