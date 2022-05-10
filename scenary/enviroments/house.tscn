@@ -583,6 +583,7 @@ transform = Transform( -4.37114e-07, 0, -10, 0, 10, 0, 10, 0, -4.37114e-07, -10.
 
 [node name="doorway5" parent="Doors" instance=ExtResource( 39 )]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -7.4307, 0.538027, 0.193947 )
+autocloses = true
 
 [node name="Navigation" type="Navigation" parent="."]
 

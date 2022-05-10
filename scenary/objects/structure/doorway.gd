@@ -1,5 +1,8 @@
 extends StaticBody
 
+
+export var autocloses = false
+
 onready var door = $"doorway(Clone)/door"
 
 var state = "close"
