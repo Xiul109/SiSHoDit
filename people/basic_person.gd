@@ -123,7 +123,9 @@ func _set_place_of_next_step(object_key):
 
 func _apply_current_solution():
 	current_needs.pop_back()
-	current_solutions.pop_back()
+	EventLogger.log_event(self.name, "activity_end",
+						  current_solutions.pop_back().resource_name)
+	
 	smp.set_param("pending_needs", smp.get_param("pending_needs")-1)
 	smp.set_trigger("need_solved")
 
@@ -147,6 +149,7 @@ func _check_interruptions(step : SolutionStep):
 	for need in needs:
 		if not need in current_needs and need.level >= step.min_value_to_be_interrupted:
 			smp.set_trigger("interrupted")
+			EventLogger.log_event(self.name, "activity_interrupted", current_solutions.back().resource_name)
 			print("Interrupted")
 			return true
 	
@@ -169,7 +172,7 @@ func _to_new_need():
 	var current_need = _get_next_need_to_cover()
 	current_needs.append(current_need)
 	current_solutions.append(current_need.get_solution())
-	EventLogger.log_event(self.name, "activity", current_solutions.back().resource_name)
+	EventLogger.log_event(self.name, "activity_begin", current_solutions.back().resource_name)
 	print("-------------------------")
 	print("New need: ", current_need.need_key, ". It can be solved in ",
 			current_solutions.back().steps.size(), " steps.")
