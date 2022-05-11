@@ -1,11 +1,26 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://scenary/enviroments/house_dementia/dementia_person/steps/sleep_dementia.tres" type="Resource" id=1]
 [ext_resource path="res://people/needs/need_solutions/steps/change_clothes.tres" type="Resource" id=2]
 [ext_resource path="res://people/needs/solution.gd" type="Script" id=3]
+[ext_resource path="res://people/needs/solution_step.gd" type="Script" id=4]
+[ext_resource path="res://scenary/enviroments/house_dementia/dementia_person/steps/wander_out.tres" type="Resource" id=5]
+
+[sub_resource type="Resource" id=1]
+resource_name = "nap"
+script = ExtResource( 4 )
+object_key = "bed"
+use_object = true
+min_duration = 3600.0
+max_duration = 7200.0
+needs_solved = [ "sleepy", "tired", "bored" ]
+needs_with_modified_rate = {
+}
+probability_of_being_interrupted = 0.0
+min_value_to_be_interrupted = 1.0
 
 [resource]
 resource_name = "sleep_dementia"
 script = ExtResource( 3 )
-steps = [ ExtResource( 2 ), ExtResource( 1 ) ]
+steps = [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 5 ), SubResource( 1 ), ExtResource( 2 ) ]
 weight = 1.0

@@ -10,7 +10,7 @@
 [ext_resource path="res://people/needs/needs_list/tired.tres" type="Resource" id=8]
 [ext_resource path="res://people/needs/needs_list/dirty.tres" type="Resource" id=9]
 [ext_resource path="res://people/needs/needs_list/pooping.tres" type="Resource" id=10]
-[ext_resource path="res://people/needs/needs_list/sleepy.tres" type="Resource" id=11]
+[ext_resource path="res://scenary/enviroments/house_dementia/dementia_person/needs/sleepy_dementia.tres" type="Resource" id=11]
 [ext_resource path="res://people/needs/needs_list/bored.tres" type="Resource" id=12]
 [ext_resource path="res://people/needs/needs_list/hungry.tres" type="Resource" id=13]
 [ext_resource path="res://people/needs/needs_list/peeing.tres" type="Resource" id=14]
@@ -75,6 +75,7 @@ collide_with_areas = true
 debug_shape_custom_color = Color( 0.0352941, 0.960784, 0.788235, 1 )
 debug_shape_thickness = 4
 script = ExtResource( 4 )
+close_door_rate = 0.2
 
 [node name="StateMachinePlayer" type="Node" parent="."]
 script = ExtResource( 5 )

@@ -8,5 +8,5 @@ script = ExtResource( 1 )
 need_key = "dirty_clothes"
 solutions = [ ExtResource( 2 ) ]
 time_to_fill_level = 604800.0
-level = 0.85
+level = 0.1
 min_level_before_solve = 0.9
