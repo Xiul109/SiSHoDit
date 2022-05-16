@@ -468,7 +468,7 @@ transform = Transform( 1, 1.32005e-14, -8.74228e-08, 0, 1, 1.50996e-07, -8.74228
 transform = Transform( -1.31134e-06, -2.11758e-19, -10, 1.50996e-06, 10, -1.98007e-13, -10, 1.50996e-06, 1.31134e-06, -21.7963, 0.541163, -54.6694 )
 
 [node name="kitchenBar2" parent="Rooms/kitchen/furnitures" instance=ExtResource( 32 )]
-transform = Transform( -1.31134e-06, -2.65968e-19, -10, 1.50996e-06, 10, -1.98007e-13, -10, 1.50996e-06, 1.31134e-06, -21.7963, 0.541162, -50.3695 )
+transform = Transform( -1.31134e-06, -2.93073e-19, -10, 1.50996e-06, 10, -1.98007e-13, -10, 1.50996e-06, 1.31134e-06, -21.7963, 0.541162, -50.3695 )
 
 [node name="kitchenBar3" parent="Rooms/kitchen/furnitures" instance=ExtResource( 32 )]
 transform = Transform( -1.31134e-06, -3.20178e-19, -10, 1.50996e-06, 10, -1.98007e-13, -10, 1.50996e-06, 1.31134e-06, -21.7963, 0.541162, -46.0805 )
@@ -510,7 +510,7 @@ transform = Transform( -4.37114e-07, -1.50996e-06, 10, 1.50996e-06, 10, 1.50996e
 transform = Transform( 10, -2.43945e-19, 0, 0, 10, 0, 0, 0, 10, -17.6309, 0.552428, -51.454 )
 
 [node name="stoolBarSquare2" parent="Rooms/kitchen/furnitures" instance=ExtResource( 49 )]
-transform = Transform( 10, -3.93023e-19, 0, 0, 10, 0, 0, 0, 10, -17.8013, 0.552427, -46.9471 )
+transform = Transform( 10, -4.06576e-19, 0, 0, 10, 0, 0, 0, 10, -17.8013, 0.552427, -46.9471 )
 
 [node name="kitchenCabinetUpperCorner" parent="Rooms/kitchen/furnitures" instance=ExtResource( 50 )]
 transform = Transform( -4.37114e-07, -1.50996e-06, 10, 1.50996e-06, 10, 1.50996e-06, -10, 1.50996e-06, -4.37114e-07, -32.8493, 8.40541, -56.8257 )
@@ -566,7 +566,7 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0.545269, 0 )
 transform = Transform( -10, 0, -4.76837e-07, 0, 10, 0, 4.76837e-07, 0, -10, 10, 0.545269, -30 )
 
 [node name="wall8" parent="Rooms/kitchen/walls" instance=ExtResource( 39 )]
-transform = Transform( -10, 0, -4.76837e-07, 0, 10, 0, 4.76837e-07, 0, -10, 20, 0.545269, -30 )
+transform = Transform( -10, 2.58946e-34, -4.76837e-07, 0, 10, 0, 4.76837e-07, 0, -10, 20, 0.545269, -30 )
 
 [node name="wall5" parent="Rooms/kitchen/walls" instance=ExtResource( 39 )]
 transform = Transform( 1.31134e-06, 0, -10, 0, 10, 0, 10, 0, 1.31134e-06, -8.74228e-07, 0.545269, -30 )

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://people/needs/solution.gd" type="Script" id=1]
 [ext_resource path="res://people/needs/need_solutions/steps/pee.tres" type="Resource" id=2]
-[ext_resource path="res://people/needs/need_solutions/steps/wash_hands.tres" type="Resource" id=3]
+[ext_resource path="res://scenary/enviroments/house_dementia/dementia_person/steps/wash_hands_interrupt.tres" type="Resource" id=3]
 
 [resource]
 resource_name = "pee_and_wash_hands"
