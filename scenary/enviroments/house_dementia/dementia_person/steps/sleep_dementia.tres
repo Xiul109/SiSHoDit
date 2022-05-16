@@ -13,5 +13,5 @@ needs_with_modified_rate = {
 "sleepy": -1.2,
 "thirsty": 0.6
 }
-probability_of_being_interrupted = 0.2
+probability_of_not_being_interrupted = 0.7
 min_value_to_be_interrupted = 1.0

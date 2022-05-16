@@ -143,7 +143,10 @@ func _solve_needs(needs_to_solve, quantity = 1):
 			need.level -= quantity
 
 func _check_interruptions(step : SolutionStep):
-	if (1 - step.probability_of_being_interrupted) > randf():
+	# (1-p)^s = ~t; p = 1 - ~t^(1/s)
+	if (1 - pow(step.probability_of_being_interrupted,
+				1/simulation_total_divisions)
+	) > randf():
 		return false
 	
 	for need in needs:

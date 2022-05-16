@@ -12,5 +12,5 @@ needs_solved = [ "sleepy", "tired", "bored" ]
 needs_with_modified_rate = {
 "thirsty": 0.6
 }
-probability_of_being_interrupted = 0.2
+probability_of_not_being_interrupted = 0.5
 min_value_to_be_interrupted = 1.0
