@@ -144,8 +144,8 @@ func _solve_needs(needs_to_solve, quantity = 1):
 
 func _check_interruptions(step : SolutionStep):
 	# (1-p)^s = ~t; p = 1 - ~t^(1/s)
-	if (1 - pow(step.probability_of_being_interrupted,
-				1/simulation_total_divisions)
+	if (1 - pow(step.probability_of_not_being_interrupted,
+				1.0/simulation_total_divisions)
 	) > randf():
 		return false
 	

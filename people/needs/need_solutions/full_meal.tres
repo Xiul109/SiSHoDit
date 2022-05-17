@@ -15,7 +15,7 @@ max_duration = 1200.0
 needs_solved = [  ]
 needs_with_modified_rate = {
 }
-probability_of_being_interrupted = 0.2
+probability_of_not_being_interrupted = 1.0
 min_value_to_be_interrupted = 0.5
 
 [sub_resource type="Resource" id=2]
@@ -28,7 +28,7 @@ max_duration = 2400.0
 needs_solved = [ "hungry", "thirsty" ]
 needs_with_modified_rate = {
 }
-probability_of_being_interrupted = 0.2
+probability_of_not_being_interrupted = 1.0
 min_value_to_be_interrupted = 0.5
 
 [resource]
