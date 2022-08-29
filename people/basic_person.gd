@@ -9,10 +9,9 @@ export(Array, Resource) var needs
 
 onready var smp = $StateMachinePlayer
 
-var navigation : Navigation setget navigation_set
+onready var nav_agent = $NavigationAgent
 
 var to
-var path
 
 var current_needs = []
 var current_solutions = []
@@ -28,8 +27,11 @@ func _ready():
 	# Delete unsolvable needs
 	for need in unsolvable_needs:
 		needs.erase(need)
+	# Navigation init	
+	nav_agent.set_navigation(get_node("%Navigation"))	
 	# Init SMP parameters
 	smp.set_param("pending_needs", 0)
+	smp.set_trigger("start")
 
 func _physics_process(delta):
 	_process_needs(delta)
@@ -37,15 +39,7 @@ func _physics_process(delta):
 
 ### Public methods ###
 func new_path():
-	var closest = navigation.get_closest_point(global_transform.origin)
-#	var nav_mesh = navigation.get_children()[0].navmesh as NavigationMesh
-#	var rad = nav_mesh.get_agent_radius()
-	var p0 = closest
-	path = navigation.get_simple_path(p0,
-									  navigation.get_closest_point(to), true)
-	
-	if path.empty():
-		path.append(navigation.get_closest_point(to))
+	nav_agent.set_target_location(to)
 
 
 func wait():
@@ -55,10 +49,6 @@ func wait():
 	TimeSim.fast_forward(time)
 	_process_needs(time)
 
-### Setgets ###
-func navigation_set(new_nav):
-	navigation = new_nav
-	smp.set_trigger("start")
 
 ### Aux methods ###
 func _process_needs(delta):
@@ -202,20 +192,19 @@ func _to_pending_need():
 
 ## State Machine states ##
 func _traveling(delta):
-	if path and len(path) > 0:
-		var velocity = speed*(path[0]-global_transform.origin).normalized()
-		if translation.distance_to(path[0]) < delta * speed:
-			velocity = path[0]-global_transform.origin
-			path.remove(0)
-			if path.empty():
-				smp.set_trigger("need_location_reached")
+	var next_pos = nav_agent.get_next_location()
+	var velocity = speed*(next_pos-global_transform.origin).normalized()
+	var distance = delta * speed
+	if translation.distance_to(next_pos) < distance:
+		velocity = next_pos-global_transform.origin
+		if nav_agent.is_target_reached():
+			smp.set_trigger("need_location_reached")
 		
-		# warning-ignore:return_value_discarded
-		move_and_slide(velocity)
-		if Vector3.UP.cross(velocity) != Vector3():
-			look_at(global_transform.origin+velocity, Vector3.UP)
-	else:
-		new_path()
+	# warning-ignore:return_value_discarded
+	move_and_slide(velocity)
+	if Vector3.UP.cross(velocity) != Vector3():
+		look_at(global_transform.origin+velocity, Vector3.UP)
+
 
 func _doing_step(delta):
 	var step = current_steps.back()

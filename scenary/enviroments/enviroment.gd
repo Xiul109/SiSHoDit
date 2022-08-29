@@ -14,8 +14,6 @@ func _ready():
 	cameras.append($Camera)
 	cameras.append(person.get_node("CameraOrbit/ClippedCamera"))
 	$CanvasLayer/ui/needs_widget.person = person
-	
-	person.navigation = $Navigation
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):

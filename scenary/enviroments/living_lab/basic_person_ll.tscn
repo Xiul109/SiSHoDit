@@ -75,12 +75,10 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="." groups=["person"]]
 transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, 0, 3.22518, 0 )
 mesh = SubResource( 2 )
-material/0 = null
 
 [node name="MeshInstance" type="MeshInstance" parent="MeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.559199, -1.14006 )
 mesh = SubResource( 4 )
-material/0 = null
 
 [node name="CameraOrbit" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.95297, 0 )
@@ -112,6 +110,9 @@ script = ExtResource( 4 )
 [node name="StateMachinePlayer" type="Node" parent="."]
 script = ExtResource( 5 )
 state_machine = ExtResource( 6 )
+
+[node name="NavigationAgent" type="NavigationAgent" parent="."]
+target_desired_distance = 10.0
 
 [connection signal="transited" from="StateMachinePlayer" to="." method="_on_StateMachinePlayer_transited"]
 [connection signal="updated" from="StateMachinePlayer" to="." method="_on_StateMachinePlayer_updated"]
