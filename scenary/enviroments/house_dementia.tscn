@@ -106,7 +106,6 @@ agent_max_climb = 1.0
 region_min_size = 75.2
 
 [sub_resource type="Resource" id=7]
-resource_name = "go_out_step"
 script = ExtResource( 72 )
 object_key = "out"
 use_object = true
