@@ -1,5 +1,5 @@
-# SiSHoDit
-SiShoDit (**Si**mulator of **S**mart **Ho**uses **Di**gital **T**wins) is a fully automated simulator for Activities of Daily Living (ADLs) in smart homes environments that allows emergent behaviour. It is build to work inside Godot Engine editor, but the tools provided with it can be used to generate a standalone executable.
+# SiSHoDiT
+SiShoDiT (**Si**mulator of **S**mart **Ho**uses **Di**gital **T**wins) is a fully automated simulator for Activities of Daily Living (ADLs) in smart homes environments that allows emergent behaviour. It is build to work inside Godot Engine editor, but the tools provided with it can be used to generate a standalone executable.
 
 ## Getting started
 This tutorial assumes the reader has some knowledge of Godot Engine, specially regarding to using the tool, basic concepts (like nodes, scenes, groups, etc.) and basic 3D level design inside the editor. The simulator has two main independent parts: agents and environments.
