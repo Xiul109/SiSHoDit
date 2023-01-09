@@ -1,13 +1,13 @@
-tool
+@tool
 extends MarginContainer
 
 
-onready var grid = $PanelContainer/MarginContainer/VBoxContainer/GridContainer
-onready var button = $PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Button
+@onready var grid = $PanelContainer/MarginContainer/VBoxContainer/GridContainer
+@onready var button = $PanelContainer/MarginContainer/VBoxContainer/MarginContainer/Button
 
 
 func _ready():
-	button.connect("pressed", self, "_on_button_pressed")
+	button.connect("pressed",Callable(self,"_on_button_pressed"))
 
 func update_params(params, local_params):
 	# Remove erased parameters from param panel

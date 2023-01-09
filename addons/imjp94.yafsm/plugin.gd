@@ -1,4 +1,4 @@
-tool
+@tool
 extends EditorPlugin
 const YAFSM = preload("YAFSM.gd")
 const StackPlayer = YAFSM.StackPlayer
@@ -14,17 +14,17 @@ const StackPlayerIcon = preload("assets/icons/stack_player_icon.png")
 const StateMachinePlayerIcon = preload("assets/icons/state_machine_player_icon.png")
 const StateMachineIcon = preload("assets/icons/state_machine_icon.png")
 
-var state_machine_editor = StateMachineEditor.instance()
+var state_machine_editor = StateMachineEditor.instantiate()
 var transition_inspector = TransitionInspector.new()
 var state_inspector = StateInspector.new()
 
-var focused_object setget set_focused_object # Can be StateMachine/StateMachinePlayer
+var focused_object : set = set_focused_object # Can be StateMachine/StateMachinePlayer
 var editor_selection
 
 
 func _enter_tree():
 	editor_selection = get_editor_interface().get_selection()
-	editor_selection.connect("selection_changed", self, "_on_EditorSelection_selection_changed")
+	editor_selection.connect("selection_changed",Callable(self,"_on_EditorSelection_selection_changed"))
 	var editor_base_control = get_editor_interface().get_base_control()
 	add_custom_type("StackPlayer", "Node", StackPlayer, StackPlayerIcon)
 	add_custom_type("StateMachinePlayer", "Node", StateMachinePlayer, StateMachinePlayerIcon)
@@ -41,10 +41,10 @@ func _enter_tree():
 	state_machine_editor.editor_accent_color = editor_base_control.get_color("accent_color", "Editor")
 	state_machine_editor.current_layer.editor_accent_color = state_machine_editor.editor_accent_color
 	state_machine_editor.transition_arrow_icon = editor_base_control.get_icon("TransitionImmediateBig", "EditorIcons")
-	state_machine_editor.connect("inspector_changed", self, "_on_inspector_changed")
-	state_machine_editor.connect("node_selected", self, "_on_StateMachineEditor_node_selected")
-	state_machine_editor.connect("node_deselected", self, "_on_StateMachineEditor_node_deselected")
-	state_machine_editor.connect("debug_mode_changed", self, "_on_StateMachineEditor_debug_mode_changed")
+	state_machine_editor.connect("inspector_changed",Callable(self,"_on_inspector_changed"))
+	state_machine_editor.connect("node_selected",Callable(self,"_on_StateMachineEditor_node_selected"))
+	state_machine_editor.connect("node_deselected",Callable(self,"_on_StateMachineEditor_node_deselected"))
+	state_machine_editor.connect("debug_mode_changed",Callable(self,"_on_StateMachineEditor_debug_mode_changed"))
 	# Force anti-alias for default font, so rotated text will looks smoother
 	var font = editor_base_control.get_font("main", "EditorFonts")
 	font.use_filter = true

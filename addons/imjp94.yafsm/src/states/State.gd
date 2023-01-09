@@ -1,4 +1,4 @@
-tool
+@tool
 extends Resource
 
 signal name_changed(new_name)
@@ -9,9 +9,9 @@ const EXIT_STATE = "Exit"
 
 const META_GRAPH_OFFSET = "graph_offset" # Meta key for graph_offset
 
-export(String) var name = "" setget set_name # Name of state, unique within StateMachine
+@export var name: String = "" : set = set_name # Name of state, unique within StateMachine
 
-var graph_offset setget set_graph_offset, get_graph_offset # Position in FlowChart stored as meta, for editor only
+var graph_offset : get = get_graph_offset, set = set_graph_offset # Position in FlowChart stored as meta, for editor only
 
 
 func _init(p_name=""):

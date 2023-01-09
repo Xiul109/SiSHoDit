@@ -1,14 +1,14 @@
 class_name SwitchUsable
 extends AbstractUsable
 
-export var switch_on_value : float = 1
-export var switch_off_value : float = 0
+@export var switch_on_value : float = 1
+@export var switch_off_value : float = 0
 
-export var is_switched : bool
+@export var is_switched : bool
 
-export(String, "start", "end") var switch_on = "start"
+@export var switch_on = "start" # (String, "start", "end")
 
-onready var _sensor : Sensor = $Sensor
+@onready var _sensor : Sensor = $Sensor
 
 ### overriden methods ###
 func _ready():
@@ -19,12 +19,12 @@ func _ready():
 func start_using(_user: BasicPerson):
 	if switch_on == "start":
 		switch()
-	.start_using(_user)
+	super.start_using(_user)
 	
 func finish_using(_user: BasicPerson):
 	if switch_on == "end":
 		switch()
-	.finish_using(_user)
+	super.finish_using(_user)
 
 ### Aux methods ###
 func switch():

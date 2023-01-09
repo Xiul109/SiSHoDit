@@ -1,15 +1,15 @@
 class_name BasicPerson
-extends KinematicBody
+extends CharacterBody3D
 
-export var speed = 10
+@export var speed = 10
 
-export var simulation_total_divisions : int = 20
+@export var simulation_total_divisions : int = 20
 
-export(Array, Resource) var needs
+@export var needs : Array[Need]# (Array, Resource)
 
-onready var smp = $StateMachinePlayer
+@onready var smp = $StateMachinePlayer
 
-onready var nav_agent = $NavigationAgent
+@onready var nav_agent = $NavigationAgent3D
 
 var to
 
@@ -27,8 +27,7 @@ func _ready():
 	# Delete unsolvable needs
 	for need in unsolvable_needs:
 		needs.erase(need)
-	# Navigation init	
-	nav_agent.set_navigation(get_node("%Navigation"))	
+
 	# Init SMP parameters
 	smp.set_param("pending_needs", 0)
 	smp.set_trigger("start")
@@ -64,8 +63,8 @@ func _process_needs(delta):
 
 func _get_next_need_to_cover():
 	var min_level = 0.0
-	if not current_steps.empty():
-		 min_level = current_steps.back()["step"].min_value_to_be_interrupted
+	if not current_steps.is_empty():
+		min_level = current_steps.back()["step"].min_value_to_be_interrupted
 	var probs = []
 	var choosable_needs = []
 	for need in needs:
@@ -83,7 +82,7 @@ func _get_random_i_based_on_probs(probs):
 	var total = 0
 	for p in probs:
 		total += p
-	var prob = rand_range(0, total)
+	var prob = randf_range(0, total)
 	var sum = 0
 	for i in range(len(probs)):
 		sum += probs[i]
@@ -104,7 +103,7 @@ func _set_duration_for_current_step():
 func _set_place_of_next_step(object_key):
 	if object_key != "":
 		var objects = get_tree().get_nodes_in_group(object_key)
-		current_steps.back()["object"] = objects[randi() % objects.size()] as Spatial
+		current_steps.back()["object"] = objects[randi() % objects.size()] as Node3D
 		to = current_steps.back()["object"].global_transform.origin
 	else:
 		current_steps.back()["object"] = null
@@ -114,7 +113,7 @@ func _set_place_of_next_step(object_key):
 func _apply_current_solution():
 	current_needs.pop_back()
 	EventLogger.log_event(self.name, "activity_end",
-						  current_solutions.pop_back().resource_name)
+						current_solutions.pop_back().resource_name)
 	
 	smp.set_param("pending_needs", smp.get_param("pending_needs")-1)
 	smp.set_trigger("need_solved")
@@ -123,7 +122,7 @@ func _get_usable_of(object: Node):
 	if object == null:
 		return null
 	
-	var usable = object.find_node("*Usable*", false)
+	var usable = object.find_child("*Usable*", false)
 	
 	return usable
 
@@ -179,7 +178,7 @@ func _to_check_next_step():
 		current_steps.append({step = current_step})
 		_set_place_of_next_step(current_step.object_key)
 		print("Current step can be solved with ", current_step.object_key,
-			  " and solves: ", current_step.needs_solved)
+			" and solves: ", current_step.needs_solved)
 		smp.set_trigger("next_step_chosen")
 	else:
 		_apply_current_solution()
@@ -193,17 +192,18 @@ func _to_pending_need():
 ## State Machine states ##
 func _traveling(delta):
 	var next_pos = nav_agent.get_next_location()
-	var velocity = speed*(next_pos-global_transform.origin).normalized()
+	var vel = speed*(next_pos-global_transform.origin).normalized()
 	var distance = delta * speed
-	if translation.distance_to(next_pos) < distance:
-		velocity = next_pos-global_transform.origin
+	if position.distance_to(next_pos) < distance:
+		vel = next_pos-global_transform.origin
 		if nav_agent.is_target_reached():
 			smp.set_trigger("need_location_reached")
 		
 	# warning-ignore:return_value_discarded
-	move_and_slide(velocity)
-	if Vector3.UP.cross(velocity) != Vector3():
-		look_at(global_transform.origin+velocity, Vector3.UP)
+	set_velocity(vel)
+	move_and_slide()
+	if Vector3.UP.cross(vel) != Vector3():
+		look_at(global_transform.origin+vel, Vector3.UP)
 
 
 func _doing_step(delta):
@@ -219,7 +219,7 @@ func _doing_step(delta):
 		# Solve needs partially
 		var advance = 1.0/simulation_total_divisions
 		_solve_needs(step["step"].needs_solved, 
-					advance+rand_range(-advance/4.0, advance/4.0))
+					advance+randf_range(-advance/4.0, advance/4.0))
 	
 	if step["divisions_simulated"]>=simulation_total_divisions:
 		smp.set_trigger("step_finished")

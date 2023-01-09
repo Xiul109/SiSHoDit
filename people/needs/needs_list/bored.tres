@@ -1,14 +1,14 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://tmhukuj8w6bj"]
 
-[ext_resource path="res://people/needs/need.gd" type="Script" id=1]
-[ext_resource path="res://people/needs/need_solutions/watch_tv.tres" type="Resource" id=2]
-[ext_resource path="res://people/needs/need_solutions/read_book.tres" type="Resource" id=3]
-[ext_resource path="res://people/needs/need_solutions/play_videogames.tres" type="Resource" id=4]
+[ext_resource type="Script" path="res://people/needs/need.gd" id="1"]
+[ext_resource type="Resource" path="res://people/needs/need_solutions/watch_tv.tres" id="2"]
+[ext_resource type="Resource" path="res://people/needs/need_solutions/read_book.tres" id="3"]
+[ext_resource type="Resource" path="res://people/needs/need_solutions/play_videogames.tres" id="4"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 need_key = "bored"
-solutions = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
+solutions = [ExtResource("2"), ExtResource("3"), ExtResource("4")]
 time_to_fill_level = 7200.0
 level = 0.0
 min_level_before_solve = 0.0

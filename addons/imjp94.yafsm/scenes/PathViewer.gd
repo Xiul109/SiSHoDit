@@ -1,4 +1,4 @@
-tool
+@tool
 extends HBoxContainer
 
 signal dir_pressed(dir, index)
@@ -26,7 +26,7 @@ func add_dir(dir):
 	button.flat = true
 	button.text = dir
 	add_child(button)
-	button.connect("pressed", self, "_on_button_pressed", [button])
+	button.connect("pressed",Callable(self,"_on_button_pressed").bind(button))
 	return button
 
 # Remove directory until index(exclusive)

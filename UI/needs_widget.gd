@@ -2,7 +2,7 @@ extends VBoxContainer
 
 var SingleNeedWidget = preload("res://UI/single_need_widget.tscn")
 
-var person : BasicPerson setget person_set
+var person : BasicPerson : set = person_set
 var _need_widgets = {}
 
 # setgets
@@ -25,7 +25,7 @@ func _clean_widgets():
 
 func _init_widgets():
 	for need in person.needs:
-		var needWidget = SingleNeedWidget.instance()
+		var needWidget = SingleNeedWidget.instantiate()
 		add_child(needWidget)
 		
 		needWidget.need_name = need.need_key

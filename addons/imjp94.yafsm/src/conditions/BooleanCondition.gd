@@ -1,7 +1,7 @@
-tool
+@tool
 extends "ValueCondition.gd"
 
-export(bool) var value setget set_value, get_value
+@export var value: bool : get = get_value, set = set_value
 
 
 func set_value(v):
@@ -16,4 +16,4 @@ func get_value():
 func compare(v):
 	if typeof(v) != TYPE_BOOL:
 		return false
-	return .compare(v)
+	return super.compare(v)

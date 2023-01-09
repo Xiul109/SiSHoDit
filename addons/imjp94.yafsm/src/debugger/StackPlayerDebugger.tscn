@@ -20,8 +20,8 @@ __meta__ = {
 }
 
 [node name="Stack" type="VBoxContainer" parent="MarginContainer"]
-margin_top = 600.0
-margin_bottom = 600.0
+offset_top = 600.0
+offset_bottom = 600.0
 mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8

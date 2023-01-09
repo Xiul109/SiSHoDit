@@ -1,248 +1,247 @@
-[gd_resource type="Resource" load_steps=35 format=2]
+[gd_resource type="Resource" load_steps=35 format=3 uid="uid://dc0y1g0inpbho"]
 
-[ext_resource path="res://addons/imjp94.yafsm/src/states/StateMachine.gd" type="Script" id=1]
-[ext_resource path="res://addons/imjp94.yafsm/src/transitions/Transition.gd" type="Script" id=2]
-[ext_resource path="res://addons/imjp94.yafsm/src/states/State.gd" type="Script" id=3]
-[ext_resource path="res://addons/imjp94.yafsm/src/conditions/Condition.gd" type="Script" id=5]
-[ext_resource path="res://addons/imjp94.yafsm/src/conditions/IntegerCondition.gd" type="Script" id=6]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/states/StateMachine.gd" id="1"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/transitions/Transition.gd" id="2"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/states/State.gd" id="3"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/conditions/Condition.gd" id="5"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/conditions/IntegerCondition.gd" id="6"]
 
-[sub_resource type="Resource" id=1]
-script = ExtResource( 3 )
+[sub_resource type="Resource" id="1"]
+script = ExtResource("3")
 __meta__ = {
-"graph_offset": Vector2( -52, 0 )
+"graph_offset": Vector2(-52, 0)
 }
 name = "Entry"
 
-[sub_resource type="Resource" id=28]
-script = ExtResource( 3 )
+[sub_resource type="Resource" id="28"]
+script = ExtResource("3")
 __meta__ = {
-"graph_offset": Vector2( 113.5, -200 )
+"graph_offset": Vector2(113.5, -200)
 }
 name = "check_next_need"
 
-[sub_resource type="Resource" id=14]
-script = ExtResource( 3 )
+[sub_resource type="Resource" id="14"]
+script = ExtResource("3")
 __meta__ = {
-"graph_offset": Vector2( 516, 0 )
+"graph_offset": Vector2(516, 0)
 }
 name = "check_next_step"
 
-[sub_resource type="Resource" id=21]
-script = ExtResource( 3 )
+[sub_resource type="Resource" id="21"]
+script = ExtResource("3")
 __meta__ = {
-"graph_offset": Vector2( 713, 240 )
+"graph_offset": Vector2(713, 240)
 }
 name = "doing_step"
 
-[sub_resource type="Resource" id=38]
-script = ExtResource( 3 )
+[sub_resource type="Resource" id="38"]
+script = ExtResource("3")
 __meta__ = {
-"graph_offset": Vector2( 593.5, 80 )
+"graph_offset": Vector2(593.5, 80)
 }
 name = "finish_step"
 
-[sub_resource type="Resource" id=13]
-script = ExtResource( 3 )
+[sub_resource type="Resource" id="13"]
+script = ExtResource("3")
 __meta__ = {
-"graph_offset": Vector2( 136, 0 )
+"graph_offset": Vector2(136, 0)
 }
 name = "new_need"
 
-[sub_resource type="Resource" id=22]
-script = ExtResource( 3 )
+[sub_resource type="Resource" id="22"]
+script = ExtResource("3")
 __meta__ = {
-"graph_offset": Vector2( 441.5, -200 )
+"graph_offset": Vector2(441.5, -200)
 }
 name = "pending_need"
 
-[sub_resource type="Resource" id=2]
-script = ExtResource( 3 )
+[sub_resource type="Resource" id="2"]
+script = ExtResource("3")
 __meta__ = {
-"graph_offset": Vector2( 720, -200 )
+"graph_offset": Vector2(720, -200)
 }
 name = "traveling"
 
-[sub_resource type="Resource" id=11]
-script = ExtResource( 5 )
+[sub_resource type="Resource" id="11"]
+script = ExtResource("5")
 name = "start"
 
-[sub_resource type="Resource" id=12]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="12"]
+script = ExtResource("2")
 from = "Entry"
 to = "new_need"
 conditions = {
-"start": SubResource( 11 )
+"start": SubResource("11")
 }
 priority = 0
 
-[sub_resource type="Resource" id=31]
-script = ExtResource( 6 )
+[sub_resource type="Resource" id="31"]
+script = ExtResource("6")
 name = "pending_needs"
 comparation = 0
 value = 0
 
-[sub_resource type="Resource" id=32]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="32"]
+script = ExtResource("2")
 from = "check_next_need"
 to = "new_need"
 conditions = {
-"pending_needs": SubResource( 31 )
+"pending_needs": SubResource("31")
 }
 priority = 0
 
-[sub_resource type="Resource" id=33]
-script = ExtResource( 6 )
+[sub_resource type="Resource" id="33"]
+script = ExtResource("6")
 name = "pending_needs"
 comparation = 2
 value = 0
 
-[sub_resource type="Resource" id=34]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="34"]
+script = ExtResource("2")
 from = "check_next_need"
 to = "pending_need"
 conditions = {
-"pending_needs": SubResource( 33 )
+"pending_needs": SubResource("33")
 }
 priority = 0
 
-[sub_resource type="Resource" id=29]
-script = ExtResource( 5 )
+[sub_resource type="Resource" id="29"]
+script = ExtResource("5")
 name = "need_solved"
 
-[sub_resource type="Resource" id=30]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="30"]
+script = ExtResource("2")
 from = "check_next_step"
 to = "check_next_need"
 conditions = {
-"need_solved": SubResource( 29 )
+"need_solved": SubResource("29")
 }
 priority = 0
 
-[sub_resource type="Resource" id=17]
-script = ExtResource( 5 )
+[sub_resource type="Resource" id="17"]
+script = ExtResource("5")
 name = "next_step_chosen"
 
-[sub_resource type="Resource" id=18]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="18"]
+script = ExtResource("2")
 from = "check_next_step"
 to = "traveling"
 conditions = {
-"next_step_chosen": SubResource( 17 )
+"next_step_chosen": SubResource("17")
 }
 priority = 0
 
-[sub_resource type="Resource" id=40]
-script = ExtResource( 5 )
+[sub_resource type="Resource" id="40"]
+script = ExtResource("5")
 name = "step_finished"
 
-[sub_resource type="Resource" id=8]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="8"]
+script = ExtResource("2")
 from = "doing_step"
 to = "finish_step"
 conditions = {
-"step_finished": SubResource( 40 )
+"step_finished": SubResource("40")
 }
 priority = 0
 
-[sub_resource type="Resource" id=36]
-script = ExtResource( 5 )
+[sub_resource type="Resource" id="36"]
+script = ExtResource("5")
 name = "interrupted"
 
-[sub_resource type="Resource" id=37]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="37"]
+script = ExtResource("2")
 from = "doing_step"
 to = "new_need"
 conditions = {
-"interrupted": SubResource( 36 )
+"interrupted": SubResource("36")
 }
 priority = 0
 
-[sub_resource type="Resource" id=39]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="39"]
+script = ExtResource("2")
 from = "finish_step"
 to = "check_next_step"
-conditions = {
-}
+conditions = {}
 priority = 0
 
-[sub_resource type="Resource" id=15]
-script = ExtResource( 5 )
+[sub_resource type="Resource" id="15"]
+script = ExtResource("5")
 name = "solution_chosen"
 
-[sub_resource type="Resource" id=16]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="16"]
+script = ExtResource("2")
 from = "new_need"
 to = "check_next_step"
 conditions = {
-"solution_chosen": SubResource( 15 )
+"solution_chosen": SubResource("15")
 }
 priority = 0
 
-[sub_resource type="Resource" id=26]
-script = ExtResource( 5 )
+[sub_resource type="Resource" id="26"]
+script = ExtResource("5")
 name = "next_step_chosen"
 
-[sub_resource type="Resource" id=27]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="27"]
+script = ExtResource("2")
 from = "pending_need"
 to = "traveling"
 conditions = {
-"next_step_chosen": SubResource( 26 )
+"next_step_chosen": SubResource("26")
 }
 priority = 0
 
-[sub_resource type="Resource" id=10]
-script = ExtResource( 5 )
+[sub_resource type="Resource" id="10"]
+script = ExtResource("5")
 name = "need_location_reached"
 
-[sub_resource type="Resource" id=7]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="7"]
+script = ExtResource("2")
 from = "traveling"
 to = "doing_step"
 conditions = {
-"need_location_reached": SubResource( 10 )
+"need_location_reached": SubResource("10")
 }
 priority = 0
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 name = ""
 states = {
-"Entry": SubResource( 1 ),
-"check_next_need": SubResource( 28 ),
-"check_next_step": SubResource( 14 ),
-"doing_step": SubResource( 21 ),
-"finish_step": SubResource( 38 ),
-"new_need": SubResource( 13 ),
-"pending_need": SubResource( 22 ),
-"traveling": SubResource( 2 )
+"Entry": SubResource("1"),
+"check_next_need": SubResource("28"),
+"check_next_step": SubResource("14"),
+"doing_step": SubResource("21"),
+"finish_step": SubResource("38"),
+"new_need": SubResource("13"),
+"pending_need": SubResource("22"),
+"traveling": SubResource("2")
 }
 transitions = {
 "Entry": {
-"new_need": SubResource( 12 )
+"new_need": SubResource("12")
 },
 "check_next_need": {
-"new_need": SubResource( 32 ),
-"pending_need": SubResource( 34 )
+"new_need": SubResource("32"),
+"pending_need": SubResource("34")
 },
 "check_next_step": {
-"check_next_need": SubResource( 30 ),
-"traveling": SubResource( 18 )
+"check_next_need": SubResource("30"),
+"traveling": SubResource("18")
 },
 "doing_step": {
-"finish_step": SubResource( 8 ),
-"new_need": SubResource( 37 )
+"finish_step": SubResource("8"),
+"new_need": SubResource("37")
 },
 "finish_step": {
-"check_next_step": SubResource( 39 )
+"check_next_step": SubResource("39")
 },
 "new_need": {
-"check_next_step": SubResource( 16 )
+"check_next_step": SubResource("16")
 },
 "pending_need": {
-"traveling": SubResource( 27 )
+"traveling": SubResource("27")
 },
 "traveling": {
-"doing_step": SubResource( 7 )
+"doing_step": SubResource("7")
 }
 }

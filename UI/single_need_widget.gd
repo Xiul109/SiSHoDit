@@ -1,10 +1,10 @@
 extends HBoxContainer
 
-var need_name : String setget neeed_name_set
-var need_level: float setget need_level_set
+var need_name : String : set = neeed_name_set
+var need_level: float : set = need_level_set
 
-onready var name_label = $NeedName
-onready var level_progress_bar = $NeedLevel
+@onready var name_label = $NeedName
+@onready var level_progress_bar = $NeedLevel
 
 
 func neeed_name_set(nname : String):

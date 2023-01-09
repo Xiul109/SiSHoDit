@@ -1,5 +1,5 @@
 class_name ValueRange
-extends Reference
+extends RefCounted
 
 func is_value_in_range(_val) -> bool:
 	return true

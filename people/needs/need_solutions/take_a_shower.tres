@@ -1,24 +1,23 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://col4p62rlw1o1"]
 
-[ext_resource path="res://people/needs/solution.gd" type="Script" id=1]
-[ext_resource path="res://people/needs/need_solutions/steps/change_clothes.tres" type="Resource" id=2]
-[ext_resource path="res://people/needs/solution_step.gd" type="Script" id=3]
+[ext_resource type="Script" path="res://people/needs/solution.gd" id="1"]
+[ext_resource type="Resource" path="res://people/needs/need_solutions/steps/change_clothes.tres" id="2"]
+[ext_resource type="Script" path="res://people/needs/solution_step.gd" id="3"]
 
-[sub_resource type="Resource" id=1]
+[sub_resource type="Resource" id="1"]
 resource_name = "take_a_shower_interrupt"
-script = ExtResource( 3 )
+script = ExtResource("3")
 object_key = "shower"
 use_object = true
 min_duration = 300.0
 max_duration = 900.0
-needs_solved = [ "dirty" ]
-needs_with_modified_rate = {
-}
+needs_solved = ["dirty"]
+needs_with_modified_rate = {}
 probability_of_not_being_interrupted = 1.0
 min_value_to_be_interrupted = 0.5
 
 [resource]
 resource_name = "take_a_shower"
-script = ExtResource( 1 )
-steps = [ ExtResource( 2 ), SubResource( 1 ), ExtResource( 2 ) ]
+script = ExtResource("1")
+steps = [ExtResource("2"), SubResource("1"), ExtResource("2")]
 weight = 1.0

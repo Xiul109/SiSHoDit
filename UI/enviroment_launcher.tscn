@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://doesl3b3cprky"]
 
-[ext_resource path="res://UI/enviroment_launcher.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://UI/enviroment_launcher.gd" id="1"]
 
 [node name="enviroment_launcher" type="Button"]
-margin_right = 230.0
-margin_bottom = 38.251
+offset_right = 230.0
+offset_bottom = 38.251
 size_flags_horizontal = 5
 text = "button"
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [connection signal="pressed" from="." to="." method="_on_Button_pressed"]

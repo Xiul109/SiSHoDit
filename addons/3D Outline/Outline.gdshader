@@ -4,7 +4,7 @@ render_mode unshaded, cull_front;
 uniform bool enable = true; // on and off switsch to diesable/enable the outline
 // outline costumization
 uniform float outline_thickness = 0.05; // how thick is the outline?
-uniform vec4 color : hint_color = vec4(0.0); // which color does the outline have?
+uniform vec4 color : source_color = vec4(0.0); // which color does the outline have?
 
 
 void vertex() {

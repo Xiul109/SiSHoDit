@@ -1,12 +1,12 @@
-tool
+@tool
 extends Control
 const StackPlayer = preload("../StackPlayer.gd")
 const StackItem = preload("StackItem.tscn")
 
-onready var Stack = $MarginContainer/Stack
+@onready var Stack = $MarginContainer/Stack
 
 
-func _get_configuration_warning():
+func _get_configuration_warnings():
 	if not (get_parent() is StackPlayer):
 		return "Debugger must be child of StackPlayer"
 	return ""
@@ -15,8 +15,8 @@ func _ready():
 	if Engine.editor_hint:
 		return
 
-	get_parent().connect("pushed", self, "_on_StackPlayer_pushed")
-	get_parent().connect("popped", self, "_on_StackPlayer_popped")
+	get_parent().connect("pushed",Callable(self,"_on_StackPlayer_pushed"))
+	get_parent().connect("popped",Callable(self,"_on_StackPlayer_popped"))
 	sync_stack()
 
 # Override to handle custom object presentation
@@ -24,7 +24,7 @@ func _on_set_label(label, obj):
 	label.text = obj
 
 func _on_StackPlayer_pushed(to):
-	var stack_item = StackItem.instance()
+	var stack_item = StackItem.instantiate()
 	_on_set_label(stack_item.get_node("Label"), to)
 	Stack.add_child(stack_item)
 	Stack.move_child(stack_item, 0)
@@ -37,7 +37,7 @@ func sync_stack():
 	var diff = Stack.get_child_count() - get_parent().stack.size()
 	for i in abs(diff):
 		if diff < 0:
-			var stack_item = StackItem.instance()
+			var stack_item = StackItem.instantiate()
 			Stack.add_child(stack_item)
 		else:
 			var child = Stack.get_child(0)

@@ -1,7 +1,7 @@
-tool
+@tool
 extends ConfirmationDialog
 
-onready var tree : Tree = $VBoxContainer/Tree
+@onready var tree : Tree = $VBoxContainer/Tree
 
 var native : PopupMenu
 var schemas = []
@@ -33,7 +33,7 @@ func decorate(native: PopupMenu):
 		var btn = add_button(native.get_item_text(idx), true, str(native.get_item_id(idx)))
 		btn.icon = native.get_item_icon(idx)
 	
-	var cancel_btn = get_cancel()
+	var cancel_btn = get_cancel_button()
 	remove_button(cancel_btn)
 	add_button(cancel_btn.text, true, "cancel")
 	
@@ -51,7 +51,7 @@ func _on_ExchangedResourcePicker_confirmed():
 func _on_LineEdit_text_changed(new_text: String):
 	var filtered = []
 	
-	if new_text.empty():
+	if new_text.is_empty():
 		filtered = self.schemas
 	else:
 		for schema in self.schemas:

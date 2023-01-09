@@ -30,8 +30,8 @@ FlowChartNode/styles/focus = SubResource( 1 )
 FlowChartNode/styles/normal = SubResource( 2 )
 
 [node name="FlowChartNode" type="Container"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 mouse_filter = 1
 theme = SubResource( 3 )
 script = ExtResource( 1 )

@@ -1,15 +1,15 @@
 class_name Sensor
 extends Node
 
-export var sensor_name : String = "sensor"
-export var sensor_type: String = "generic"
+@export var sensor_name : String = "sensor"
+@export var sensor_type: String = "generic"
 
-export(float, 1) var not_triggered_prob : float = 0
-export(float, 1) var wrong_value_prob: float = 0
-export(float) var average_time_between_wrong_triggers : float = 0
-export(float) var std_time_between_wrong_triggers : float = 0
+@export var not_triggered_prob : float = 0 # (float, 1)
+@export var wrong_value_prob: float = 0 # (float, 1)
+@export var average_time_between_wrong_triggers: float = 0
+@export var std_time_between_wrong_triggers: float = 0
 
-export(String, "binary", "other") var range_type = "binary"
+@export var range_type = "binary" # (String, "binary", "other")
 var value_range : ValueRange
 
 var stored_not_triggered_prob : float = 0
@@ -34,7 +34,7 @@ func get_time_until_wrong_trigger():
 	var rng = RandomNumberGenerator.new()
 	rng.seed = GlobalVar.rnd_seed
 	return max(rng.randfn(average_time_between_wrong_triggers,
-					  std_time_between_wrong_triggers), 0.001)
+						std_time_between_wrong_triggers), 0.001)
 	
 ### public methods ###
 func init_value_range(r_type):

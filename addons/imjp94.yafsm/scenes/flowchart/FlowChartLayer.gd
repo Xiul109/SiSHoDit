@@ -1,4 +1,4 @@
-tool
+@tool
 extends Control
 const FlowChartNode = preload("res://addons/imjp94.yafsm/scenes/flowchart/FlowChartNode.gd")
 
@@ -28,7 +28,7 @@ func show_content():
 	content_nodes.show()
 	content_lines.show()
 
-# Get required scroll rect base on content
+# Get required scroll rect base checked content
 func get_scroll_rect(scroll_margin=0):
 	var rect = Rect2()
 	for child in content_nodes.get_children():
@@ -137,19 +137,19 @@ class Connection:
 	var to_node
 	var offset = 0 # line's y offset to make space for two interconnecting lines
 
-	func _init(p_line, p_from_node, p_to_node):
+	func _init(p_line,p_from_node,p_to_node):
 		line = p_line
 		from_node = p_from_node
 		to_node = p_to_node
 
 	# Update line position
 	func join():
-		line.join(get_from_pos(), get_to_pos(), offset, [from_node.get_rect() if from_node else Rect2(), to_node.get_rect() if to_node else Rect2()])
+		get_from_pos(.join(line), get_to_pos(), offset, [from_node.get_rect() if from_node else Rect2(), to_node.get_rect() if to_node else Rect2()])
 
 	# Return start position of line
 	func get_from_pos():
-		return from_node.rect_position + from_node.rect_size / 2
+		return from_node.position + from_node.size / 2
 
 	# Return destination position of line
 	func get_to_pos():
-		return to_node.rect_position + to_node.rect_size / 2 if to_node else line.rect_position
+		return to_node.position + to_node.size / 2 if to_node else line.position

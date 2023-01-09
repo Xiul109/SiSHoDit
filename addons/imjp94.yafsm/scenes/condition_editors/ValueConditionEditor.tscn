@@ -7,25 +7,25 @@
 script = ExtResource( 2 )
 
 [node name="Comparation" type="Button" parent="." index="1"]
-margin_left = 62.0
-margin_top = 2.0
-margin_right = 90.0
-margin_bottom = 22.0
+offset_left = 62.0
+offset_top = 2.0
+offset_right = 90.0
+offset_bottom = 22.0
 size_flags_horizontal = 5
 size_flags_vertical = 4
 text = "=="
 
 [node name="PopupMenu" type="PopupMenu" parent="Comparation" index="0"]
-margin_right = 20.0
-margin_bottom = 20.0
+offset_right = 20.0
+offset_bottom = 20.0
 items = [ "==", null, 0, false, false, 0, 0, null, "", false, "!=", null, 0, false, false, 1, 0, null, "", false, ">", null, 0, false, false, 2, 0, null, "", false, "<", null, 0, false, false, 3, 0, null, "", false, "≥", null, 0, false, false, 4, 0, null, "", false, "≤", null, 0, false, false, 5, 0, null, "", false ]
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="2"]
-margin_left = 94.0
-margin_right = 94.0
-margin_bottom = 24.0
+offset_left = 94.0
+offset_right = 94.0
+offset_bottom = 24.0
 
 [node name="Remove" parent="." index="3"]
-margin_left = 98.0
-margin_right = 128.0
-hint_tooltip = "Remove Condition"
+offset_left = 98.0
+offset_right = 128.0
+tooltip_text = "Remove Condition"

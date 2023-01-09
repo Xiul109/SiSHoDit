@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://bxjl7hrpf0exi"]
 
-[ext_resource path="res://UI/needs_widget.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://UI/needs_widget.gd" id="1"]
+[ext_resource type="Theme" uid="uid://hi3d6l7abu2t" path="res://assets/GUI/theme.tres" id="1_ahj0r"]
 
 [node name="needs_widget" type="VBoxContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_ahj0r")
 alignment = 1
-script = ExtResource( 1 )
+script = ExtResource("1")

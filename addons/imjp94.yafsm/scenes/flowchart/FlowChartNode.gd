@@ -1,8 +1,8 @@
-tool
+@tool
 extends Container
 # Custom style normal, focus
 
-var selected = false setget set_selected
+var selected = false : set = set_selected
 
 
 func _init():
@@ -11,16 +11,16 @@ func _init():
 
 func _draw():
 	if selected:
-		draw_style_box(get_stylebox("focus", "FlowChartNode"), Rect2(Vector2.ZERO, rect_size))
+		draw_style_box(get_stylebox("focus", "FlowChartNode"), Rect2(Vector2.ZERO, size))
 	else:
-		draw_style_box(get_stylebox("normal", "FlowChartNode"), Rect2(Vector2.ZERO, rect_size))
+		draw_style_box(get_stylebox("normal", "FlowChartNode"), Rect2(Vector2.ZERO, size))
 
 func _notification(what):
 	match what:
 		NOTIFICATION_SORT_CHILDREN:
 			for child in get_children():
 				if child is Control:
-					fit_child_in_rect(child, Rect2(Vector2.ZERO, rect_size))
+					fit_child_in_rect(child, Rect2(Vector2.ZERO, size))
 
 func _get_minimum_size():
 	return Vector2(50, 50)

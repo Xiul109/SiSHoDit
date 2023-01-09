@@ -1,16 +1,16 @@
-tool
+@tool
 extends Resource
 
 signal condition_added(condition)
 signal condition_removed(condition)
 
-export(String) var from # Name of state transiting from
-export(String) var to # Name of state transiting to
-export(Dictionary) var conditions setget ,get_conditions # Conditions to transit successfuly, keyed by Condition.name
-export(int) var priority = 0 # Higher the number, higher the priority
+@export var from: String # Name of state transiting from
+@export var to: String # Name of state transiting to
+@export var conditions: Dictionary : get = get_conditions # Conditions to transit successfuly, keyed by Condition.name
+@export var priority: int = 0 # Higher the number, higher the priority
 
 
-func _init(p_from="", p_to="", p_conditions={}):
+func _init(p_from="",p_to="",p_conditions={}):
 	from = p_from
 	to = p_to
 	conditions = p_conditions

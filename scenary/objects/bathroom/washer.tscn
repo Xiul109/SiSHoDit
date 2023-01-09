@@ -3,16 +3,16 @@
 [ext_resource path="res://assets/furnitures_kenney/washer.glb" type="PackedScene" id=1]
 [ext_resource path="res://scenary/tools/duration_usable.tscn" type="PackedScene" id=2]
 
-[sub_resource type="ConvexPolygonShape" id=1]
-points = PoolVector3Array( 0, 0, -0.35, 0.389962, 0, -0.35, 0, 0, -0.0200078, 0, 0.47, -0.35, 0.389962, 0, -0.0200078, 0.389962, 0.47, -0.35, 0, 0.0625225, -3.42429e-05, 0, 0.47, -0.0192198, 0.389962, 0.0625225, -3.42429e-05, 0.389962, 0.47, -0.0192198, 0, 0.388983, -3.42429e-05, 0.0169117, 0.405453, -0.00390562, 0.389962, 0.388983, -3.42429e-05, 0.37305, 0.405453, -0.00390562 )
+[sub_resource type="ConvexPolygonShape3D" id=1]
+points = PackedVector3Array( 0, 0, -0.35, 0.389962, 0, -0.35, 0, 0, -0.0200078, 0, 0.47, -0.35, 0.389962, 0, -0.0200078, 0.389962, 0.47, -0.35, 0, 0.0625225, -3.42429e-05, 0, 0.47, -0.0192198, 0.389962, 0.0625225, -3.42429e-05, 0.389962, 0.47, -0.0192198, 0, 0.388983, -3.42429e-05, 0.0169117, 0.405453, -0.00390562, 0.389962, 0.388983, -3.42429e-05, 0.37305, 0.405453, -0.00390562 )
 
 [node name="washer" groups=["washer"] instance=ExtResource( 1 )]
 
 [node name="washer(Clone)" parent="." index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206, 0, -0.0393823 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206, 0, -0.0393823 )
 
-[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206, 0, -0.0393823 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.206, 0, -0.0393823 )
 shape = SubResource( 1 )
 
 [node name="DurationUsable" parent="." index="2" instance=ExtResource( 2 )]

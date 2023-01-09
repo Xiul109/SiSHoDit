@@ -1,4 +1,4 @@
-tool
+@tool
 extends "State.gd"
 const State = preload("State.gd")
 const Transition = preload("../transitions/Transition.gd")
@@ -6,12 +6,12 @@ const Transition = preload("../transitions/Transition.gd")
 signal transition_added(transition) # Transition added
 signal transition_removed(to_state) # Transition removed
 
-export(Dictionary) var states setget ,get_states # States within this StateMachine, keyed by State.name
-export(Dictionary) var transitions setget ,get_transitions # Transitions from this state, keyed by Transition.to
+@export var states: Dictionary : get = get_states # States within this StateMachine, keyed by State.name
+@export var transitions: Dictionary :get = get_transitions # Transitions from this state, keyed by Transition.to
 
 
-func _init(p_name="", p_transitions={}, p_states={}):
-	._init(p_name)
+func _init(p_name="",p_transitions={},p_states={}):
+	super._init(p_name)
 	transitions = p_transitions
 	states = p_states
 
@@ -50,7 +50,7 @@ func transit(current_state, params={}, local_params={}):
 	var from_transitions = end_state_machine.transitions.get(nested_states[nested_states.size()-1])
 	if from_transitions:
 		var from_transitions_array = from_transitions.values()
-		from_transitions_array.sort_custom(Transition, "sort")
+		from_transitions_array.sort_custom(Callable(Transition,"sort"))
 		
 		for transition in from_transitions_array:
 			var next_state = transition.transit(params, local_params)
@@ -68,7 +68,7 @@ func transit(current_state, params={}, local_params={}):
 # *It is impossible to get parent state machine with path like "../sibling", as StateMachine is not structed as a Tree
 func get_state(path):
 	var state
-	if path.empty():
+	if path.is_empty():
 		state = self
 	else:
 		var nested_states = path.split("/")
@@ -145,7 +145,7 @@ func remove_transition(from_state, to_state):
 	if from_transitions:
 		if to_state in from_transitions:
 			from_transitions.erase(to_state)
-			if from_transitions.empty():
+			if from_transitions.is_empty():
 				transitions.erase(from_state)
 			emit_signal("transition_removed", from_state, to_state)
 
@@ -172,7 +172,7 @@ func get_transitions():
 static func join_path(base, dirs):
 	var path = base
 	for dir in dirs:
-		if path.empty():
+		if path.is_empty():
 			path = dir
 		else:
 			path = str(path, "/", dir)

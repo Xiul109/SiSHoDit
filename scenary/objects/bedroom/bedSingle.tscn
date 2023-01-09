@@ -3,16 +3,16 @@
 [ext_resource path="res://assets/furnitures_kenney/bedSingle.glb" type="PackedScene" id=1]
 [ext_resource path="res://scenary/tools/usable.tscn" type="PackedScene" id=2]
 
-[sub_resource type="ConvexPolygonShape" id=1]
-points = PoolVector3Array( 0.953, 0.124988, 0, 0.953, 0.0499951, 0, 0.953, 0.375, -1.02501, 0.927947, 0.224978, -0.0251076, 0.388, 0.124988, 0, 0.932979, 3.31177e-14, 0, 0.953, 0.0499951, -1.125, 0.953, 0.375, -1.125, 0.388, 0.375, -1.02501, 0.412998, 0.224978, -0.0251076, 0.388, 0.0499951, 0, 0.407965, 3.31177e-14, 0, 0.932979, 3.31177e-14, -1.125, 0.388, 0.375, -1.125, 0.388, 0.0499951, -1.125, 0.407965, 3.31177e-14, -1.125 )
+[sub_resource type="ConvexPolygonShape3D" id=1]
+points = PackedVector3Array( 0.953, 0.124988, 0, 0.953, 0.0499951, 0, 0.953, 0.375, -1.02501, 0.927947, 0.224978, -0.0251076, 0.388, 0.124988, 0, 0.932979, 3.31177e-14, 0, 0.953, 0.0499951, -1.125, 0.953, 0.375, -1.125, 0.388, 0.375, -1.02501, 0.412998, 0.224978, -0.0251076, 0.388, 0.0499951, 0, 0.407965, 3.31177e-14, 0, 0.932979, 3.31177e-14, -1.125, 0.388, 0.375, -1.125, 0.388, 0.0499951, -1.125, 0.407965, 3.31177e-14, -1.125 )
 
 [node name="bedSingle" groups=["bed", "sleep"] instance=ExtResource( 1 )]
 
 [node name="bedSingle(Clone)" parent="." index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667877, 0, 0.784414 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667877, 0, 0.784414 )
 
-[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667877, 0, 0.784414 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667877, 0, 0.784414 )
 shape = SubResource( 1 )
 
 [node name="Usable" parent="." index="2" instance=ExtResource( 2 )]

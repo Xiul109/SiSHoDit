@@ -3,7 +3,7 @@ extends Control
 const enviroment_launcher = preload("res://UI/enviroment_launcher.tscn")
 const enviroments_path = "res://scenary/enviroments/"
 
-export var enviroments = {}
+@export var enviroments = {}
 
 func _ready():
 	enviroments = _load_scenes_from(enviroments_path)
@@ -11,15 +11,14 @@ func _ready():
 
 func _init_enviroments_menu():
 	for key in enviroments:
-		var el = enviroment_launcher.instance()
+		var el = enviroment_launcher.instantiate()
 		el.text = key
 		el.scene = enviroments[key]
 		$ScrollContainer/VBoxContainer.add_child(el)
 
 func _load_scenes_from(path):
 	var scenes = {}
-	var dir = Directory.new()
-	dir.open(path)
+	var dir = DirAccess.open(path)
 	dir.list_dir_begin()
 
 	while true:

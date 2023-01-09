@@ -1,6 +1,6 @@
-extends Spatial
+extends Node3D
 
-onready var sensor = $Sensor
+@onready var sensor = $Sensor
 
 func _on_Area_body_entered(body):
 	print("enter")

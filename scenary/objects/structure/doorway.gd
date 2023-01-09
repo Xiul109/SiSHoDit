@@ -1,9 +1,9 @@
-extends StaticBody
+extends StaticBody3D
 
 
-export var autocloses = false
+@export var autocloses = false
 
-onready var door = $"doorway(Clone)/door"
+@onready var door = $"doorway(Clone)/door"
 
 var state = "close"
 

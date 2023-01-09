@@ -1,4 +1,4 @@
-tool
+@tool
 extends "res://addons/imjp94.yafsm/scenes/flowchart/FlowChart.gd"
 const StateMachinePlayer = preload("../src/StateMachinePlayer.gd")
 const StateMachine = preload("../src/states/StateMachine.gd")
@@ -27,26 +27,26 @@ const DEBUG_MODE_MSG = {
 	"text": "Debug Mode"
 }
 
-onready var context_menu = $ContextMenu
-onready var state_node_context_menu = $StateNodeContextMenu
-onready var convert_to_state_confirmation = $ConvertToStateConfirmation
-onready var save_dialog = $SaveDialog
-onready var create_new_state_machine_container = $MarginContainer
-onready var create_new_state_machine = $MarginContainer/CreateNewStateMachine
-onready var param_panel = $ParametersPanel
+@onready var context_menu = $ContextMenu
+@onready var state_node_context_menu = $StateNodeContextMenu
+@onready var convert_to_state_confirmation = $ConvertToStateConfirmation
+@onready var save_dialog = $SaveDialog
+@onready var create_new_state_machine_container = $MarginContainer
+@onready var create_new_state_machine = $MarginContainer/CreateNewStateMachine
+@onready var param_panel = $ParametersPanel
 var path_viewer = HBoxContainer.new()
 var condition_visibility = TextureButton.new()
 var unsaved_indicator = Label.new()
 var message_box = VBoxContainer.new()
 
-var editor_accent_color = Color.white
+var editor_accent_color = Color.WHITE
 var transition_arrow_icon
 
 var undo_redo
 
-var debug_mode = false setget set_debug_mode
-var state_machine_player setget set_state_machine_player
-var state_machine setget set_state_machine
+var debug_mode = false : set = set_debug_mode
+var state_machine_player : set = set_state_machine_player
+var state_machine : set = set_state_machine
 var can_gui_name_edit = true
 var can_gui_context_menu = true
 
@@ -62,23 +62,23 @@ var _last_stack = []
 func _init():
 	path_viewer.mouse_filter = MOUSE_FILTER_IGNORE
 	path_viewer.set_script(PathViewer)
-	path_viewer.connect("dir_pressed", self, "_on_path_viewer_dir_pressed")
+	path_viewer.connect("dir_pressed",Callable(self,"_on_path_viewer_dir_pressed"))
 	top_bar.add_child(path_viewer)
 
-	condition_visibility.hint_tooltip = "Hide/Show Conditions on Transition Line"
+	condition_visibility.tooltip_text = "Hide/Show Conditions checked Transition Line"
 	condition_visibility.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
 	condition_visibility.toggle_mode = true
 	condition_visibility.size_flags_vertical = SIZE_SHRINK_CENTER
 	condition_visibility.focus_mode = FOCUS_NONE
-	condition_visibility.connect("pressed", self, "_on_condition_visibility_pressed")
-	condition_visibility.pressed = true
+	condition_visibility.connect("pressed",Callable(self,"_on_condition_visibility_pressed"))
+	condition_visibility.button_pressed = true
 	gadget.add_child(condition_visibility)
 
 	unsaved_indicator.size_flags_vertical = SIZE_SHRINK_CENTER
 	unsaved_indicator.focus_mode = FOCUS_NONE
 	gadget.add_child(unsaved_indicator)
 
-	message_box.set_anchors_and_margins_preset(PRESET_BOTTOM_WIDE)
+	message_box.set_anchors_and_offsets_preset(PRESET_BOTTOM_WIDE)
 	message_box.grow_vertical = GROW_DIRECTION_BEGIN
 	add_child(message_box)
 
@@ -88,11 +88,11 @@ func _init():
 
 func _ready():
 	create_new_state_machine_container.visible = false
-	create_new_state_machine.connect("pressed", self, "_on_create_new_state_machine_pressed")
-	context_menu.connect("index_pressed", self, "_on_context_menu_index_pressed")
-	state_node_context_menu.connect("index_pressed", self, "_on_state_node_context_menu_index_pressed")
-	convert_to_state_confirmation.connect("confirmed", self, "_on_convert_to_state_confirmation_confirmed")
-	save_dialog.connect("confirmed", self, "_on_save_dialog_confirmed")
+	create_new_state_machine.connect("pressed",Callable(self,"_on_create_new_state_machine_pressed"))
+	context_menu.connect("index_pressed",Callable(self,"_on_context_menu_index_pressed"))
+	state_node_context_menu.connect("index_pressed",Callable(self,"_on_state_node_context_menu_index_pressed"))
+	convert_to_state_confirmation.connect("confirmed",Callable(self,"_on_convert_to_state_confirmation_confirmed"))
+	save_dialog.connect("confirmed",Callable(self,"_on_save_dialog_confirmed"))
 
 func _process(delta):
 	if not debug_mode:
@@ -128,7 +128,7 @@ func _process(delta):
 						break
 				if common_index > -1:
 					var count_from_last_stack = _last_stack.size()-1 - common_index -1
-					_last_stack.invert()
+					_last_stack.reverse()
 					# Transit back to common state
 					for i in count_from_last_stack:
 						set_current_state(_last_stack[i + 1])
@@ -170,7 +170,7 @@ func _on_path_viewer_dir_pressed(dir, index):
 	_last_path = path
 
 func _on_context_menu_index_pressed(index):
-	var new_node = StateNode.instance()
+	var new_node = StateNode.instantiate()
 	new_node.theme.get_stylebox("focus", "FlowChartNode").border_color = editor_accent_color
 	match index:
 		0: # Add State
@@ -185,7 +185,7 @@ func _on_context_menu_index_pressed(index):
 				push_warning("Exit node already exist")
 				return
 			new_node.name = State.EXIT_STATE
-	new_node.rect_position = content_position(get_local_mouse_position())
+	new_node.position = content_position(get_local_mouse_position())
 	add_node(current_layer, new_node)
 
 func _on_state_node_context_menu_index_pressed(index):
@@ -283,11 +283,11 @@ func _on_state_machine_changed(new_state_machine):
 func _gui_input(event):
 	if event is InputEventMouseButton:
 		match event.button_index:
-			BUTTON_RIGHT:
+			MOUSE_BUTTON_RIGHT:
 				if event.pressed and can_gui_context_menu:
 					context_menu.set_item_disabled(1, current_layer.state_machine.has_entry())
 					context_menu.set_item_disabled(2, current_layer.state_machine.has_exit())
-					context_menu.rect_position = get_viewport().get_mouse_position()
+					context_menu.position = get_viewport().get_mouse_position()
 					context_menu.popup()
 
 func _input(event):
@@ -352,7 +352,7 @@ func _on_state_node_gui_input(event, node):
 
 	if event is InputEventMouseButton:
 		match event.button_index:
-			BUTTON_LEFT:
+			MOUSE_BUTTON_LEFT:
 				if event.pressed:
 					if event.doubleclick:
 						if node.name_edit.get_rect().has_point(event.position) and can_gui_name_edit:
@@ -363,11 +363,11 @@ func _on_state_node_gui_input(event, node):
 							var layer = create_layer(node)
 							select_layer(layer)
 							accept_event()
-			BUTTON_RIGHT:
+			MOUSE_BUTTON_RIGHT:
 				if event.pressed:
 					# State node context menu
 					_context_node = node
-					state_node_context_menu.rect_position = get_viewport().get_mouse_position()
+					state_node_context_menu.position = get_viewport().get_mouse_position()
 					state_node_context_menu.popup()
 					state_node_context_menu.set_item_disabled(3, not (node.state is StateMachine))
 					accept_event()
@@ -407,7 +407,7 @@ func create_layer_instance():
 	return layer
 
 func create_line_instance():
-	var line = TransitionLine.instance()
+	var line = TransitionLine.instantiate()
 	line.theme.get_stylebox("focus", "FlowChartLine").shadow_color = editor_accent_color
 	line.theme.set_icon("arrow", "FlowChartLine", transition_arrow_icon)
 	return line
@@ -441,14 +441,14 @@ func clear_graph(layer):
 func draw_graph(layer):
 	for state_key in layer.state_machine.states.keys():
 		var state = layer.state_machine.states[state_key]
-		var new_node = StateNode.instance()
+		var new_node = StateNode.instantiate()
 		new_node.theme.get_stylebox("focus", "FlowChartNode").border_color = editor_accent_color
 		new_node.name = state_key # Set before add_node to let engine handle duplicate name
 		add_node(layer, new_node)
 		# Set after add_node to make sure UIs are initialized
 		new_node.state = state
 		new_node.state.name = state_key
-		new_node.rect_position = state.graph_offset
+		new_node.position = state.graph_offset
 	for state_key in layer.state_machine.states.keys():
 		var from_transitions = layer.state_machine.transitions.get(state_key)
 		if from_transitions:
@@ -512,15 +512,15 @@ func _on_layer_deselected(layer):
 		layer.hide_content()
 
 func _on_node_dragged(layer, node, dragged):
-	node.state.graph_offset = node.rect_position
+	node.state.graph_offset = node.position
 	_on_edited()
 
 func _on_node_added(layer, new_node):
 	new_node.undo_redo = undo_redo
 	new_node.state.name = new_node.name
-	new_node.state.graph_offset = new_node.rect_position
-	new_node.connect("name_edit_entered", self, "_on_node_name_edit_entered", [new_node])
-	new_node.connect("gui_input", self, "_on_state_node_gui_input", [new_node])
+	new_node.state.graph_offset = new_node.position
+	new_node.connect("name_edit_entered",Callable(self,"_on_node_name_edit_entered").bind(new_node))
+	new_node.connect("gui_input",Callable(self,"_on_state_node_gui_input").bind(new_node))
 	layer.state_machine.add_state(new_node.state)
 	check_has_entry()
 	check_has_exit()
@@ -653,7 +653,7 @@ func _on_remote_transited(from, to):
 					var layer = create_layer(node)
 					select_layer(layer)
 		# In case where, "from" state is nested yet not an exit state,
-		# while "to" state is on different level, then jump to destination layer directly.
+		# while "to" state is checked different level, then jump to destination layer directly.
 		# This happens when StateMachinePlayer transit to state that existing in the stack,
 		# which trigger StackPlayer.reset() and cause multiple states removed from stack within one frame
 		elif from_dir.is_nested() and not from_dir.is_exit():
@@ -676,7 +676,7 @@ func can_save():
 	if not state_machine:
 		return false
 	var resource_path = state_machine.resource_path
-	if resource_path.empty():
+	if resource_path.is_empty():
 		return false
 	if ".scn" in resource_path or ".tscn" in resource_path: # Built-in resource will be saved by scene
 		return false

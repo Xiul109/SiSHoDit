@@ -1,4 +1,4 @@
-tool
+@tool
 extends EditorInspectorPlugin
 const Transition = preload("res://addons/imjp94.yafsm/src/transitions/Transition.gd")
 
@@ -18,10 +18,10 @@ func parse_property(object, type, path, hint, hint_text, usage):
 		"to":
 			return true
 		"conditions":
-			var transition_editor = TransitionEditor.instance() # Will be freed by editor
+			var transition_editor = TransitionEditor.instantiate() # Will be freed by editor
 			transition_editor.undo_redo = undo_redo
 			add_custom_control(transition_editor)
-			transition_editor.connect("ready", self, "_on_transition_editor_tree_entered", [transition_editor, object])
+			transition_editor.connect("ready",Callable(self,"_on_transition_editor_tree_entered").bind(transition_editor, object))
 			return true
 		"priority":
 			return true

@@ -2,7 +2,7 @@
 const StackPlayer = preload("src/StackPlayer.gd")
 const StateMachinePlayer = preload("src/StateMachinePlayer.gd")
 
-# Reference
+# RefCounted
 const StateDirectory = preload("src/StateDirectory.gd")
 
 # Resources

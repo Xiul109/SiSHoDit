@@ -2,14 +2,14 @@ class_name Need
 
 extends Resource
 
-export var need_key : String
-export(Array, Resource) var solutions = []
+@export var need_key : String
+@export var solutions : Array[Solution] = [] # (Array, Resource)
 var viable_solutions = []
 
-export var time_to_fill_level : float
+@export var time_to_fill_level : float
  
-export(float, 1) var level : float = 0 setget level_set
-export(float, 1) var min_level_before_solve : float
+@export var level : float = 0 : set = level_set # (float, 1)
+@export var min_level_before_solve : float # (float, 1)
 
 
 func increase_level(delta):

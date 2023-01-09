@@ -1,10 +1,10 @@
 class_name Usable
 extends AbstractUsable
 
-export var start_event_value : float = 1
-export var end_event_value : float = 0
+@export var start_event_value : float = 1
+@export var end_event_value : float = 0
 
-onready var _sensor : Sensor = $Sensor
+@onready var _sensor : Sensor = $Sensor
 
 ### overriden methods ###
 func _ready():
@@ -13,10 +13,10 @@ func _ready():
 ### To be overriden if needed ###
 func start_using(_user: BasicPerson):
 	_sensor.activate(start_event_value)
-	.start_using(_user)
+	super.start_using(_user)
 	
 func finish_using(_user: BasicPerson):
 	_sensor.activate(end_event_value)
-	.finish_using(_user)
+	super.finish_using(_user)
 
 

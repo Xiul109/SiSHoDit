@@ -5,14 +5,14 @@ static func popup_on_target(popup, target):
 	var cp_rect = Rect2(Vector2.ZERO, popup.get_size())
 	for i in 4:
 		if i > 1:
-			cp_rect.position.y = target.rect_global_position.y - cp_rect.size.y
+			cp_rect.position.y = target.global_position.y - cp_rect.size.y
 		else:
-			cp_rect.position.y = target.rect_global_position.y + target.get_size().y
+			cp_rect.position.y = target.global_position.y + target.get_size().y
 
 		if i & 1:
-			cp_rect.position.x = target.rect_global_position.x
+			cp_rect.position.x = target.global_position.x
 		else:
-			cp_rect.position.x = target.rect_global_position.x - max(0, cp_rect.size.x - target.get_size().x)
+			cp_rect.position.x = target.global_position.x - max(0, cp_rect.size.x - target.get_size().x)
 
 		if usable_rect.encloses(cp_rect):
 			break
@@ -49,7 +49,7 @@ class CohenSutherland:
 
 	# Cohen-Sutherland clipping algorithm clips a line from
 	# P0 = (x0, y0) to P1 = (x1, y1) against a rectangle with
-	# diagonal from start(x_min, y_min) to end(x_max, y_max)
+	# diagonal from start(Callable(x_min,y_min)) to end(x_max, y_max)
 	static func line_intersect_rectangle(from, to, rect):
 		var x_min = rect.position.x
 		var y_min = rect.position.y

@@ -1,16 +1,16 @@
-extends Spatial
+extends Node3D
 
-export var look_sensitivity : float = 15.0
-export var min_look_angle : float = -20
-export var max_look_angle : float = 75
+@export var look_sensitivity : float = 15.0
+@export var min_look_angle : float = -20
+@export var max_look_angle : float = 75
 
 var mouse_delta : Vector2 = Vector2()
 
-onready var player = get_parent()
+@onready var player = get_parent()
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	$ClippedCamera.add_exception(get_parent())
+#func _ready():
+#	$Camera3D.add_exception(get_parent())
 
 
 func _input(event):

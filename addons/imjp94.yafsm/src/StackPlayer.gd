@@ -10,8 +10,8 @@ enum ResetEventTrigger {
 	LAST_TO_DEST = 1 # Only last state and destination will emit event
 }
 
-var current setget ,get_current # Current item on top of stack
-var stack setget set_stack, get_stack
+var current : get = get_current # Current item checked top of stack
+var stack #:  set = set_stack#, get = get_stack
 
 
 func _init():
@@ -24,7 +24,7 @@ func push(to):
 	_on_pushed(from, to)
 	emit_signal("pushed", to)
 
-# Remove the current item on top of stack
+# Remove the current item checked top of stack
 func pop():
 	var to = get_previous()
 	var from = stack.pop_back()
@@ -42,7 +42,7 @@ func _on_popped(from, to):
 # Reset stack to given index, -1 to clear all item by default
 # Use ResetEventTrigger to define how _on_popped should be called
 func reset(to=-1, event=ResetEventTrigger.ALL):
-	assert(to > -2 and to < stack.size(), "Reset to index(%d) out of bounds(%d)" % [to, stack.size()])
+	assert(to > -2 and to < stack.size()) #,"Reset to index(%d) out of bounds(%d)" % [to, stack.size()])
 	var last_index = stack.size() - 1
 	var first_state = ""
 	var num_to_pop = last_index - to
@@ -76,7 +76,7 @@ func get_stack():
 	return stack.duplicate()
 
 func get_current():
-	return stack.back() if not stack.empty() else null
+	return stack.back() if not stack.is_empty() else null
 
 func get_previous():
 	return stack[stack.size() - 2] if stack.size() > 1 else null
