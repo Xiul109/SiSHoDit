@@ -34,8 +34,8 @@ size_flags_vertical = 3
 
 [node name="seed_widget" parent="." instance=ExtResource("3")]
 anchors_preset = 4
-offset_left = 0.0
-offset_top = -54.5
-offset_right = 121.0
-offset_bottom = 54.5
+offset_left = 23.0
+offset_top = -57.0
+offset_right = 156.0
+offset_bottom = 52.0
 grow_vertical = 2
