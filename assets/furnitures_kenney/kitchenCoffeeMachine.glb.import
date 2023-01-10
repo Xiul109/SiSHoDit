@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dqtvqrdj7a7hv"
+uid="uid://bayf4ddkji6w4"
 path="res://.godot/imported/kitchenCoffeeMachine.glb-df8406d5476ee8ea86f8841cca3fc4f1.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/kitchenCoffeeMachine.glb-df8406d5476ee8ea86f8
 
 [params]
 
-nodes/root_type="StaticBody"
+nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
 nodes/apply_root_scale=true
 nodes/root_scale=10.0

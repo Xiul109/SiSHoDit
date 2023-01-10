@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b0vp0fqdpooyt"
+uid="uid://ugiwrpyalq2g"
 path="res://.godot/imported/computerKeyboard.glb-a3e2bd7a61da1c5feb58141f7e48ab4d.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/computerKeyboard.glb-a3e2bd7a61da1c5feb58141f
 
 [params]
 
-nodes/root_type="StaticBody"
+nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
 nodes/apply_root_scale=true
 nodes/root_scale=10.0

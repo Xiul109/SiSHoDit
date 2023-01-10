@@ -1,21 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://clqcbja66n53b"]
 
-[ext_resource path="res://assets/furnitures_kenney/lampRoundFloor.glb" type="PackedScene" id=1]
+[ext_resource type="PackedScene" uid="uid://csiy4a0w8mfk" path="res://assets/furnitures_kenney/lampRoundFloor.glb" id="1"]
 
-[sub_resource type="ConvexPolygonShape3D" id=1]
-points = PackedVector3Array( 0.06, 0.681451, 0.02778, -0.0160197, 0.681451, -0.01611, -6.16163e-06, 0, -7.83801e-06, 0.119991, 0, -7.83801e-06, 0.13602, 0.681451, -0.01611, 0.06, 0.86, 0.00231211, 0.00602124, 0.86, -0.0288439, -0.0160197, 0.681451, -0.10389, -6.16163e-06, 0, -0.120009, 0.119991, 0, -0.120009, 0.113964, 0.86, -0.0288439, 0.13602, 0.681451, -0.10389, 0.00602124, 0.86, -0.0911732, 0.06, 0.681451, -0.14778, 0.113964, 0.86, -0.0911732, 0.06, 0.86, -0.122329 )
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h4i1f"]
+points = PackedVector3Array(0.6, 6.81451, 0.2778, -0.160197, 6.81451, -0.1611, -6.16014e-05, 0, -7.84397e-05, 1.19991, 0, -7.84397e-05, 1.3602, 6.81451, -0.1611, 0.6, 8.6, 0.0231211, 0.0602124, 8.6, -0.28844, -0.160197, 6.81451, -1.0389, -6.16014e-05, 0, -1.20009, 1.19991, 0, -1.20009, 1.13964, 8.6, -0.28844, 1.3602, 6.81451, -1.0389, 0.0602124, 8.6, -0.911732, 0.6, 6.81451, -1.4778, 1.13964, 8.6, -0.911732, 0.6, 8.6, -1.22329)
 
-[node name="lampRoundFloor" instance=ExtResource( 1 )]
+[node name="lampRoundFloor" instance=ExtResource("1")]
 
 [node name="lampRoundFloor(Clone)" parent="." index="0"]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587515, 0, 0.0587515 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587515, 0, 0.0587515)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587515, 0, 0.0587515 )
-shape = SubResource( 1 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0587515, 0, 0.0587515)
+shape = SubResource("ConvexPolygonShape3D_h4i1f")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." index="2"]
-transform = Transform3D( 0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0.0591976, 0.801582, -0.0578481 )
-light_color = Color( 0.803922, 0.776471, 0.0901961, 1 )
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.536321, 8.99142, -0.526957)
+light_color = Color(0.803922, 0.776471, 0.0901961, 1)
 spot_range = 10.0
 spot_angle = 30.0

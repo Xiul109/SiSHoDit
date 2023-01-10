@@ -126,7 +126,7 @@ func _get_usable_of(object: Node):
 	
 	return usable
 
-func _solve_needs(needs_to_solve, quantity = 1):
+func _solve_needs(needs_to_solve, quantity = 1.0):
 	for need in needs:
 		if need.need_key in needs_to_solve:
 			need.level -= quantity
@@ -217,7 +217,7 @@ func _doing_step(delta):
 		else:
 			wait()
 		# Solve needs partially
-		var advance = 1.0/simulation_total_divisions
+		var advance : float = 1.0/simulation_total_divisions
 		_solve_needs(step["step"].needs_solved, 
 					advance+randf_range(-advance/4.0, advance/4.0))
 	

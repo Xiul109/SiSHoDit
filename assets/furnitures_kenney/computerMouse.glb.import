@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://byle6gnh0yrws"
+uid="uid://cko3in6txfovj"
 path="res://.godot/imported/computerMouse.glb-6a458476f864b3191858978c449d1d2c.scn"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/computerMouse.glb-6a458476f864b3191858978c449
 
 [params]
 
-nodes/root_type="StaticBody"
+nodes/root_type="Node3D"
 nodes/root_name="Scene Root"
 nodes/apply_root_scale=true
 nodes/root_scale=10.0
