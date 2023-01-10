@@ -652,7 +652,7 @@ fov = 49.0
 [node name="People" type="Node3D" parent="."]
 
 [node name="person" parent="People" instance=ExtResource("56_ienq1")]
-transform = Transform3D(-0.994447, 0, 0.10524, 0, 1, 0, -0.10524, 0, -0.994447, -5.00608, 0.669635, -3.40972)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.44868, 0, -3.69943)
 
 [node name="Sensors" type="Node3D" parent="."]
 
@@ -660,32 +660,39 @@ transform = Transform3D(-0.994447, 0, 0.10524, 0, 1, 0, -0.10524, 0, -0.994447, 
 
 [node name="ui" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1028.0
-offset_bottom = 602.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("69_ws6ec")
 
 [node name="SpeedSlider" parent="CanvasLayer/ui" instance=ExtResource("70_b0tqj")]
-layout_mode = 0
-offset_top = 0.0
-offset_bottom = 475.0
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 16.0
+offset_right = 46.0
+offset_bottom = -14.0
+grow_vertical = 2
 
 [node name="time_widget" parent="CanvasLayer/ui" instance=ExtResource("71_xlpau")]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 5.0
-offset_right = 142.0
-offset_bottom = 63.0
+offset_left = 73.0
+offset_top = 14.0
+offset_right = 212.0
+offset_bottom = 77.0
 
 [node name="needs_widget" parent="CanvasLayer/ui" instance=ExtResource("72_7ok6x")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -350.0
-offset_top = 18.0
-offset_right = -16.0
-offset_bottom = 582.0
+offset_left = -355.0
+offset_top = 22.0
+offset_right = -21.0
+offset_bottom = 586.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
