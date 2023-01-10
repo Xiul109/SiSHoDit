@@ -9,15 +9,11 @@ alignment = 2
 script = ExtResource("1")
 
 [node name="NeedName" type="Label" parent="."]
-offset_left = 73.0
-offset_right = 130.0
-offset_bottom = 26.0
+layout_mode = 2
 size_flags_vertical = 0
 text = "Hungry"
 
 [node name="NeedLevel" type="ProgressBar" parent="."]
-offset_left = 134.0
-offset_right = 138.0
-offset_bottom = 27.0
-grow_horizontal = 0
+layout_mode = 2
+size_flags_horizontal = 3
 max_value = 1.0
