@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cn34irpjpgn4u"]
+[gd_scene load_steps=75 format=3 uid="uid://cn34irpjpgn4u"]
 
 [ext_resource type="Script" path="res://scenary/enviroments/enviroment.gd" id="1_1xqpd"]
 [ext_resource type="PackedScene" uid="uid://2r6b8tg7jcqj" path="res://scenary/objects/structure/floorFull.tscn" id="2_0s1mw"]
@@ -105,6 +105,21 @@ geometry_source_geometry_mode = 1
 agent_height = 6.0
 agent_radius = 1.25
 agent_max_climb = 1.0
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4xs1k"]
+sky_top_color = Color(0.360784, 0.486275, 0.552941, 1)
+sky_horizon_color = Color(0.618627, 0.645098, 0.654902, 1)
+ground_bottom_color = Color(0.113725, 0.0941176, 0.0666667, 1)
+ground_horizon_color = Color(0.618627, 0.645098, 0.654902, 1)
+
+[sub_resource type="Sky" id="Sky_o4yhd"]
+sky_material = SubResource("ProceduralSkyMaterial_4xs1k")
+
+[sub_resource type="Environment" id="Environment_e3kcr"]
+background_mode = 2
+sky = SubResource("Sky_o4yhd")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="House" type="Node3D"]
 script = ExtResource("1_1xqpd")
@@ -236,7 +251,7 @@ transform = Transform3D(-2.97237e-08, 0, -1.268, 0, 1, 0, 0.68, 0, -5.5426e-08, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.4962)
 
 [node name="floor" type="Node3D" parent="Rooms/bedroom"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0.5, 0)
 
 [node name="floorFull" parent="Rooms/bedroom/floor" instance=ExtResource("2_0s1mw")]
 
@@ -298,6 +313,7 @@ transform = Transform3D(-3.93403e-08, 0, 1, 0, 1, 0, -0.9, 0, -4.37114e-08, 25.5
 transform = Transform3D(-4.37114e-08, -4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 1.13687e-13, 0.545, -20)
 
 [node name="furnitures" type="Node3D" parent="Rooms/bedroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="bedDouble" parent="Rooms/bedroom/furnitures" instance=ExtResource("19_drpae")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.72677, 0.045213, 11.4203)
@@ -434,7 +450,7 @@ transform = Transform3D(1.34087, -1.01036e-15, -2.58318e-07, 7.46705e-14, 1, 5.6
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
 [node name="floor" type="Node3D" parent="Rooms/kitchen"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="floorFull" parent="Rooms/kitchen/floor" instance=ExtResource("2_0s1mw")]
 
@@ -613,7 +629,7 @@ transform = Transform3D(61.004, 0, 0, 0, 0.569, 0, 0, 0, 25.475, -5.003, 0.246, 
 shape = SubResource("ConvexPolygonShape3D_hmayp")
 
 [node name="MeshInstance2" type="MeshInstance3D" parent="Rooms/garden/garden_ground"]
-transform = Transform3D(2.62973, 0, 0, 0, 1, 0, 0, 0, 11.8587, -4.99322, 0.106527, 11.827)
+transform = Transform3D(2.62973, 0, 0, 0, 1, 0, 0, 0, 12.2969, -4.99322, 0.106527, 12.375)
 mesh = SubResource("5")
 
 [node name="NoNavObjects" type="Node3D" parent="."]
@@ -640,6 +656,7 @@ unique_name_in_owner = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.217251, 0)
+visible = false
 navigation_mesh = SubResource("1")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -647,7 +664,14 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 10
 current = true
 fov = 49.0
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e3kcr")
+
 [node name="Lights" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(-0.939693, -0.321394, 0.116978, 0, 0.34202, 0.939693, -0.34202, 0.883022, -0.321394, 0, 0, 0)
+shadow_enabled = true
 
 [node name="People" type="Node3D" parent="."]
 
