@@ -16,12 +16,12 @@ func _ready():
 
 	
 ### To be overriden if needed ###
-func start_using(_user: BasicPerson):
+func start_using(_user: Agent):
 	if switch_on == "start":
 		switch()
 	super.start_using(_user)
 	
-func finish_using(_user: BasicPerson):
+func finish_using(_user: Agent):
 	if switch_on == "end":
 		switch()
 	super.finish_using(_user)

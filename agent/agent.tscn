@@ -1,0 +1,99 @@
+[gd_scene load_steps=23 format=3 uid="uid://br1yr5nwgspqd"]
+
+[ext_resource type="Script" path="res://agent/agent.gd" id="1_htqyf"]
+[ext_resource type="Resource" path="res://people/needs/needs_list/number_1.tres" id="2_jji54"]
+[ext_resource type="Resource" uid="uid://cuqabnod7dlhx" path="res://people/needs/needs_list/number_2.tres" id="3_wubto"]
+[ext_resource type="Resource" path="res://people/needs/needs_list/thirsty.tres" id="4_leie5"]
+[ext_resource type="Resource" path="res://people/needs/needs_list/hungry.tres" id="5_p65v8"]
+[ext_resource type="Resource" path="res://people/needs/needs_list/sleepy.tres" id="6_enfx5"]
+[ext_resource type="Resource" path="res://people/needs/needs_list/dirty.tres" id="7_a537m"]
+[ext_resource type="Resource" path="res://people/needs/needs_list/dirty_clothes.tres" id="8_fq3rh"]
+[ext_resource type="Resource" path="res://people/needs/needs_list/tired.tres" id="9_cyqte"]
+[ext_resource type="Resource" uid="uid://tmhukuj8w6bj" path="res://people/needs/needs_list/bored.tres" id="10_wyaur"]
+[ext_resource type="Script" path="res://people/CameraOrbit.gd" id="11_a10mw"]
+[ext_resource type="Script" path="res://people/DoorOpening.gd" id="12_uwy6v"]
+[ext_resource type="Script" path="res://people/DoorClosing.gd" id="13_v37sr"]
+[ext_resource type="Script" path="res://agent/state_machine/state_machine_player.gd" id="14_x61iw"]
+[ext_resource type="Script" path="res://agent/agent_behaviour_fsm/new_need.gd" id="15_c1liy"]
+[ext_resource type="Script" path="res://agent/agent_behaviour_fsm/check_next_step.gd" id="16_2qb57"]
+[ext_resource type="Script" path="res://agent/agent_behaviour_fsm/traveling.gd" id="17_583gb"]
+[ext_resource type="Script" path="res://agent/agent_behaviour_fsm/doing_step.gd" id="18_ltkxo"]
+
+[sub_resource type="CapsuleShape3D" id="1"]
+radius = 1.5
+height = 6.0
+
+[sub_resource type="StandardMaterial3D" id="3"]
+albedo_color = Color(0.0117647, 1, 0, 1)
+metallic = 1.0
+
+[sub_resource type="CapsuleMesh" id="2"]
+material = SubResource("3")
+radius = 1.5
+height = 6.0
+
+[sub_resource type="BoxMesh" id="4"]
+size = Vector3(1.5, 0.5, 0.75)
+
+[node name="person" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_htqyf")
+needs = [ExtResource("2_jji54"), ExtResource("3_wubto"), ExtResource("4_leie5"), ExtResource("5_p65v8"), ExtResource("6_enfx5"), ExtResource("7_a537m"), ExtResource("8_fq3rh"), ExtResource("9_cyqte"), ExtResource("10_wyaur")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["person"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.68437, -1.29721)
+mesh = SubResource("4")
+
+[node name="CameraOrbit" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 6.95297, 0)
+script = ExtResource("11_a10mw")
+
+[node name="Camera3D" type="Camera3D" parent="CameraOrbit"]
+transform = Transform3D(-1, 3.90806e-08, -1.45851e-07, 0, 0.965926, 0.258819, 1.50996e-07, 0.258819, -0.965926, 0, 0, -9.15398)
+
+[node name="DoorOpening" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.91218, -0.867123)
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0.0352941, 0.960784, 0.788235, 1)
+debug_shape_thickness = 4
+script = ExtResource("12_uwy6v")
+
+[node name="DoorClosing" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.91218, -0.867123)
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0.0352941, 0.960784, 0.788235, 1)
+debug_shape_thickness = 4
+script = ExtResource("13_v37sr")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 2.0
+target_desired_distance = 5.0
+agent_height_offset = -0.5
+path_max_distance = 1.01
+
+[node name="StateMachinePlayer" type="Node" parent="."]
+script = ExtResource("14_x61iw")
+initial_state = NodePath("NewNeed")
+
+[node name="NewNeed" type="Node" parent="StateMachinePlayer"]
+script = ExtResource("15_c1liy")
+
+[node name="CheckNextStep" type="Node" parent="StateMachinePlayer"]
+script = ExtResource("16_2qb57")
+
+[node name="Traveling" type="Node" parent="StateMachinePlayer"]
+script = ExtResource("17_583gb")
+
+[node name="DoingStep" type="Node" parent="StateMachinePlayer"]
+script = ExtResource("18_ltkxo")

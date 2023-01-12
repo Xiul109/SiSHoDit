@@ -7,11 +7,11 @@ signal using_finished
 
 
 ### To be overriden if needed ###
-func start_using(_user: BasicPerson):
+func start_using(_user: Agent):
 	emit_signal("using_started")
 	
-func finish_using(_user: BasicPerson):
+func finish_using(_user: Agent):
 	emit_signal("using_finished")
 
-func being_used(user: BasicPerson, _delta):
-	user.wait()
+func being_used(_user: Agent, _delta: float):
+	pass#user.wait()

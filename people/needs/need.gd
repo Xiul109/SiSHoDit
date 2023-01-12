@@ -55,7 +55,6 @@ func _get_solutions_weights(sols):
 func _get_random_weighted(weights):
 	var rn = randf()
 	for i in len(weights):
-		var w = weights[i]
-		if rn <= w:
+		if rn <= weights[i]:
 			return i
 	return randi()%weights.size()

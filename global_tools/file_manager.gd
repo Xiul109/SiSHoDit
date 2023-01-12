@@ -10,7 +10,7 @@ var file_name
 var file : FileAccess
 var timer
 
-### Overriden methods ###
+### Public methods ###
 func init_file(filename_base, directory = ""):
 	dir = directory
 	full_dir = "user://" + dir
@@ -42,8 +42,13 @@ func save_file():
 		file.store_line("]")
 		file = null
 
-func _exit_tree():
-		save_file()
+
+func store_line(text):
+	if file == null or not file.is_open():
+		return
+
+	file.store_line(text)
+
 
 ### Private methods ###
 func _check_directory():
@@ -53,9 +58,6 @@ func _check_directory():
 			d.make_dir(dir)
 			
 
-### Public methods ###
-func store_line(text):
-	if not file.is_open():
-		return
-
-	file.store_line(text)
+### Overriden methods ###	
+func _exit_tree():
+	save_file()

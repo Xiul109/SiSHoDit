@@ -11,11 +11,11 @@ func _ready():
 	_sensor.sensor_name = get_parent().name
 	
 ### To be overriden if needed ###
-func start_using(_user: BasicPerson):
+func start_using(_user: Agent):
 	_sensor.activate(start_event_value)
 	super.start_using(_user)
 	
-func finish_using(_user: BasicPerson):
+func finish_using(_user: Agent):
 	_sensor.activate(end_event_value)
 	super.finish_using(_user)
 

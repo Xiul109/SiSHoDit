@@ -15,12 +15,12 @@ func _ready():
 
 
 ### To be overriden if needed ###
-func start_using(_user: BasicPerson):
+func start_using(_user: Agent):
 	if trigger_on == "start":
 		trigger()
 	super.start_using(_user)
 	
-func finish_using(_user: BasicPerson):
+func finish_using(_user: Agent):
 	if trigger_on == "end":
 		trigger()
 	super.finish_using(_user)

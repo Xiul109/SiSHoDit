@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var person = $People/person
+@onready var agent = $People/person
 
 var cameras = []
 var camera_i = 0
@@ -12,8 +12,8 @@ func _ready():
 	EventLogger.init_file()
 	
 	cameras.append($Camera3D)
-	cameras.append(person.get_node("CameraOrbit/Camera3D"))
-	$CanvasLayer/ui/needs_widget.person = person
+	cameras.append(agent.get_node("CameraOrbit/Camera3D"))
+	$CanvasLayer/ui/needs_widget.agent = agent
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
