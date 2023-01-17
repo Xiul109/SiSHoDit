@@ -12,82 +12,82 @@ _global_script_classes=[{
 "base": "Node",
 "class": &"AbstractUsable",
 "language": &"GDScript",
-"path": "res://scenary/tools/abstract_usable.gd"
+"path": "res://addons/sishodit/tools/environment/sensorization/usable_nodes/abstract_usable.gd"
 }, {
 "base": "CharacterBody3D",
 "class": &"Agent",
 "language": &"GDScript",
-"path": "res://agent/agent.gd"
+"path": "res://addons/sishodit/tools/agent/agent.gd"
 }, {
 "base": "DiscreteValueRange",
 "class": &"BinaryValueRange",
 "language": &"GDScript",
-"path": "res://sensors/binary_value_range.gd"
+"path": "res://addons/sishodit/tools/environment/sensorization/ranges/binary_value_range.gd"
 }, {
 "base": "ValueRange",
 "class": &"DiscreteValueRange",
 "language": &"GDScript",
-"path": "res://sensors/discrete_value_range.gd"
+"path": "res://addons/sishodit/tools/environment/sensorization/ranges/discrete_value_range.gd"
 }, {
 "base": "SingleTriggerUsable",
 "class": &"DurationUsable",
 "language": &"GDScript",
-"path": "res://scenary/tools/duration_usable.gd"
+"path": "res://addons/sishodit/tools/environment/sensorization/usable_nodes/duration_usable.gd"
 }, {
 "base": "Node",
 "class": &"FileManager",
 "language": &"GDScript",
-"path": "res://global_tools/file_manager.gd"
+"path": "res://addons/sishodit/tools/file_manager.gd"
 }, {
 "base": "Resource",
 "class": &"Need",
 "language": &"GDScript",
-"path": "res://people/needs/need.gd"
+"path": "res://addons/sishodit/tools/agent/need.gd"
 }, {
 "base": "Node",
 "class": &"Sensor",
 "language": &"GDScript",
-"path": "res://sensors/sensor.gd"
+"path": "res://addons/sishodit/tools/environment/sensorization/sensor.gd"
 }, {
 "base": "AbstractUsable",
 "class": &"SingleTriggerUsable",
 "language": &"GDScript",
-"path": "res://scenary/tools/single_trigger_usable.gd"
+"path": "res://addons/sishodit/tools/environment/sensorization/usable_nodes/single_trigger_usable.gd"
 }, {
 "base": "Resource",
 "class": &"Solution",
 "language": &"GDScript",
-"path": "res://people/needs/solution.gd"
+"path": "res://addons/sishodit/tools/agent/solution.gd"
 }, {
 "base": "Resource",
 "class": &"SolutionStep",
 "language": &"GDScript",
-"path": "res://people/needs/solution_step.gd"
+"path": "res://addons/sishodit/tools/agent/solution_step.gd"
 }, {
 "base": "Node",
 "class": &"State",
 "language": &"GDScript",
-"path": "res://agent/state_machine/state.gd"
+"path": "res://addons/sishodit/tools/agent/state_machine/state.gd"
 }, {
 "base": "Node",
 "class": &"StateMachinePlayer",
 "language": &"GDScript",
-"path": "res://agent/state_machine/state_machine_player.gd"
+"path": "res://addons/sishodit/tools/agent/state_machine/state_machine_player.gd"
 }, {
 "base": "AbstractUsable",
 "class": &"SwitchUsable",
 "language": &"GDScript",
-"path": "res://scenary/tools/switch_usable.gd"
+"path": "res://addons/sishodit/tools/environment/sensorization/usable_nodes/switch_usable.gd"
 }, {
 "base": "AbstractUsable",
 "class": &"Usable",
 "language": &"GDScript",
-"path": "res://scenary/tools/usable.gd"
+"path": "res://addons/sishodit/tools/environment/sensorization/usable_nodes/usable.gd"
 }, {
 "base": "RefCounted",
 "class": &"ValueRange",
 "language": &"GDScript",
-"path": "res://sensors/value_range.gd"
+"path": "res://addons/sishodit/tools/environment/sensorization/ranges/value_range.gd"
 }]
 _global_script_class_icons={
 "AbstractUsable": "",
@@ -111,15 +111,14 @@ _global_script_class_icons={
 [application]
 
 config/name="SiSHoDiT"
-run/main_scene="res://UI/main_menu.tscn"
+run/main_scene="res://addons/sishodit/presets/UI/main_menu.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
 [autoload]
 
-TimeSim="*res://autoloads/time_sim.gd"
-EventLogger="*res://autoloads/event_logger.gd"
-GlobalVar="*res://autoloads/global_var.gd"
+TimeSim="*res://addons/sishodit/tools/autoloads/time_sim.gd"
+EventLogger="*res://addons/sishodit/tools/autoloads/event_logger.gd"
 
 [display]
 
@@ -127,7 +126,7 @@ window/stretch/mode="2d"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/sishodit/plugin.cfg")
 
 [physics]
 

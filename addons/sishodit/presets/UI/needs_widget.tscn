@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5vk4fni4oqxw"]
+
+[ext_resource type="Script" path="res://addons/sishodit/presets/UI/needs_widget.gd" id="1"]
+[ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="1_ahj0r"]
+
+[node name="needs_widget" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_ahj0r")
+alignment = 1
+script = ExtResource("1")

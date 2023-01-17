@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://xnebcv8kxhyb"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution.gd" id="1_vdpvo"]
+[ext_resource type="Resource" path="res://examples/need_solutions/steps/number_1.tres" id="2_etja4"]
+[ext_resource type="Resource" path="res://examples/need_solutions/steps/wash_hands.tres" id="3_stcbo"]
+
+[resource]
+resource_name = "pee_and_wash_hands"
+script = ExtResource("1_vdpvo")
+steps = [ExtResource("2_etja4"), ExtResource("3_stcbo")]
+weight = 1.0

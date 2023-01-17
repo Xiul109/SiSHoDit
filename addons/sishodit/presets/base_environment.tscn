@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://qku0wnxrwbxh"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/environment/enviroment.gd" id="1"]
+[ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="2_kfmev"]
+[ext_resource type="PackedScene" uid="uid://b72mu3g3hihh" path="res://addons/sishodit/presets/UI/time_widget.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://bb3xpgmnwp4l2" path="res://addons/sishodit/presets/UI/speed_slider.tscn" id="40"]
+[ext_resource type="PackedScene" uid="uid://c5vk4fni4oqxw" path="res://addons/sishodit/presets/UI/needs_widget.tscn" id="45"]
+
+[sub_resource type="NavigationMesh" id="1"]
+resource_local_to_scene = true
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 1
+cell_size = 0.1
+cell_height = 0.4
+agent_height = 3.0
+agent_radius = 1.0
+agent_max_climb = 1.0
+region_min_size = 75.2
+
+[node name="House" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Rooms" type="Node3D" parent="." groups=["navmesh"]]
+
+[node name="NoNavObjects" type="Node3D" parent="."]
+
+[node name="Node3D" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Node3D"]
+navigation_mesh = SubResource("1")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 60, -30)
+current = true
+fov = 80.0
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="People" type="Node3D" parent="."]
+
+[node name="Sensors" type="Node3D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ui" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1028.0
+offset_bottom = 602.0
+theme = ExtResource("2_kfmev")
+
+[node name="SpeedSlider" parent="CanvasLayer/ui" instance=ExtResource("40")]
+layout_mode = 0
+offset_top = 0.0
+offset_bottom = 475.0
+
+[node name="time_widget" parent="CanvasLayer/ui" instance=ExtResource("14")]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 5.0
+offset_right = 142.0
+offset_bottom = 63.0
+
+[node name="needs_widget" parent="CanvasLayer/ui" instance=ExtResource("45")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -350.0
+offset_top = 18.0
+offset_right = -16.0
+offset_bottom = 582.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8q3u3hcnq0pi"]
+
+[ext_resource type="Script" path="res://addons/sishodit/presets/UI/seed_widget.gd" id="1_awnll"]
+
+[node name="seed_widget" type="VBoxContainer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 45.0
+offset_top = -25.0
+offset_right = 166.0
+offset_bottom = 84.0
+script = ExtResource("1_awnll")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Random    seed"
+
+[node name="SpinBox" type="SpinBox" parent="."]
+layout_mode = 2
+allow_greater = true
+allow_lesser = true
+
+[connection signal="value_changed" from="SpinBox" to="." method="_on_SpinBox_value_changed"]

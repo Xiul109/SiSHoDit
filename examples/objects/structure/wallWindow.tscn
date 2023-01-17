@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" uid="uid://ct8oq5xgkbu5m" path="res://examples/assets/furnitures_kenney/wallWindow.glb" id="1"]
+
+[sub_resource type="ConvexPolygonShape3D" id=1]
+points = PackedVector3Array( 0, 0, -0.0500049, 0, 0, -3.8594e-06, 0, 1.28953, -0.0500049, 0.262921, 0.342958, -0.06955, 1, 0, -0.0500049, 1, 0, -3.8594e-06, 0.262921, 0.342958, 0.01955, 0, 1.28953, -3.8594e-06, 1, 1.28953, -0.0500049, 0.262921, 1.1065, -0.06955, 0.736981, 0.342958, -0.06955, 1, 1.28953, -3.8594e-06, 0.736981, 0.342958, 0.01955, 0.262921, 1.1065, 0.01955, 0.736981, 1.1065, -0.06955, 0.736981, 1.1065, 0.01955 )
+
+[node name="wallWindow" instance=ExtResource( 1 )]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource( 1 )

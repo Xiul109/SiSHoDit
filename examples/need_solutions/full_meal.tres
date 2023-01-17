@@ -1,0 +1,36 @@
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://bckmjqafmdl60"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution.gd" id="1_vlbl3"]
+[ext_resource type="Resource" path="res://examples/need_solutions/steps/get_food.tres" id="2_kqcuv"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_step.gd" id="3_lprb6"]
+[ext_resource type="Resource" path="res://examples/need_solutions/steps/get_drink.tres" id="4_iooj0"]
+
+[sub_resource type="Resource" id="1"]
+resource_name = "heat_food_interrupt"
+script = ExtResource("3_lprb6")
+object_key = "heat_food"
+use_object = true
+min_duration = 180.0
+max_duration = 1200.0
+needs_solved = []
+needs_with_modified_rate = {}
+probability_of_not_being_interrupted = 1.0
+min_value_to_be_interrupted = 0.5
+
+[sub_resource type="Resource" id="2"]
+resource_name = "sit_to_it_interrupt"
+script = ExtResource("3_lprb6")
+object_key = "sit_eat"
+use_object = true
+min_duration = 600.0
+max_duration = 2400.0
+needs_solved = ["hungry", "thirsty"]
+needs_with_modified_rate = {}
+probability_of_not_being_interrupted = 1.0
+min_value_to_be_interrupted = 0.5
+
+[resource]
+resource_name = "full_meal"
+script = ExtResource("1_vlbl3")
+steps = [ExtResource("2_kqcuv"), SubResource("1"), ExtResource("4_iooj0"), SubResource("2")]
+weight = 1.0

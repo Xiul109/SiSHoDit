@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_step.gd" id="1"]
+
+[resource]
+script = ExtResource( 1 )
+object_key = "dryer"
+use_object = true
+min_duration = 120.0
+max_duration = 240.0
+needs_solved = [  ]
+needs_with_modified_rate = {
+}
+probability_of_not_being_interrupted = 1.0
+min_value_to_be_interrupted = 1.0
