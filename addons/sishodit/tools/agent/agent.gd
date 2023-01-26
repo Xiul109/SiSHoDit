@@ -10,6 +10,8 @@ extends CharacterBody3D
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 @onready var state_machine : StateMachinePlayer = $StateMachinePlayer
 
+@onready var simulable : Simulable = $Simulable
+
 var to
 
 var current_needs = []
@@ -30,11 +32,8 @@ func _ready():
 	if owner:
 		await owner.ready
 		state_machine.start()
-
-func _physics_process(delta):
-	_process_needs(delta)
-
-
+		
+		
 ### Public methods ###
 func new_path():
 	nav_agent.set_target_location(to)
@@ -43,8 +42,15 @@ func new_path():
 func wait(time: float):
 	var step = current_steps.back()
 	step["time_left"] -= time
-	TimeSim.fast_forward(time)
+	simulable.wait_time = time
+	simulable.simulation_mode = Simulator.SimulationMode.LOW_FREQ
 	_process_needs(time)
+
+func finish_wait():
+	simulable.simulation_mode = Simulator.SimulationMode.HIGH_FREQ
+	
+func log_event(type, value):
+	simulable.log_event.emit(name, type, value)
 
 
 ### Aux methods ###
@@ -58,3 +64,8 @@ func _process_needs(delta):
 			elif need.need_key in step.needs_with_modified_rate:
 				modified_delta *= step.needs_with_modified_rate[need.need_key]
 		need.increase_level(modified_delta)
+
+
+### Call backs ###
+func _on_simulable_simulated(delta):
+		_process_needs(delta)

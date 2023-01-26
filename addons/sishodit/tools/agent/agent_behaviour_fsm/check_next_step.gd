@@ -45,8 +45,7 @@ func _set_agent_destination(step_info: Dictionary):
 
 func _apply_current_solution():
 	my_agent.current_needs.pop_back()
-	EventLogger.log_event(self.name, "activity_end",
-						my_agent.current_solutions.pop_back().resource_name)
+	my_agent.log_event("activity_end", my_agent.current_solutions.pop_back().resource_name)
 	
 	if my_agent.current_needs.size() > 0:
 		_set_agent_destination(my_agent.current_steps.back())

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=7 format=3 uid="uid://bckmjqafmdl60"]
+[gd_resource type="Resource" script_class="Solution" load_steps=7 format=3 uid="uid://bckmjqafmdl60"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution.gd" id="1_vlbl3"]
 [ext_resource type="Resource" path="res://examples/need_solutions/steps/get_food.tres" id="2_kqcuv"]

@@ -22,8 +22,8 @@ func _ready():
 			node.transitioned_to.connect(transition)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+
+func simulate(delta):
 	if current_state == null:
 		return
 	current_state.on_process(delta)

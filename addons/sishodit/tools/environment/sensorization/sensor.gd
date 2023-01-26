@@ -17,17 +17,19 @@ var stored_wrong_value_prob: float = 0
 var stored_average_time_between_wrong_triggers : float = 0
 var stored_std_time_between_wrong_triggers : float = 0
 
-
 var time_until_wrong_trigger = 0
+
+var simulable : Simulable
 
 ### overriden methods ###
 func _init():
 	name = "Sensor"
 
 func _ready():
-	add_to_group("sensor")
 	init_value_range(range_type)
-	TimeSim.register_sensor(self)
+	simulable = Simulable.new()
+	simulable.simulated.connect(simulate)
+	add_child(simulable)
 
 ### Aux methods ###
 func get_time_until_wrong_trigger():
@@ -46,7 +48,7 @@ func activate(value, delta = 0):
 	if randf() >= not_triggered_prob:
 		if randf() < wrong_value_prob:
 			value = value_range.get_random_valid_value()
-		EventLogger.log_event(sensor_name, sensor_type, value, delta)
+		simulable.log_event.emit(sensor_name, sensor_type, value, delta)
 
 func override_malfunction_params(nt_prob, wv_prob, atb_wrong_triggers, stb_wrong_triggers):
 	stored_not_triggered_prob = not_triggered_prob

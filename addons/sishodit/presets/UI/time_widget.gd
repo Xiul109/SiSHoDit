@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+@export var simulator : Simulator
+
 @onready var day_label = $HBoxContainer/Day
 @onready var hour_label = $Hour
 
@@ -8,7 +10,9 @@ var seconds_in_a_hour = 60*seconds_in_a_minute
 var seconds_in_a_day= seconds_in_a_hour*24
 
 func _process(_delta):
-	var time = int(TimeSim.elapsed_seconds)
+	if not simulator:
+		return
+	var time = int(simulator.elapsed_seconds)
 	day_label.text = str(floor(time/seconds_in_a_day))
 	
 	var day_seconds = time%int(seconds_in_a_day)

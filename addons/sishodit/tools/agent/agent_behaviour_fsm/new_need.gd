@@ -9,7 +9,7 @@ func on_enter():
 	my_agent.current_needs.append(current_need)
 	var need_solution : Solution = current_need.get_solution()
 	my_agent.current_solutions.append(need_solution)
-	EventLogger.log_event(my_agent.name, "activity_begin", need_solution.resource_name)
+	my_agent.log_event("activity_begin", need_solution.resource_name)
 	print("-------------------------")
 	print("New need: ", current_need.need_key, ". It can be solved in ",
 			need_solution.steps.size(), " steps.")

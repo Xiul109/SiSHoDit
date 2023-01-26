@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cc7l7vk8pky5y"]
+[gd_scene load_steps=24 format=3 uid="uid://cc7l7vk8pky5y"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/agent.gd" id="1_htqyf"]
 [ext_resource type="Resource" path="res://examples/needs_list/number_1.tres" id="2_jji54"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/agent_behaviour_fsm/check_next_step.gd" id="16_2qb57"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/agent_behaviour_fsm/traveling.gd" id="17_583gb"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/agent_behaviour_fsm/doing_step.gd" id="18_ltkxo"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulable.gd" id="19_lmwen"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 1.5
@@ -97,3 +98,10 @@ script = ExtResource("17_583gb")
 
 [node name="DoingStep" type="Node" parent="StateMachinePlayer"]
 script = ExtResource("18_ltkxo")
+
+[node name="Simulable" type="Node" parent="."]
+script = ExtResource("19_lmwen")
+simulation_mode = 1
+
+[connection signal="simulated" from="Simulable" to="." method="_on_simulable_simulated"]
+[connection signal="simulated" from="Simulable" to="StateMachinePlayer" method="simulate"]

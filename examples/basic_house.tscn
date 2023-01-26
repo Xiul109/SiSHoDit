@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://r8w3xbn6y5up"]
+[gd_scene load_steps=76 format=3 uid="uid://r8w3xbn6y5up"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/environment/enviroment.gd" id="1_v15af"]
 [ext_resource type="PackedScene" path="res://examples/objects/structure/floorFull.tscn" id="2_0s1mw"]
@@ -55,6 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://scm1uu5k7s0x" path="res://examples/assets/furnitures_kenney/toaster.glb" id="53_wg81m"]
 [ext_resource type="PackedScene" path="res://examples/objects/structure/doorway.tscn" id="55_x6gkq"]
 [ext_resource type="PackedScene" uid="uid://cc7l7vk8pky5y" path="res://addons/sishodit/presets/agent.tscn" id="55_y6jg6"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulator.gd" id="60_sxeg5"]
 [ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="69_ws6ec"]
 [ext_resource type="PackedScene" uid="uid://bb3xpgmnwp4l2" path="res://addons/sishodit/presets/UI/speed_slider.tscn" id="70_b0tqj"]
 [ext_resource type="PackedScene" uid="uid://b72mu3g3hihh" path="res://addons/sishodit/presets/UI/time_widget.tscn" id="71_xlpau"]
@@ -702,12 +703,13 @@ offset_right = 46.0
 offset_bottom = -14.0
 grow_vertical = 2
 
-[node name="time_widget" parent="CanvasLayer/ui" instance=ExtResource("71_xlpau")]
+[node name="time_widget" parent="CanvasLayer/ui" node_paths=PackedStringArray("simulator") instance=ExtResource("71_xlpau")]
 layout_mode = 0
 offset_left = 73.0
 offset_top = 14.0
 offset_right = 212.0
 offset_bottom = 77.0
+simulator = NodePath("../../../Simulator")
 
 [node name="needs_widget" parent="CanvasLayer/ui" instance=ExtResource("72_7ok6x")]
 layout_mode = 1
@@ -722,3 +724,6 @@ grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 0
+
+[node name="Simulator" type="Node" parent="."]
+script = ExtResource("60_sxeg5")

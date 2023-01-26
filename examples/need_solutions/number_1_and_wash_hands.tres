@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://xnebcv8kxhyb"]
+[gd_resource type="Resource" script_class="Solution" load_steps=4 format=3 uid="uid://xnebcv8kxhyb"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution.gd" id="1_vdpvo"]
 [ext_resource type="Resource" path="res://examples/need_solutions/steps/number_1.tres" id="2_etja4"]
