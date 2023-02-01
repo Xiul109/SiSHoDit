@@ -1,11 +1,11 @@
-[gd_resource type="Resource" load_steps=4 format=3]
+[gd_resource type="Resource" script_class="Solution" load_steps=4 format=3 uid="uid://b0idfw3epy4jg"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution.gd" id="1"]
-[ext_resource type="Resource" path="res://examples/need_solutions/steps/get_drink.tres" id="2"]
-[ext_resource type="Resource" path="res://examples/need_solutions/steps/drink_standing.tres" id="3"]
+[ext_resource type="Resource" uid="uid://bwq6jynsgr487" path="res://examples/need_solutions/steps/get_drink.tres" id="2"]
+[ext_resource type="Resource" uid="uid://8he7fhj88nlj" path="res://examples/need_solutions/steps/drink_standing.tres" id="3"]
 
 [resource]
 resource_name = "have_a_drink"
-script = ExtResource( 1 )
-steps = [ ExtResource( 2 ), ExtResource( 3 ) ]
+script = ExtResource("1")
+steps = [ExtResource("2"), ExtResource("3")]
 weight = 1.0

@@ -8,8 +8,11 @@ var viable_solutions = []
 
 @export var time_to_fill_level : float
  
-@export var level : float = 0 : set = level_set # (float, 1)
-@export var min_level_before_solve : float # (float, 1)
+@export_range(0,1) var level : float = 0 : set = level_set
+@export_range(0,1) var min_level_before_solve : float
+
+@export_range(0, 20, 1, "or_greater") var priority : int = 0
+@export_range(0,1) var urgent_level : float = 1
 
 
 func increase_level(delta):
@@ -34,6 +37,9 @@ func can_be_solved(tree: SceneTree):
 func get_solution():
 	var weights = _get_solutions_weights(viable_solutions)
 	return viable_solutions[_get_random_weighted(weights)]
+	
+func time_until_level(target_level: float, rate : float = 1.0):
+	return (target_level - level) * time_to_fill_level * rate
 
 ### Setters ###
 func level_set(new_level):

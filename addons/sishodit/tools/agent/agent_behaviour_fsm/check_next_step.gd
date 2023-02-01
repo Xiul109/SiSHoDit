@@ -48,6 +48,8 @@ func _apply_current_solution():
 	my_agent.log_event("activity_end", my_agent.current_solutions.pop_back().resource_name)
 	
 	if my_agent.current_needs.size() > 0:
+		print("---------------------------------------")
+		print("Return to need: %s" % my_agent.current_needs.back().need_key)
 		_set_agent_destination(my_agent.current_steps.back())
 	else:
 		transitioned_to.emit("NewNeed")

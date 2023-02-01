@@ -1,12 +1,14 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="Need" load_steps=3 format=3 uid="uid://ccbcc85tagvcp"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/need.gd" id="1"]
-[ext_resource type="Resource" path="res://examples/need_solutions/number_1_and_wash_hands.tres" id="2"]
+[ext_resource type="Resource" uid="uid://xnebcv8kxhyb" path="res://examples/need_solutions/number_1_and_wash_hands.tres" id="2"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 need_key = "number_1"
-solutions = [ ExtResource( 2 ) ]
+solutions = [ExtResource("2")]
 time_to_fill_level = 18000.0
 level = 0.0
 min_level_before_solve = 0.6
+priority = 10
+urgent_level = 0.95

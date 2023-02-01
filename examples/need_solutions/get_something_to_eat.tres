@@ -1,11 +1,11 @@
-[gd_resource type="Resource" load_steps=4 format=3]
+[gd_resource type="Resource" script_class="Solution" load_steps=4 format=3 uid="uid://vu67o6kwvnl5"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution.gd" id="1"]
-[ext_resource type="Resource" path="res://examples/need_solutions/steps/get_food.tres" id="2"]
-[ext_resource type="Resource" path="res://examples/need_solutions/steps/sit_to_eat.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dvptxsyfb2nqm" path="res://examples/need_solutions/steps/get_food.tres" id="2"]
+[ext_resource type="Resource" uid="uid://qtldujj4i08n" path="res://examples/need_solutions/steps/sit_to_eat.tres" id="3"]
 
 [resource]
 resource_name = "get_something_to_eat"
-script = ExtResource( 1 )
-steps = [ ExtResource( 2 ), ExtResource( 3 ) ]
+script = ExtResource("1")
+steps = [ExtResource("2"), ExtResource("3")]
 weight = 1.0

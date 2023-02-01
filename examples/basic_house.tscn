@@ -53,8 +53,8 @@
 [ext_resource type="PackedScene" uid="uid://bayf4ddkji6w4" path="res://examples/assets/furnitures_kenney/kitchenCoffeeMachine.glb" id="53_rt1q4"]
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/trashcan.tscn" id="53_w8nd4"]
 [ext_resource type="PackedScene" uid="uid://scm1uu5k7s0x" path="res://examples/assets/furnitures_kenney/toaster.glb" id="53_wg81m"]
+[ext_resource type="PackedScene" uid="uid://bh07cy0trq4hl" path="res://examples/example_agent.tscn" id="55_clrc6"]
 [ext_resource type="PackedScene" path="res://examples/objects/structure/doorway.tscn" id="55_x6gkq"]
-[ext_resource type="PackedScene" uid="uid://cc7l7vk8pky5y" path="res://addons/sishodit/presets/agent.tscn" id="55_y6jg6"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulator.gd" id="60_sxeg5"]
 [ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="69_ws6ec"]
 [ext_resource type="PackedScene" uid="uid://bb3xpgmnwp4l2" path="res://addons/sishodit/presets/UI/speed_slider.tscn" id="70_b0tqj"]
@@ -677,8 +677,8 @@ shadow_enabled = true
 
 [node name="People" type="Node3D" parent="."]
 
-[node name="person" parent="People" instance=ExtResource("55_y6jg6")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.92981, 0, -3.49926)
+[node name="example_agent" parent="People" instance=ExtResource("55_clrc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.24418, 0, -3.60376)
 
 [node name="Sensors" type="Node3D" parent="."]
 

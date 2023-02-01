@@ -11,8 +11,7 @@ extends Resource
 @export var needs_solved : Array[String]# (Array, String)
 @export var needs_with_modified_rate: Dictionary
 
-@export var probability_of_not_being_interrupted = 1.0 # (float, 1)
-@export var min_value_to_be_interrupted = 1.0 # (float, 1)
+@export_range(0, 20, 1, "or_greater") var priority : int
 
 func generate_duration():
 	var mean_duration = (min_duration+max_duration)/2

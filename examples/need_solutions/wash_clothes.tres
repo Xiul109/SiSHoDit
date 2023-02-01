@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=10 format=3]
+[gd_resource type="Resource" script_class="Solution" load_steps=10 format=3 uid="uid://kh4jn647bra8"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution.gd" id="1"]
 [ext_resource type="Resource" path="res://examples/need_solutions/steps/wait_washer.tres" id="2"]
@@ -12,6 +12,6 @@
 
 [resource]
 resource_name = "wash_clothes"
-script = ExtResource( 1 )
-steps = [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 8 ) ]
+script = ExtResource("1")
+steps = [ExtResource("9"), ExtResource("4"), ExtResource("2"), ExtResource("7"), ExtResource("5"), ExtResource("3"), ExtResource("6"), ExtResource("8")]
 weight = 1.0

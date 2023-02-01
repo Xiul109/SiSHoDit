@@ -13,8 +13,7 @@ min_duration = 300.0
 max_duration = 900.0
 needs_solved = ["dirty"]
 needs_with_modified_rate = {}
-probability_of_not_being_interrupted = 1.0
-min_value_to_be_interrupted = 0.5
+priority = 5
 
 [resource]
 resource_name = "take_a_shower"

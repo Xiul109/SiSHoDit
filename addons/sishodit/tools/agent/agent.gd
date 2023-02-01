@@ -36,15 +36,13 @@ func _ready():
 		
 ### Public methods ###
 func new_path():
-	nav_agent.set_target_location(to)
+	nav_agent.target_position = to
 
 
 func wait(time: float):
 	var step = current_steps.back()
-	step["time_left"] -= time
 	simulable.wait_time = time
 	simulable.simulation_mode = Simulator.SimulationMode.LOW_FREQ
-	_process_needs(time)
 
 func finish_wait():
 	simulable.simulation_mode = Simulator.SimulationMode.HIGH_FREQ
@@ -57,7 +55,7 @@ func log_event(type, value):
 func _process_needs(delta):
 	for need in needs:
 		var modified_delta = delta
-		if state_machine.current_state!= null and state_machine.current_state.name == "doing_step":
+		if state_machine.current_state!= null and state_machine.current_state.name == "DoingStep":
 			var step = current_steps.back()["step"] as SolutionStep
 			if need.need_key in step.needs_solved:
 				continue

@@ -1,7 +1,7 @@
 class_name StateMachinePlayer
 extends Node
 
-@export_node_path(State) var initial_state : NodePath
+@export var initial_state : State
 
 var states = {} : 
 	set(_val): push_warning("The variable 'states' cannot be modified")
@@ -32,8 +32,11 @@ func simulate(delta):
 # Called when the StateMachine needs to move to a new State
 func start():
 	# Setting the initial state
-	if not initial_state.is_empty():
-		current_state = get_node(initial_state)
+	if not initial_state:
+		push_warning("Initial state has not been defined.")
+		return
+	
+	current_state = initial_state
 
 func transition(to: String):
 	if not to in states.keys():
