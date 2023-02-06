@@ -3,11 +3,11 @@ extends State
 var mesh_instance : MeshInstance3D
 
 func on_process(_delta: float):
-	if my_agent.nav_agent.is_target_reached():
+	if my_agent.nav_agent.is_navigation_finished():
 		transitioned_to.emit("DoingStep")
 		return
 	
-	_draw_path(my_agent.nav_agent.get_current_navigation_path())
+	#_draw_path(my_agent.nav_agent.get_current_navigation_path())
 	var next_pos = my_agent.nav_agent.get_next_path_position()
 	var vel = my_agent.speed*(next_pos-my_agent.global_position).normalized()
 	
