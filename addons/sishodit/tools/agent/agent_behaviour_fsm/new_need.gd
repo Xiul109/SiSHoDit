@@ -6,15 +6,18 @@ func on_process(_delta: float):
 
 func on_enter():
 	var current_need = _get_next_need_to_cover()
+	if current_need not in my_agent.current_needs and current_need != null:
+		my_agent.current_needs.append(current_need)
+		var need_solution : Solution = current_need.get_solution()
+		my_agent.current_solutions.append(need_solution)
+		my_agent.log_event("activity_begin", need_solution.resource_name)
 	
-	my_agent.current_needs.append(current_need)
-	var need_solution : Solution = current_need.get_solution()
-	my_agent.current_solutions.append(need_solution)
-	my_agent.log_event("activity_begin", need_solution.resource_name)
-	
-	print("-------------------------")
-	print("New need: ", current_need.need_key, ". It can be solved in ",
-			need_solution.steps.size(), " steps.")
+		print("-------------------------")
+		print("New need: ", current_need.need_key, ". It can be solved in ",
+				need_solution.steps.size(), " steps.")
+	else:
+		print("---------------------------------------")
+		print("Return to need: %s" % my_agent.current_needs.back().need_key)
 	
 	transitioned_to.emit("CheckNextStep")
 
@@ -27,10 +30,15 @@ func _get_next_need_to_cover():
 	var choosable_needs = []
 	var priority = _find_priority_based_on_current_needs()
 	for need in my_agent.needs:
-		if need.priority <= priority:
+		var prob = need.get_probability()
+		if need.priority <= priority or prob <= 0.0:
 			continue
-		probs.append(need.get_probability())
+		
+		probs.append(prob)
 		choosable_needs.append(need)
+	
+	if len(choosable_needs) == 0:
+		return null
 	
 	var next_need_i = probs.find(1.0)
 	if next_need_i == -1:

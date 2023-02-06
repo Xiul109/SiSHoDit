@@ -16,12 +16,15 @@ func on_process(delta: float):
 	
 	# If step has finished completly
 	if current_step["time_left"] <= 0:
-#		_solve_needs(current_step["step"].needs_solved)
 		my_agent.current_steps.pop_back()
 		print("Step %s finished"%current_step["step"].resource_path)
 		transitioned_to.emit("CheckNextStep")
 	# If is interrupted
 	elif time_left <= 0:
+		if current_step["step"].cancel_on_interruption:
+			my_agent.current_steps.pop_back()
+			my_agent.current_solutions.pop_back().reset()
+			my_agent.current_needs.pop_back()
 		print("Step %s interrupted"%current_step["step"].resource_path)
 		transitioned_to.emit("NewNeed")
 		my_agent.log_event("activity_interrupted", my_agent.current_solutions.back().resource_name)
