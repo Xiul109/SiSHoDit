@@ -9,7 +9,7 @@ var viable_solutions = []
 @export var time_to_fill_level : float
  
 @export_range(0,1) var level : float = 0 : set = level_set
-@export_range(0,1) var min_level_before_solve : float
+@export_range(0,1, 0.01, "or_less") var min_level_before_solve : float
 
 @export_range(0, 20, 1, "or_greater") var priority : int = 0
 @export_range(0,1) var urgent_level : float = 1
