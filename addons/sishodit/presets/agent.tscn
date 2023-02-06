@@ -73,6 +73,8 @@ script = ExtResource("13_v37sr")
 agent_height_offset = -0.5
 avoidance_enabled = true
 radius = 1.5
+debug_enabled = true
+debug_path_custom_color = Color(0.878431, 0.0705882, 0.0823529, 1)
 
 [node name="StateMachinePlayer" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("14_x61iw")
