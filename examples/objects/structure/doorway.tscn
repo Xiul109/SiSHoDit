@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://duub4ba7tg2nx"]
 
 [ext_resource type="PackedScene" uid="uid://d1aguxdh82y61" path="res://examples/assets/furnitures_kenney/doorway.glb" id="1"]
 [ext_resource type="Script" path="res://examples/objects/structure/doorway.gd" id="2"]
