@@ -12,7 +12,7 @@ object_key = "heat_food"
 use_object = true
 min_duration = 180.0
 max_duration = 1200.0
-needs_solved = []
+needs_solved = Array[String]([])
 needs_with_modified_rate = {}
 priority = null
 
@@ -23,12 +23,12 @@ object_key = "sit_eat"
 use_object = true
 min_duration = 600.0
 max_duration = 2400.0
-needs_solved = ["hungry", "thirsty"]
+needs_solved = Array[String](["hungry", "thirsty"])
 needs_with_modified_rate = {}
 priority = null
 
 [resource]
 resource_name = "full_meal"
 script = ExtResource("1_vlbl3")
-steps = [ExtResource("2_kqcuv"), SubResource("1"), ExtResource("4_iooj0"), SubResource("2")]
+steps = Array[ExtResource("3_lprb6")]([ExtResource("2_kqcuv"), SubResource("1"), ExtResource("4_iooj0"), SubResource("2")])
 weight = 1.0

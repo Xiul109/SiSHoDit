@@ -12,4 +12,4 @@
 [ext_resource type="Resource" uid="uid://guvpd5b1nr2f" path="res://examples/needs_list/bored.tres" id="10_yo15j"]
 
 [node name="agent" instance=ExtResource("1_qepgb")]
-needs = [ExtResource("2_c0bay"), ExtResource("3_hcmic"), ExtResource("4_gvxjv"), ExtResource("5_0yv5f"), ExtResource("6_nx8fy"), ExtResource("7_3xmxw"), ExtResource("8_em70u"), ExtResource("9_aauab"), ExtResource("10_yo15j")]
+needs = Array[Resource("res://addons/sishodit/tools/agent/need.gd")]([ExtResource("2_c0bay"), ExtResource("3_hcmic"), ExtResource("4_gvxjv"), ExtResource("5_0yv5f"), ExtResource("6_nx8fy"), ExtResource("7_3xmxw"), ExtResource("8_em70u"), ExtResource("9_aauab"), ExtResource("10_yo15j")])

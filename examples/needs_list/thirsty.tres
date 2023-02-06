@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1")
 need_key = "thirsty"
-solutions = [ExtResource("2")]
+solutions = Array[Resource("res://addons/sishodit/tools/agent/solution.gd")]([ExtResource("2")])
 time_to_fill_level = 14400.0
 level = 1.0
 min_level_before_solve = 0.5

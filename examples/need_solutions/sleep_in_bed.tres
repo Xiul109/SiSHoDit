@@ -7,5 +7,5 @@
 [resource]
 resource_name = "sleep_in_bed"
 script = ExtResource("2")
-steps = [ExtResource("3"), ExtResource("1"), ExtResource("3")]
+steps = Array[Resource("res://addons/sishodit/tools/agent/solution_step.gd")]([ExtResource("3"), ExtResource("1"), ExtResource("3")])
 weight = 1.0

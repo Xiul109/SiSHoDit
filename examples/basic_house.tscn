@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://r8w3xbn6y5up"]
+[gd_scene load_steps=76 format=3 uid="uid://b3ijlst0j28u8"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/environment/enviroment.gd" id="1_v15af"]
 [ext_resource type="PackedScene" path="res://examples/objects/structure/floorFull.tscn" id="2_0s1mw"]
@@ -53,7 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://bayf4ddkji6w4" path="res://examples/assets/furnitures_kenney/kitchenCoffeeMachine.glb" id="53_rt1q4"]
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/trashcan.tscn" id="53_w8nd4"]
 [ext_resource type="PackedScene" uid="uid://scm1uu5k7s0x" path="res://examples/assets/furnitures_kenney/toaster.glb" id="53_wg81m"]
-[ext_resource type="PackedScene" uid="uid://bh07cy0trq4hl" path="res://examples/example_agent.tscn" id="55_clrc6"]
+[ext_resource type="PackedScene" uid="uid://bh07cy0trq4hl" path="res://examples/agents/example_agent.tscn" id="55_clrc6"]
 [ext_resource type="PackedScene" path="res://examples/objects/structure/doorway.tscn" id="55_x6gkq"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulator.gd" id="60_sxeg5"]
 [ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="69_ws6ec"]

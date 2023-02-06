@@ -11,12 +11,12 @@ object_key = "shower"
 use_object = true
 min_duration = 300.0
 max_duration = 900.0
-needs_solved = ["dirty"]
+needs_solved = Array[String](["dirty"])
 needs_with_modified_rate = {}
 priority = 5
 
 [resource]
 resource_name = "take_a_shower"
 script = ExtResource("1_fq1yt")
-steps = [ExtResource("2_dx0o2"), SubResource("1"), ExtResource("2_dx0o2")]
+steps = Array[ExtResource("3_qex6p")]([ExtResource("2_dx0o2"), SubResource("1"), ExtResource("2_dx0o2")])
 weight = 1.0
