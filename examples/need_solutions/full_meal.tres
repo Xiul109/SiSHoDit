@@ -15,6 +15,7 @@ max_duration = 1200.0
 needs_solved = Array[String]([])
 needs_with_modified_rate = {}
 priority = null
+cancel_on_interruption = false
 
 [sub_resource type="Resource" id="2"]
 resource_name = "sit_to_it_interrupt"
@@ -26,6 +27,7 @@ max_duration = 2400.0
 needs_solved = Array[String](["hungry", "thirsty"])
 needs_with_modified_rate = {}
 priority = null
+cancel_on_interruption = false
 
 [resource]
 resource_name = "full_meal"

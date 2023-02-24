@@ -14,6 +14,7 @@ max_duration = 900.0
 needs_solved = Array[String](["dirty"])
 needs_with_modified_rate = {}
 priority = 5
+cancel_on_interruption = false
 
 [resource]
 resource_name = "take_a_shower"
