@@ -46,7 +46,7 @@ func _set_agent_destination(step_info: Dictionary):
 		my_agent.to = my_agent.global_transform.origin
 	else:
 		my_agent.to = step_info["object"].global_transform.origin
-	my_agent.new_path()
+
 	transitioned_to.emit("Traveling")
 
 func _apply_current_solution():

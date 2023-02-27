@@ -12,7 +12,11 @@ extends CharacterBody3D
 
 @onready var simulable : Simulable = $Simulable
 
-var to
+var to : Vector3:
+	set(new_to):
+		to = new_to
+		nav_agent.target_position = to
+	
 
 var current_needs = []
 var current_solutions = []
@@ -28,16 +32,13 @@ func _ready():
 	# Delete unsolvable needs
 	for need in unsolvable_needs:
 		needs.erase(need)
-	
+	# The state machine should not be initialized until the simulator is started
 	if owner:
 		await owner.ready
 		state_machine.start()
 		
 		
 ### Public methods ###
-func new_path():
-	nav_agent.target_position = to
-
 
 func wait(time: float):
 	var step = current_steps.back()
