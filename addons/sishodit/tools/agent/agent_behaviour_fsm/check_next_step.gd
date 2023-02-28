@@ -25,7 +25,9 @@ func on_enter():
 
 ## Initializes the dictionary including information related to the current [class Step]
 func _init_current_step_info(current_step):
-	var step_info = {"step" : current_step, "object" : null}
+	var step_info = {"step" : current_step,
+					"object" : null,
+					"priority": max(current_step.priority, my_agent.current_needs.back().priority)}
 	var object_key = current_step.object_key
 	# If object key is not empty, agent should move towards an object that solve its current problem
 	if object_key != "":

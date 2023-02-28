@@ -18,7 +18,6 @@ func on_enter():
 		
 	my_agent.log_event(log_event_type, need_solution.resource_name)
 	_console_log(current_need, is_returning)
-	print(my_agent.current_solutions)
 	
 	transitioned_to.emit("CheckNextStep")
 
@@ -28,7 +27,9 @@ func on_enter():
 func _get_next_need_to_cover():
 	var probabilities : Array[float] = []
 	var choosable_needs = []
-	var priority = _find_priority_based_on_current_needs()
+	var priority = (my_agent.current_steps.back()["priority"] 
+					if not my_agent.current_steps.is_empty()
+					else -INF)
 	var current_probability : float
 	
 	for need in my_agent.needs:
@@ -47,14 +48,6 @@ func _get_next_need_to_cover():
 
 	return choosable_needs[next_need_i]
 
-## Finds the highest priority between current needs and steps
-func _find_priority_based_on_current_needs():
-	var priority = -1
-	for need in my_agent.current_needs:
-		priority = max(need.priority, priority)
-	for step in my_agent.current_steps:
-		priority = max(step["step"].priority, priority)
-	return priority
 
 # Returns and index based on the probabilities of each one to be chosen
 func _get_random_i_based_on_probabilities(probabilities : Array[float]):

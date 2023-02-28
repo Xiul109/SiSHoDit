@@ -68,7 +68,7 @@ func wait(time: float):
 ## happens. If there is no interruption, it returns the maximum time setted as argument, which, by
 ## default, is the time the step needs to be completed.
 func obtain_time_until_interruption(maximum_time = current_steps.back()["time_left"]) -> float:
-	var step : SolutionStep = current_steps.back()["step"]
+	var step = current_steps.back()
 	var times = [maximum_time]
 	
 	for need in needs:
@@ -76,12 +76,12 @@ func obtain_time_until_interruption(maximum_time = current_steps.back()["time_le
 		# by needs of lower priority
 		if (need.need_key in current_solutions.back().needs_solved or 
 			need.need_key == current_needs.back().need_key or
-			need.priority <= step.priority):
+			need.priority <= step["priority"]):
 			continue
 		
 		var rate = 1.0
-		if need.need_key in step.needs_with_modified_rate:
-			rate = step.needs_with_modified_rate[need.need_key]
+		if need.need_key in step["step"].needs_with_modified_rate:
+			rate = step["step"].needs_with_modified_rate[need.need_key]
 		
 		times.append(need.time_until_level(need.urgent_level, rate))
 	
