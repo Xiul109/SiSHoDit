@@ -5,6 +5,10 @@ extends Resource
 @export var weight : float = 1.0
 
 var current_step = -1
+var needs_solved : Array[String] : get = _get_needs_solved_by_steps, set = _set_needs_solved
+
+func _to_string():
+	return "[Solution] %s"%resource_name
 
 func reset():
 	current_step = -1
@@ -23,3 +27,14 @@ func is_solution_viable(tree: SceneTree):
 			return false
 	
 	return true
+
+func _get_needs_solved_by_steps():
+	var needs : Array[String] = []
+	for step in steps:
+		for need in step.needs_solved:
+			if need not in needs:
+				needs.append(need)
+	return needs
+
+func _set_needs_solved(_val):
+	push_warning("This value cannot be modified")

@@ -64,6 +64,29 @@ func wait(time: float):
 	simulable.wait_time = time
 	simulable.simulation_mode = Simulator.SimulationMode.LOW_FREQ
 
+## Anticipates when a need will interrupt the step and returns the time remaining until that
+## happens. If there is no interruption, it returns the maximum time setted as argument, which, by
+## default, is the time the step needs to be completed.
+func obtain_time_until_interruption(maximum_time = current_steps.back()["time_left"]) -> float:
+	var step : SolutionStep = current_steps.back()["step"]
+	var times = [maximum_time]
+	
+	for need in needs:
+		# Avoid interruptions by needs solved by current step, by the current need being solved or
+		# by needs of lower priority
+		if (need.need_key in current_solutions.back().needs_solved or 
+			need.need_key == current_needs.back().need_key or
+			need.priority <= step.priority):
+			continue
+		
+		var rate = 1.0
+		if need.need_key in step.needs_with_modified_rate:
+			rate = step.needs_with_modified_rate[need.need_key]
+		
+		times.append(need.time_until_level(need.urgent_level, rate))
+	
+	return times.min()
+
 ## Informs the Simulator that this agent will enter into high frequency mode
 ## TODO: move the responsability to return to previous HIGH_FREQ mode to Simulable
 func finish_wait():

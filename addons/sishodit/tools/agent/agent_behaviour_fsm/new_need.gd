@@ -1,51 +1,53 @@
 extends State
 
 
-func on_process(_delta: float):
-	pass
-
 func on_enter():
 	var current_need = _get_next_need_to_cover()
-	if current_need not in my_agent.current_needs and current_need != null:
-		my_agent.current_needs.append(current_need)
-		var need_solution : Solution = current_need.get_solution()
-		my_agent.current_solutions.append(need_solution)
-		my_agent.log_event("activity_begin", need_solution.resource_name)
+	var is_returning = current_need in my_agent.current_needs or current_need == null
+	var need_solution : Solution
+	var log_event_type : String = "activity_begin"
 	
-		print("-------------------------")
-		print("New need: ", current_need.need_key, ". It can be solved in ",
-				need_solution.steps.size(), " steps.")
+	if is_returning:
+		current_need = my_agent.current_needs.back()
+		need_solution = my_agent.current_solutions.back()
+		log_event_type = "activity_return"
 	else:
-		print("---------------------------------------")
-		print("Return to need: %s" % my_agent.current_needs.back().need_key)
+		need_solution= current_need.get_solution()
+		my_agent.current_needs.append(current_need)
+		my_agent.current_solutions.append(need_solution)
+		
+	my_agent.log_event(log_event_type, need_solution.resource_name)
+	_console_log(current_need, is_returning)
+	print(my_agent.current_solutions)
 	
 	transitioned_to.emit("CheckNextStep")
 
-func on_exit():
-	pass
-
-## Aux functions ##
+## Obatains the next need to be cover based only on the probabilities of a need to be chosen
+## considering needs priorities but not additional constrains, like if the need is pending to be
+## solved
 func _get_next_need_to_cover():
-	var probs = []
+	var probabilities : Array[float] = []
 	var choosable_needs = []
 	var priority = _find_priority_based_on_current_needs()
+	var current_probability : float
+	
 	for need in my_agent.needs:
-		var prob = need.get_probability()
-		if need.priority <= priority or prob <= 0.0:
+		current_probability = need.get_probability()
+		if need.priority <= priority or current_probability <= 0.0:
 			continue
-		
-		probs.append(prob)
+		probabilities.append(current_probability)
 		choosable_needs.append(need)
 	
 	if len(choosable_needs) == 0:
 		return null
 	
-	var next_need_i = probs.find(1.0)
+	var next_need_i = probabilities.find(1.0)
 	if next_need_i == -1:
-		next_need_i = _get_random_i_based_on_probs(probs)
+		next_need_i = _get_random_i_based_on_probabilities(probabilities)
 
 	return choosable_needs[next_need_i]
 
+## Finds the highest priority between current needs and steps
 func _find_priority_based_on_current_needs():
 	var priority = -1
 	for need in my_agent.current_needs:
@@ -54,15 +56,25 @@ func _find_priority_based_on_current_needs():
 		priority = max(step["step"].priority, priority)
 	return priority
 
-func _get_random_i_based_on_probs(probs):
+# Returns and index based on the probabilities of each one to be chosen
+func _get_random_i_based_on_probabilities(probabilities : Array[float]):
 	var total = 0
-	for p in probs:
+	for p in probabilities:
 		total += p
-	var prob = randf_range(0, total)
+		
+	var target = randf_range(0, total)
 	var sum = 0
-	for i in range(len(probs)):
-		sum += probs[i]
-		if prob < sum:
+	for i in range(len(probabilities)):
+		sum += probabilities[i]
+		if target < sum:
 			return i
 	
 	return 0
+
+## Logs texts to the console based on the current need being solved
+func _console_log(need, is_returning = false):
+	print("---------------------------------------")
+	if is_returning:
+		print("Returning to need: ", need.need_key)
+	else:
+		print("New need: ", need.need_key)

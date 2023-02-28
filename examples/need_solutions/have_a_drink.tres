@@ -7,5 +7,5 @@
 [resource]
 resource_name = "have_a_drink"
 script = ExtResource("1")
-steps = [ExtResource("2"), ExtResource("3")]
+steps = Array[Resource("res://addons/sishodit/tools/agent/solution_step.gd")]([ExtResource("2"), ExtResource("3")])
 weight = 1.0

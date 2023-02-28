@@ -1,56 +1,59 @@
 extends State
 
 
-func on_process(_delta: float):
-	pass
-
 func on_enter():
-	var step_info = null
+	# By default the next step to be solve is assumed to be the current one
+	var step_info
+	# If there are more current solutions than steps, a new one should be retrieved
 	if len(my_agent.current_solutions) > len(my_agent.current_steps):
 		var current_step = my_agent.current_solutions.back().get_next_step()
-		if current_step != null:
-			step_info = _init_current_step_info(current_step)
+		# If there aren't more steps left for the current solution, then the solution can be applied
+		if current_step == null:
+			_apply_current_solution()
+			return
+		step_info = _init_current_step_info(current_step)
 	else:
 		step_info = my_agent.current_steps.back()
-	# If there's still steps in the current solution or there are interupted steps, we find where the agent should go next
-	if step_info:
-		_set_agent_destination(step_info)
-	# If not, we consider the solution as applied
-	else:
-		_apply_current_solution()
+	
+	# If there is a need with high urgence, more priority than next one and that will interrupt it
+	# as soon as it starts, then that need will be prioritized
+	var t = my_agent.obtain_time_until_interruption(INF)
+	if t <= 0.0:
+		transitioned_to.emit("NewNeed")
+	
+	_set_agent_destination(step_info)
 
-func on_exit():
-	pass
-
-## Aux functions ##
+## Initializes the dictionary including information related to the current [class Step]
 func _init_current_step_info(current_step):
-	var step_info = {step = current_step}
+	var step_info = {"step" : current_step, "object" : null}
 	var object_key = current_step.object_key
 	# If object key is not empty, agent should move towards an object that solve its current problem
 	if object_key != "":
 		var objects = get_tree().get_nodes_in_group(object_key)
-		var selected_object = objects[randi() % objects.size()] as Node3D
-		step_info["object"] = selected_object
-	# If not it stays in its position, which is the same than travelling to the agent own position
-	else:
-		step_info["object"] = null
-
-	print("Current step can be solved with ", current_step.object_key,
-			" and solves: ", current_step.needs_solved)
-	my_agent.current_steps.append(step_info)
+		step_info["object"] = objects[randi() % objects.size()]
+	
+	my_agent.current_steps.append(step_info) # The step info is appended to the current steps
+	
+	console_log(current_step)
+	
 	return step_info
 
-
+## Sets the next destination of the agent based on the object associated to the step and transitions
+## to [i]Travelling[/i] state
 func _set_agent_destination(step_info: Dictionary):
-	if step_info["object"] == null:
-		my_agent.to = my_agent.global_transform.origin
-	else:
-		my_agent.to = step_info["object"].global_transform.origin
-
+	var destination : Vector3 = my_agent.global_transform.origin
+	if step_info["object"] != null:
+		destination = step_info["object"].global_transform.origin
+	
+	my_agent.to = destination
 	transitioned_to.emit("Traveling")
 
+## Pops the last current need and solution and transitions to [i]NewNeed[/i] state
 func _apply_current_solution():
 	my_agent.current_needs.pop_back()
 	my_agent.log_event("activity_end", my_agent.current_solutions.pop_back().resource_name)
-	
 	transitioned_to.emit("NewNeed")
+
+## Prints information about the current step chosen
+func console_log(step):
+	print("Current step can be solved with ", step.object_key, " and solves: ", step.needs_solved)
