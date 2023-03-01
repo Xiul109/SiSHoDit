@@ -12,7 +12,7 @@ func on_enter():
 		need_solution = my_agent.current_solutions.back()
 		log_event_type = "activity_return"
 	else:
-		need_solution= current_need.get_solution()
+		need_solution= current_need.get_a_feasible_solution()
 		my_agent.current_needs.append(current_need)
 		my_agent.current_solutions.append(need_solution)
 		
@@ -33,7 +33,7 @@ func _get_next_need_to_cover():
 	var current_probability : float
 	
 	for need in my_agent.needs:
-		current_probability = need.get_probability()
+		current_probability = need.relevance
 		if need.priority <= priority or current_probability <= 0.0:
 			continue
 		probabilities.append(current_probability)

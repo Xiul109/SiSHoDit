@@ -21,7 +21,7 @@ func get_next_step():
 		current_step = -1
 		return null
 
-func is_solution_viable(tree: SceneTree):
+func is_solution_feasible(tree: SceneTree):
 	for step in steps:
 		if not tree.has_group(step.object_key) and step.object_key != "":
 			return false
