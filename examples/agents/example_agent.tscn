@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bh07cy0trq4hl"]
 
-[ext_resource type="PackedScene" uid="uid://cc7l7vk8pky5y" path="res://addons/sishodit/presets/agent.tscn" id="1_qepgb"]
+[ext_resource type="PackedScene" uid="uid://0wamgrgrd18i" path="res://addons/sishodit/presets/agent.tscn" id="1_qepgb"]
 [ext_resource type="Resource" uid="uid://ccbcc85tagvcp" path="res://examples/needs_list/number_1.tres" id="2_c0bay"]
 [ext_resource type="Resource" uid="uid://lky2i44e1yc1" path="res://examples/needs_list/number_2.tres" id="3_hcmic"]
 [ext_resource type="Resource" uid="uid://b17f56w11w820" path="res://examples/needs_list/thirsty.tres" id="4_gvxjv"]
