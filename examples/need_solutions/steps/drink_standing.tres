@@ -3,8 +3,10 @@
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_step.gd" id="1"]
 
 [resource]
+resource_name = "drink_standing"
 script = ExtResource("1")
-object_key = ""
+object_group = ""
+object_selection_criterion = 0
 use_object = true
 min_duration = 5.0
 max_duration = 30.0

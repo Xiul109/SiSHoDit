@@ -1,15 +1,16 @@
-[gd_resource type="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SolutionStep" load_steps=2 format=3 uid="uid://pqoy6s53ri78"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_step.gd" id="1"]
 
 [resource]
-script = ExtResource( 1 )
-object_key = "shower"
+resource_name = "take_a_shower"
+script = ExtResource("1")
+object_group = "shower"
+object_selection_criterion = 0
 use_object = true
 min_duration = 300.0
 max_duration = 900.0
-needs_solved = [ "dirty" ]
-needs_with_modified_rate = {
-}
-probability_of_being_interrupted = 0.0
-min_value_to_be_interrupted = 1.0
+needs_solved = Array[String](["dirty"])
+needs_with_modified_rate = {}
+priority = 0
+cancel_on_interruption = false

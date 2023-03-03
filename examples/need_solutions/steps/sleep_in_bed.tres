@@ -3,8 +3,10 @@
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_step.gd" id="1"]
 
 [resource]
+resource_name = "sleep_in_bed"
 script = ExtResource("1")
-object_key = "bed"
+object_group = "bed"
+object_selection_criterion = 0
 use_object = true
 min_duration = 21600.0
 max_duration = 36000.0

@@ -1,15 +1,16 @@
-[gd_resource type="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SolutionStep" load_steps=2 format=3 uid="uid://cj0hxa62bia0x"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_step.gd" id="1"]
 
 [resource]
-script = ExtResource( 1 )
-object_key = "sit_eat"
+resource_name = "sit_to_eat_and_drink"
+script = ExtResource("1")
+object_group = "sit_eat"
+object_selection_criterion = 0
 use_object = true
 min_duration = 600.0
 max_duration = 2400.0
-needs_solved = [ "hungry", "thirsty" ]
-needs_with_modified_rate = {
-}
-probability_of_being_interrupted = 0.0
-min_value_to_be_interrupted = 1.0
+needs_solved = Array[String](["hungry", "thirsty"])
+needs_with_modified_rate = {}
+priority = 0
+cancel_on_interruption = false

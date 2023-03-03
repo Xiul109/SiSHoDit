@@ -83,4 +83,4 @@ func _console_log_finish(interrupted = false):
 	var text = "finished"
 	if interrupted:
 		text = "interrupted"
-	print("Step %s %s"%[current_step["step"].resource_path, text])
+	print("Step %s %s"%[current_step["step"], text])

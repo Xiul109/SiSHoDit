@@ -3,11 +3,14 @@
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_step.gd" id="1"]
 
 [resource]
+resource_name = "number_1"
 script = ExtResource("1")
-object_key = "toilet"
+object_group = "toilet"
+object_selection_criterion = 0
 use_object = true
 min_duration = 20.0
 max_duration = 40.0
-needs_solved = ["number_1"]
+needs_solved = Array[String](["number_1"])
 needs_with_modified_rate = {}
 priority = 10
+cancel_on_interruption = false

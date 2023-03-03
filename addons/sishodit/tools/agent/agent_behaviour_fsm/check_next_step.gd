@@ -20,19 +20,15 @@ func on_enter():
 	var t = my_agent.obtain_time_until_interruption(INF)
 	if t <= 0.0:
 		transitioned_to.emit("NewNeed")
+		return
 	
 	_set_agent_destination(step_info)
 
 ## Initializes the dictionary including information related to the current [class Step]
-func _init_current_step_info(current_step):
+func _init_current_step_info(current_step: SolutionStep):
 	var step_info = {"step" : current_step,
-					"object" : null,
+					"object" : current_step.get_target_object(my_agent),
 					"priority": max(current_step.priority, my_agent.current_needs.back().priority)}
-	var object_key = current_step.object_key
-	# If object key is not empty, agent should move towards an object that solve its current problem
-	if object_key != "":
-		var objects = get_tree().get_nodes_in_group(object_key)
-		step_info["object"] = objects[randi() % objects.size()]
 	
 	my_agent.current_steps.append(step_info) # The step info is appended to the current steps
 	
@@ -58,4 +54,6 @@ func _apply_current_solution():
 
 ## Prints information about the current step chosen
 func console_log(step):
-	print("Current step can be solved with ", step.object_key, " and solves: ", step.needs_solved)
+	print("Current step (", step,
+		") can be solved with ", step.object_group,
+		" and solves: ", step.needs_solved)

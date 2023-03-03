@@ -30,7 +30,7 @@ func get_next_step():
 ## Returns true if the Soution is feasible for the actual [code]tree[/code]
 func is_solution_feasible(tree: SceneTree):
 	for step in steps:
-		if not tree.has_group(step.object_key) and step.object_key != "":
+		if not tree.has_group(step.object_group) and step.object_group != "":
 			return false
 	
 	return true

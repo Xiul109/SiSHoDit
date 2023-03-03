@@ -53,9 +53,13 @@ func _ready():
 		needs.erase(need)
 	# The state machine should not be initialized until the simulator is started
 	# TODO: move this responsability to the Simulable class
-	if owner:
-		await owner.ready
-		state_machine.start()
+	
+	# If state machine is started in ready, navigation map is not active and that generates problems
+	# , so a timer is the best solution I could find for now. I also tried using call_deferred, but
+	# it did not work.
+	var timer = get_tree().create_timer(.0001)
+	timer.timeout.connect(state_machine.start)
+		
 
 ## Informs the Simulator that this agent will enter into low frequency mode during [code]time[/code]
 ## seconds

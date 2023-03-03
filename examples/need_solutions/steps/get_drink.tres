@@ -3,11 +3,14 @@
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_step.gd" id="1"]
 
 [resource]
+resource_name = "get_drink"
 script = ExtResource("1")
-object_key = "drink_source"
+object_group = "drink_source"
+object_selection_criterion = 1
 use_object = true
 min_duration = 20.0
 max_duration = 60.0
-needs_solved = []
+needs_solved = Array[String]([])
 needs_with_modified_rate = {}
 priority = 1
+cancel_on_interruption = false
