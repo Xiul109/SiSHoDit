@@ -53,7 +53,7 @@ func _to_string():
 ## ([member max_duration] + [member min_duration])/2 and standard deviation of
 ## [code]std_streching[/code] * ([member max_duration] - [member min_duration])/2.
 func generate_duration(std_streching : float = .25):
-	var mean_duration = (max_duration-min_duration)/2
+	var mean_duration = (max_duration+min_duration)/2
 	var std_duration = std_streching*(max_duration-min_duration)/2
 	return clamp(randfn(mean_duration, std_duration),
 					min_duration, max_duration)
