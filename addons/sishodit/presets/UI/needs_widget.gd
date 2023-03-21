@@ -16,7 +16,7 @@ func _process(_delta):
 	if agent == null:
 		return
 	for need in agent.needs:
-		_need_widgets[need.need_key].need_level = need.level
+		_need_widgets[need.info.need_key].need_level = need.level
 
 # aux methods
 func _clean_widgets():
@@ -29,5 +29,5 @@ func _init_widgets():
 		var needWidget = SingleNeedWidget.instantiate()
 		add_child(needWidget)
 		
-		needWidget.need_name = need.need_key
+		needWidget.need_name = need.info.need_key
 		_need_widgets[needWidget.need_name] = needWidget

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="NeedInfo" load_steps=3 format=3 uid="uid://4mrbam1umk6g"]
 
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/need.gd" id="1"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/need_info.gd" id="1"]
 [ext_resource type="Resource" path="res://examples/need_solutions/sit_relax.tres" id="2"]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 need_key = "tired"
-solutions = [ ExtResource( 2 ) ]
+solutions = Array[Resource("res://addons/sishodit/tools/agent/solution_info.gd")]([ExtResource("2")])
 time_to_fill_level = 10800.0
-level = 0.0
+initial_level = 0.0
 min_level_before_solve = 0.0
+priority = 0
+urgent_level = 1.0

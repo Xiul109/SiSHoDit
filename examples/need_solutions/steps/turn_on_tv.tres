@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="SolutionStep" load_steps=2 format=3 uid="uid://bvbwf0kfvlfp5"]
+[gd_resource type="Resource" script_class="StepInfo" load_steps=2 format=3 uid="uid://cdxxbjocwldov"]
 
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_step.gd" id="1"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/step_info.gd" id="1"]
 
 [resource]
 resource_name = "turn_on_tv"

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="SolutionStep" load_steps=2 format=3 uid="uid://cj0hxa62bia0x"]
+[gd_resource type="Resource" script_class="SolutionStep" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_step.gd" id="1"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/step_info.gd" id="1"]
 
 [resource]
 resource_name = "sit_to_eat_and_drink"

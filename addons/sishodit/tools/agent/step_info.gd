@@ -1,6 +1,6 @@
 ## Representation of each of the steps needed to apply a [class Solution]. A step can modify the
 ## state of [class Need]s or not.
-class_name SolutionStep
+class_name StepInfo
 extends Resource
 
 ## Criteria for deciding which object will be chosen for applying the step
@@ -39,7 +39,7 @@ enum ObjectSelectionCriteria {
 @export_group("Step fine tuning")
 ## Steps can only be interrupted by [class Need]s with higher priority than them. The final value
 ## used depends of the Need this Step is helping to solve being max([member priority],
-## [member Need.priority]).
+## [member NeedInfo.priority]).
 @export_range(0, 20, 1, "or_greater") var priority : int
 ## When true, if interrupted the step will be canceled along with the [class Solution] it is part of
 ## and the [class Need] for which that Solution is being applied
@@ -57,48 +57,3 @@ func generate_duration(std_streching : float = .25):
 	var std_duration = std_streching*(max_duration-min_duration)/2
 	return clamp(randfn(mean_duration, std_duration),
 					min_duration, max_duration)
-
-## Returns an adequate object from the [code]tree[/code] for this step attending to
-## the [member object_group] and the [member object_selection_criterion]. If one of the distance
-## related criteria is used, [code]nav_agent[/code] internal state is modified.
-func get_target_object(agent : Agent) -> Node3D:
-	var object: Node3D = null
-	if object_group != "":
-		var objects = agent.get_tree().get_nodes_in_group(object_group)
-		match object_selection_criterion:
-			ObjectSelectionCriteria.RANDOM:
-				object = objects[randi() % objects.size()]
-			_:
-				object = _object_with_distance_criterion(objects, agent,
-														object_selection_criterion)
-	
-	return object
-
-## Returns an object after applying one of the distance related critera
-func _object_with_distance_criterion(objects : Array, agent: Agent,
-									criterion: ObjectSelectionCriteria):
-	var dists : Array = objects.map(func(obj):
-			return _compute_path_distance(NavigationServer3D.map_get_path(
-				agent.get_world_3d().navigation_map,
-				agent.position,
-				obj.position,
-				true)
-			)
-			)
-	var d
-	match object_selection_criterion:
-		ObjectSelectionCriteria.NEAREST:
-			d = dists.min()
-		ObjectSelectionCriteria.FURTHEST:
-			d = dists.max()
-		_:
-			return null
-	
-	return objects[dists.find(d)]
-
-## Computes the length of a path by adding the length of its segments
-func _compute_path_distance(path: PackedVector3Array):
-	var dist = 0
-	for i in len(path)-1:
-		dist += (path[i+1]-path[i]).length()
-	return dist

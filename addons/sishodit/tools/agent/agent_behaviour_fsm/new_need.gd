@@ -12,11 +12,11 @@ func on_enter():
 		need_solution = my_agent.current_solutions.back()
 		log_event_type = "activity_return"
 	else:
-		need_solution= current_need.get_a_feasible_solution()
+		need_solution = current_need.get_a_feasible_solution()
 		my_agent.current_needs.append(current_need)
 		my_agent.current_solutions.append(need_solution)
 		
-	my_agent.log_event(log_event_type, need_solution.resource_name)
+	my_agent.log_event(log_event_type, need_solution.info.resource_name)
 	_console_log(current_need, is_returning)
 	
 	transitioned_to.emit("CheckNextStep")
@@ -34,7 +34,7 @@ func _get_next_need_to_cover():
 	
 	for need in my_agent.needs:
 		current_probability = need.relevance
-		if need.priority <= priority or current_probability <= 0.0:
+		if need.info.priority <= priority or current_probability <= 0.0:
 			continue
 		probabilities.append(current_probability)
 		choosable_needs.append(need)
@@ -68,6 +68,6 @@ func _get_random_i_based_on_probabilities(probabilities : Array[float]):
 func _console_log(need, is_returning = false):
 	print("---------------------------------------")
 	if is_returning:
-		print("Returning to need: ", need.need_key)
+		print("Returning to need: ", need.info.need_key)
 	else:
-		print("New need: ", need.need_key)
+		print("New need: ", need.info.need_key)

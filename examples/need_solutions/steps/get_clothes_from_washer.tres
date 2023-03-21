@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="SolutionStep" load_steps=2 format=3 uid="uid://bdn5lm8312vn1"]
+[gd_resource type="Resource" script_class="StepInfo" load_steps=2 format=3 uid="uid://dqndep8md37nn"]
 
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_step.gd" id="1"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/step_info.gd" id="1"]
 
 [resource]
 resource_name = "get_clothes_from_washer"

@@ -6,8 +6,11 @@ extends CharacterBody3D
 @export_range(0, 20, 0.001, "or_greater")
 var speed: float = 10
 
-## The list of needs of the agent.
+## The list of information of each need of the agent.
 @export 
+var needs_info : Array[NeedInfo]
+
+## The list of needs of the agent.
 var needs : Array[Need]
 
 ## New destination for the agent.
@@ -32,7 +35,7 @@ var current_solutions: Array[Solution] = []
 ## [code] "time_left" [/code]: The remaining time the step needs to be completed [br]
 ## Both [code]"total_time"[/code] and [code]"time_left"[/code] entries are not added until the state
 ## machine enters for the first time after the step is chosen in the [i]DoingStep[/i] state.
-var current_steps : Array[Dictionary] = []
+var current_steps : Array[Step] = []
 
 ## The state_machine is used for helping to model the behaviour of the agent and for distributing
 ## the code between specialized nodes, which makes it easier to maintain.
@@ -46,11 +49,10 @@ var current_steps : Array[Dictionary] = []
 func _ready():
 	# Finding and deleting unsolvable needs
 	var unsolvable_needs = []
-	for need in needs:
-		if not need.can_be_solved(get_tree()):
-			unsolvable_needs.append(need)
-	for need in unsolvable_needs:
-		needs.erase(need)
+	for need_info in needs_info:
+		var need = Need.new(need_info, get_tree())
+		if not need.feasible_solutions.is_empty():
+			needs.append(need)
 	# The state machine should not be initialized until the simulator is started
 	# TODO: move this responsability to the Simulable class
 	
@@ -71,23 +73,23 @@ func wait(time: float):
 ## Anticipates when a need will interrupt the step and returns the time remaining until that
 ## happens. If there is no interruption, it returns the maximum time setted as argument, which, by
 ## default, is the time the step needs to be completed.
-func obtain_time_until_interruption(maximum_time = current_steps.back()["time_left"]) -> float:
+func obtain_time_until_interruption(maximum_time = current_steps.back().time_left) -> float:
 	var step = current_steps.back()
 	var times = [maximum_time]
 	
 	for need in needs:
 		# Avoid interruptions by needs solved by current step, by the current need being solved or
 		# by needs of lower priority
-		if (need.need_key in current_solutions.back().needs_solved or 
-			need.need_key == current_needs.back().need_key or
-			need.priority <= step["priority"]):
+		if (need.info.need_key in current_solutions.back().needs_solved or 
+			need.info.need_key == current_needs.back().info.need_key or
+			need.info.priority <= step.priority):
 			continue
 		
 		var rate = 1.0
-		if need.need_key in step["step"].needs_with_modified_rate:
-			rate = step["step"].needs_with_modified_rate[need.need_key]
+		if need.info.need_key in step.info.needs_with_modified_rate:
+			rate = step.info.needs_with_modified_rate[need.info.need_key]
 		
-		times.append(need.time_until_level(need.urgent_level, rate))
+		times.append(need.time_until_level(need.info.urgent_level, rate))
 	
 	return times.min()
 
@@ -100,7 +102,7 @@ func finish_wait():
 func log_event(type, value):
 	simulable.log_event.emit(name, type, value)
 
-## Processes the needs updates in a frame, excluding the ones solved in a [class SolutionStep] and
+## Processes the needs updates in a frame, excluding the ones solved in a [class Step] and
 ## taking into account those with modified rates
 func _process_needs(delta):
 	if state_machine.current_state== null or state_machine.current_state.name != "DoingStep":
@@ -108,12 +110,12 @@ func _process_needs(delta):
 	
 	for need in needs:
 		var modified_delta = delta # Used for handling steps with modified rates
-		var step = current_steps.back()["step"] as SolutionStep
+		var step = current_steps.back()
 		
-		if need.need_key in step.needs_solved:
+		if need.info.need_key in step.info.needs_solved:
 			continue
-		elif need.need_key in step.needs_with_modified_rate:
-			modified_delta *= step.needs_with_modified_rate[need.need_key]
+		elif need.info.need_key in step.info.needs_with_modified_rate:
+			modified_delta *= step.info.needs_with_modified_rate[need.info.need_key]
 		
 		need.increase_level(modified_delta)
 

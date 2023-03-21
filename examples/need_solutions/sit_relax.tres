@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="SolutionInfo" load_steps=3 format=3 uid="uid://pwygbah37srh"]
 
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution.gd" id="1"]
-[ext_resource type="Resource" path="res://examples/need_solutions/steps/sit_relax.tres" id="2"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_info.gd" id="1"]
+[ext_resource type="Resource" uid="uid://bjh3sp81y7bys" path="res://examples/need_solutions/steps/sit_relax.tres" id="2"]
 
 [resource]
 resource_name = "sit_relax"
-script = ExtResource( 1 )
-steps = [ ExtResource( 2 ) ]
+script = ExtResource("1")
+steps = Array[Resource("res://addons/sishodit/tools/agent/step_info.gd")]([ExtResource("2")])
 weight = 1.0

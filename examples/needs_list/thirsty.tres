@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="Need" load_steps=3 format=3 uid="uid://b17f56w11w820"]
+[gd_resource type="Resource" script_class="NeedInfo" load_steps=3 format=3 uid="uid://c8b50r4llbpyy"]
 
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/need.gd" id="1"]
-[ext_resource type="Resource" uid="uid://b0idfw3epy4jg" path="res://examples/need_solutions/have_a_drink.tres" id="2"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/need_info.gd" id="1_nsbji"]
+[ext_resource type="Resource" uid="uid://b1muxay20soom" path="res://examples/need_solutions/have_a_drink.tres" id="2_ly8r6"]
 
 [resource]
-script = ExtResource("1")
+script = ExtResource("1_nsbji")
 need_key = "thirsty"
-solutions = Array[Resource("res://addons/sishodit/tools/agent/solution.gd")]([ExtResource("2")])
+solutions = Array[Resource("res://addons/sishodit/tools/agent/solution_info.gd")]([ExtResource("2_ly8r6")])
 time_to_fill_level = 14400.0
-level = 1.0
+initial_level = 1.0
 min_level_before_solve = 0.5
 priority = 4
 urgent_level = 1.0

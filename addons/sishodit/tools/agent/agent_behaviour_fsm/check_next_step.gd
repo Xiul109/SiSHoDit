@@ -3,17 +3,22 @@ extends State
 
 func on_enter():
 	# By default the next step to be solve is assumed to be the current one
-	var step_info
+	var step : Step
+	var solutions = my_agent.current_solutions
+	var steps = my_agent.current_steps
+	
 	# If there are more current solutions than steps, a new one should be retrieved
-	if len(my_agent.current_solutions) > len(my_agent.current_steps):
-		var current_step = my_agent.current_solutions.back().get_next_step()
+	if len(solutions) > len(steps):
+		step = solutions.back().get_next_step(my_agent.current_needs.back().info.priority)
 		# If there aren't more steps left for the current solution, then the solution can be applied
-		if current_step == null:
+		if step == null:
 			_apply_current_solution()
 			return
-		step_info = _init_current_step_info(current_step)
+		step.find_target_object(my_agent)
+		steps.append(step)
+		console_log(step)
 	else:
-		step_info = my_agent.current_steps.back()
+		step = steps.back()
 	
 	# If there is a need with high urgence, more priority than next one and that will interrupt it
 	# as soon as it starts, then that need will be prioritized
@@ -22,26 +27,15 @@ func on_enter():
 		transitioned_to.emit("NewNeed")
 		return
 	
-	_set_agent_destination(step_info)
+	_set_agent_destination(step)
 
-## Initializes the dictionary including information related to the current [class Step]
-func _init_current_step_info(current_step: SolutionStep):
-	var step_info = {"step" : current_step,
-					"object" : current_step.get_target_object(my_agent),
-					"priority": max(current_step.priority, my_agent.current_needs.back().priority)}
-	
-	my_agent.current_steps.append(step_info) # The step info is appended to the current steps
-	
-	console_log(current_step)
-	
-	return step_info
 
 ## Sets the next destination of the agent based on the object associated to the step and transitions
 ## to [i]Travelling[/i] state
-func _set_agent_destination(step_info: Dictionary):
+func _set_agent_destination(step: Step):
 	var destination : Vector3 = my_agent.global_transform.origin
-	if step_info["object"] != null:
-		destination = step_info["object"].global_transform.origin
+	if step.object != null:
+		destination = step.object.global_transform.origin
 	
 	my_agent.to = destination
 	transitioned_to.emit("Traveling")
@@ -49,11 +43,11 @@ func _set_agent_destination(step_info: Dictionary):
 ## Pops the last current need and solution and transitions to [i]NewNeed[/i] state
 func _apply_current_solution():
 	my_agent.current_needs.pop_back()
-	my_agent.log_event("activity_end", my_agent.current_solutions.pop_back().resource_name)
+	my_agent.log_event("activity_end", my_agent.current_solutions.pop_back().info.resource_name)
 	transitioned_to.emit("NewNeed")
 
 ## Prints information about the current step chosen
 func console_log(step):
 	print("Current step (", step,
-		") can be solved with ", step.object_group,
-		" and solves: ", step.needs_solved)
+		") can be solved with ", step.info.object_group,
+		" and solves: ", step.info.needs_solved)
