@@ -59,7 +59,12 @@ func get_a_feasible_solution(i : int = -1) -> Solution:
 ## Computes the time needed for a need to reach a target level. A return value of 0 means that the
 ## target level has already been reached
 func time_until_level(target_level: float, rate : float = 1.0):
-	return max(0.0, (target_level - level) * info.time_to_fill_level * rate)
+	var diff = max(0.0, target_level - level)
+	if diff == 0.0:
+		return diff
+	if rate <= 0.0:
+		return INF
+	return diff * info.time_to_fill_level / rate
 
 
 ## Computes the list of feasible solutions.

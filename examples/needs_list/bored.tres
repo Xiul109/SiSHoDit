@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="NeedInfo" load_steps=5 format=3 uid="uid://cgiwyismn1dgo"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/need_info.gd" id="1"]
-[ext_resource type="Resource" path="res://examples/need_solutions/watch_tv.tres" id="2"]
-[ext_resource type="Resource" path="res://examples/need_solutions/read_book.tres" id="3"]
-[ext_resource type="Resource" path="res://examples/need_solutions/play_videogames.tres" id="4"]
+[ext_resource type="Resource" uid="uid://ce8umxuusgt23" path="res://examples/need_solutions/watch_tv.tres" id="2"]
+[ext_resource type="Resource" uid="uid://l1o5m0lo3wjg" path="res://examples/need_solutions/read_book.tres" id="3"]
+[ext_resource type="Resource" uid="uid://cykjtqdjkqku8" path="res://examples/need_solutions/play_videogames.tres" id="4"]
 
 [resource]
 script = ExtResource("1")
