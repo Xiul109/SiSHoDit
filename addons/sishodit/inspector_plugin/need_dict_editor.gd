@@ -20,7 +20,7 @@ func _init(obj_dict: Dictionary):
 	# Property control
 	add_child(property_control)
 	add_focusable(property_control)
-	property_control.text = "Dictionary"
+	property_control.text = "Need Dictionary"
 	property_control.pressed.connect(_on_button_pressed)
 	
 	# Bottom editor
@@ -39,17 +39,26 @@ func _on_button_pressed():
 
 func _on_entry_updated(key, value):
 	dict[key] = value
+	emit_changed(get_edited_property(), dict, "", true)
 
 func _on_entry_erased(key):
 	dict.erase(key)
+	emit_changed(get_edited_property(), dict, "", true)
 
 func _on_entry_added(key, value):
 	if key not in dict:
 		dict_display.add_entry(key, value)
 	else:
 		dict_display.entries[key].value = value
-	dict[key] = value
 	
+	# If this is not done, when a new entry is added, the default dictionary is changed for all
+	if dict.is_empty():
+		dict = {key: value}
+	else:
+		dict[key] = value
+	
+	emit_changed(get_edited_property(), dict, "", true)
 
 func _update_property():
+	dict = get_edited_object()[get_edited_property()]
 	dict_display.load_dict(dict)

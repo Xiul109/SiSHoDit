@@ -10,8 +10,14 @@ object_selection_criterion = 0
 use_object = true
 min_duration = 21600.0
 max_duration = 36000.0
-needs_solved = Array[String](["sleepy", "tired", "bored"])
+needs_solved = {
+"bored": 0.2,
+"sleepy": 1.0,
+"tired": 1.0
+}
+needs_increased = {}
 needs_with_modified_rate = {
+"dirty_hands": 0.3,
 "thirsty": 0.6
 }
 priority = 4

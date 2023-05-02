@@ -34,7 +34,7 @@ var value: float :
 signal value_changed(key, value)
 signal entry_erased(key)
 
-func _init(p_key: String = "", p_value: float = 0,
+func _init(p_key: String = "", p_value: float = 1.0,
 			p_range_low : bool = 0.0, p_range_high : bool = 1.0):
 	# Key related fields initialization
 	_init_key_editor()
@@ -57,7 +57,7 @@ func _ready():
 # Public methods
 func default_entry():
 	key = ""
-	value = 0.0
+	value = 1.0
 
 # Auxiliar methods
 func _init_key_editor():

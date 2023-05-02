@@ -12,5 +12,5 @@ func _parse_property(object, type, path, hint, hint_text, usage, wide):
 	if type == TYPE_DICTIONARY:
 		add_property_editor(path, NeedDictEditor.new(object[path]))
 		return true
-	else:
-		return false
+	
+	return false

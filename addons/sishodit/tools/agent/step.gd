@@ -51,7 +51,9 @@ func do(delta:float, agent:Agent) -> bool:
 	# Update needs
 	for need in agent.needs:
 		if need.info.need_key in info.needs_solved:
-			need.level -= time_percentage 
+			need.level -= time_percentage * info.needs_solved[need.info.need_key]
+		elif need.info.need_key in info.needs_increased:
+			need.level += time_percentage * info.needs_increased[need.info.need_key]
 	
 	return time_left <= 0
 

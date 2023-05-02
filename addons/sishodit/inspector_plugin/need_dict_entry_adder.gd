@@ -4,7 +4,7 @@ extends PanelContainer
 var Entry = preload("res://addons/sishodit/inspector_plugin/need_dict_entry.gd")
 
 var container = VBoxContainer.new()
-var entry = Entry.new("", 0)
+var entry = Entry.new()
 var add_entry_button = Button.new()
 
 signal entry_added(key: String, value: float)

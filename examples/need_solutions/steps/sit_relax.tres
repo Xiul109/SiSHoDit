@@ -10,7 +10,10 @@ object_selection_criterion = 0
 use_object = true
 min_duration = 600.0
 max_duration = 1800.0
-needs_solved = Array[String](["tired"])
+needs_solved = {
+"tired": 1.0
+}
+needs_increased = {}
 needs_with_modified_rate = {}
 priority = 0
 cancel_on_interruption = false

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SolutionInfo" load_steps=3 format=3 uid="uid://byn6ijguo802w"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_info.gd" id="1_krb3d"]
+[ext_resource type="Resource" uid="uid://c2xsu8cjkedc3" path="res://examples/need_solutions/steps/wash_hands.tres" id="2_30jje"]
+
+[resource]
+script = ExtResource("1_krb3d")
+steps = Array[Resource("res://addons/sishodit/tools/agent/step_info.gd")]([ExtResource("2_30jje")])
+weight = 1.0

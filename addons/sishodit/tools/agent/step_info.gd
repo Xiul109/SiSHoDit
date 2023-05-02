@@ -27,13 +27,14 @@ enum ObjectSelectionCriteria {
 @export var max_duration: float
 
 @export_group("Needs")
-# This two must ve changed for giving more flexibility to increase a need value, and also needs
-# should be able to be freezed
-## Needs that are solved by the step
-@export var needs_solved : Array[String]
-## Needs that whose filling rate is modified during the step. The dictionary expected entries are:
+# needs should be able to be freezed
+## Needs that are solved by the step by a certain value. The dictionary expected entries are:
 ## [code]"need_key":rate[/code], where "need_key" should be the need_key of an existing [class Need]
 ## and rate must be a float that will multiply the default filling rate of the Need.
+@export var needs_solved : Dictionary
+## Needs that are increased during the step.
+@export var needs_increased : Dictionary
+## Needs whose filling rate is modified during the step.
 @export var needs_with_modified_rate: Dictionary
 
 @export_group("Step fine tuning")
@@ -44,7 +45,6 @@ enum ObjectSelectionCriteria {
 ## When true, if interrupted the step will be canceled along with the [class Solution] it is part of
 ## and the [class Need] for which that Solution is being applied
 @export var cancel_on_interruption = false
-
 
 func _to_string():
 	return "[Step] %s"%resource_name
