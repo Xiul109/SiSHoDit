@@ -1,11 +1,12 @@
-## It is used specifically for playing Agent's behaviour modelled as StateMachine
 class_name StateMachinePlayer
 extends Node
+
+## It is used specifically for playing Agent's behaviour modelled as StateMachine
 
 ## The state that will be played when [method start] is called
 @export var initial_state : State
 
-## It stores references to [class State]s that can be accessed trought the states names. Read only.
+## It stores references to [State]s that can be accessed trought the states names. Read only.
 var states = {} : 
 	set(_val): push_warning("The variable 'states' cannot be modified")
 ## A reference to the state that is currently being played
