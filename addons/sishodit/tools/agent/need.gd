@@ -21,7 +21,7 @@ var relevance : float :
 		relevance = smoothstep(info.min_level_before_solve, 1.0, level)
 		return relevance
 
-## Computed after calling [method can_be_solved] and used for obtaining a random [class Solution] in
+## Computed after calling [method can_be_solved] and used for obtaining a random [Solution] in
 ## method [method get_a_solution].
 var _feasible_solutions_total_weight : float
 
@@ -41,9 +41,9 @@ func increase_level(delta):
 	level+=delta/info.time_to_fill_level
 
 
-## Returns a feasible solution if there is any. If not, returns null. Parameter [code]i[/code] is
-## the index at which the Solution is stored, but if its value is smaller than 0, a random
-## [class Solution] based on weights will be chosen.
+## Returns a feasible [Solution] if there is any. If not, returns null. Parameter [code]i[/code] is
+## the index at which the [Solution] is stored, but if its value is smaller than 0, a random
+## [Solution] based on weights will be chosen.
 func get_a_feasible_solution(i : int = -1) -> Solution:
 	if i >= 0:
 		return feasible_solutions[i]

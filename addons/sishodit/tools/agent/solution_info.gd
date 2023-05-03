@@ -1,8 +1,9 @@
-## Encapsulates the sequence of [class SolutionStep]s needed for solving a [class Need]
 class_name SolutionInfo
 extends Resource
 
-## Sequence of [class SolutionStep]s that must be followed to finish the solution
+## Encapsulates the sequence of [StepInfo]s needed for solving a [Need]
+
+## Sequence of [StepInfo]s that must be followed to finish the solution
 @export var steps : Array[StepInfo]
 ## Solutions with higher weights are more probable to be chosen
 @export var weight : float = 1.0

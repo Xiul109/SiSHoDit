@@ -1,6 +1,7 @@
-## The representation of a need of the agent.
 class_name NeedInfo
 extends Resource
+
+## The representation of a need of the agent.
 
 ## Unique identifier for the need. Using the same name for two different needs should be
 ## avoided. Every reference to needs in other elements of the model will always refer to this key.
@@ -23,9 +24,9 @@ extends Resource
 ## Minimum value needed until the need can be chosen to be solved.
 @export_range(0,1, 0.01, "or_less") var min_level_before_solve : float
 
-## Needs with higher priority than a [class Step] can interrupt that step.
+## Needs with higher priority than a [Step] can interrupt that step.
 @export_range(0, 20, 1, "or_greater") var priority : int = 0
 
 ## Represents the value at which a Need is urgent and, therefore, can interrupt a lower priority
-## [class Step].
+## [Step].
 @export_range(0,1) var urgent_level : float = 1

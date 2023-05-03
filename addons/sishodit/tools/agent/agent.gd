@@ -1,6 +1,7 @@
-## An agent is an entity in the simulation that emulates the bahaviour of a person.
 class_name Agent
 extends CharacterBody3D
+
+## An agent is an entity in the simulation that emulates the bahaviour of a person.
 
 ## The agent speed in units per second.
 @export_range(0, 20, 0.001, "or_greater")
@@ -28,13 +29,7 @@ var current_needs : Array[Need] = []
 var current_solutions: Array[Solution] = []
 
 ## List of steps that are pending to be solved or being solved. The last one is always being solved
-## at that moment. Each element must be a dictionary with the following entries:[br]
-## [code] "step" [/code]: A reference to the step object [br]
-## [code] "object" [/code]: The specific object needed for the step [br]
-## [code] "total_time" [/code]: The total time the step needs to be completed [br]
-## [code] "time_left" [/code]: The remaining time the step needs to be completed [br]
-## Both [code]"total_time"[/code] and [code]"time_left"[/code] entries are not added until the state
-## machine enters for the first time after the step is chosen in the [i]DoingStep[/i] state.
+## at that moment.
 var current_steps : Array[Step] = []
 
 ## The state_machine is used for helping to model the behaviour of the agent and for distributing
@@ -102,8 +97,8 @@ func finish_wait():
 func log_event(type, value):
 	simulable.log_event.emit(name, type, value)
 
-## Processes the needs updates in a frame, excluding the ones solved in a [class Step] and
-## taking into account those with modified rates
+## Processes the needs updates in a frame, excluding the ones solved in a [Step] and taking into
+## account those with modified rates
 func _process_needs(delta):
 	if state_machine.current_state== null or state_machine.current_state.name != "DoingStep":
 		return

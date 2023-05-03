@@ -40,7 +40,7 @@ func start(agent:Agent):
 		usable.start_using(agent)
 
 
-## Called when a delta update is received while doing a step. Returns true if done.
+## Called when a delta update is received while doing a Step. Returns true if done.
 func do(delta:float, agent:Agent) -> bool:
 	time_left -= delta
 	# Use the object associated to the step

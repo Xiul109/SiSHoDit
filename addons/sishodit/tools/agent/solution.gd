@@ -4,10 +4,10 @@ extends RefCounted
 ## General parameters for this solution
 var info : SolutionInfo
 
-## Index of the current [class Step] being performed
+## Index of the current [Step] being performed
 var current_step : int = -1
 
-## List of all the need keys that are solved by the [class Step]s of the solution
+## List of all the need keys that are solved by the [Step]s of the solution
 var needs_solved : Array[String] : get = _get_needs_solved_by_steps
 
 
