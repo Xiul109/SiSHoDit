@@ -36,7 +36,6 @@ func on_enter():
 func on_exit():
 	current_step.stop(my_agent)
 	current_step = null
-	my_agent.finish_wait()
 
 ## Deletes every element related with the current need
 func _abort_need():
