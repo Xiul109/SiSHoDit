@@ -1,75 +1,67 @@
 class_name Sensor
 extends Node
 
-@export var sensor_name : String = "sensor"
-@export var sensor_type: String = "generic"
+## A type of node that represents a sensor deployed in the smart environment. It manages uncertainty
+## for sensor triggers. By default, it should be used by manually calling [method activate], but
+## more complex behaviours can be included by creating classes that inheriths from it.
 
-@export var not_triggered_prob : float = 0 # (float, 1)
-@export var wrong_value_prob: float = 0 # (float, 1)
+## Sensor name that will appear in the logs.
+@export var sensor_name : String = "sensor"
+## Sensor type that will appear in the logs.
+@export var sensor_type: String = "generic"
+## Used for specifying what range of values can produce a sensor
+@export var value_range : ValueRange = BinaryValueRange.new()
+
+## Parameters to specify different froms of malfunction for a sensor
+@export_group("Malfunction parameters")
+## Probability of not being triggered when it should.
+@export_range(0,1) var not_triggered_prob : float = 0
+## Probability of producing a wrong value when triggered.
+@export_range(0,1) var wrong_value_prob: float = 0
+## For simulating the triggering of a sensor when it should not, it is assumed that those triggers
+## appear after a random amount of time that follows a normal distribution for which this and
+## [member std_time_between_wrong_triggers] parameters are used. If it is 0 or lesser, the sensor
+## won't produce wrong triggers.
 @export var average_time_between_wrong_triggers: float = 0
+## See [member average_time_between_wrong_triggers]
 @export var std_time_between_wrong_triggers: float = 0
 
-@export var range_type = "binary" # (String, "binary", "other")
-var value_range : ValueRange
-
-var stored_not_triggered_prob : float = 0
-var stored_wrong_value_prob: float = 0
-var stored_average_time_between_wrong_triggers : float = 0
-var stored_std_time_between_wrong_triggers : float = 0
-
-var time_until_wrong_trigger = 0
-
+## A simulable instance to inform the [Simulator] that sensors needs to be simulated
 var simulable : Simulable
 
-### overriden methods ###
+## Used for controlling the time in simulation need until a sensor produces a wrong trigger. Only
+## relevant if [member average_time_between_wrong_triggers] > 0.
+var _time_until_wrong_trigger = 0
+
+
 func _init():
 	name = "Sensor"
 
 func _ready():
-	init_value_range(range_type)
 	simulable = Simulable.new()
-	simulable.simulated.connect(simulate)
+	simulable.simulated.connect(_simulate)
 	add_child(simulable)
 
-### Aux methods ###
-func get_time_until_wrong_trigger():
-	return max(randfn(average_time_between_wrong_triggers,
-						std_time_between_wrong_triggers), 0.001)
-	
-### public methods ###
-func init_value_range(r_type):
-	match r_type:
-		"binary":
-			value_range = BinaryValueRange.new()
-		_:
-			value_range = ValueRange.new()
+# Public methods
+## When called, the sensor is activated and
+func activate(value, delta: float = 0):
+	if randf() < not_triggered_prob or not value_range.is_value_in_range(value):
+		return
+	if randf() < wrong_value_prob:
+		value = value_range.get_random_valid_value()
+	simulable.log_event.emit(sensor_name, sensor_type, value, delta)
 
-func activate(value, delta = 0):
-	if randf() >= not_triggered_prob:
-		if randf() < wrong_value_prob:
-			value = value_range.get_random_valid_value()
-		simulable.log_event.emit(sensor_name, sensor_type, value, delta)
-
-func override_malfunction_params(nt_prob, wv_prob, atb_wrong_triggers, stb_wrong_triggers):
-	stored_not_triggered_prob = not_triggered_prob
-	stored_wrong_value_prob = wrong_value_prob
-	stored_average_time_between_wrong_triggers = average_time_between_wrong_triggers
-	stored_std_time_between_wrong_triggers = std_time_between_wrong_triggers
-	
-	not_triggered_prob = nt_prob
-	wrong_value_prob = wv_prob
-	average_time_between_wrong_triggers = atb_wrong_triggers
-	std_time_between_wrong_triggers = stb_wrong_triggers
-
-func recover_malfunction_params():
-	not_triggered_prob = stored_not_triggered_prob
-	average_time_between_wrong_triggers = stored_average_time_between_wrong_triggers
-	std_time_between_wrong_triggers = stored_std_time_between_wrong_triggers
-
-func simulate(delta):
+# Private methods
+## When called simulates the sensor during the specified time
+func _simulate(delta):
 	if average_time_between_wrong_triggers <= 0:
 		return
-	time_until_wrong_trigger -= delta
-	while time_until_wrong_trigger < 0:
-		activate(value_range.get_random_valid_value(), time_until_wrong_trigger)
-		time_until_wrong_trigger += get_time_until_wrong_trigger()
+	_time_until_wrong_trigger -= delta
+	while _time_until_wrong_trigger < 0:
+		activate(value_range.get_random_valid_value(), _time_until_wrong_trigger)
+		_time_until_wrong_trigger += _get_time_until_wrong_trigger()
+
+## Computes the time needed until the next wrong trigger
+func _get_time_until_wrong_trigger():
+	return max(randfn(average_time_between_wrong_triggers,
+						std_time_between_wrong_triggers), 0.001)

@@ -1,5 +1,8 @@
 extends Node3D
 
+## Code for an environment which manages basic inputs and cameras. It is recomended to be attached
+## to the top scene, but not necesary. This code will change a lot in the future.
+
 var agents = []
 
 var cameras = []
@@ -20,7 +23,7 @@ func _input(event):
 	
 	if event.is_action_pressed("ui_cancel"):
 		$Simulator.file_manager.save_file()
-		get_tree().change_scene_to_file("res://UI/main_menu.tscn")
+		get_tree().quit()
 		
 
 func switch_camera():
