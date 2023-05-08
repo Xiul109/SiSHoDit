@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://addons/sishodit/presets/usable_nodes/usable.gd" id="1"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/environment/sensorization/sensor.gd" id="2"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="2"]
 
 [node name="Usable" type="Node"]
 script = ExtResource("1")

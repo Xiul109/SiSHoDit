@@ -1,6 +1,6 @@
-[gd_scene load_steps=76 format=3 uid="uid://b3ijlst0j28u8"]
+[gd_scene load_steps=76 format=3 uid="uid://dkavkunxsgev"]
 
-[ext_resource type="Script" path="res://addons/sishodit/tools/environment/enviroment.gd" id="1_v15af"]
+[ext_resource type="Script" path="res://addons/sishodit/presets/enviroment.gd" id="1_igvo5"]
 [ext_resource type="PackedScene" path="res://examples/objects/structure/floorFull.tscn" id="2_0s1mw"]
 [ext_resource type="PackedScene" path="res://examples/objects/structure/floorCorner.tscn" id="3_s5n4c"]
 [ext_resource type="PackedScene" path="res://examples/objects/structure/floorHalf.tscn" id="4_hhswc"]
@@ -54,7 +54,7 @@
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/trashcan.tscn" id="53_w8nd4"]
 [ext_resource type="PackedScene" uid="uid://scm1uu5k7s0x" path="res://examples/assets/furnitures_kenney/toaster.glb" id="53_wg81m"]
 [ext_resource type="PackedScene" uid="uid://bh07cy0trq4hl" path="res://examples/agents/example_agent.tscn" id="55_clrc6"]
-[ext_resource type="PackedScene" uid="uid://duub4ba7tg2nx" path="res://examples/objects/structure/doorway.tscn" id="55_x6gkq"]
+[ext_resource type="PackedScene" path="res://examples/objects/structure/doorway.tscn" id="55_x6gkq"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulator.gd" id="60_sxeg5"]
 [ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="69_ws6ec"]
 [ext_resource type="PackedScene" uid="uid://bb3xpgmnwp4l2" path="res://addons/sishodit/presets/UI/speed_slider.tscn" id="70_b0tqj"]
@@ -125,7 +125,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="House" type="Node3D"]
-script = ExtResource("1_v15af")
+script = ExtResource("1_igvo5")
 
 [node name="Rooms" type="Node3D" parent="." groups=["navigation_mesh_source_group"]]
 

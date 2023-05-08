@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://qku0wnxrwbxh"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" path="res://addons/sishodit/tools/environment/enviroment.gd" id="1"]
+[ext_resource type="Script" path="res://addons/sishodit/presets/enviroment.gd" id="1"]
 [ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="2_kfmev"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulator.gd" id="6_6d2lx"]
 [ext_resource type="PackedScene" uid="uid://b72mu3g3hihh" path="res://addons/sishodit/presets/UI/time_widget.tscn" id="14"]
 [ext_resource type="PackedScene" uid="uid://bb3xpgmnwp4l2" path="res://addons/sishodit/presets/UI/speed_slider.tscn" id="40"]
 [ext_resource type="PackedScene" uid="uid://c5vk4fni4oqxw" path="res://addons/sishodit/presets/UI/needs_widget.tscn" id="45"]
+
 
 [sub_resource type="NavigationMesh" id="1"]
 resource_local_to_scene = true
