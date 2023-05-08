@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" uid="uid://ccbhrfwcdh0a2" path="res://examples/assets/furnitures_kenney/bedSingle.glb" id="1"]
-[ext_resource type="PackedScene" path="res://addons/sishodit/tools/environment/sensorization/usable_nodes/usable.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://addons/sishodit/presets/usable_nodes/usable.tscn" id="2"]
+
 
 [sub_resource type="ConvexPolygonShape3D" id=1]
 points = PackedVector3Array( 0.953, 0.124988, 0, 0.953, 0.0499951, 0, 0.953, 0.375, -1.02501, 0.927947, 0.224978, -0.0251076, 0.388, 0.124988, 0, 0.932979, 3.31177e-14, 0, 0.953, 0.0499951, -1.125, 0.953, 0.375, -1.125, 0.388, 0.375, -1.02501, 0.412998, 0.224978, -0.0251076, 0.388, 0.0499951, 0, 0.407965, 3.31177e-14, 0, 0.932979, 3.31177e-14, -1.125, 0.388, 0.375, -1.125, 0.388, 0.0499951, -1.125, 0.407965, 3.31177e-14, -1.125 )

@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" uid="uid://bvlgoktmi2crl" path="res://examples/assets/furnitures_kenney/kitchenStove.glb" id="1"]
-[ext_resource type="PackedScene" path="res://addons/sishodit/tools/environment/sensorization/usable_nodes/usable.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://addons/sishodit/presets/usable_nodes/usable.tscn" id="2"]
+
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qm72s"]
 points = PackedVector3Array(4.3, 4.19959, 0, 0, 4.19959, 0, 4.3, 3.89962, 0, 4.3, 4.5, -4.20003, 3.83237, 4.39957, -1.17081, 3.51122, 4.34979, -0.76248, 0, 3.89962, 0, 0.788361, 4.34979, -0.76248, 0.467208, 4.39957, -1.17081, 0, 4.5, -4.20003, 4.3, 0.582322, -0.200421, 4.3, 4.5, -4.5, 0, 0.582322, -0.200421, 0, 4.5, -4.5, 4.3, 0, -0.400401, 4.3, 0, -4.5, 0, 0, -0.400401, 0, 0, -4.5)

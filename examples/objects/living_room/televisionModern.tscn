@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" uid="uid://c6y6nhpfxacnl" path="res://examples/assets/furnitures_kenney/televisionModern.glb" id="1"]
-[ext_resource type="PackedScene" path="res://addons/sishodit/tools/environment/sensorization/usable_nodes/switch_usable.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://addons/sishodit/presets/usable_nodes/switch_usable.tscn" id="2"]
+
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_i2pui"]
 points = PackedVector3Array(3.424, 4.5475, 0.267458, 1.76496, 0, 0.641874, 3.424, 0.695301, 0.267458, 3.424, 4.5475, -0.0404706, -3.424, 4.5475, 0.267458, 1.76496, 0, -0.642, -1.76563, 0, 0.641874, 3.424, 0.695301, -0.0404706, 0.347226, 2.18072, -0.415012, -3.424, 4.5475, -0.0404706, -3.424, 0.695301, 0.267458, -1.76563, 0, -0.642, -0.347897, 2.18072, -0.415012, -3.424, 0.695301, -0.0404706)

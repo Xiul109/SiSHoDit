@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=3]
 
 [ext_resource type="PackedScene" uid="uid://bv2a4wn51c6md" path="res://examples/assets/furnitures_kenney/chairDesk.glb" id="1"]
-[ext_resource type="PackedScene" path="res://addons/sishodit/tools/environment/sensorization/usable_nodes/usable.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://addons/sishodit/presets/usable_nodes/usable.tscn" id="2"]
+
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fpejh"]
 points = PackedVector3Array(1.00811, 0, -2.83238, 0.648614, 0, -2.57134, 1.00811, 0.12591, -2.83238, 2.3411, 0, -2.83238, 0.236753, 0, -1.30359, 0.648614, 0.12591, -2.57134, 1.67475, 1.89981, -1.9151, 2.3411, 0.12591, -2.83238, 2.7006, 0, -2.57134, 0.236753, 0.12591, -1.30359, 0.373852, 0, -0.880825, 1.31497, 1.89981, -1.65379, 2.03425, 1.89981, -1.65379, 2.7006, 0.12591, -2.57134, 3.11275, 0, -1.30359, 0.373852, 0.12591, -0.880825, 1.45235, 0, -0.0971491, 1.45235, 1.89981, -1.2313, 2.97537, 0.12591, -0.880825, 3.11275, 0.12591, -1.30359, 1.89687, 1.89981, -1.2313, 2.97537, 0, -0.880825, 1.45235, 0.12591, -0.0971491, 1.89687, 0, -0.0971491, 1.89687, 0.12591, -0.0971491)

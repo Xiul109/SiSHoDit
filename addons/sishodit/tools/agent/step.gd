@@ -75,8 +75,12 @@ func find_target_object(agent : Agent):
 				object = _object_with_distance_criterion(objects, agent,
 														info.object_selection_criterion)
 	
-	if object != null:
-		usable = object.find_child("*Usable*", false)
+	if object == null:
+		return
+	
+	var usable_nodes = object.find_children("*", "AbstractUsable", false)
+	if not usable_nodes.is_empty():
+		usable = usable_nodes[0]
 
 
 ## Returns an object after applying one of the distance related critera

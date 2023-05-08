@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" uid="uid://c8ae66r75188a" path="res://examples/assets/furnitures_kenney/stoolBarSquare.glb" id="1"]
-[ext_resource type="PackedScene" path="res://addons/sishodit/tools/environment/sensorization/usable_nodes/usable.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://addons/sishodit/presets/usable_nodes/usable.tscn" id="2"]
+
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ygv38"]
 points = PackedVector3Array(0.5597, 3.5497, -1.88751, 0.5597, 3.5497, -0.411269, 0.5597, 4.05, -1.88751, 2.0947, 3.5497, -1.88751, 0.659619, 0, -1.78751, 2.0947, 3.5497, -0.411269, 0.5597, 4.05, -0.411269, 0.659619, 0, -0.511409, 2.0947, 4.05, -1.88751, 1.99463, 0, -1.78751, 2.0947, 4.05, -0.411269, 1.99463, 0, -0.511409)
