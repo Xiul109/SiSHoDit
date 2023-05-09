@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NeedInfo" load_steps=3 format=3 uid="uid://dog3qgb4x5yb8"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/need_info.gd" id="1_em03r"]
+[ext_resource type="Resource" uid="uid://byn6ijguo802w" path="res://examples/need_solutions/wash_hands.tres" id="2_15i4b"]
+
+[resource]
+script = ExtResource("1_em03r")
+need_key = "dirty_hands"
+solutions = Array[Resource("res://addons/sishodit/tools/agent/solution_info.gd")]([ExtResource("2_15i4b")])
+time_to_fill_level = 43200.0
+initial_level = 0.0
+min_level_before_solve = 0.4
+priority = 5
+urgent_level = 1.0

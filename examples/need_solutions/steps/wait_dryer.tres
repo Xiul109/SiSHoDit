@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="StepInfo" load_steps=2 format=3 uid="uid://ckn5tb3i7ovxx"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/step_info.gd" id="1"]
+
+[resource]
+resource_name = "wait_dryer"
+script = ExtResource("1")
+object_group = "wait"
+object_selection_criterion = 0
+use_object = true
+min_duration = 2400.0
+max_duration = 3600.0
+needs_solved = {
+"tired": 1.0
+}
+needs_increased = {}
+needs_with_modified_rate = {}
+priority = 0
+cancel_on_interruption = false

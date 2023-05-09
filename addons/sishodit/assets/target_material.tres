@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cbhcpd5vy5ulf"]
+
+[ext_resource type="Texture2D" uid="uid://bggbgk5oqljxi" path="res://addons/sishodit/assets/target_position.png" id="1_vui5s"]
+
+[resource]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_texture = ExtResource("1_vui5s")
+billboard_mode = 1

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SolutionInfo" load_steps=4 format=3 uid="uid://b1muxay20soom"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_info.gd" id="1"]
+[ext_resource type="Resource" uid="uid://i3gd3scvja01" path="res://examples/need_solutions/steps/get_drink.tres" id="2"]
+[ext_resource type="Resource" uid="uid://dytypcpdw3kv1" path="res://examples/need_solutions/steps/drink_standing.tres" id="3"]
+
+[resource]
+resource_name = "have_a_drink"
+script = ExtResource("1")
+steps = Array[Resource("res://addons/sishodit/tools/agent/step_info.gd")]([ExtResource("2"), ExtResource("3")])
+weight = 1.0

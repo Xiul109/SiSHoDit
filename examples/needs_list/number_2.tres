@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NeedInfo" load_steps=3 format=3 uid="uid://cre0wptshohrc"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/need_info.gd" id="1_icdli"]
+[ext_resource type="Resource" uid="uid://dodfai4srddx0" path="res://examples/need_solutions/number_2.tres" id="2_5ceig"]
+
+[resource]
+script = ExtResource("1_icdli")
+need_key = "number_2"
+solutions = Array[Resource("res://addons/sishodit/tools/agent/solution_info.gd")]([ExtResource("2_5ceig")])
+time_to_fill_level = 57600.0
+initial_level = 0.0
+min_level_before_solve = 0.6
+priority = 5
+urgent_level = 1.0

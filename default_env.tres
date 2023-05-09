@@ -1,6 +1,6 @@
 [gd_resource type="Environment" load_steps=2 format=2]
 
-[sub_resource type="ProceduralSky" id=1]
+[sub_resource type="Sky" id=1]
 ground_bottom_color = Color( 0.388235, 0.411765, 0.435294, 1 )
 
 [resource]

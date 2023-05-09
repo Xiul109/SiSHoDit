@@ -1,3 +1,0 @@
-All 3d assets by Kenney
-
-textures/grass.jpg: https://opengameart.org/content/4-cartoony-terrains-textures

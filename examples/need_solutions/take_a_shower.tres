@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SolutionInfo" load_steps=4 format=3 uid="uid://curmklcl7kwrs"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_info.gd" id="1_fq1yt"]
+[ext_resource type="Resource" uid="uid://csegns5rmqljt" path="res://examples/need_solutions/steps/change_clothes.tres" id="2_dx0o2"]
+[ext_resource type="Resource" uid="uid://bghra6ohspjdr" path="res://examples/need_solutions/steps/take_a_shower.tres" id="3_jby8o"]
+
+[resource]
+resource_name = "take_a_shower"
+script = ExtResource("1_fq1yt")
+steps = Array[Resource("res://addons/sishodit/tools/agent/step_info.gd")]([ExtResource("2_dx0o2"), ExtResource("3_jby8o"), ExtResource("2_dx0o2")])
+weight = 1.0

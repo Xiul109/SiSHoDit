@@ -1,0 +1,20 @@
+[gd_scene load_steps=12 format=3 uid="uid://bh07cy0trq4hl"]
+
+[ext_resource type="PackedScene" uid="uid://0wamgrgrd18i" path="res://addons/sishodit/presets/agent.tscn" id="1_qepgb"]
+[ext_resource type="Resource" path="res://examples/needs_list/number_1.tres" id="2_c0bay"]
+[ext_resource type="Resource" uid="uid://cre0wptshohrc" path="res://examples/needs_list/number_2.tres" id="3_hcmic"]
+[ext_resource type="Resource" uid="uid://c8b50r4llbpyy" path="res://examples/needs_list/thirsty.tres" id="4_gvxjv"]
+[ext_resource type="Resource" uid="uid://bf1ecrssv6no8" path="res://examples/needs_list/hungry.tres" id="5_0yv5f"]
+[ext_resource type="Resource" uid="uid://dmla2rjuor066" path="res://examples/needs_list/sleepy.tres" id="6_nx8fy"]
+[ext_resource type="Resource" uid="uid://cqb3cc7kjfqkl" path="res://examples/needs_list/dirty.tres" id="7_3xmxw"]
+[ext_resource type="Resource" uid="uid://e0etjd0o04d8" path="res://examples/needs_list/dirty_clothes.tres" id="8_em70u"]
+[ext_resource type="Resource" uid="uid://4mrbam1umk6g" path="res://examples/needs_list/tired.tres" id="9_aauab"]
+[ext_resource type="Resource" uid="uid://dog3qgb4x5yb8" path="res://examples/needs_list/dirty_hands.tres" id="9_yeur4"]
+[ext_resource type="Resource" uid="uid://cgiwyismn1dgo" path="res://examples/needs_list/bored.tres" id="10_yo15j"]
+
+[node name="agent" instance=ExtResource("1_qepgb")]
+speed = 10.0
+needs_info = Array[Resource("res://addons/sishodit/tools/agent/need_info.gd")]([ExtResource("2_c0bay"), ExtResource("3_hcmic"), ExtResource("4_gvxjv"), ExtResource("5_0yv5f"), ExtResource("6_nx8fy"), ExtResource("7_3xmxw"), ExtResource("9_aauab"), ExtResource("9_yeur4"), ExtResource("8_em70u"), ExtResource("10_yo15j")])
+
+[node name="Simulable" parent="." index="7"]
+requires_real_time = true

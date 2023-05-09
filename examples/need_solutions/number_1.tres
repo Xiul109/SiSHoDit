@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SolutionInfo" load_steps=3 format=3 uid="uid://cckbj1kxyc617"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_info.gd" id="1_h3ca3"]
+[ext_resource type="Resource" uid="uid://dnh2bah3qfnks" path="res://examples/need_solutions/steps/number_1.tres" id="2_i7oii"]
+
+[resource]
+resource_name = "pee_and_wash_hands"
+script = ExtResource("1_h3ca3")
+steps = Array[Resource("res://addons/sishodit/tools/agent/step_info.gd")]([ExtResource("2_i7oii")])
+weight = 1.0

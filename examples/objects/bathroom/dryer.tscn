@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" uid="uid://v4ms3f7e75j3" path="res://examples/assets/furnitures_kenney/dryer.glb" id="1_j4pjb"]
+[ext_resource type="PackedScene" path="res://addons/sishodit/presets/usable_nodes/duration_usable.tscn" id="2_ifmjd"]
+
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1tk2e"]
+points = PackedVector3Array(0, 0, -3.5, 3.9, 0, -3.5, 0, 0, -0.200078, 0, 4.69954, -3.5, 3.9, 0, -0.200078, 3.9, 4.69954, -3.5, 0, 0.625225, 0, 0, 4.69954, -0.192199, 3.9, 0.625225, 0, 3.9, 4.69954, -0.192199, 0, 3.88983, 0, 2.29816, 4.23948, -0.0829091, 0.169117, 4.05453, -0.0390563, 3.9, 3.88983, 0, 3.7305, 4.05453, -0.0390563)
+
+[node name="dryer" instance=ExtResource("1_j4pjb")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape3D_1tk2e")
+
+[node name="DurationUsable" parent="." index="2" instance=ExtResource("2_ifmjd")]
+duration = 2400.0
+trigger_on = "end"
+
+[node name="Sensor" parent="DurationUsable" index="0"]
+sensor_type = "device"
+
+[editable path="DurationUsable"]

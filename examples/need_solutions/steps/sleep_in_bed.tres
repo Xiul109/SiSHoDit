@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="StepInfo" load_steps=2 format=3 uid="uid://lnacciljud5u"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/step_info.gd" id="1"]
+
+[resource]
+resource_name = "sleep_in_bed"
+script = ExtResource("1")
+object_group = "bed"
+object_selection_criterion = 0
+use_object = true
+min_duration = 21600.0
+max_duration = 36000.0
+needs_solved = {
+"bored": 0.2,
+"sleepy": 1.0,
+"tired": 1.0
+}
+needs_increased = {}
+needs_with_modified_rate = {
+"dirty_hands": 0.3,
+"thirsty": 0.6
+}
+priority = 4
+cancel_on_interruption = false
