@@ -1,23 +1,21 @@
 extends VBoxContainer
 
-@export var simulator : Simulator
-
-@onready var day_label = $HBoxContainer/Day
+@onready var day_label = $Day
 @onready var hour_label = $Hour
+@onready var simulable : Simulable = $Simulable
 
-var seconds_in_a_minute = 60.0
-var seconds_in_a_hour = 60*seconds_in_a_minute
-var seconds_in_a_day= seconds_in_a_hour*24
+## Weekdays in godot order
+var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-func _process(_delta):
-	if not simulator:
-		return
-	var time = int(simulator.elapsed_seconds)
-	day_label.text = str(floor(time/seconds_in_a_day))
-	
-	var day_seconds = time%int(seconds_in_a_day)
-	var hours = floor(day_seconds/seconds_in_a_hour)
-	var hour_seconds = day_seconds%int(seconds_in_a_hour)
-	var minutes = floor(hour_seconds/seconds_in_a_minute)
-	var seconds = hour_seconds%int(seconds_in_a_minute)
-	hour_label.text = "%.f:%.f:%.f"%[hours, minutes, seconds]
+
+func _on_simulable_simulated(delta):
+	if simulable.context.has_all(["day", "month", "year", "weekday"]):
+		
+		day_label.text = "%d/%d/%d (%s)" % [simulable.context["day"],
+											simulable.context["month"],
+											simulable.context["year"],
+											weekdays[simulable.context["weekday"]]]
+	if simulable.context.has_all(["hour", "minute", "second"]):
+		hour_label.text = "%d:%d:%.f" % [simulable.context["hour"],
+										simulable.context["minute"],
+										simulable.context["second"],]
