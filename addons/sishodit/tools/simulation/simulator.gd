@@ -17,6 +17,8 @@ const base_name = "SiSHoDiT"
 
 ## Reference to the [FileManager] that produces the logs.
 var file_manager : FileManager
+## Simulation context including variables relevant to [Simulable] entities, mainly [Agent]s.
+var context = {}
 
 # Simulation variables
 ## A list of every [Simulable] node of the simulation.
@@ -34,9 +36,11 @@ func _ready():
 			continue
 		node.log_event.connect(log_event)
 		node.waiting_started.connect(_on_entity_waiting)
+		node.context = context
 		_simulable_entities.append(node)
 		if node.requires_real_time:
 			_real_time_entities.append(node)
+		_simulable_entities.sort_custom(func(a, b): return a.priority > b.priority)
 	
 	# FileManager initialization
 	file_manager = FileManager.new()

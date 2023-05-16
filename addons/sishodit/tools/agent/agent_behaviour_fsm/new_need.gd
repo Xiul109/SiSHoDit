@@ -12,7 +12,8 @@ func on_enter():
 		need_solution = my_agent.current_solutions.back()
 		log_event_type = "activity_return"
 	else:
-		need_solution = current_need.get_a_feasible_solution()
+		need_solution = current_need.get_random_feasible_solution_in_context(
+																		my_agent.simulable.context)
 		my_agent.current_needs.append(current_need)
 		my_agent.current_solutions.append(need_solution)
 		
@@ -25,22 +26,20 @@ func on_enter():
 ## considering needs priorities but not additional constrains, like if the need is pending to be
 ## solved
 func _get_next_need_to_cover():
-	var probabilities : Array[float] = []
-	var choosable_needs = []
 	var priority = (my_agent.current_steps.back()["priority"] 
 					if not my_agent.current_steps.is_empty()
 					else -INF)
-	var current_probability : float
 	
-	for need in my_agent.needs:
-		current_probability = need.relevance
-		if need.info.priority <= priority or current_probability <= 0.0:
-			continue
-		probabilities.append(current_probability)
-		choosable_needs.append(need)
-	
+	var choosable_needs : Array[Need] = my_agent.needs.filter(
+		func(need: Need): 
+			return (need.info.priority > priority and 
+			need.relevance > 0.0 and
+			need.has_solutions_in_context(my_agent.simulable.context))
+	)
 	if len(choosable_needs) == 0:
 		return null
+	
+	var probabilities = choosable_needs.map(func(need: Need): return need.relevance)
 	
 	var next_need_i = probabilities.find(1.0)
 	if next_need_i == -1:
@@ -50,7 +49,7 @@ func _get_next_need_to_cover():
 
 
 # Returns and index based on the probabilities of each one to be chosen
-func _get_random_i_based_on_probabilities(probabilities : Array[float]):
+func _get_random_i_based_on_probabilities(probabilities):
 	var total = 0
 	for p in probabilities:
 		total += p

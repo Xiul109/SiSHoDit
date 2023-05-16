@@ -75,9 +75,10 @@ func obtain_time_until_interruption(maximum_time = current_steps.back().time_lef
 		# by needs of lower priority
 		if (need.info.need_key in current_solutions.back().needs_solved or 
 			need.info.need_key == current_needs.back().info.need_key or
-			need.info.priority <= step.priority):
+			need.info.priority <= step.priority or
+			not need.has_solutions_in_context(simulable.context)):
 			continue
-		
+		# error cuando justo se activa el contexto al empezar step porque el tiempo vale 0
 		var rate = 1.0
 		if need.info.need_key in step.info.needs_with_modified_rate:
 			rate = step.info.needs_with_modified_rate[need.info.need_key]

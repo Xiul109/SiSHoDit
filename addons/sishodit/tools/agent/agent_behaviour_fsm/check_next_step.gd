@@ -20,8 +20,6 @@ func on_enter():
 	else:
 		step = steps.back()
 	
-	# If there is a need with high urgence, more priority than next one and that will interrupt it
-	# as soon as it starts, then that need will be prioritized
 	var t = my_agent.obtain_time_until_interruption(INF)
 	if t <= 0.0:
 		transitioned_to.emit("NewNeed")

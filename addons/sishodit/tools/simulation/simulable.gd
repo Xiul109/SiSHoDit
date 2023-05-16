@@ -15,6 +15,11 @@ signal log_event(from, type, value)
 
 ## If true, simulation steps will coincide with _physic_process, unless waiting is requested.
 @export var requires_real_time = false
+## Higher values will be simulated before lower ones in the same tick
+@export var priority : int = 0
+
+## Initialized with the context variable provided by the [Simulator]
+var context : Dictionary
 
 ## Only relevant for nodes that do not [member requires_real_time]. Informs that the entity is
 ## waiting during [member wait_time], which means that during that simulation time, it won't require

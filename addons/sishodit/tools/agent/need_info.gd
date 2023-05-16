@@ -17,7 +17,6 @@ extends Resource
 ## need is maximum
 @export var time_to_fill_level : float
 
-		
 ## The value of [member Need.level] when the simulation starts
 @export_range(0, 1) var initial_level : float = 0
 
@@ -30,3 +29,6 @@ extends Resource
 ## Represents the value at which a Need is urgent and, therefore, can interrupt a lower priority
 ## [Step].
 @export_range(0,1) var urgent_level : float = 1
+
+func _to_string():
+	return "[Need] %s"%need_key

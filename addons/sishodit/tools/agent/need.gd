@@ -11,7 +11,7 @@ var level : float = 0 :
 		level = clamp(new_level, 0, 1)
 
 ## List of aplicable solutions for the current environment.
-var feasible_solutions = []
+var feasible_solutions : Array[SolutionInfo] = []
 
 ## Index of relevance of a Need. It is used for determining the probability of choosing a Need to be
 ## solved. It is computed as the [method @GlobalScope.smoothstep] of [member level] between
@@ -20,10 +20,6 @@ var relevance : float :
 	get:
 		relevance = smoothstep(info.min_level_before_solve, 1.0, level)
 		return relevance
-
-## Computed after calling [method can_be_solved] and used for obtaining a random [Solution] in
-## method [method get_a_solution].
-var _feasible_solutions_total_weight : float
 
 
 func _init(need_info : NeedInfo, tree: SceneTree):
@@ -41,21 +37,6 @@ func increase_level(delta):
 	level+=delta/info.time_to_fill_level
 
 
-## Returns a feasible [Solution] if there is any. If not, returns null. Parameter [code]i[/code] is
-## the index at which the [Solution] is stored, but if its value is smaller than 0, a random
-## [Solution] based on weights will be chosen.
-func get_a_feasible_solution(i : int = -1) -> Solution:
-	if i >= 0:
-		return feasible_solutions[i]
-	
-	var rand_n = randf_range(0, _feasible_solutions_total_weight)
-	var ref_value = 0
-	for sol in feasible_solutions:
-		ref_value += sol.weight
-		if rand_n <= ref_value:
-			return Solution.new(sol)
-	return null
-
 ## Computes the time needed for a need to reach a target level. A return value of 0 means that the
 ## target level has already been reached
 func time_until_level(target_level: float, rate : float = 1.0):
@@ -67,10 +48,38 @@ func time_until_level(target_level: float, rate : float = 1.0):
 	return diff * info.time_to_fill_level / rate
 
 
+## Evaluates the conditions for each feasible solution for the context and only returns those that
+## are evaluated as true.
+func get_feasible_solutions_in_context(context: Dictionary) -> Array[SolutionInfo]:
+	return feasible_solutions.filter(
+		func(sol):
+			if sol.condition_manager == null:
+				return true
+			return sol.condition_manager.evaluate(context)
+	)
+
+## True if at least one solution is avilable for the specified context, and false otherwise
+func has_solutions_in_context(context: Dictionary) -> bool:
+	return not get_feasible_solutions_in_context(context).is_empty()
+
+
+## Returns a feasible [Solution] if there is any. If not, returns null. Parameter [code]i[/code] is
+## the index at which the [Solution] is stored, but if its value is smaller than 0, a random
+## [Solution] based on weights will be chosen.
+func get_random_feasible_solution_in_context(context: Dictionary) -> Solution:
+	var sols = get_feasible_solutions_in_context(context)
+	
+	var total_weigth = sols.reduce(func(cum_weight, sol): return cum_weight + sol.weight, 0.0)
+	var rand_n = randf_range(0, total_weigth)
+	var ref_value = 0
+	for sol in sols:
+		ref_value += sol.weight
+		if rand_n <= ref_value:
+			return Solution.new(sol)
+	return null
+
 ## Computes the list of feasible solutions.
 func _find_feasible_solutions(tree: SceneTree):
-	_feasible_solutions_total_weight = 0.0
 	for sol in info.solutions:
 		if sol.is_solution_feasible(tree):
 			feasible_solutions.append(sol)
-			_feasible_solutions_total_weight += sol.weight

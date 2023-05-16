@@ -7,7 +7,8 @@ extends Resource
 @export var steps : Array[StepInfo]
 ## Solutions with higher weights are more probable to be chosen
 @export var weight : float = 1.0
-
+## Manager of conditions stablished for selecting a solution for a need.
+@export var condition_manager : ConditionManager
 
 func _to_string():
 	return "[Solution] %s"%resource_name
