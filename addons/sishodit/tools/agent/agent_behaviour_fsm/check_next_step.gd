@@ -9,7 +9,8 @@ func on_enter():
 	
 	# If there are more current solutions than steps, a new one should be retrieved
 	if len(solutions) > len(steps):
-		step = solutions.back().get_next_step(my_agent.current_needs.back().info.priority)
+		step = solutions.back().get_next_step(  my_agent.current_needs.back().info.priority,
+												my_agent.simulable.context)
 		# If there aren't more steps left for the current solution, then the solution can be applied
 		if step == null:
 			_apply_current_solution()

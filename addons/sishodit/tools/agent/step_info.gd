@@ -46,6 +46,8 @@ enum ObjectSelectionCriteria {
 ## When true, if interrupted the step will be canceled along with the [Solution] it is part of
 ## and the [Need] for which that Solution is being applied
 @export var cancel_on_interruption = false
+## If conditions are not met, the step whill be skipped and pick the next one of the solution
+@export var condition_manager : ConditionManager
 
 func _to_string():
 	return "[Step] %s"%resource_name

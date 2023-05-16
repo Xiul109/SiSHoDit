@@ -53,6 +53,7 @@ func _physics_process(delta: float):
 
 
 # Public Methods
+## Called when adding a new line to the log file
 func log_event(from, type, value, delta : float = 0.0):
 	var log_data = {"time": elapsed_seconds + delta, "from": from, 
 					"type": type, "value": value}
