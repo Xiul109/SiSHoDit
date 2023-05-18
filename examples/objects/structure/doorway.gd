@@ -15,10 +15,10 @@ func open():
 	if state != "open":
 		state = "open"
 		door.rotate_y(90)
-		sensor.activate(1.0)
+		sensor.activate(0.0)
 
 func close():
 	if state != "close":
 		state = "close"
 		door.rotate_y(-90)
-		sensor.activate(0.0)
+		sensor.activate(1.0)
