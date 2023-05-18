@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://cfqufgudbqxm4"]
 
 [ext_resource type="PackedScene" uid="uid://d1aguxdh82y61" path="res://examples/assets/furnitures_kenney/doorway.glb" id="1"]
 [ext_resource type="Script" path="res://examples/objects/structure/doorway.gd" id="2"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3"]
-
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hdg04"]
 points = PackedVector3Array(-2.52669e-14, 0, -0.202579, 3.78705, 4.76088, -0.567, 4.293, 0, -0.202579, -2.52669e-14, 0, 0.202468, -2.52669e-14, 9.81182, -0.202579, 3.17941, 4.84252, -0.567, 3.94884, 4.76088, -0.567, 4.293, 0, 0.202468, 4.293, 9.81182, -0.202579, 3.79167, 4.76088, 0.567, 3.18403, 4.84252, 0.567, -2.52669e-14, 9.81182, 0.202468, 3.17941, 4.9232, -0.567, 3.94884, 4.9232, -0.567, 4.293, 9.81182, 0.202468, 3.95346, 4.76088, 0.567, 3.18403, 4.9232, 0.567, 3.95346, 4.9232, 0.567)
