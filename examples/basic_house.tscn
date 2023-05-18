@@ -35,7 +35,7 @@
 [ext_resource type="PackedScene" path="res://examples/objects/bathroom/bathroomCabinetDrawer.tscn" id="33_rkfnx"]
 [ext_resource type="PackedScene" path="res://examples/objects/bathroom/shower.tscn" id="35_gud3m"]
 [ext_resource type="PackedScene" path="res://examples/objects/bathroom/washer.tscn" id="37_1m1im"]
-[ext_resource type="PackedScene" path="res://examples/objects/bathroom/dryer.tscn" id="38_6dbbj"]
+[ext_resource type="PackedScene" uid="uid://cnem6vdxoep7u" path="res://examples/objects/bathroom/dryer.tscn" id="38_6dbbj"]
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenCabinetDrawer.tscn" id="39_j1j86"]
 [ext_resource type="PackedScene" uid="uid://cdw3p6qcj1ul2" path="res://examples/assets/furnitures_kenney/rugDoormat.glb" id="39_ybhkh"]
 [ext_resource type="PackedScene" path="res://examples/objects/bathroom/toiletSquare.tscn" id="40_ee1sm"]
@@ -51,10 +51,10 @@
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenCabinetUpperCorner.tscn" id="51_oe8jj"]
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenCabinetUpper.tscn" id="52_fj03j"]
 [ext_resource type="PackedScene" uid="uid://bayf4ddkji6w4" path="res://examples/assets/furnitures_kenney/kitchenCoffeeMachine.glb" id="53_rt1q4"]
-[ext_resource type="PackedScene" path="res://examples/objects/kitchen/trashcan.tscn" id="53_w8nd4"]
+[ext_resource type="PackedScene" uid="uid://tybre8btkftm" path="res://examples/objects/kitchen/trashcan.tscn" id="53_w8nd4"]
 [ext_resource type="PackedScene" uid="uid://scm1uu5k7s0x" path="res://examples/assets/furnitures_kenney/toaster.glb" id="53_wg81m"]
 [ext_resource type="PackedScene" uid="uid://bh07cy0trq4hl" path="res://examples/agents/example_agent.tscn" id="55_clrc6"]
-[ext_resource type="PackedScene" path="res://examples/objects/structure/doorway.tscn" id="55_x6gkq"]
+[ext_resource type="PackedScene" uid="uid://cfqufgudbqxm4" path="res://examples/objects/structure/doorway.tscn" id="55_x6gkq"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulator.gd" id="60_sxeg5"]
 [ext_resource type="Script" path="res://addons/sishodit/presets/context_managers/Calendar.gd" id="61_4jap2"]
 [ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="69_ws6ec"]
@@ -219,10 +219,10 @@ transform = Transform3D(1.2, 0, 0, 0, 1.3, 0, 0, 0, 1.4, 5.38301, 0.541258, -5.0
 transform = Transform3D(-4.80825e-08, 0, 1.1, 0, 1.2, 0, -1.1, 0, -4.80825e-08, 4.61119, 0.541067, -6.83226)
 
 [node name="chairCushion2" parent="Rooms/living_room/furnitures" instance=ExtResource("13_cu4v6")]
-transform = Transform3D(-1.1, 0, -1.66095e-07, 0, 1.2, 0, 1.66095e-07, 0, -1.1, 8.20767, 0.541067, -4.37611)
+transform = Transform3D(-1.1, 0, -1.66095e-07, 0, 1.2, 0, 1.66095e-07, 0, -1.1, 8.208, 0.541, -4.4)
 
 [node name="chairCushion3" parent="Rooms/living_room/furnitures" instance=ExtResource("13_cu4v6")]
-transform = Transform3D(-1.1, 0, -1.66095e-07, 0, 1.2, 0, 1.66095e-07, 0, -1.1, 13.0981, 0.541067, -4.33253)
+transform = Transform3D(-1.1, 0, -1.66095e-07, 0, 1.2, 0, 1.66095e-07, 0, -1.1, 13.098, 0.541, -4.4)
 
 [node name="loungeChair" parent="Rooms/living_room/furnitures" groups=["tv_sit"] instance=ExtResource("14_pmf2g")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 21.0209, 0.542736, -7.01461)
@@ -679,7 +679,7 @@ shadow_enabled = true
 [node name="People" type="Node3D" parent="."]
 
 [node name="example_agent" parent="People" instance=ExtResource("55_clrc6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.24418, 0, -3.60376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.24418, 0, 15.3962)
 
 [node name="Sensors" type="Node3D" parent="."]
 
