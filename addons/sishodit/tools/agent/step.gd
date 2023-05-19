@@ -12,7 +12,7 @@ var priority : int
 var object : Node3D = null
 
 ## Reference to the Usable node of the object relevant for the step.
-var usable : AbstractUsable = null
+var usable : Usable = null
 
 ## Total duration of this Step if it is not cancelled
 var total_duration : float
@@ -78,7 +78,7 @@ func find_target_object(agent : Agent):
 	if object == null:
 		return
 	
-	var usable_nodes = object.find_children("*", "AbstractUsable", false)
+	var usable_nodes = object.find_children("*", "Usable", false)
 	if not usable_nodes.is_empty():
 		usable = usable_nodes[0]
 

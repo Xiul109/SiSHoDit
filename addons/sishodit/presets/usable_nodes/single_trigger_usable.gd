@@ -1,5 +1,5 @@
 class_name SingleTriggerUsable
-extends AbstractUsable
+extends Usable
 
 ## Works for sensors that are only triggered once, for example the toilet flush.
 

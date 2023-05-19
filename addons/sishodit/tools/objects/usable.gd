@@ -1,5 +1,5 @@
 @tool
-class_name AbstractUsable
+class_name Usable
 extends Node
 
 ## If an instance of this class or a subclass is added as child to an object, the agent will call

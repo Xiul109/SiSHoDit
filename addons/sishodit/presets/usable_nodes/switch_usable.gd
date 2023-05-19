@@ -1,5 +1,5 @@
 class_name SwitchUsable
-extends AbstractUsable
+extends Usable
 
 ## Usable object that keeps and internal record of its state which can be switched or not. Whenever
 ## its state changes, it produces a value based on it. It changes once per use. One example of this

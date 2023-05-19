@@ -1,5 +1,5 @@
-class_name Usable
-extends AbstractUsable
+class_name BasicUsable
+extends Usable
 
 ## Basic Usable object that produces a value when the [Agent] starts using it and another one when
 ## it finish.
