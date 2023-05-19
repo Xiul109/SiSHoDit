@@ -1,3 +1,4 @@
+class_name RedirectUsable
 extends Usable
 
 @export var usable : Usable
