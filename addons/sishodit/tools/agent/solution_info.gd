@@ -18,6 +18,9 @@ func _to_string():
 func is_solution_feasible(tree: SceneTree):
 	for step in steps:
 		if not tree.has_group(step.object_group) and step.object_group != "":
+			push_warning("The object group %s specified in %s does not exit, so %s is excluded." % [
+				step.object_group, step, self
+			])
 			return false
 	
 	return true
