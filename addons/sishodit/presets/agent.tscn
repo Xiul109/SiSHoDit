@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://0wamgrgrd18i"]
+[gd_scene load_steps=17 format=3 uid="uid://0wamgrgrd18i"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/agent.gd" id="1_htqyf"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/nodes/CameraOrbit.gd" id="2_a3bjs"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/nodes/DoorOpening.gd" id="3_0s3oe"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/nodes/DoorClosing.gd" id="4_dfhvj"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/agent_behaviour_fsm/object_in_use.gd" id="10_l4agj"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/nodes/object_user.gd" id="11_osh0x"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/state_machine/state_machine_player.gd" id="14_x61iw"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/agent_behaviour_fsm/new_need.gd" id="15_c1liy"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/agent_behaviour_fsm/check_next_step.gd" id="16_2qb57"]
@@ -28,11 +30,9 @@ height = 6.0
 size = Vector3(1.5, 0.5, 0.75)
 
 [node name="agent" type="CharacterBody3D" groups=["agent"]]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_htqyf")
-speed = null
-needs_info = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -94,9 +94,15 @@ script = ExtResource("17_583gb")
 [node name="DoingStep" type="Node" parent="StateMachinePlayer"]
 script = ExtResource("18_ltkxo")
 
+[node name="ObjectInUse" type="Node" parent="StateMachinePlayer"]
+script = ExtResource("10_l4agj")
+
 [node name="Simulable" type="Node" parent="."]
 script = ExtResource("19_lmwen")
-simulation_mode = 1
 
+[node name="ObjectUser" type="Node" parent="."]
+script = ExtResource("11_osh0x")
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_velocity_computed"]
 [connection signal="simulated" from="Simulable" to="." method="_on_simulable_simulated"]
 [connection signal="simulated" from="Simulable" to="StateMachinePlayer" method="simulate"]

@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" path="res://examples/objects/other/cardboardBoxOpen.tscn" id="30_06ifh"]
 [ext_resource type="PackedScene" uid="uid://cko3in6txfovj" path="res://examples/assets/furnitures_kenney/computerMouse.glb" id="30_un80s"]
 [ext_resource type="PackedScene" uid="uid://ueannxh5ml3c" path="res://examples/assets/furnitures_kenney/radio.glb" id="30_wftrw"]
-[ext_resource type="PackedScene" path="res://examples/objects/bedroom/cabinetBed.tscn" id="31_alju4"]
+[ext_resource type="PackedScene" uid="uid://crhtr8c473ixh" path="res://examples/objects/bedroom/cabinetBed.tscn" id="31_alju4"]
 [ext_resource type="PackedScene" uid="uid://gfhtrytd3qsq" path="res://examples/assets/furnitures_kenney/computerScreen.glb" id="31_iawrv"]
 [ext_resource type="PackedScene" path="res://examples/objects/bathroom/bathroomCabinet.tscn" id="32_oyifu"]
 [ext_resource type="PackedScene" path="res://examples/objects/bathroom/bathroomCabinetDrawer.tscn" id="33_rkfnx"]
@@ -42,14 +42,14 @@
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenBar.tscn" id="41_p27ey"]
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenCabinet.tscn" id="42_7chb6"]
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenCabinetCornerInner.tscn" id="43_d3kf7"]
-[ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenFridgeLarge.tscn" id="44_5eqe4"]
+[ext_resource type="PackedScene" uid="uid://bqb2uj3fwmgdc" path="res://examples/objects/kitchen/kitchenFridgeLarge.tscn" id="44_5eqe4"]
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenSink.tscn" id="45_cepmw"]
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenStove.tscn" id="46_6yto1"]
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenMicrowave.tscn" id="47_5cgiv"]
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenBarEnd.tscn" id="49_yuhek"]
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/stoolBarSquare.tscn" id="50_x0sga"]
 [ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenCabinetUpperCorner.tscn" id="51_oe8jj"]
-[ext_resource type="PackedScene" path="res://examples/objects/kitchen/kitchenCabinetUpper.tscn" id="52_fj03j"]
+[ext_resource type="PackedScene" uid="uid://cpki6sum4e8hf" path="res://examples/objects/kitchen/kitchenCabinetUpper.tscn" id="52_fj03j"]
 [ext_resource type="PackedScene" uid="uid://bayf4ddkji6w4" path="res://examples/assets/furnitures_kenney/kitchenCoffeeMachine.glb" id="53_rt1q4"]
 [ext_resource type="PackedScene" uid="uid://tybre8btkftm" path="res://examples/objects/kitchen/trashcan.tscn" id="53_w8nd4"]
 [ext_resource type="PackedScene" uid="uid://scm1uu5k7s0x" path="res://examples/assets/furnitures_kenney/toaster.glb" id="53_wg81m"]
@@ -346,7 +346,7 @@ transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 12.1923,
 [node name="radio" parent="Rooms/bedroom/furnitures" instance=ExtResource("30_wftrw")]
 transform = Transform3D(-0.463621, -7.74595e-08, -0.886034, 5.63279e-08, 1, -1.16897e-07, -0.886034, 1.04104e-07, 0.463621, 23.8197, 3.874, 23.196)
 
-[node name="cabinetBed" parent="Rooms/bedroom/furnitures" groups=["wardrove"] instance=ExtResource("31_alju4")]
+[node name="wardrobe" parent="Rooms/bedroom/furnitures" groups=["wardrove"] instance=ExtResource("31_alju4")]
 transform = Transform3D(-3.034, 0, -1.74846e-07, 0, 4.991, 0, 2.65241e-07, 0, -2, 8.14433, 0.044095, 24.834)
 
 [node name="computerKeyboard" parent="Rooms/bedroom/furnitures" instance=ExtResource("29_loxjq")]
@@ -680,6 +680,13 @@ shadow_enabled = true
 
 [node name="example_agent" parent="People" instance=ExtResource("55_clrc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.24418, 0, 15.3962)
+collision_layer = 0
+collision_mask = 0
+
+[node name="example_agent2" parent="People" instance=ExtResource("55_clrc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.162, 0, 18.8649)
+collision_layer = 0
+collision_mask = 0
 
 [node name="Sensors" type="Node3D" parent="."]
 
@@ -730,5 +737,4 @@ script = ExtResource("60_sxeg5")
 
 [node name="CalendarManager" type="Node" parent="Simulator"]
 script = ExtResource("61_4jap2")
-hour = 18
 priority = 10

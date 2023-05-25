@@ -21,6 +21,8 @@ var relevance : float :
 		relevance = smoothstep(info.min_level_before_solve, 1.0, level)
 		return relevance
 
+## Used to exclude during a time the need from the choosable ones.
+var timeout : float = 0
 
 func _init(need_info : NeedInfo, tree: SceneTree):
 	info = need_info
@@ -42,10 +44,10 @@ func increase_level(delta):
 func time_until_level(target_level: float, rate : float = 1.0):
 	var diff = max(0.0, target_level - level)
 	if diff == 0.0:
-		return diff
+		return max(diff, timeout)
 	if rate <= 0.0:
 		return INF
-	return diff * info.time_to_fill_level / rate
+	return max(diff * info.time_to_fill_level / rate, timeout)
 
 
 ## Evaluates the conditions for each feasible solution for the context and only returns those that
@@ -62,6 +64,13 @@ func get_feasible_solutions_in_context(context: Dictionary) -> Array[SolutionInf
 func has_solutions_in_context(context: Dictionary) -> bool:
 	return not get_feasible_solutions_in_context(context).is_empty()
 
+## Called when a new timeout condition enters and update the internal value keeping the lower one
+## if [member timeout] is bigger than 0, or [code]new_timeout[/code] otherwise.
+func change_timeout(new_timeout : float):
+	if timeout <= 0.0:
+		timeout = new_timeout
+	else:
+		timeout = min(timeout, new_timeout)
 
 ## Returns a feasible [Solution] if there is any. If not, returns null. Parameter [code]i[/code] is
 ## the index at which the [Solution] is stored, but if its value is smaller than 0, a random

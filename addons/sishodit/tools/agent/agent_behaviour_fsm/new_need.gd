@@ -26,15 +26,19 @@ func on_enter():
 ## considering needs priorities but not additional constrains, like if the need is pending to be
 ## solved
 func _get_next_need_to_cover():
-	var priority = (my_agent.current_steps.back()["priority"] 
-					if not my_agent.current_steps.is_empty()
+	var priority = (my_agent.current_steps.back().priority
+					# If it is interupting a step
+					if (not my_agent.current_steps.is_empty() and
+					# and the need interrupted timeout is not higher than 0
+						my_agent.current_needs.back().timeout <= 0.0)
 					else -INF)
 	
 	var choosable_needs : Array[Need] = my_agent.needs.filter(
 		func(need: Need): 
 			return (need.info.priority > priority and 
 			need.relevance > 0.0 and
-			need.has_solutions_in_context(my_agent.simulable.context))
+			need.has_solutions_in_context(my_agent.simulable.context) and
+			need.timeout <= 0.0)
 	)
 	if len(choosable_needs) == 0:
 		return null

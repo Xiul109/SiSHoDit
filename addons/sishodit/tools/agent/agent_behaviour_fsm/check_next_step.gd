@@ -15,9 +15,12 @@ func on_enter():
 		if step == null:
 			_apply_current_solution()
 			return
-		step.find_target_object(my_agent)
 		steps.append(step)
 		console_log(step)
+		# This should never return false without objects excluded, so it will never transition here.
+		# However, this may change in the future, so it is better to write the full logic.
+		if not step.find_target_object(my_agent):
+			transitioned_to.emit("NewNeed")
 	else:
 		step = steps.back()
 	
@@ -26,17 +29,7 @@ func on_enter():
 		transitioned_to.emit("NewNeed")
 		return
 	
-	_set_agent_destination(step)
-
-
-## Sets the next destination of the agent based on the object associated to the step and transitions
-## to [i]Travelling[/i] state
-func _set_agent_destination(step: Step):
-	var destination : Vector3 = my_agent.global_transform.origin
-	if step.object != null:
-		destination = step.object.global_transform.origin
-	
-	my_agent.to = destination
+	step.set_agent_destination(my_agent)
 	transitioned_to.emit("Traveling")
 
 ## Pops the last current need and solution and transitions to [i]NewNeed[/i] state

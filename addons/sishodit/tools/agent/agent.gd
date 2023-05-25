@@ -40,6 +40,7 @@ var current_steps : Array[Step] = []
 ## Used for agent pathfinding
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 
+@onready var object_user : ObjectUser = $ObjectUser
 
 func _ready():
 	# Finding and deleting unsolvable needs
@@ -78,7 +79,6 @@ func obtain_time_until_interruption(maximum_time = current_steps.back().time_lef
 			need.info.priority <= step.priority or
 			not need.has_solutions_in_context(simulable.context)):
 			continue
-		# error cuando justo se activa el contexto al empezar step porque el tiempo vale 0
 		var rate = 1.0
 		if need.info.need_key in step.info.needs_with_modified_rate:
 			rate = step.info.needs_with_modified_rate[need.info.need_key]
@@ -107,7 +107,13 @@ func _process_needs(delta):
 			modified_delta *= step.info.needs_with_modified_rate[need.info.need_key]
 		
 		need.increase_level(modified_delta)
+		need.timeout -= delta
 
 ## Callback for [signal Simulable.simulated]
 func _on_simulable_simulated(delta):
 		_process_needs(delta)
+
+
+func _on_velocity_computed(safe_velocity):
+	velocity = safe_velocity
+	move_and_slide()

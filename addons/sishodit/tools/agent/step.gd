@@ -1,6 +1,8 @@
 class_name Step
 extends RefCounted
 
+## Represents an specific step that the [Agent] is doing or plans to do.
+
 ## General parameters for this step
 var info : StepInfo
 
@@ -20,6 +22,8 @@ var total_duration : float
 ## Time left in this Step until finished
 var time_left : float
 
+## Specific objects that are temporaly excluded to be used in the step
+var excluded_objects = []
 
 func _init(step_info : StepInfo, min_priority : int = -INF):
 	info = step_info
@@ -36,6 +40,8 @@ func _to_string():
 
 ## Called when starting doing a new Step
 func start(agent:Agent):
+	if object:
+		agent.object_user.start_using(object)
 	if usable != null and info.use_object:
 		usable.start_using(agent)
 
@@ -59,15 +65,21 @@ func do(delta:float, agent:Agent) -> bool:
 
 ## Called when Step is stopped, either because it is finished or because it is interrupted
 func stop(agent:Agent):
+	agent.object_user.finish_using()
 	if usable != null:
 		usable.finish_using(agent)
 
 ## Returns an adequate object from the [code]tree[/code] for this step attending to
 ## the [member object_group] and the [member object_selection_criterion]. If one of the distance
-## related criteria is used, [code]nav_agent[/code] internal state is modified.
-func find_target_object(agent : Agent):
+## related criteria is used, [code]nav_agent[/code] internal state is modified. If there are not
+## objects available, returns false, otherwise true.
+func find_target_object(agent : Agent, excluded = []) -> bool:
 	if info.object_group != "":
-		var objects = agent.get_tree().get_nodes_in_group(info.object_group)
+		var objects = agent.get_tree().get_nodes_in_group(info.object_group).filter(
+			func(obj): return obj not in excluded
+		)
+		if objects.is_empty():
+			return false
 		match info.object_selection_criterion:
 			StepInfo.ObjectSelectionCriteria.RANDOM:
 				object = objects[randi() % objects.size()]
@@ -76,11 +88,22 @@ func find_target_object(agent : Agent):
 														info.object_selection_criterion)
 	
 	if object == null:
-		return
+		return true
 	
 	var usable_nodes = object.find_children("*", "Usable", false)
 	if not usable_nodes.is_empty():
 		usable = usable_nodes[0]
+	
+	return true
+
+## Sets the next destination of the agent based on the object associated to the step and transitions
+## to [i]Travelling[/i] state
+func set_agent_destination(agent: Agent):
+	var destination : Vector3 = agent.global_transform.origin
+	if object != null:
+		destination = object.global_transform.origin
+	
+	agent.to = destination
 
 
 ## Returns an object after applying one of the distance related critera
