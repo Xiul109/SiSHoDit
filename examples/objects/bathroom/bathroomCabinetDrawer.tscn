@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" uid="uid://4mrn048nhj30" path="res://examples/assets/furnitures_kenney/bathroomCabinetDrawer.glb" id="1"]
-[ext_resource type="PackedScene" path="res://addons/sishodit/presets/usable_nodes/usable.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://addons/sishodit/presets/usable_nodes/basic_usable.tscn" id="2"]
 
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xndt1"]

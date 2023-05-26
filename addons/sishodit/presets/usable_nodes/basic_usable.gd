@@ -17,12 +17,13 @@ func _ready():
 	
 
 func start_using(_user: Agent):
-	_sensor.activate(start_event_value)
+	activate(start_event_value)
 	super.start_using(_user)
 
 
 func finish_using(_user: Agent):
-	_sensor.activate(end_event_value)
+	activate(end_event_value)
 	super.finish_using(_user)
 
-
+func activate(value):
+	_sensor.activate(value)

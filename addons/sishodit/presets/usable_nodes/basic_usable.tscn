@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3ejpbg8l8ntp"]
+
+[ext_resource type="Script" path="res://addons/sishodit/presets/usable_nodes/basic_usable.gd" id="1_0n6jb"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="2_4qyli"]
+
+[node name="BasicUsable" type="Node"]
+script = ExtResource("1_0n6jb")
+
+[node name="Sensor" type="Node" parent="."]
+script = ExtResource("2_4qyli")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cpki6sum4e8hf"]
 
 [ext_resource type="PackedScene" uid="uid://2gpd8pf4rvm0" path="res://examples/assets/furnitures_kenney/kitchenCabinetUpper.glb" id="1"]
-[ext_resource type="PackedScene" path="res://addons/sishodit/presets/usable_nodes/usable.tscn" id="2_3003l"]
+[ext_resource type="PackedScene" path="res://addons/sishodit/presets/usable_nodes/basic_usable.tscn" id="2_3003l"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/ranges/binary_value_range.gd" id="3_vcpew"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_knqko"]
