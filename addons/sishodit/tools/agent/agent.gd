@@ -87,6 +87,9 @@ func obtain_time_until_interruption(maximum_time = current_steps.back().time_lef
 	
 	return times.min()
 
+func console_log(message):
+	print("[", name, "] ", message)
+
 ## Emits [signal Simulable.log_event]
 func log_event(type, value):
 	simulable.log_event.emit(name, type, value)

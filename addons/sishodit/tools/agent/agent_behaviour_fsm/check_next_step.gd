@@ -40,6 +40,5 @@ func _apply_current_solution():
 
 ## Prints information about the current step chosen
 func console_log(step):
-	print("Current step (", step,
-		") can be solved with ", step.info.object_group,
-		" and solves: ", step.info.needs_solved)
+	my_agent.console_log("(CheckNextStep) Current step %s can be solved with %s solves: %s" %
+	 					[step, step.info.object_group, step.info.needs_solved])

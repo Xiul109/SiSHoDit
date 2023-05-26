@@ -19,21 +19,24 @@ func on_enter():
 	var object = step.object
 	var time = _time_until_free(object)
 	my_agent.current_needs.back().change_timeout(time)
-	
+	var decision
 	# The agent will wait
 	if time < max_wait_time:
 		wait_time = time + extra_wait_time
 		my_agent.simulable.wait(wait_time)
-		print("Agent ", my_agent, " is waiting ", wait_time)
+		_console_log(object, "wait %f s until it is available" % wait_time)
 	# The agent finds another object
 	elif step.find_target_object(my_agent, step.excluded_objects + [object]):
+		_console_log(object, "try using %s instead" % step.object)
 		step.excluded_objects.append(object)
 		step.set_agent_destination(my_agent)
 		transitioned_to.emit("Traveling")
 	# The agent does another need
 	else:
+		_console_log(object, "solve another need")
 		step.excluded_objects.clear()
 		transitioned_to.emit("NewNeed")
+		
 
 func on_exit():
 	pass
@@ -52,3 +55,6 @@ func _time_until_free(object: Node) -> float:
 		return INF
 		
 	return object_users[0].real_parent.current_steps.back().time_left
+
+func _console_log(object, decision):
+	my_agent.console_log("(ObjectInUse) The object %s is in use. I will %s." % [object, decision])

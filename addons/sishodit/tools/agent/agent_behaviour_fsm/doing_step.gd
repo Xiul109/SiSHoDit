@@ -48,4 +48,4 @@ func _console_log_finish(interrupted = false):
 	var text = "finished"
 	if interrupted:
 		text = "interrupted"
-	print("Step %s %s"%[current_step, text])
+	my_agent.console_log("(DoingStep) Step %s %s"%[current_step, text])

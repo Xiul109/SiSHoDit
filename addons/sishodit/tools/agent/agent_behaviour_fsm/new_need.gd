@@ -69,8 +69,7 @@ func _get_random_i_based_on_probabilities(probabilities):
 
 ## Logs texts to the console based on the current need being solved
 func _console_log(need, is_returning = false):
-	print("---------------------------------------")
 	if is_returning:
-		print("Returning to need: ", need.info.need_key)
+		my_agent.console_log("(NewNeed) Returning to need: %s." % need.info.need_key)
 	else:
-		print("New need: ", need.info.need_key)
+		my_agent.console_log("(NewNeed) New need to solve: %s." % need.info.need_key)
