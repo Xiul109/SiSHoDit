@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs07qyfk3gkry"]
+
+[ext_resource type="Script" path="res://addons/sishodit/presets/UI/needs/multi_agent_needs_widget.gd" id="1_dqn7t"]
+
+[node name="multi_agent_needs_widget" type="TabContainer"]
+size_flags_vertical = 3
+tab_alignment = 1
+clip_tabs = false
+drag_to_rearrange_enabled = true
+script = ExtResource("1_dqn7t")

@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/sishodit/presets/UI/single_need_widget.gd" id="1"]
+[ext_resource type="Script" path="res://addons/sishodit/presets/UI/needs/single_need_widget.gd" id="1"]
+
 
 [node name="SingleNeedWidget" type="HBoxContainer"]
 offset_right = 138.0

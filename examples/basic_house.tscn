@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" path="res://examples/objects/living_room/bookcaseOpen.tscn" id="16_63p2t"]
 [ext_resource type="PackedScene" uid="uid://twap8dopxy3q" path="res://examples/assets/furnitures_kenney/books.glb" id="17_5r1xr"]
 [ext_resource type="PackedScene" path="res://examples/objects/living_room/tableGlass.tscn" id="18_exh12"]
-[ext_resource type="PackedScene" path="res://examples/objects/bedroom/bedDouble.tscn" id="19_drpae"]
+[ext_resource type="PackedScene" uid="uid://demyjtvnmgspo" path="res://examples/objects/bedroom/bedDouble.tscn" id="19_drpae"]
 [ext_resource type="PackedScene" path="res://examples/objects/bedroom/cabinetBedDrawer.tscn" id="20_8vhq6"]
 [ext_resource type="PackedScene" path="res://examples/objects/bedroom/cabinetBedDrawerTable.tscn" id="21_h11xw"]
 [ext_resource type="PackedScene" path="res://examples/objects/bedroom/lampSquareTable.tscn" id="22_8mjol"]
@@ -55,12 +55,12 @@
 [ext_resource type="PackedScene" uid="uid://scm1uu5k7s0x" path="res://examples/assets/furnitures_kenney/toaster.glb" id="53_wg81m"]
 [ext_resource type="PackedScene" uid="uid://bh07cy0trq4hl" path="res://examples/agents/example_agent.tscn" id="55_clrc6"]
 [ext_resource type="PackedScene" uid="uid://cfqufgudbqxm4" path="res://examples/objects/structure/doorway.tscn" id="55_x6gkq"]
+[ext_resource type="PackedScene" uid="uid://bs07qyfk3gkry" path="res://addons/sishodit/presets/UI/needs/multi_agent_needs_widget.tscn" id="59_bc2mb"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulator.gd" id="60_sxeg5"]
 [ext_resource type="Script" path="res://addons/sishodit/presets/context_managers/Calendar.gd" id="61_4jap2"]
 [ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="69_ws6ec"]
 [ext_resource type="PackedScene" uid="uid://bb3xpgmnwp4l2" path="res://addons/sishodit/presets/UI/speed_slider.tscn" id="70_b0tqj"]
 [ext_resource type="PackedScene" uid="uid://b72mu3g3hihh" path="res://addons/sishodit/presets/UI/time_widget.tscn" id="71_xlpau"]
-[ext_resource type="PackedScene" uid="uid://c5vk4fni4oqxw" path="res://addons/sishodit/presets/UI/needs_widget.tscn" id="72_7ok6x"]
 
 [sub_resource type="Gradient" id="Gradient_mhk06"]
 colors = PackedColorArray(0, 0.221838, 0, 1, 0.0266823, 0.487345, 0.159609, 1)
@@ -718,19 +718,13 @@ offset_top = 14.0
 offset_right = 212.0
 offset_bottom = 77.0
 
-[node name="needs_widget" parent="CanvasLayer/ui" instance=ExtResource("72_7ok6x")]
+[node name="multi_agent_needs_widget" parent="CanvasLayer/ui" instance=ExtResource("59_bc2mb")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -355.0
-offset_top = 22.0
-offset_right = -21.0
-offset_bottom = 586.0
+offset_left = -197.0
 grow_horizontal = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
 
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource("60_sxeg5")

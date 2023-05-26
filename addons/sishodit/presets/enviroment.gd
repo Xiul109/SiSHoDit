@@ -15,7 +15,7 @@ func _ready():
 	cameras.append($Camera3D)
 	for agent in agents:
 		cameras.append(agent.get_node("CameraOrbit/Camera3D"))
-	$CanvasLayer/ui/needs_widget.agent = agents[0]
+		$CanvasLayer/ui/multi_agent_needs_widget.add_agent(agent)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
