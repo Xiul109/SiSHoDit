@@ -55,7 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://scm1uu5k7s0x" path="res://examples/assets/furnitures_kenney/toaster.glb" id="53_wg81m"]
 [ext_resource type="PackedScene" uid="uid://bh07cy0trq4hl" path="res://examples/agents/example_agent.tscn" id="55_clrc6"]
 [ext_resource type="PackedScene" uid="uid://cfqufgudbqxm4" path="res://examples/objects/structure/doorway.tscn" id="55_x6gkq"]
-[ext_resource type="PackedScene" uid="uid://bs07qyfk3gkry" path="res://addons/sishodit/presets/UI/needs/multi_agent_needs_widget.tscn" id="59_bc2mb"]
+[ext_resource type="PackedScene" uid="uid://bs07qyfk3gkry" path="res://addons/sishodit/presets/UI/agent_data/multi_agent_data_widget.tscn" id="59_bc2mb"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulator.gd" id="60_sxeg5"]
 [ext_resource type="Script" path="res://addons/sishodit/presets/context_managers/Calendar.gd" id="61_4jap2"]
 [ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="69_ws6ec"]
@@ -719,6 +719,7 @@ offset_right = 212.0
 offset_bottom = 77.0
 
 [node name="multi_agent_needs_widget" parent="CanvasLayer/ui" instance=ExtResource("59_bc2mb")]
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

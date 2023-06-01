@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://de5p4oothref7"]
+
+[ext_resource type="Script" path="res://addons/sishodit/presets/UI/agent_data/stack_widget.gd" id="1_6mxvp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r37lr"]
+font_size = 20
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_y0mrt"]
+font_size = 20
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_vaci6"]
+font_size = 20
+outline_size = 1
+
+[node name="stack_widget" type="HBoxContainer"]
+offset_right = 1.02399
+offset_bottom = 1.15199
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("1_6mxvp")
+
+[node name="needs" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="needs"]
+layout_mode = 2
+text = "Needs"
+label_settings = SubResource("LabelSettings_r37lr")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="needs"]
+layout_mode = 2
+
+[node name="needs_list" type="VBoxContainer" parent="needs"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+
+[node name="solutions" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="solutions"]
+layout_mode = 2
+text = "Solutions"
+label_settings = SubResource("LabelSettings_y0mrt")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="solutions"]
+layout_mode = 2
+
+[node name="solutions_list" type="VBoxContainer" parent="solutions"]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="."]
+layout_mode = 2
+
+[node name="steps" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="steps"]
+layout_mode = 2
+text = "Steps"
+label_settings = SubResource("LabelSettings_vaci6")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="steps"]
+layout_mode = 2
+
+[node name="steps_list" type="VBoxContainer" parent="steps"]
+layout_mode = 2

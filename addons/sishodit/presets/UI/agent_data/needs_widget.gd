@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-var SingleNeedWidget = preload("res://addons/sishodit/presets/UI/needs/single_need_widget.tscn")
+var SingleNeedWidget = preload("res://addons/sishodit/presets/UI/agent_data/single_need_widget.tscn")
 
 var agent : Agent : set = agent_set
 var _need_widgets = {}
@@ -8,7 +8,6 @@ var _need_widgets = {}
 # setgets
 func agent_set(new_agent: Agent):
 	agent = new_agent
-	name = agent.name
 	_clean_widgets()
 	_init_widgets()
 	
