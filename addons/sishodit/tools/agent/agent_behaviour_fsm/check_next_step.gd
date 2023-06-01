@@ -15,7 +15,7 @@ func on_enter():
 		if step == null:
 			_apply_current_solution()
 			return
-		steps.append(step)
+		my_agent.add_current_step(step)
 		console_log(step)
 		# This should never return false without objects excluded, so it will never transition here.
 		# However, this may change in the future, so it is better to write the full logic.
@@ -34,8 +34,10 @@ func on_enter():
 
 ## Pops the last current need and solution and transitions to [i]NewNeed[/i] state
 func _apply_current_solution():
-	my_agent.current_needs.pop_back()
-	my_agent.log_event("activity_end", my_agent.current_solutions.pop_back().info.resource_name)
+	var solution = my_agent.pop_current_solution()
+	my_agent.pop_current_need()
+	
+	my_agent.log_event("activity_end", solution.info.resource_name)
 	transitioned_to.emit("NewNeed")
 
 ## Prints information about the current step chosen

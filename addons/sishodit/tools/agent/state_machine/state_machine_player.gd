@@ -3,6 +3,9 @@ extends Node
 
 ## It is used specifically for playing Agent's behaviour modelled as StateMachine
 
+## Emmited whenever a [State] transitions to another
+signal transitioned(from: State, to: State)
+
 ## The state that will be played when [method start] is called
 @export var initial_state : State
 
@@ -14,6 +17,7 @@ var current_state : State = null :
 	set(new):
 		if current_state != null:
 			current_state.on_exit()
+		transitioned.emit(current_state, new)
 		current_state = new
 		current_state.on_enter()
 
@@ -45,4 +49,5 @@ func start():
 func transition(to: String):
 	if not to in states.keys():
 		push_warning("The state '%s' is not included in the StateMachine" % to)
+	
 	current_state = states[to]

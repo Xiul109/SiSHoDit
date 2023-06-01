@@ -13,8 +13,8 @@ func on_process(delta: float):
 	
 	# If step has finished completly
 	if current_step.do(delta, my_agent):
-		my_agent.current_steps.pop_back()
 		_console_log_finish()
+		my_agent.pop_current_step()
 		transitioned_to.emit("CheckNextStep")
 	# If is interrupted
 	elif state_time_left <= 0:
@@ -39,9 +39,9 @@ func on_exit():
 
 ## Deletes every element related with the current need
 func _abort_need():
-	my_agent.current_steps.pop_back()
-	my_agent.current_solutions.pop_back().reset()
-	my_agent.current_needs.pop_back()
+	my_agent.pop_current_step()
+	my_agent.pop_current_solution()
+	my_agent.pop_current_need()
 
 ## Shows an output text once the execution has finished
 func _console_log_finish(interrupted = false):

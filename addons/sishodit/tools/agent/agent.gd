@@ -3,13 +3,25 @@ extends CharacterBody3D
 
 ## An agent is an entity in the simulation that emulates the bahaviour of a person.
 
+## Emmitted when a new [Need] is chosen
+signal new_current_need(need : Need)
+## Emmited when a [Need] is poped from the stack
+signal current_need_poped(need: Need)
+## Emmited when a new [Solution] is chosen
+signal new_current_solution(solution: Solution)
+## Emmited when a [Solution] is poped from the stack
+signal current_solution_poped(solution: Solution)
+## Emmited when a new [Step] is chosen
+signal new_current_step(step: Step)
+## Emmithed when a [Step] is poped from the stack
+signal current_step_poped(step: Step)
+
 ## The agent speed in units per second.
 @export_range(0, 20, 0.001, "or_greater")
 var speed: float = 10
 
 ## The list of information of each need of the agent.
-@export 
-var needs_info : Array[NeedInfo]
+@export var needs_info : Array[NeedInfo]
 
 ## The list of needs of the agent.
 var needs : Array[Need]
@@ -87,6 +99,40 @@ func obtain_time_until_interruption(maximum_time = current_steps.back().time_lef
 	
 	return times.min()
 
+## Adds a new [Need] to the array containing them
+func add_current_need(need: Need):
+	current_needs.append(need)
+	new_current_need.emit(need)
+
+## Deletes the current [Need] from the array containing it
+func pop_current_need() -> Need:
+	var need = current_needs.pop_back()
+	current_need_poped.emit(need)
+	return need
+
+## Adds a new [Solution] to the array containing them
+func add_current_solution(sol: Solution):
+	current_solutions.append(sol)
+	new_current_solution.emit(sol)
+
+## Deletes the current [Solution] from the array containing it
+func pop_current_solution() -> Solution:
+	var sol = current_solutions.pop_back()
+	current_solution_poped.emit(sol)
+	return sol
+
+## Adds a new [Step] to the array containing them
+func add_current_step(step: Step):
+	current_steps.append(step)
+	new_current_step.emit(step)
+
+## Deletes the current [Step] from the array containing it
+func pop_current_step() -> Step:
+	var step = current_steps.pop_back()
+	current_step_poped.emit(step)
+	return step
+
+## Prints a message to the console including the id of the agent before it
 func console_log(message):
 	print("[", name, "] ", message)
 

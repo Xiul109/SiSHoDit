@@ -12,10 +12,11 @@ func on_enter():
 		need_solution = my_agent.current_solutions.back()
 		log_event_type = "activity_return"
 	else:
+		
 		need_solution = current_need.get_random_feasible_solution_in_context(
 																		my_agent.simulable.context)
-		my_agent.current_needs.append(current_need)
-		my_agent.current_solutions.append(need_solution)
+		my_agent.add_current_need(current_need)
+		my_agent.add_current_solution(need_solution)
 		
 	my_agent.log_event(log_event_type, need_solution.info.resource_name)
 	_console_log(current_need, is_returning)
