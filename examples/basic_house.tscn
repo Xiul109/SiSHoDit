@@ -681,12 +681,10 @@ shadow_enabled = true
 [node name="example_agent" parent="People" instance=ExtResource("55_clrc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.24418, 0, 15.3962)
 collision_layer = 0
-collision_mask = 0
 
 [node name="example_agent2" parent="People" instance=ExtResource("55_clrc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.162, 0, 18.8649)
 collision_layer = 0
-collision_mask = 0
 
 [node name="Sensors" type="Node3D" parent="."]
 

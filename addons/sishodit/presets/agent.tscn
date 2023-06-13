@@ -32,7 +32,7 @@ size = Vector3(1.5, 0.5, 0.75)
 
 [node name="agent" type="CharacterBody3D" groups=["agent"]]
 collision_layer = 16
-collision_mask = 16
+collision_mask = 0
 script = ExtResource("1_htqyf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -74,7 +74,6 @@ script = ExtResource("4_dfhvj")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 agent_height_offset = -0.5
-avoidance_enabled = true
 radius = 1.5
 debug_enabled = true
 debug_path_custom_color = Color(0.878431, 0.0705882, 0.0823529, 1)
