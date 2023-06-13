@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://0wamgrgrd18i"]
+[gd_scene load_steps=18 format=3 uid="uid://0wamgrgrd18i"]
 
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/agent.gd" id="1_htqyf"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/nodes/CameraOrbit.gd" id="2_a3bjs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/nodes/DoorClosing.gd" id="4_dfhvj"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/agent_behaviour_fsm/object_in_use.gd" id="10_l4agj"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/nodes/object_user.gd" id="11_osh0x"]
+[ext_resource type="Script" path="res://addons/sishodit/presets/agent_label.gd" id="13_kurlf"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/state_machine/state_machine_player.gd" id="14_x61iw"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/agent_behaviour_fsm/new_need.gd" id="15_c1liy"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/agent/agent_behaviour_fsm/check_next_step.gd" id="16_2qb57"]
@@ -103,6 +104,15 @@ script = ExtResource("19_lmwen")
 [node name="ObjectUser" type="Node" parent="."]
 script = ExtResource("11_osh0x")
 
+[node name="agent_label" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 6.65766, 0)
+billboard = 1
+text = "Agent"
+font_size = 256
+outline_size = 36
+script = ExtResource("13_kurlf")
+
+[connection signal="ready" from="." to="agent_label" method="_on_agent_ready"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_velocity_computed"]
 [connection signal="simulated" from="Simulable" to="." method="_on_simulable_simulated"]
 [connection signal="simulated" from="Simulable" to="StateMachinePlayer" method="simulate"]

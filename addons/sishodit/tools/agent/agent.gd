@@ -69,7 +69,7 @@ func _ready():
 	# it did not work.
 	var timer = get_tree().create_timer(.0001)
 	timer.timeout.connect(state_machine.start)
-		
+	
 
 ## Informs the Simulator that this agent will enter into low frequency mode during [code]time[/code]
 ## seconds
