@@ -41,6 +41,7 @@ func _get_next_need_to_cover():
 			need.has_solutions_in_context(my_agent.simulable.context) and
 			need.timeout <= 0.0)
 	)
+	
 	if len(choosable_needs) == 0:
 		return null
 	

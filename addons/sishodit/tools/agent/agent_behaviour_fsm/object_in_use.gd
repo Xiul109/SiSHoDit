@@ -1,7 +1,7 @@
 extends State
 
 ## The maximum time the [Agent] will wait until the object is freed
-@export var max_wait_time : float = 600
+@export var max_wait_time : float = 300
 ## Extra time that the agent will wait over the needed one. It must be positive
 ## to ensure correct working.
 @export_range(0.0, 10.0, .001, "or_greater") var extra_wait_time : float = .1
@@ -19,7 +19,7 @@ func on_enter():
 	var object = step.object
 	var time = _time_until_free(object)
 	my_agent.current_needs.back().change_timeout(time)
-	var decision
+	
 	# The agent will wait
 	if time < max_wait_time:
 		wait_time = time + extra_wait_time

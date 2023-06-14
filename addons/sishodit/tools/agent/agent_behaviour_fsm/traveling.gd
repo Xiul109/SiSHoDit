@@ -37,6 +37,7 @@ func on_process(_delta: float):
 	# If the agent has reached its objective, transition to [i]DoingStep[/i]
 	elif nav_agent.is_navigation_finished():
 		transitioned_to.emit("DoingStep")
+		my_agent.current_needs.back().timeout = 0
 		return
 	
 	# If not the agent will move towards the next_position
