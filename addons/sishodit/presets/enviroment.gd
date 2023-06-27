@@ -29,4 +29,3 @@ func _input(event):
 func switch_camera():
 	camera_i = (camera_i + 1) % len(cameras)
 	cameras[camera_i].make_current()
-	$CanvasLayer/ui/needs_widget.agent = agents[(camera_i-1)%len(agents)]
