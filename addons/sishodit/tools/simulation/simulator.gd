@@ -40,7 +40,7 @@ func _ready():
 		_simulable_entities.append(node)
 		if node.requires_real_time:
 			_real_time_entities.append(node)
-		_simulable_entities.sort_custom(func(a, b): return a.priority > b.priority)
+	_simulable_entities.sort_custom(func(a, b): return a.priority > b.priority)
 	
 	# FileManager initialization
 	file_manager = FileManager.new()
