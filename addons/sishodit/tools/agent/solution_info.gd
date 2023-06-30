@@ -1,3 +1,4 @@
+@icon("res://addons/sishodit/assets/icons/solution.png")
 class_name SolutionInfo
 extends Resource
 

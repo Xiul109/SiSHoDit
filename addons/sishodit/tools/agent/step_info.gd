@@ -1,3 +1,4 @@
+@icon("res://addons/sishodit/assets/icons/step.png")
 class_name StepInfo
 extends Resource
 

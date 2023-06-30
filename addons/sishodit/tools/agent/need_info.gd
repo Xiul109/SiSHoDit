@@ -1,3 +1,4 @@
+@icon("res://addons/sishodit/assets/icons/need.png")
 class_name NeedInfo
 extends Resource
 
