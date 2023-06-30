@@ -32,6 +32,9 @@ var wait_time : float = 0.0
 func _init():
 	add_to_group("simulable", true)
 
+func _to_string() -> String:
+	return "[Simulable] (%s)"%get_parent()
+
 # Public methods
 ## Called by [Simulator] whenever the simulation advances.
 func simulate(delta: float):

@@ -42,6 +42,9 @@ func _ready():
 	simulable.simulated.connect(_simulate)
 	add_child(simulable)
 
+func _to_string() -> String:
+	return "[Sensor] %s"%sensor_name
+
 # Public methods
 ## When called, the sensor is activated and
 func activate(value, delta: float = 0):
