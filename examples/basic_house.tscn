@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dkavkunxsgev"]
+[gd_scene load_steps=78 format=3 uid="uid://dkavkunxsgev"]
 
 [ext_resource type="Script" path="res://addons/sishodit/presets/enviroment.gd" id="1_igvo5"]
 [ext_resource type="PackedScene" path="res://examples/objects/structure/floorFull.tscn" id="2_0s1mw"]
@@ -53,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://bayf4ddkji6w4" path="res://examples/assets/furnitures_kenney/kitchenCoffeeMachine.glb" id="53_rt1q4"]
 [ext_resource type="PackedScene" uid="uid://tybre8btkftm" path="res://examples/objects/kitchen/trashcan.tscn" id="53_w8nd4"]
 [ext_resource type="PackedScene" uid="uid://scm1uu5k7s0x" path="res://examples/assets/furnitures_kenney/toaster.glb" id="53_wg81m"]
+[ext_resource type="PackedScene" uid="uid://hq5uocajsxb" path="res://addons/sishodit/presets/sensors/presence_sensor.tscn" id="54_j4l7a"]
 [ext_resource type="PackedScene" uid="uid://bh07cy0trq4hl" path="res://examples/agents/example_agent.tscn" id="55_clrc6"]
 [ext_resource type="PackedScene" uid="uid://cfqufgudbqxm4" path="res://examples/objects/structure/doorway.tscn" id="55_x6gkq"]
 [ext_resource type="PackedScene" uid="uid://bs07qyfk3gkry" path="res://addons/sishodit/presets/UI/agent_data/multi_agent_data_widget.tscn" id="59_bc2mb"]
@@ -617,6 +618,9 @@ transform = Transform3D(1, -4.37114e-08, 1.19249e-08, 4.37114e-08, 1, -4.37114e-
 [node name="wall" parent="Rooms/corridor/walls" instance=ExtResource("5_tcu2q")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.54, -59.5)
 
+[node name="presence_sensor_entrance" parent="Rooms/corridor" instance=ExtResource("54_j4l7a")]
+transform = Transform3D(-0.442112, 0.766192, -0.466356, -0.866148, -0.499789, 0, -0.233079, 0.403933, 0.884597, -0.628856, 11.9395, -1.70592)
+
 [node name="garden" type="Node3D" parent="Rooms"]
 
 [node name="out_position" type="Marker3D" parent="Rooms/garden" groups=["out"]]
@@ -680,11 +684,9 @@ shadow_enabled = true
 
 [node name="example_agent" parent="People" instance=ExtResource("55_clrc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.24418, 0, 15.3962)
-collision_layer = 0
 
 [node name="example_agent2" parent="People" instance=ExtResource("55_clrc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.162, 0, 18.8649)
-collision_layer = 0
 
 [node name="Sensors" type="Node3D" parent="."]
 
