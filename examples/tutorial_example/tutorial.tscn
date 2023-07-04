@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://1h75pfhhmq10"]
+
+[ext_resource type="PackedScene" path="res://addons/sishodit/presets/base_environment.tscn" id="1_sglh0"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_lblqw"]
+resource_local_to_scene = true
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 1
+cell_size = 0.1
+cell_height = 0.4
+agent_height = 3.0
+agent_radius = 1.0
+agent_max_climb = 1.0
+region_min_size = 75.2
+
+[node name="House" instance=ExtResource("1_sglh0")]
+
+[node name="NavigationRegion3D" parent="Node3D" index="0"]
+navigation_mesh = SubResource("NavigationMesh_lblqw")

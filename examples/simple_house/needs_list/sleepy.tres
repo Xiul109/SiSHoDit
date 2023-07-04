@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NeedInfo" load_steps=3 format=3 uid="uid://dmla2rjuor066"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/need_info.gd" id="1_vo3oa"]
+[ext_resource type="Resource" uid="uid://brirdvk484vol" path="res://examples/simple_house/need_solutions/sleep_in_bed.tres" id="2_r1e0x"]
+
+[resource]
+script = ExtResource("1_vo3oa")
+need_key = "sleepy"
+solutions = Array[Resource("res://addons/sishodit/tools/agent/solution_info.gd")]([ExtResource("2_r1e0x")])
+time_to_fill_level = 61200.0
+initial_level = 0.781
+min_level_before_solve = 0.8
+priority = 1
+urgent_level = 1.0
