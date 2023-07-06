@@ -21,62 +21,62 @@ size_flags_horizontal = 3
 alignment = 1
 script = ExtResource("1_6mxvp")
 
-[node name="needs" type="VBoxContainer" parent="."]
+[node name="Needs" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="needs"]
+[node name="Label" type="Label" parent="Needs"]
 layout_mode = 2
 text = "Needs"
 label_settings = SubResource("LabelSettings_r37lr")
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="needs"]
+[node name="HSeparator" type="HSeparator" parent="Needs"]
 layout_mode = 2
 
-[node name="needs_list" type="VBoxContainer" parent="needs"]
+[node name="NeedsList" type="VBoxContainer" parent="Needs"]
 layout_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="."]
 layout_mode = 2
 
-[node name="solutions" type="VBoxContainer" parent="."]
+[node name="Solutions" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="solutions"]
+[node name="Label" type="Label" parent="Solutions"]
 layout_mode = 2
 text = "Solutions"
 label_settings = SubResource("LabelSettings_y0mrt")
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="solutions"]
+[node name="HSeparator" type="HSeparator" parent="Solutions"]
 layout_mode = 2
 
-[node name="solutions_list" type="VBoxContainer" parent="solutions"]
+[node name="SolutionsList" type="VBoxContainer" parent="Solutions"]
 layout_mode = 2
 
 [node name="VSeparator2" type="VSeparator" parent="."]
 layout_mode = 2
 
-[node name="steps" type="VBoxContainer" parent="."]
+[node name="Steps" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="steps"]
+[node name="Label" type="Label" parent="Steps"]
 layout_mode = 2
 text = "Steps"
 label_settings = SubResource("LabelSettings_vaci6")
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="steps"]
+[node name="HSeparator" type="HSeparator" parent="Steps"]
 layout_mode = 2
 
-[node name="steps_list" type="VBoxContainer" parent="steps"]
+[node name="StepsList" type="VBoxContainer" parent="Steps"]
 layout_mode = 2

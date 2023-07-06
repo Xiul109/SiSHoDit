@@ -18,23 +18,23 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.149691, 0.325415, 0.197312, 1)
 
-[node name="single_agent_data_widget" type="VBoxContainer"]
+[node name="SingleAgentDataWidget" type="VBoxContainer"]
 script = ExtResource("1_fp3fd")
 
-[node name="needs" type="PanelContainer" parent="."]
+[node name="Needs" type="PanelContainer" parent="."]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qfy6i")
 
-[node name="CenterContainer" type="CenterContainer" parent="needs"]
+[node name="CenterContainer" type="CenterContainer" parent="Needs"]
 layout_mode = 2
 
-[node name="stack" type="PanelContainer" parent="."]
+[node name="Stack" type="PanelContainer" parent="."]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6jlh1")
 
-[node name="MarginContainer" type="MarginContainer" parent="stack"]
+[node name="MarginContainer" type="MarginContainer" parent="Stack"]
 layout_mode = 2
 
-[node name="state" type="Label" parent="."]
+[node name="State" type="Label" parent="."]
 layout_mode = 2
 horizontal_alignment = 1

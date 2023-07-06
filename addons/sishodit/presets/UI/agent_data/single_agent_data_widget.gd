@@ -18,10 +18,10 @@ var agent : Agent :
 
 func _ready():
 	needs_widget = NeedsWidget.instantiate()
-	$needs/CenterContainer.add_child(needs_widget)
+	$Needs/CenterContainer.add_child(needs_widget)
 	stack_widget = StackWidget.instantiate()
-	$stack/MarginContainer.add_child(stack_widget)
+	$Stack/MarginContainer.add_child(stack_widget)
 
 func _on_state_changed(_from: State, to: State):
 	if to != null:
-		$state.text = to.name
+		$State.text = to.name

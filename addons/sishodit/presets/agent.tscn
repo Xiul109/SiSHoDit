@@ -30,7 +30,7 @@ height = 6.0
 [sub_resource type="BoxMesh" id="4"]
 size = Vector3(1.5, 0.5, 0.75)
 
-[node name="agent" type="CharacterBody3D" groups=["agent"]]
+[node name="Agent" type="CharacterBody3D" groups=["agent"]]
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_htqyf")
@@ -103,7 +103,7 @@ script = ExtResource("19_lmwen")
 [node name="ObjectUser" type="Node" parent="."]
 script = ExtResource("11_osh0x")
 
-[node name="agent_label" type="Label3D" parent="."]
+[node name="AgentLabel" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 6.65766, 0)
 billboard = 1
 text = "Agent"
@@ -111,7 +111,7 @@ font_size = 256
 outline_size = 36
 script = ExtResource("13_kurlf")
 
-[connection signal="ready" from="." to="agent_label" method="_on_agent_ready"]
+[connection signal="ready" from="." to="AgentLabel" method="_on_agent_ready"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_velocity_computed"]
 [connection signal="simulated" from="Simulable" to="." method="_on_simulable_simulated"]
 [connection signal="simulated" from="Simulable" to="StateMachinePlayer" method="simulate"]

@@ -12,9 +12,9 @@ var agent : Agent :
 		agent.current_solution_poped.connect(func(_sol): remove_last_label(solutions))
 		agent.current_step_poped.connect(func(_step): remove_last_label(steps))
 
-@onready var needs = $needs/needs_list
-@onready var solutions = $solutions/solutions_list
-@onready var steps = $steps/steps_list
+@onready var needs = $Needs/NeedsList
+@onready var solutions = $Solutions/SolutionsList
+@onready var steps = $Steps/StepsList
 
 func add_label(text: String, where: VBoxContainer):
 	var label = Label.new()

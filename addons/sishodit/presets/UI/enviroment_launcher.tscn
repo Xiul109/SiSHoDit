@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/sishodit/presets/UI/enviroment_launcher.gd" id="1_rqyml"]
 
-[node name="enviroment_launcher" type="Button"]
+[node name="EnvironmentLauncher" type="Button"]
 offset_right = 230.0
 offset_bottom = 38.251
 size_flags_horizontal = 5
