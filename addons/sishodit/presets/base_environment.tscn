@@ -21,7 +21,7 @@ region_min_size = 75.2
 [node name="House" type="Node3D"]
 script = ExtResource("1")
 
-[node name="Rooms" type="Node3D" parent="." groups=["navmesh"]]
+[node name="Rooms" type="Node3D" parent="." groups=["navigation_mesh_source_group"]]
 
 [node name="NoNavObjects" type="Node3D" parent="."]
 
