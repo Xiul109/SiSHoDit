@@ -46,7 +46,8 @@ func _ready():
 	file_manager = FileManager.new()
 	add_child(file_manager)
 	file_manager.init_file(base_name, log_dir)
-
+	
+	call_deferred("_late_init")
 
 func _physics_process(delta: float):
 	_simulate(delta)
@@ -67,6 +68,11 @@ func _simulate(delta: float):
 	for simulable in _simulable_entities:
 		simulable.simulate(delta)
 
+func _late_init():
+	await get_tree().physics_frame
+	print("asd")
+	for entity in _simulable_entities:
+		entity.simulation_start.emit()
 
 # Callbacks
 func _on_entity_waiting():

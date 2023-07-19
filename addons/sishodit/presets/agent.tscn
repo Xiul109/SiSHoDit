@@ -73,7 +73,7 @@ debug_shape_thickness = 4
 script = ExtResource("4_dfhvj")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-agent_height_offset = -0.5
+path_height_offset = -0.5
 radius = 1.5
 debug_enabled = true
 debug_path_custom_color = Color(0.878431, 0.0705882, 0.0823529, 1)
@@ -115,3 +115,4 @@ script = ExtResource("13_kurlf")
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_velocity_computed"]
 [connection signal="simulated" from="Simulable" to="." method="_on_simulable_simulated"]
 [connection signal="simulated" from="Simulable" to="StateMachinePlayer" method="simulate"]
+[connection signal="simulation_start" from="Simulable" to="." method="_on_simulable_simulation_start"]

@@ -6,6 +6,8 @@ class_name Simulable
 ## time has advanced since the last simulation update, so the parent should avoid using _process
 ## or _physic_process functions.
 
+## Emitted just before the first simulation step is executed
+signal simulation_start
 ## Emitted when waiting is requested.
 signal waiting_started
 ## Emitted in each simulation step.
