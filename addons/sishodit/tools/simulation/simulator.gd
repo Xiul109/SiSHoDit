@@ -47,6 +47,8 @@ func _ready():
 	add_child(file_manager)
 	file_manager.init_file(base_name, log_dir)
 	
+	# This is done to avoid starting the simulation until after the first physics frame, so the
+	# Navigation Server has been initialized
 	call_deferred("_late_init")
 
 func _physics_process(delta: float):
@@ -70,7 +72,6 @@ func _simulate(delta: float):
 
 func _late_init():
 	await get_tree().physics_frame
-	print("asd")
 	for entity in _simulable_entities:
 		entity.simulation_start.emit()
 
