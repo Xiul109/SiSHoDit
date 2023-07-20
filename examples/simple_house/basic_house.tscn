@@ -712,10 +712,10 @@ grow_vertical = 2
 
 [node name="time_widget" parent="CanvasLayer/ui" instance=ExtResource("71_xlpau")]
 layout_mode = 0
-offset_left = 73.0
-offset_top = 14.0
-offset_right = 212.0
-offset_bottom = 77.0
+offset_left = 102.0
+offset_top = 15.0
+offset_right = 241.0
+offset_bottom = 78.0
 
 [node name="MultiAgentDataWidget" parent="CanvasLayer/ui" instance=ExtResource("59_bc2mb")]
 custom_minimum_size = Vector2(450, 0)

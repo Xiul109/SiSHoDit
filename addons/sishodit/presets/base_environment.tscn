@@ -43,25 +43,37 @@ fov = 80.0
 
 [node name="ui" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1028.0
-offset_bottom = 602.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_kfmev")
 
 [node name="SpeedSlider" parent="CanvasLayer/ui" instance=ExtResource("40")]
-layout_mode = 0
-offset_top = 0.0
-offset_bottom = 475.0
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 22.0
+offset_right = 39.0
+offset_bottom = -17.0
+grow_vertical = 2
 
 [node name="TimeWidget" parent="CanvasLayer/ui" instance=ExtResource("14")]
 layout_mode = 0
-offset_left = 69.0
-offset_top = 5.0
-offset_right = 142.0
-offset_bottom = 63.0
+offset_left = 109.0
+offset_top = 8.0
+offset_right = 220.0
+offset_bottom = 73.0
 
 [node name="MultiAgentDataWidget" parent="CanvasLayer/ui" instance=ExtResource("5_oukf0")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource("6_6d2lx")
