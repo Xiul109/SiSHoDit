@@ -57,7 +57,6 @@ func _update_values():
 		label.position.y = ((size.y-pix_until_first_tick*2)/(tick_count-1) * i
 							- label.size.y/2 + pix_until_first_tick)
 		label.position.x = size.x + horizontal_offset
-		print(label.position.y)
 
 
 # Callbacks
