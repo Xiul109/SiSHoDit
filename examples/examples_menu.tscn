@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2dcb6xivqvgu"]
+
+[ext_resource type="PackedScene" uid="uid://es8li1ldqc7f" path="res://addons/sishodit/presets/UI/main_menu.tscn" id="1_3w36f"]
+
+[node name="Control" instance=ExtResource("1_3w36f")]
+enviroments_path = "res://examples/environments"

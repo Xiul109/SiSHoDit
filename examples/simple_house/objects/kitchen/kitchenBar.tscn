@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://cdb22tks8tcgs"]
 
 [ext_resource type="PackedScene" uid="uid://cce1u3qhwqicr" path="res://examples/assets/furnitures_kenney/kitchenBar.glb" id="1"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qpwn3"]
 points = PackedVector3Array(4.3, 4.2, 0, 4.3, 3.89988, 0, 4.3, 4.2, -2.1, 0, 4.2, 0, 4.3, 0.582146, -0.20001, 0, 3.89988, 0, 4.3, 3.89988, -2.1, 0, 4.2, -2.1, 4.3, 0, -0.40002, 0, 0.582146, -0.20001, 4.3, 0.582146, -1.9002, 0, 3.89988, -2.1, 4.3, 0, -1.70019, 0, 0, -0.40002, 0, 0.582146, -1.9002, 0, 0, -1.70019)
 
-[node name="kitchenBar" instance=ExtResource("1")]
+[node name="kitchenBar" groups=["eat_place"] instance=ExtResource("1")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 shape = SubResource("ConvexPolygonShape3D_qpwn3")

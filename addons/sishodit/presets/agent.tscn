@@ -99,6 +99,7 @@ script = ExtResource("10_l4agj")
 
 [node name="Simulable" type="Node" parent="."]
 script = ExtResource("19_lmwen")
+requires_real_time = true
 
 [node name="ObjectUser" type="Node" parent="."]
 script = ExtResource("11_osh0x")
