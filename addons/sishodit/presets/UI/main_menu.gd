@@ -3,10 +3,15 @@ extends Control
 const enviroment_launcher = preload("res://addons/sishodit/presets/UI/enviroment_launcher.tscn")
 
 
-@export var enviroments_path = "res://examples/"
+@export_dir var enviroments_path = "res://examples/":
+	set(new_path):
+		enviroments_path = new_path
+		if enviroments_path[-1] != "/":
+			enviroments_path = enviroments_path + "/"
 var enviroments = {}
 
 func _ready():
+
 	enviroments = _load_scenes_from(enviroments_path)
 	_init_enviroments_menu()
 
