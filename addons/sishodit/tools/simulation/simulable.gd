@@ -47,8 +47,13 @@ func simulate(delta: float):
 
 ## When called, puts the entity in wait mode.
 func wait(time: float):
-	if is_waiting:
+	# Ignores the call if the entity does not require real time
+	if not requires_real_time:
+		push_warning("Only real time entities can actively wait, the rest are waiting by default.")
 		return
+	if is_waiting:
+		push_warning("The entity is already waiting for %f, but that will change for %f."%
+					[wait_time, time])
 	if time <= 0.0:
 		push_warning("Method 'wait' from 'Simulable' class should be called with positive values.")
 		return
