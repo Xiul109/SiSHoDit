@@ -39,7 +39,7 @@ cell_height = 0.2
 agent_height = 3.0
 agent_radius = 1.2
 agent_max_climb = 2.4
-region_min_size = 75.2
+region_min_size = 75.0
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xgqql"]
 sky_top_color = Color(0.423529, 0.603922, 0.764706, 1)
