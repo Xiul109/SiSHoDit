@@ -179,3 +179,24 @@ The second one is executing a *main_menu* scene. You can find a example one in t
 The third method is based in the other two and consist of compiling an executable, so it can be shared with other users without needing Godot editor. You can learn more about this in [Godot docs](https://docs.godotengine.org/en/stable/tutorials/export/exporting_projects.html).
 
 ![Simulation GIF](figures/simulation.gif)
+
+### Produced data
+When a simulation ends, it generates a file including all the sensors triggered and the Agent activities inside the [user data folder](https://docs.godotengine.org/es/stable/tutorials/io/data_paths.html). The output file has a JSON format as the next code block shows:
+
+```json
+[
+{"from":"Agent","time":125.620760902918,"type":"activity_begin","value":"Sit"}, 
+{"from":"loungeSofa","time":128.312914715724,"type":"pressure","value":1}, 
+{"from":"loungeSofa","time":3070.14222560836,"type":"pressure","value":0}, 
+{"from":"Agent","time":3070.14222560836,"type":"activity_end","value":"Sit"}, 
+{"from":"Agent","time":3070.14222560836,"type":"activity_begin","value":"Eat something"}, 
+{"from":"KitchenFridge","time":3071.6847617577,"type":"contact","value":1}, 
+{"from":"KitchenFridge","time":3114.33692886472,"type":"contact","value":0}, 
+{"from":"Agent","time":3710.29161258931,"type":"activity_end","value":"Eat something"}
+]
+```
+It is a list in which each entry contains 4 keys:
+* **from**. The issuer of the entry, normally a sensor. Sometimes the Agent appears in this field because usually is interesting for this type of datasets to know what is the Agent doing for triggering the sensors.
+* **time**. The time from the beggining of the simulation in which the entry is generated.
+* **type**. The type of the entry. Most of the times refers to the type of sensor that has produced the entry, but for Agents it stablishes the state of the activity.
+* **value**. The output produced by the issuer of the entry. For sensors, it is the value it has produced, for the Agent the name of the activity ended or started.
