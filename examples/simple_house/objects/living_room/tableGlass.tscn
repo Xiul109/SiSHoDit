@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://d0qwhu4rj16kh"]
 
 [ext_resource type="PackedScene" uid="uid://bhjruas2ih3hr" path="res://examples/assets/furnitures_kenney/tableGlass.glb" id="1"]
 

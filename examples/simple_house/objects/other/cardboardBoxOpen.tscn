@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://c70ji5b1jsynu"]
 
 [ext_resource type="PackedScene" uid="uid://d2d4ff8eb4d0v" path="res://examples/assets/furnitures_kenney/cardboardBoxOpen.glb" id="1"]
 

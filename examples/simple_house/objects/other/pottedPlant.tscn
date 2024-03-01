@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://ddarknhw86q3d"]
 
 [ext_resource type="PackedScene" uid="uid://cja8r2g51tlim" path="res://examples/assets/furnitures_kenney/pottedPlant.glb" id="1"]
 

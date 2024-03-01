@@ -1,8 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://dr1gt7e7c81bn"]
 
 [ext_resource type="Script" path="res://addons/sishodit/presets/usable_nodes/duration_usable.gd" id="1_vnrgy"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="2_2utsa"]
-
 
 [node name="DurationUsable" type="Node"]
 script = ExtResource("1_vnrgy")
