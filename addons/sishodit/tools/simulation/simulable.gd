@@ -38,7 +38,8 @@ func _to_string() -> String:
 	return "[Simulable] (%s)"%get_parent()
 
 # Public methods
-## Called by [Simulator] whenever the simulation advances.
+## Called by [Simulator] whenever the simulation advances. The method is called after the internal
+## time of the simulation is updated.
 func simulate(delta: float):
 	simulated.emit(delta)
 	wait_time -= delta
