@@ -4,10 +4,6 @@ extends Object
 
 class_name TSFunctions
 
-## Compute 
-static func compute_ts():
-	pass
-
 ## Returns an array with [param n] elements withing the range [[param start], [param stop]), 
 ## excluding the former one
 static func linspace(n: int, start: float = 0, stop: float=1) -> PackedFloat32Array:
