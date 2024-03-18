@@ -37,6 +37,3 @@ func generate(dur: float, sample_rate: float) -> PackedFloat32Array:
 	if is_zero_approx(time):
 		time = 0
 	return values
-
-func compute_curve():
-	pass
