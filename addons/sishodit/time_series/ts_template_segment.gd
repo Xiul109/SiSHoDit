@@ -1,4 +1,4 @@
-extends Resource # Tal vez ref counted mejor?
+extends Resource # Tal vez ref counted mejor? a
 
 class_name TSTemplateSegment
 
