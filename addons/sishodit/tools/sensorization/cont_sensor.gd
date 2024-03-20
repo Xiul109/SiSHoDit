@@ -41,14 +41,20 @@ func _simulate(delta: float):
 	super(delta)
 	# Aquí ya están computadas las wrong activations
 	delta += remaining
+	if delta < period:
+		remaining = delta
+		return
+	
 	for activation in activations:
 		_compute_and_log(activation.x, delta)
 		delta -= snapped(activation.x, period) + period
 		generator = TSGenerator.new()
 		generator.template = activations_templates[activation.y]
+		print("Activated: ", activation.y," - ", generator.template)
+		print(delta)
 	_compute_and_log(delta, delta)
 	remaining = fmod(delta, period)
-	# # +1 to generate the current value and not the previous one
+	activations.clear()
 
 func _post_activation(value, delta: float) -> void:
 	activations.append(Vector2(delta, value))
