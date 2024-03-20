@@ -53,7 +53,7 @@ func wait(time: float):
 		push_warning("Only real time entities can actively wait, the rest are waiting by default.")
 		return
 	if is_waiting:
-		push_warning("The entity is already waiting for %f, but that will change for %f."%
+		push_warning("The entity is already waiting for %f s, but instead it will wait for %f s."%
 					[wait_time, time])
 	if time <= 0.0:
 		push_warning("Method 'wait' from 'Simulable' class should be called with positive values.")
