@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqb2uj3fwmgdc"]
+[gd_scene load_steps=17 format=3 uid="uid://bqb2uj3fwmgdc"]
 
 [ext_resource type="PackedScene" uid="uid://qldnxe1g22qv" path="res://examples/assets/furnitures_kenney/kitchenFridgeLarge.glb" id="1"]
 [ext_resource type="PackedScene" uid="uid://c3ejpbg8l8ntp" path="res://addons/sishodit/presets/usable_nodes/basic_usable.tscn" id="2"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/cont_sensor.gd" id="3_qh7u8"]
 [ext_resource type="Script" path="res://addons/sishodit/time_series/ts_template.gd" id="4_a4eii"]
 [ext_resource type="Script" path="res://addons/sishodit/time_series/ts_template_segment.gd" id="5_5eefq"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="6_whap7"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/ranges/binary_value_range.gd" id="7_scajv"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1137i"]
 points = PackedVector3Array(0, -1.04575e-17, -3.41934, 5.2, -1.04575e-17, -3.41934, 0, -1.04575e-17, -0.0001688, 0, 8.93074, -3.41934, 5.2, -1.04575e-17, -0.0001688, 5.2, 8.93074, -3.41934, 0, 0.599765, 0.199646, 0, 8.93074, 0.199646, 0.00203602, 8.96586, -3.41934, 5.2, 0.599765, 0.199646, 5.19745, 8.96586, -3.41934, 5.2, 8.93074, 0.199646, 0.00203602, 8.96586, 0.199646, 0.00865309, 9.00098, -3.41934, 5.19084, 9.00098, -3.41934, 5.19745, 8.96586, 0.199646, 0.00865309, 9.00098, 0.199646, 0.0203602, 9.0334, -3.41934, 5.19084, 9.00098, 0.199646, 5.17913, 9.0334, -3.41934, 0.0203602, 9.0334, 0.199646, 0.0356304, 9.06492, -3.41934, 5.17913, 9.0334, 0.199646, 5.16386, 9.06492, -3.41934, 0.0356304, 9.06492, 0.199646, 0.0549726, 9.09464, -3.41934, 5.16386, 9.06492, 0.199646, 5.14452, 9.09464, -3.41934, 0.0549726, 9.09464, 0.199646, 0.0783868, 9.12075, -3.41934, 5.14452, 9.09464, 0.199646, 5.1211, 9.12075, -3.41934, 0.0783868, 9.12075, 0.199646, 0.104855, 9.14417, -3.41934, 5.1211, 9.12075, 0.199646, 5.09464, 9.14417, -3.41934, 0.104855, 9.14417, 0.199646, 0.133868, 9.16398, -3.41934, 5.09464, 9.14417, 0.199646, 5.06562, 9.16398, -3.41934, 0.133868, 9.16398, 0.199646, 0.165427, 9.17929, -3.41934, 5.06562, 9.16398, 0.199646, 5.03406, 9.17929, -3.41934, 0.165427, 9.17929, 0.199646, 0.198512, 9.19009, -3.41934, 5.03406, 9.17929, 0.199646, 5.00098, 9.19009, -3.41934, 0.198512, 9.19009, 0.199646, 0.233124, 9.1973, -3.41934, 5.00098, 9.19009, 0.199646, 4.96637, 9.1973, -3.41934, 0.233124, 9.1973, 0.199646, 0.268246, 9.2, -3.41934, 4.96637, 9.1973, 0.199646, 4.93124, 9.2, -3.41934, 0.268246, 9.2, 0.199646, 4.93124, 9.2, 0.199646)
@@ -19,7 +21,6 @@ point_count = 2
 script = ExtResource("5_5eefq")
 shape = SubResource("Curve_6c82s")
 duration = 60.0
-noise_mean = 0.0
 noise_std = 0.5
 
 [sub_resource type="Resource" id="Resource_3fs83"]
@@ -31,7 +32,6 @@ loop = false
 [sub_resource type="Resource" id="Resource_b4pus"]
 script = ExtResource("5_5eefq")
 duration = 1800.0
-noise_mean = 0.5
 noise_std = 0.01
 
 [sub_resource type="Curve" id="Curve_ggj5f"]
@@ -44,7 +44,6 @@ point_count = 4
 script = ExtResource("5_5eefq")
 shape = SubResource("Curve_ggj5f")
 duration = 300.0
-noise_mean = 0.0
 noise_std = 0.05
 
 [sub_resource type="Resource" id="Resource_18262"]
@@ -52,6 +51,10 @@ script = ExtResource("4_a4eii")
 segments = Array[ExtResource("5_5eefq")]([SubResource("Resource_b4pus"), SubResource("Resource_tu0lr")])
 random = true
 loop = false
+
+[sub_resource type="Resource" id="Resource_j38pk"]
+script = ExtResource("7_scajv")
+values = []
 
 [node name="kitchenFridgeLarge" groups=["drink_source", "food_provider", "fridge", "water_source"] instance=ExtResource("1")]
 
@@ -74,6 +77,11 @@ activations_templates = {
 1.0: SubResource("Resource_18262")
 }
 default_activation_index = 1
+sensor_type = "energy"
+
+[node name="Sensor2" type="Node" parent="Usable" index="1"]
+script = ExtResource("6_whap7")
 sensor_type = "contact"
+value_range = SubResource("Resource_j38pk")
 
 [editable path="Usable"]

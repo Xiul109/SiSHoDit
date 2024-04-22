@@ -5,6 +5,8 @@
 
 [node name="BasicUsable" type="Node"]
 script = ExtResource("1_0n6jb")
+start_event_value = null
+end_event_value = null
 
 [node name="Sensor" type="Node" parent="."]
 script = ExtResource("2_4qyli")

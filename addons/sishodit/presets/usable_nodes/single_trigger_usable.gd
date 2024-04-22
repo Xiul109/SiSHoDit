@@ -1,5 +1,5 @@
 class_name SingleTriggerUsable
-extends Usable
+extends SensorizedUsable
 
 ## Works for sensors that are only triggered once, for example the toilet flush.
 
@@ -11,15 +11,8 @@ enum TriggerMode {START, END}
 @export var trigger_on : TriggerMode = TriggerMode.START
 
 
-@onready var _sensor : Sensor = $Sensor
-
 ## Emitted when sensor is triggered
 signal triggered
-
-
-func _ready():
-	_sensor.sensor_name = get_parent().name
-
 
 func start_using(_user: Agent):
 	if trigger_on == TriggerMode.START:
@@ -33,7 +26,7 @@ func finish_using(_user: Agent):
 	super.finish_using(_user)
 
 
-## When called, the sensor is triggered
+## When called, the sensors are triggered
 func trigger():
-	_sensor.activate(trigger_value)
+	activate_sensors(trigger_value)
 	emit_signal("triggered")

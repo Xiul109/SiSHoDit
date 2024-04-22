@@ -15,15 +15,16 @@ var _timer : Timer
 signal duration_ended
 
 func _ready():
+	super()
 	_timer = Timer.new()
 	_timer.connect("timeout",Callable(self,"_on_timer_timeout"))
 	add_child(_timer)
 	_timer.one_shot = true
 
 func trigger():
-	super.trigger()
+	super()
 	_timer.start(duration)
 
 func _on_timer_timeout():
-	_sensor.activate(end_duration_value)
+	activate_sensors(end_duration_value)
 	emit_signal("duration_ended")

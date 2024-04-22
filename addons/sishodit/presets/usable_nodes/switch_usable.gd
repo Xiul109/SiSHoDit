@@ -1,5 +1,5 @@
 class_name SwitchUsable
-extends Usable
+extends SensorizedUsable
 
 ## Usable object that keeps and internal record of its state which can be switched or not. Whenever
 ## its state changes, it produces a value based on it. It changes once per use. One example of this
@@ -13,12 +13,6 @@ extends Usable
 @export var switch_off_value : float = 0
 ## The trigger will be activated when starting using the object or when finishing.
 @export var trigger_on: SingleTriggerUsable.TriggerMode = SingleTriggerUsable.TriggerMode.START
-
-@onready var _sensor : Sensor = $Sensor
-
-
-func _ready():
-	_sensor.sensor_name = get_parent().name
 
 
 func start_using(_user: Agent):
@@ -37,6 +31,6 @@ func finish_using(_user: Agent):
 func switch():
 	is_switched = not is_switched
 	if is_switched:
-		_sensor.activate(switch_on_value)
+		activate_sensors(switch_on_value)
 	else:
-		_sensor.activate(switch_off_value)
+		activate_sensors(switch_off_value)

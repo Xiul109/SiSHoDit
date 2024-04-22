@@ -63,7 +63,7 @@ sky = SubResource("Sky_eegb6")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="House" instance=ExtResource("1_ugscx")]
+[node name="House2" instance=ExtResource("1_ugscx")]
 
 [node name="Floor" type="Node3D" parent="Rooms" index="0"]
 
@@ -282,6 +282,7 @@ navigation_mesh = SubResource("NavigationMesh_htqhw")
 
 [node name="Camera3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.928467, 35.2184, 0.501577)
+current = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="8"]
 transform = Transform3D(-0.766044, -0.615353, 0.185786, 0, 0.289032, 0.957319, -0.642788, 0.733349, -0.221411, 0, 29.16, 0)
