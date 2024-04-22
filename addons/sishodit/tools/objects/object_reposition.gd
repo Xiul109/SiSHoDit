@@ -9,7 +9,7 @@ extends Node3D
 func _ready():
 	var parent = get_parent()
 	if not parent:
-		push_warning("ObjectReposition does not have a child.")
+		push_warning("ObjectReposition does not have a parent.")
 		return
 	_steal_groups(parent)
 	_make_redirect_usables(parent)
