@@ -32,7 +32,7 @@ func _ready():
 	super()
 	# The generator is initialized with the default [TSTemplate]
 	var key = activations_templates.keys()[default_activation_index]
-	_create_generator(activations_templates[key])
+	_create_generator(key)
 
 # Callbacks
 ## When called simulates the sensor during the specified time
