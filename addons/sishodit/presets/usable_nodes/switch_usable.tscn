@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://ciyd60ynmgw4m"]
 
 [ext_resource type="Script" path="res://addons/sishodit/presets/usable_nodes/switch_usable.gd" id="1"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="2"]

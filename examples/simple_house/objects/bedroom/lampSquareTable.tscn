@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bwlqp1ixuxryr"]
 
 [ext_resource type="PackedScene" uid="uid://dbtapblvb2tws" path="res://examples/assets/furnitures_kenney/lampSquareTable.glb" id="1"]
 

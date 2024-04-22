@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://b7m5ehkruxdm2"]
 
 [ext_resource type="PackedScene" uid="uid://bhlofrx5083os" path="res://examples/assets/furnitures_kenney/bathroomCabinet.glb" id="1"]
 

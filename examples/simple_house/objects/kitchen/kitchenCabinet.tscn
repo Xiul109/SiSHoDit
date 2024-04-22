@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://btw57kgcap7s4"]
 
 [ext_resource type="PackedScene" uid="uid://dcim7g0fcv24v" path="res://examples/assets/furnitures_kenney/kitchenCabinet.glb" id="1"]
 

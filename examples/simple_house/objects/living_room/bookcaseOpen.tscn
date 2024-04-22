@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://by8h86x71y4hc"]
 
 [ext_resource type="PackedScene" uid="uid://b437c2vw7j0sf" path="res://examples/assets/furnitures_kenney/bookcaseOpen.glb" id="1"]
 

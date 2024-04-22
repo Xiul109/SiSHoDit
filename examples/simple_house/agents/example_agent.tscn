@@ -14,6 +14,3 @@
 
 [node name="agent" instance=ExtResource("1_o5cya")]
 needs_info = Array[Resource("res://addons/sishodit/tools/agent/need_info.gd")]([ExtResource("2_t2ewf"), ExtResource("3_yh2a0"), ExtResource("4_3gkbb"), ExtResource("5_2piad"), ExtResource("6_ks48t"), ExtResource("7_j0o5n"), ExtResource("8_sfqe8"), ExtResource("9_qpjk8"), ExtResource("10_lxswr"), ExtResource("11_gfyi0")])
-
-[node name="Simulable" parent="." index="7"]
-requires_real_time = true

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://d4kjkji83mxe3"]
 
 [ext_resource type="PackedScene" uid="uid://cb5s2m7xfhdvg" path="res://examples/assets/furnitures_kenney/kitchenMicrowave.glb" id="1"]
 [ext_resource type="PackedScene" uid="uid://c3ejpbg8l8ntp" path="res://addons/sishodit/presets/usable_nodes/basic_usable.tscn" id="2"]
-
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cgkoj"]
 points = PackedVector3Array(0.367893, 0.318383, -2.2, 0, 0, -2.00016, 0.367893, 1.48144, -2.2, 2.53182, 0.318383, -2.2, 0, 0, 0, 0, 1.8, -2.00016, 2.9, 0, -2.00016, 2.53182, 1.48144, -2.2, 0, 1.8, 0, 2.36235, 0, 0, 2.9, 1.8, -2.00016, 2.9, 0, -0.100137, 2.36235, 1.8, 0, 2.9, 1.8, -0.100137)

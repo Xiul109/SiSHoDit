@@ -1,32 +1,39 @@
-[gd_scene load_steps=32 format=3 uid="uid://bp8tur183mon5"]
+[gd_scene load_steps=35 format=3 uid="uid://bp8tur183mon5"]
 
 [ext_resource type="PackedScene" uid="uid://di7stiugmkiq" path="res://addons/sishodit/presets/base_environment.tscn" id="1_ugscx"]
-[ext_resource type="PackedScene" path="res://examples/simple_house/objects/structure/floorFull.tscn" id="2_n86a2"]
-[ext_resource type="PackedScene" path="res://examples/simple_house/objects/structure/floorHalf.tscn" id="3_3bvco"]
+[ext_resource type="PackedScene" uid="uid://chu817n6kjhnr" path="res://examples/simple_house/objects/structure/floorFull.tscn" id="2_n86a2"]
+[ext_resource type="PackedScene" uid="uid://ym5tf4vkdgoq" path="res://examples/simple_house/objects/structure/floorHalf.tscn" id="3_3bvco"]
 [ext_resource type="PackedScene" uid="uid://bjrjhchw0n56a" path="res://examples/simple_house/objects/structure/wall.tscn" id="4_uo652"]
 [ext_resource type="PackedScene" uid="uid://nfrl7ccwpue1" path="res://examples/simple_house/objects/structure/wallHalf.tscn" id="5_wypno"]
-[ext_resource type="PackedScene" path="res://examples/simple_house/objects/bathroom/toiletSquare.tscn" id="6_a4ace"]
+[ext_resource type="PackedScene" uid="uid://bf5vh5fpj8ig4" path="res://examples/simple_house/objects/bathroom/toiletSquare.tscn" id="6_a4ace"]
 [ext_resource type="PackedScene" uid="uid://b5cvgiyuohu18" path="res://examples/simple_house/objects/bathroom/bathroomSink.tscn" id="7_56xy8"]
-[ext_resource type="PackedScene" path="res://examples/simple_house/objects/bathroom/shower.tscn" id="8_u4i5t"]
+[ext_resource type="PackedScene" uid="uid://g6xjigj7xt1i" path="res://examples/simple_house/objects/bathroom/shower.tscn" id="8_u4i5t"]
 [ext_resource type="PackedScene" uid="uid://demyjtvnmgspo" path="res://examples/simple_house/objects/bedroom/bedDouble.tscn" id="9_wljnx"]
 [ext_resource type="PackedScene" uid="uid://crhtr8c473ixh" path="res://examples/simple_house/objects/bedroom/cabinetBed.tscn" id="10_sbxfr"]
-[ext_resource type="PackedScene" path="res://examples/simple_house/objects/bedroom/cabinetBedDrawer.tscn" id="11_ote0e"]
-[ext_resource type="PackedScene" path="res://examples/simple_house/objects/bedroom/cabinetBedDrawerTable.tscn" id="12_r2gla"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/cont_sensor.gd" id="11_jrnte"]
+[ext_resource type="PackedScene" uid="uid://q5gq6l6ydxeh" path="res://examples/simple_house/objects/bedroom/cabinetBedDrawer.tscn" id="11_ote0e"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/ranges/continuous_value_range.gd" id="12_3nfg5"]
+[ext_resource type="PackedScene" uid="uid://4n31bs0vuioo" path="res://examples/simple_house/objects/bedroom/cabinetBedDrawerTable.tscn" id="12_r2gla"]
 [ext_resource type="PackedScene" uid="uid://5atqw1wym2yh" path="res://examples/simple_house/objects/living_room/loungeSofa.tscn" id="13_toy7g"]
 [ext_resource type="PackedScene" uid="uid://c5svdf13bg25l" path="res://examples/simple_house/objects/kitchen/tableRound.tscn" id="14_jqv1d"]
-[ext_resource type="PackedScene" path="res://examples/simple_house/objects/bedroom/lampSquareTable.tscn" id="15_8mcao"]
+[ext_resource type="PackedScene" uid="uid://bwlqp1ixuxryr" path="res://examples/simple_house/objects/bedroom/lampSquareTable.tscn" id="15_8mcao"]
 [ext_resource type="PackedScene" uid="uid://c5f3w5n6s2usa" path="res://examples/simple_house/objects/living_room/tableCloth.tscn" id="16_njsbq"]
-[ext_resource type="PackedScene" path="res://examples/simple_house/objects/living_room/cabinetTelevision.tscn" id="17_djowy"]
-[ext_resource type="PackedScene" path="res://examples/simple_house/objects/living_room/televisionModern.tscn" id="18_7ty5k"]
-[ext_resource type="PackedScene" path="res://examples/simple_house/objects/living_room/loungeChair.tscn" id="19_2qrjq"]
+[ext_resource type="PackedScene" uid="uid://cbi4ku5ty3doj" path="res://examples/simple_house/objects/living_room/cabinetTelevision.tscn" id="17_djowy"]
+[ext_resource type="PackedScene" uid="uid://d4h27n8y676gx" path="res://examples/simple_house/objects/living_room/televisionModern.tscn" id="18_7ty5k"]
+[ext_resource type="PackedScene" uid="uid://dfv81w8yjjydo" path="res://examples/simple_house/objects/living_room/loungeChair.tscn" id="19_2qrjq"]
 [ext_resource type="PackedScene" uid="uid://cdb22tks8tcgs" path="res://examples/simple_house/objects/kitchen/kitchenBar.tscn" id="20_4c3c5"]
-[ext_resource type="PackedScene" path="res://examples/simple_house/objects/kitchen/kitchenBarEnd.tscn" id="21_r3jn4"]
-[ext_resource type="PackedScene" path="res://examples/simple_house/objects/kitchen/kitchenStove.tscn" id="22_s676r"]
+[ext_resource type="PackedScene" uid="uid://c72b8hyqgi0nw" path="res://examples/simple_house/objects/kitchen/kitchenBarEnd.tscn" id="21_r3jn4"]
+[ext_resource type="PackedScene" uid="uid://cqwo6wih84joo" path="res://examples/simple_house/objects/kitchen/kitchenStove.tscn" id="22_s676r"]
 [ext_resource type="PackedScene" uid="uid://b35hv8bx1xjpa" path="res://examples/simple_house/objects/kitchen/kitchen_fridge.tscn" id="23_hhidd"]
 [ext_resource type="PackedScene" uid="uid://dprgtb5on2v0a" path="res://examples/simple_house/objects/structure/wallDoorway.tscn" id="24_mi2po"]
 [ext_resource type="PackedScene" uid="uid://cfqufgudbqxm4" path="res://examples/simple_house/objects/structure/doorway.tscn" id="25_37sqw"]
 [ext_resource type="PackedScene" uid="uid://djp4ch7kn0sod" path="res://examples/tutorial_example/tutorial_agent.tscn" id="26_rddk3"]
 [ext_resource type="Script" path="res://addons/sishodit/presets/context_managers/calendar.gd" id="27_1582k"]
+
+[sub_resource type="Resource" id="Resource_7x7go"]
+script = ExtResource("12_3nfg5")
+upper_limit = 1.0
+lower_limit = 0.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_htqhw"]
 resource_local_to_scene = true
@@ -185,6 +192,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.7798
 
 [node name="cabinetBed" parent="Rooms/BedroomFurnitures" index="1" instance=ExtResource("10_sbxfr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.3331, 0, -15.3812)
+
+[node name="ContSensor" type="Node" parent="Rooms/BedroomFurnitures/cabinetBed" index="3"]
+script = ExtResource("11_jrnte")
+sensor_name = "prueba"
+sensor_type = "cont"
+value_range = SubResource("Resource_7x7go")
 
 [node name="cabinetBed2" parent="Rooms/BedroomFurnitures" index="2" instance=ExtResource("10_sbxfr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.3257, 0, -3.26268)

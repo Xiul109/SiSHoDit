@@ -47,16 +47,25 @@ func _to_string() -> String:
 
 # Public methods
 ## When called, the sensor is activated and
-func activate(value, delta: float = 0):
+func activate(value, delta: float = 0) :
 	if randf() < not_triggered_prob or not value_range.is_value_in_range(value):
 		return
 	if randf() < wrong_value_prob:
 		value = value_range.get_random_valid_value()
-	simulable.log_event.emit(sensor_name, sensor_type, value, delta)
+	_post_activation(value, delta)
 
 # Private methods
 ## When called simulates the sensor during the specified time
 func _simulate(delta):
+	_compute_wrong_activations(delta)
+
+# Private methods
+## Computes the time needed until the next wrong trigger
+func _get_time_until_wrong_trigger():
+	return max(randfn(average_time_between_wrong_triggers,
+						std_time_between_wrong_triggers), 0.001)
+
+func _compute_wrong_activations(delta: float):
 	if average_time_between_wrong_triggers <= 0:
 		return
 	_time_until_wrong_trigger -= delta
@@ -64,7 +73,5 @@ func _simulate(delta):
 		activate(value_range.get_random_valid_value(), _time_until_wrong_trigger)
 		_time_until_wrong_trigger += _get_time_until_wrong_trigger()
 
-## Computes the time needed until the next wrong trigger
-func _get_time_until_wrong_trigger():
-	return max(randfn(average_time_between_wrong_triggers,
-						std_time_between_wrong_triggers), 0.001)
+func _post_activation(value, delta: float) -> void:
+	simulable.log_event.emit(sensor_name, sensor_type, value, delta)

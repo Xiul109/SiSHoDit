@@ -1,0 +1,13 @@
+class_name TSTemplateSegment
+extends Resource 
+
+## Stores the properties needed for representing a time series segment
+
+## Curve for defining the shape of the time series
+@export var shape : Curve
+
+## Duration of the segment
+@export var duration : float = 0
+
+## Standard deviation for a gaussian distribution used to produce noise
+@export var noise_std : float = 0
