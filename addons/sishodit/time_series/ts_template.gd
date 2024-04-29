@@ -5,6 +5,7 @@ extends Resource
 
 ## Sequence of segments of the template
 @export var segments : Array[TSTemplateSegment]
+@export var postprocessings : Array[TSPostprocessing]
 
 @export_group("Advanced chosing")
 ## If true the segment is selected randomly

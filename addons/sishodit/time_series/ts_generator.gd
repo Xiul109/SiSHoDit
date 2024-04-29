@@ -40,8 +40,10 @@ func generate(dur: float) -> PackedFloat32Array:
 		var segment_n : int = min(segment.duration, dur)*_sample_rate + i
 		# Segment generation
 		while i < segment_n :
-			values[i] = segment.shape.sample(offset) if segment.shape else 0
-			values[i] += randfn(0, segment.noise_std)
+			var val: float = segment.shape.sample(offset) if segment.shape else 0
+			for postpro in _template.postprocessings:
+				val = postpro.postprocess(val)
+			values[i] = val
 			time += period
 			offset += (time - _cum_segment_durs)/segment.duration
 			i += 1

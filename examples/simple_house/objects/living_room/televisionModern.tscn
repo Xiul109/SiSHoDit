@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4h27n8y676gx"]
+[gd_scene load_steps=16 format=3 uid="uid://d4h27n8y676gx"]
 
 [ext_resource type="PackedScene" uid="uid://c6y6nhpfxacnl" path="res://examples/assets/furnitures_kenney/televisionModern.glb" id="1"]
 [ext_resource type="PackedScene" uid="uid://ciyd60ynmgw4m" path="res://addons/sishodit/presets/usable_nodes/switch_usable.tscn" id="2"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/cont_sensor.gd" id="3_v5tjd"]
 [ext_resource type="Script" path="res://addons/sishodit/time_series/ts_template.gd" id="4_pqkx0"]
 [ext_resource type="Script" path="res://addons/sishodit/time_series/ts_template_segment.gd" id="5_sehq6"]
+[ext_resource type="Script" path="res://addons/sishodit/time_series/postprocessing/tspp_gaussian_noise.gd" id="6_w7gjy"]
+[ext_resource type="Script" path="res://addons/sishodit/time_series/postprocessing/tspp_absolute.gd" id="7_d5qog"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_i2pui"]
 points = PackedVector3Array(3.424, 4.5475, 0.267458, 1.76496, 0, 0.641874, 3.424, 0.695301, 0.267458, 3.424, 4.5475, -0.0404706, -3.424, 4.5475, 0.267458, 1.76496, 0, -0.642, -1.76563, 0, 0.641874, 3.424, 0.695301, -0.0404706, 0.347226, 2.18072, -0.415012, -3.424, 4.5475, -0.0404706, -3.424, 0.695301, 0.267458, -1.76563, 0, -0.642, -0.347897, 2.18072, -0.415012, -3.424, 0.695301, -0.0404706)
@@ -12,13 +14,20 @@ points = PackedVector3Array(3.424, 4.5475, 0.267458, 1.76496, 0, 0.641874, 3.424
 [sub_resource type="Resource" id="Resource_7ynk3"]
 script = ExtResource("5_sehq6")
 duration = 0.1
-noise_std = 0.0
 
 [sub_resource type="Resource" id="Resource_jrskj"]
 script = ExtResource("4_pqkx0")
 segments = Array[ExtResource("5_sehq6")]([SubResource("Resource_7ynk3")])
+postprocessings = Array[Resource("res://addons/sishodit/time_series/postprocessing/ts_postprocessing.gd")]([])
 random = false
 loop = false
+
+[sub_resource type="Resource" id="Resource_wnron"]
+script = ExtResource("6_w7gjy")
+std = 2.0
+
+[sub_resource type="Resource" id="Resource_c6w4c"]
+script = ExtResource("7_d5qog")
 
 [sub_resource type="Curve" id="Curve_etl8y"]
 max_value = 60.0
@@ -29,11 +38,11 @@ point_count = 3
 script = ExtResource("5_sehq6")
 shape = SubResource("Curve_etl8y")
 duration = 20.0
-noise_std = 1.0
 
 [sub_resource type="Resource" id="Resource_i1opy"]
 script = ExtResource("4_pqkx0")
 segments = Array[ExtResource("5_sehq6")]([SubResource("Resource_i1cfv")])
+postprocessings = Array[Resource("res://addons/sishodit/time_series/postprocessing/ts_postprocessing.gd")]([SubResource("Resource_wnron"), SubResource("Resource_c6w4c")])
 random = true
 loop = false
 
