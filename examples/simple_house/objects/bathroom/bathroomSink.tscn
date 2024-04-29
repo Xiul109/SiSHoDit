@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5cvgiyuohu18"]
+[gd_scene load_steps=5 format=3 uid="uid://b5cvgiyuohu18"]
 
 [ext_resource type="PackedScene" uid="uid://bfk71obhso7aw" path="res://examples/assets/furnitures_kenney/bathroomSink.glb" id="1"]
-[ext_resource type="PackedScene" uid="uid://c3ejpbg8l8ntp" path="res://addons/sishodit/presets/usable_nodes/basic_usable.tscn" id="2"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_00x5d"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_b4was"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pcsv2"]
 points = PackedVector3Array(0, -7.82013e-05, -2.9, 0.757479, -4, -2.9, 0, -7.82013e-05, -0.70002, 0, 1.09953, -2.9, 0.757479, -4, -1.70435, 2.64219, -4, -2.9, 0.236962, -7.82013e-05, -0.493931, 0, 0.9, -0.70002, 0, 1.09953, -2.40096, 1.5499, 1.59945, -2.10091, 1.5499, 1.59726, -2.14008, 1.5499, 1.58959, -2.17841, 1.5499, 1.57698, -2.21559, 1.5499, 1.55944, -2.25079, 1.5499, 1.53751, -2.28344, 3.4, 1.09953, -2.9, 0.971143, -4, -1.57291, 0.498551, -7.82013e-05, -0.320204, 2.64219, -4, -1.70435, 3.4, -7.82013e-05, -2.9, 0.236962, 0.9, -0.493931, 1.5499, 1.58959, -1.42332, 1.5499, 1.59726, -1.46164, 1.5499, 1.59945, -1.50081, 1.84977, 1.59945, -2.10091, 1.84977, 1.59726, -2.14008, 1.84977, 1.58959, -2.17841, 1.84977, 1.57698, -2.21559, 1.84977, 1.55944, -2.25079, 1.84977, 1.53751, -2.28344, 3.4, 1.09953, -2.40096, 1.20711, -4, -1.47271, 0.780442, -7.82013e-05, -0.18196, 0.498551, 0.9, -0.320204, 2.42852, -4, -1.57291, 3.4, -7.82013e-05, -0.70002, 3.16271, -7.82013e-05, -0.493931, 2.90112, -7.82013e-05, -0.320204, 1.5499, 1.57698, -1.38613, 1.84977, 1.58959, -1.42332, 1.84977, 1.59726, -1.46164, 1.84977, 1.59945, -1.50081, 3.4, 0.9, -0.70002, 1.45139, -4, -1.41196, 1.07831, -7.82013e-05, -0.0814703, 0.780442, 0.9, -0.18196, 2.19256, -4, -1.47271, 2.61922, -7.82013e-05, -0.18196, 3.16271, 0.9, -0.493931, 2.90112, 0.9, -0.320204, 1.84977, 1.57698, -1.38613, 1.07831, 0.9, -0.0814703, 1.38649, 0.9, -0.0204384, 1.7, 0.9, 0, 1.7, -4, -1.39152, 1.38649, -7.82013e-05, -0.0204384, 1.94828, -4, -1.41196, 2.32136, -7.82013e-05, -0.0814703, 2.61922, 0.9, -0.18196, 2.01318, 0.9, -0.0204384, 2.32136, 0.9, -0.0814703, 1.7, -7.82013e-05, 0, 2.01318, -7.82013e-05, -0.0204384)
@@ -15,9 +16,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168551, 0, -0.0196313)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168551, 0, -0.0196313)
 shape = SubResource("ConvexPolygonShape3D_pcsv2")
 
-[node name="Usable" parent="." index="2" instance=ExtResource("2")]
+[node name="Usable" type="Node" parent="." index="2"]
+script = ExtResource("2_00x5d")
+start_event_value = null
+end_event_value = null
 
-[node name="Sensor" parent="Usable" index="0"]
+[node name="Sensor" type="Node" parent="Usable" index="0"]
+script = ExtResource("3_b4was")
 sensor_type = "water"
-
-[editable path="Usable"]

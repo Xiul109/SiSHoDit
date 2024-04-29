@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqb2uj3fwmgdc"]
+[gd_scene load_steps=7 format=3 uid="uid://bqb2uj3fwmgdc"]
 
 [ext_resource type="PackedScene" uid="uid://qldnxe1g22qv" path="res://examples/assets/furnitures_kenney/kitchenFridgeLarge.glb" id="1"]
-[ext_resource type="PackedScene" uid="uid://c3ejpbg8l8ntp" path="res://addons/sishodit/presets/usable_nodes/basic_usable.tscn" id="2"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_3qi7v"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_4v7qf"]
 [ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/ranges/binary_value_range.gd" id="7_scajv"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1137i"]
@@ -20,12 +21,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.255076, 0, -0.0746536)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.255076, 0, -0.0746536)
 shape = SubResource("ConvexPolygonShape3D_1137i")
 
-[node name="Usable" parent="." index="2" instance=ExtResource("2")]
+[node name="Usable" type="Node" parent="." index="2"]
+script = ExtResource("2_3qi7v")
 start_event_value = 0.0
 end_event_value = 1.0
 
-[node name="Sensor" parent="Usable" index="0"]
+[node name="Sensor" type="Node" parent="Usable" index="0"]
+script = ExtResource("3_4v7qf")
 sensor_type = "contact"
 value_range = SubResource("Resource_ld0wp")
-
-[editable path="Usable"]
