@@ -26,6 +26,6 @@ func _ready():
 # Public methods
 
 ## Activates every sensor with the same value
-func activate_sensors(value):
+func activate_sensors(value, delta: float = 0) -> void:
 	for sensor in _sensors:
 		sensor.activate(value)

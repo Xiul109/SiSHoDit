@@ -9,22 +9,21 @@ extends SingleTriggerUsable
 ## The value produced by the second trigger.
 @export var end_duration_value : float = 0
 
-var _timer : Timer
+var _simulable: Simulable
 
 ## Emitted when the second trigger is produced.
 signal duration_ended
 
 func _ready():
 	super()
-	_timer = Timer.new()
-	_timer.connect("timeout",Callable(self,"_on_timer_timeout"))
-	add_child(_timer)
-	_timer.one_shot = true
+	_simulable = Simulable.new()
+	_simulable.timer_finished.connect(_on_timer_timeout)
+	add_child(_simulable)
 
 func trigger():
 	super()
-	_timer.start(duration)
+	_simulable.set_timer(duration)
 
-func _on_timer_timeout():
-	activate_sensors(end_duration_value)
-	emit_signal("duration_ended")
+func _on_timer_timeout(since: float):
+	activate_sensors(end_duration_value, since)
+	duration_ended.emit()

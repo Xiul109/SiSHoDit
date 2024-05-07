@@ -14,6 +14,9 @@ signal waiting_started
 signal simulated(delta: float)
 ## Emitted for requesting to the [Simulator] to log an event.
 signal log_event(from, type, value)
+## Emitted when the timer has finished while indicating how many time within the simulated segment
+## has passed since that occured
+signal timer_finished(since: float)
 
 ## If true, simulation steps will coincide with _physic_process, unless waiting is requested.
 @export var requires_real_time = false
@@ -30,6 +33,11 @@ var is_waiting : bool = false
 ## See [member is_waiting].
 var wait_time : float = 0.0
 
+## If true, then a timer is setted up and will emmit a signal once finished
+var is_timer_set_up : bool = false
+## Time in seconds that must advance for the timer to finish
+var timer_time: float = 0.0
+
 #Overriden methods
 func _init():
 	add_to_group("simulable", true)
@@ -40,14 +48,22 @@ func _to_string() -> String:
 # Public methods
 ## Called by [Simulator] whenever the simulation advances. The method is called after the internal
 ## time of the simulation is updated.
-func simulate(delta: float):
+func simulate(delta: float) -> void:
 	simulated.emit(delta)
+	# Wait time management
 	wait_time -= delta
 	if wait_time <= 0.0:
 		is_waiting = false
+	# Timer management
+	if not is_timer_set_up:
+		return
+	timer_time -= delta
+	if timer_time <= 0.0:
+		is_timer_set_up = false
+		timer_finished.emit(timer_time)
 
 ## When called, puts the entity in wait mode.
-func wait(time: float):
+func wait(time: float) -> void:
 	# Ignores the call if the entity does not require real time
 	if not requires_real_time:
 		push_warning("Only real time entities can actively wait, the rest are waiting by default.")
@@ -61,3 +77,10 @@ func wait(time: float):
 	is_waiting = true
 	wait_time = time
 	waiting_started.emit()
+
+## Sets a timer using the internal timing of the simulation instead of global one used by Godot for
+## [param time] seconds. When the timer finishes, it emits [signal timer_finished]. This timer
+## should be considered always in one-shot mode.
+func set_timer(time: float) -> void:
+	is_timer_set_up = true
+	timer_time = time
