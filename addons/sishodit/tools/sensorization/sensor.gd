@@ -9,11 +9,13 @@ extends Node
 @export var sensor_name : String = "sensor"
 ## Sensor type that will appear in the logs.
 @export var sensor_type: String = "generic"
-## Used for specifying what range of values can produce a sensor
-@export var value_range : ValueRange = BinaryValueRange.new()
+
 
 ## Parameters to specify different froms of malfunction for a sensor
 @export_group("Malfunction parameters")
+## Used for specifying what range of values can produce a sensor, which is useful for simulating
+## correctly the wrong triggers.
+@export var value_range : ValueRange = BinaryValueRange.new()
 ## Probability of not being triggered when it should.
 @export_range(0,1) var not_triggered_prob : float = 0
 ## Probability of producing a wrong value when triggered.
@@ -73,5 +75,6 @@ func _compute_wrong_activations(delta: float):
 		activate(value_range.get_random_valid_value(), _time_until_wrong_trigger)
 		_time_until_wrong_trigger += _get_time_until_wrong_trigger()
 
+## Called after activation errors have been computed
 func _post_activation(value, delta: float) -> void:
 	simulable.log_event.emit(sensor_name, sensor_type, value, delta)
