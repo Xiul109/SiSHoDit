@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b35hv8bx1xjpa"]
+
+[ext_resource type="PackedScene" uid="uid://bce48n6llfqrg" path="res://examples/assets/furnitures_kenney/kitchenFridge.glb" id="1_17anb"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_rl8vo"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_mgav5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4mxun"]
+points = PackedVector3Array(0, 0, -2.81934, 4.3, 0, -2.81934, 0, 0, -0.400245, 0, 9.2, -2.81934, 4.3, 0, -0.400245, 4.3, 9.2, -2.81934, 0, 0.599765, -0.2, 0, 9.2, -0.2, 4.3, 0.599765, -0.2, 4.3, 9.2, -0.2)
+
+[node name="KitchenFridge" groups=["drinks", "fresh_food"] instance=ExtResource("1_17anb")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape3D_4mxun")
+
+[node name="BasicUsable" type="Node" parent="." index="2"]
+script = ExtResource("2_rl8vo")
+start_event_value = null
+end_event_value = null
+
+[node name="Sensor" type="Node" parent="BasicUsable" index="0" groups=["drink_source", "food_provider", "fridge"]]
+script = ExtResource("3_mgav5")
+sensor_type = "contact"

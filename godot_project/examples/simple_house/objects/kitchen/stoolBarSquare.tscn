@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfef3hc7voxur"]
+
+[ext_resource type="PackedScene" uid="uid://c8ae66r75188a" path="res://examples/assets/furnitures_kenney/stoolBarSquare.glb" id="1"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_05x4q"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_o34vr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ygv38"]
+points = PackedVector3Array(0.5597, 3.5497, -1.88751, 0.5597, 3.5497, -0.411269, 0.5597, 4.05, -1.88751, 2.0947, 3.5497, -1.88751, 0.659619, 0, -1.78751, 2.0947, 3.5497, -0.411269, 0.5597, 4.05, -0.411269, 0.659619, 0, -0.511409, 2.0947, 4.05, -1.88751, 1.99463, 0, -1.78751, 2.0947, 4.05, -0.411269, 1.99463, 0, -0.511409)
+
+[node name="stoolBarSquare" groups=["sit_eat", "wait"] instance=ExtResource("1")]
+
+[node name="stoolBarSquare(Clone)" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132255, 0, 0.114013)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132255, 0, 0.114013)
+shape = SubResource("ConvexPolygonShape3D_ygv38")
+
+[node name="Usable" type="Node" parent="." index="2"]
+script = ExtResource("2_05x4q")
+start_event_value = null
+end_event_value = null
+
+[node name="Sensor" type="Node" parent="Usable" index="0"]
+script = ExtResource("3_o34vr")
+sensor_type = "pressure"

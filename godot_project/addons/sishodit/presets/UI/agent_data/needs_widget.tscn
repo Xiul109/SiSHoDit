@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5vk4fni4oqxw"]
+
+[ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="1_txv8x"]
+[ext_resource type="Script" path="res://addons/sishodit/presets/UI/agent_data/needs_widget.gd" id="2_08jkg"]
+
+[node name="needs_widget" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+theme = ExtResource("1_txv8x")
+alignment = 1
+script = ExtResource("2_08jkg")

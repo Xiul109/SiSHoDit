@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://tybre8btkftm"]
+
+[ext_resource type="PackedScene" uid="uid://bqkae7mbnajum" path="res://examples/assets/furnitures_kenney/trashcan.glb" id="1"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_8hr3g"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_6uj2b"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pmltv"]
+points = PackedVector3Array(-2.59491, -5.30948e-17, -0.985435, -2.59491, -5.30948e-17, 0.985004, -2.59491, 0.574065, -0.985435, -0.000363111, -5.30948e-17, -2.2, -0.000363111, -5.30948e-17, 2.2, -2.59491, 0.574065, 0.985004, -1.90549, 8.37407, -1.1, -0.000363111, 8.37407, -2.2, 2.36503, 7.26498, -0.946241, 1.90525, -5.30948e-17, -1.1, 1.90525, -5.30948e-17, 1.1, 2.36503, 7.26498, 0.94581, -0.000363111, 8.37407, 2.2, -1.90549, 8.37407, 1.1, -1.2957, 9.06437, -0.748121, -0.000363111, 9.06437, -1.49624, 1.90525, 8.37407, -1.1, 2.36503, 7.75919, -0.946241, 2.36503, 7.75919, 0.94581, 1.90525, 8.37407, 1.1, -0.000363111, 9.06437, 1.49581, -1.2957, 9.06437, 0.74769, 1.29545, 9.06437, -0.748121, 1.29545, 9.06437, 0.74769)
+
+[node name="trashcan" groups=["trash"] instance=ExtResource("1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(2.81352e-08, 0, 0.472031, 0, 0.472031, 0, -0.472031, 0, 2.81352e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_pmltv")
+
+[node name="Usable" type="Node" parent="." index="2"]
+script = ExtResource("2_8hr3g")
+start_event_value = null
+end_event_value = null
+
+[node name="Sensor" type="Node" parent="Usable" index="0"]
+script = ExtResource("3_6uj2b")

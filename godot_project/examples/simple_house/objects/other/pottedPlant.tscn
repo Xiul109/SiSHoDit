@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddarknhw86q3d"]
+
+[ext_resource type="PackedScene" uid="uid://cja8r2g51tlim" path="res://examples/assets/furnitures_kenney/pottedPlant.glb" id="1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ah4ql"]
+points = PackedVector3Array(-8.39531e-05, 1.21508, 0.4953, 0.428858, 1.21508, 0.247553, -0.428942, 1.21508, 0.247553, -0.33783, 0, 0.194998, -8.39531e-05, 0, 0.389995, 0.337746, 0, 0.194998, 0.428858, 1.21508, -0.24765, -0.428942, 1.21508, -0.24765, -0.33783, 0, -0.195095, 0.337746, 0, -0.195095, -8.39531e-05, 1.21508, -0.4953, -8.39531e-05, 0, -0.390092)
+
+[node name="pottedPlant" instance=ExtResource("1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_ah4ql")

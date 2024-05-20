@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwlqp1ixuxryr"]
+
+[ext_resource type="PackedScene" uid="uid://dbtapblvb2tws" path="res://examples/assets/furnitures_kenney/lampSquareTable.glb" id="1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lebrw"]
+points = PackedVector3Array(0, 0, -1.2, 1.2, 0, -1.2, 0, 0, 0, 0, 2.9, -1.2, 1.2, 0, 0, 1.2, 2.9, -1.2, 0, 2.9, 0, 1.2, 2.9, 0)
+
+[node name="lampSquareTable" instance=ExtResource("1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape3D_lebrw")

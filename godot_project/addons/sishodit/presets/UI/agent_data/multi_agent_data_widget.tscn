@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs07qyfk3gkry"]
+
+[ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="1_avw8x"]
+[ext_resource type="Script" path="res://addons/sishodit/presets/UI/agent_data/multi_agent_needs_widget.gd" id="1_snd1x"]
+
+[node name="multi_agent_data_widget" type="TabContainer"]
+custom_minimum_size = Vector2(250, 0)
+size_flags_vertical = 3
+theme = ExtResource("1_avw8x")
+drag_to_rearrange_enabled = true
+script = ExtResource("1_snd1x")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bofw4fjymg8wo"]
+
+[ext_resource type="Script" path="res://addons/sishodit/presets/UI/agent_data/single_need_widget.gd" id="1_nr3fi"]
+
+[node name="SingleNeedWidget" type="HBoxContainer"]
+offset_right = 138.0
+offset_bottom = 14.0
+alignment = 2
+script = ExtResource("1_nr3fi")
+
+[node name="NeedName" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Hungry"
+
+[node name="NeedLevel" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 1.0

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="StepInfo" load_steps=2 format=3 uid="uid://j3x5gmoasnwr"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/step_info.gd" id="1"]
+
+[resource]
+resource_name = "tv_sit"
+script = ExtResource("1")
+object_group = "tv_sit"
+object_selection_criterion = 0
+use_object = true
+min_duration = 1200.0
+max_duration = 7200.0
+needs_solved = {
+"bored": 1.0,
+"tired": 1.0
+}
+needs_increased = {}
+needs_with_modified_rate = {}
+priority = 0
+cancel_on_interruption = false

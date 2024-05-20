@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="SolutionInfo" load_steps=7 format=3 uid="uid://conkfypyimu7g"]
+
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_info.gd" id="1_vlbl3"]
+[ext_resource type="Resource" uid="uid://8pj3lbsrudsf" path="res://examples/simple_house/need_solutions/steps/get_food.tres" id="2_kqcuv"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/agent/step_info.gd" id="3_lprb6"]
+[ext_resource type="Resource" uid="uid://i3gd3scvja01" path="res://examples/simple_house/need_solutions/steps/get_drink.tres" id="4_iooj0"]
+
+[sub_resource type="Resource" id="1"]
+resource_name = "heat_food_interrupt"
+script = ExtResource("3_lprb6")
+object_group = ""
+object_selection_criterion = 0
+use_object = true
+min_duration = 180.0
+max_duration = 1200.0
+needs_solved = {
+"bored": 1.0,
+"tired": 0.0
+}
+needs_increased = {}
+needs_with_modified_rate = {}
+priority = 0
+cancel_on_interruption = false
+
+[sub_resource type="Resource" id="2"]
+resource_name = "sit_to_it_interrupt"
+script = ExtResource("3_lprb6")
+object_group = ""
+object_selection_criterion = 0
+use_object = true
+min_duration = 600.0
+max_duration = 2400.0
+needs_solved = {
+"bored": 1.0,
+"tired": 0.0
+}
+needs_increased = {}
+needs_with_modified_rate = {}
+priority = 0
+cancel_on_interruption = false
+
+[resource]
+resource_name = "full_meal"
+script = ExtResource("1_vlbl3")
+steps = Array[ExtResource("3_lprb6")]([ExtResource("2_kqcuv"), SubResource("1"), ExtResource("4_iooj0"), SubResource("2")])
+weight = 1.0

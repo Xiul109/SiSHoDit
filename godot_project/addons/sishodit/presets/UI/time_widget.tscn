@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b72mu3g3hihh"]
+
+[ext_resource type="Script" path="res://addons/sishodit/presets/UI/time_widget.gd" id="1"]
+[ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulable.gd" id="2_3rbwk"]
+
+[node name="time_widget" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1")
+
+[node name="Day" type="Label" parent="."]
+layout_mode = 2
+
+[node name="Hour" type="Label" parent="."]
+layout_mode = 2
+
+[node name="Simulable" type="Node" parent="."]
+script = ExtResource("2_3rbwk")
+priority = -1
+
+[connection signal="simulated" from="Simulable" to="." method="_on_simulable_simulated"]
