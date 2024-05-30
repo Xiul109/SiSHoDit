@@ -65,7 +65,7 @@ sensor_type = "device"
 
 [node name="EnergySensor" type="Node" parent="SwitchUsable" index="1"]
 script = ExtResource("3_v5tjd")
-sample_rate = 0.25
+sample_rate = 100.0
 activations_templates = {
 0.0: SubResource("Resource_jrskj"),
 1.0: SubResource("Resource_i1opy")

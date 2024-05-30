@@ -26,6 +26,9 @@ var _simulable_entities : Array[Simulable] = []
 ## A list of [Simulable] nodes that require real time simulation.
 var _real_time_entities : Array[Simulable] = []
 
+# Log temporal data
+## Used for keeping in memory the data to store before logging it
+var _temp_log_data = []
 
 # Overriden methods
 func _ready():
@@ -35,6 +38,7 @@ func _ready():
 			push_warning("Only objects of type Simulable should belong to 'simulable' group.")
 			continue
 		node.log_event.connect(log_event)
+		node.log_events.connect(log_events)
 		node.waiting_started.connect(_on_entity_waiting)
 		node.context = context
 		_simulable_entities.append(node)
@@ -53,17 +57,23 @@ func _ready():
 
 func _physics_process(delta: float):
 	_simulate(delta)
+	if not _temp_log_data.is_empty():
+		var line = JSON.stringify(_temp_log_data)
+		line = line.replace("},","},\n")
+		file_manager.store_line(line.strip_edges().substr(1, line.length()-2) + ", ")
+		_temp_log_data.clear()
 
 
 # Public Methods
 ## Called when adding a new line to the log file
-func log_event(from, type, value, delta : float = 0.0):
-	var log_data = {"time": elapsed_seconds + delta, "from": from, 
-					"type": type, "value": value}
-	
-	file_manager.store_line(JSON.stringify(log_data) + ", ")
+func log_event(from: String, type : String, value : Variant, delta : float = 0.0):
+	_temp_log_data.append({"time": elapsed_seconds + delta, "from": from, 
+						   "type": type, "value": value})
 
-
+func log_events(from: String, type : String, values : PackedFloat32Array, period : float, delta : float = 0.0):
+	for i in values.size():
+		_temp_log_data.append({"time": elapsed_seconds + delta + period*i, "from": from, 
+						   "type": type, "value": values[i]})
 # Private methods
 func _simulate(delta: float):
 	elapsed_seconds += delta

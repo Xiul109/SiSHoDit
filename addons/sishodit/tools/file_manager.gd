@@ -49,7 +49,7 @@ func save_file():
 		return
 	timer.queue_free()
 	file.seek_end(-3)
-	file.store_line("]")
+	file.store_line("\n]")
 	file.close()
 	file = null
 

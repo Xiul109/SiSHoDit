@@ -13,7 +13,11 @@ signal waiting_started
 ## Emitted in each simulation step.
 signal simulated(delta: float)
 ## Emitted for requesting to the [Simulator] to log an event.
-signal log_event(from, type, value)
+signal log_event(from : String, type : String, value : Variant, delta : float)
+## Emitted for requesting to the [Simulator] to log multiple events at once with a constant time
+## difference between them equals to [param period].
+signal log_events(from: String, type : String,
+				  values : PackedFloat32Array, period : float, delta : float)
 ## Emitted when the timer has finished while indicating how many time within the simulated segment
 ## has passed since that occured
 signal timer_finished(since: float)

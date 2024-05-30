@@ -130,7 +130,7 @@ func console_log(message):
 
 ## Emits [signal Simulable.log_event]
 func log_event(type, value):
-	simulable.log_event.emit(name, type, value)
+	simulable.log_event.emit(name, type, value, 0.0)
 
 ## Processes the needs updates in a frame, excluding the ones solved in a [Step] and taking into
 ## account those with modified rates
