@@ -15,7 +15,9 @@ const base_name = "SiSHoDiT"
 ## starting the simulation to include an offset in the time.
 @export var elapsed_seconds : float = 0.0
 
-
+## Time between save files periods in seconds
+@export var save_period : float = 5.0
+var _save_timer : Timer
 
 ## Reference to the [FileManager] that produces the logs.
 var file_manager : FileManager
@@ -53,17 +55,19 @@ func _ready():
 	add_child(file_manager)
 	file_manager.init_file(base_name, log_dir)
 	
+	# Save timer initialization
+	_save_timer = Timer.new()
+	_save_timer.wait_time
+	add_child(_save_timer)
+	_save_timer.timeout.connect(_save_events)
+	_save_timer.start()
+	
 	# This is done to avoid starting the simulation until after the first physics frame, so the
 	# Navigation Server has been initialized
 	call_deferred("_late_init")
 
 func _physics_process(delta: float):
 	_simulate(delta)
-	if not _temp_log_data.is_empty():
-		var line = JSON.stringify(_temp_log_data)
-		line = line.replace("},","},\n")
-		file_manager.store_line(line.strip_edges().substr(1, line.length()-2) + ", ")
-		_temp_log_data.clear()
 
 # Public Methods
 ## Called when adding a new line to the log file
@@ -98,4 +102,11 @@ func _on_entity_waiting():
 			return
 		times.append(entity.wait_time)
 	_simulate(times.min())
+
+func _save_events():
+	if not _temp_log_data.is_empty():
+		var line = JSON.stringify(_temp_log_data)
+		line = line.replace("},","},\n")
+		file_manager.store_line(line.strip_edges().substr(1, line.length()-2) + ", ")
+		_temp_log_data.clear()
 
