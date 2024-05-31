@@ -1,9 +1,9 @@
 #include "events_dict_creator.hpp"
-#include "godot_cpp/variant/dictionary.hpp"
-#include "godot_cpp/variant/packed_float32_array.hpp"
-#include "godot_cpp/variant/string.hpp"
-#include "godot_cpp/variant/typed_array.hpp"
 
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/packed_float32_array.hpp>
+#include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 

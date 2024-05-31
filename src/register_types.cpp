@@ -8,8 +8,6 @@
 
 #include "events_dict_creator.hpp"
 #include "ts_postprocessing.hpp"
-#include "ts_template_segment.hpp"
-#include "ts_template.hpp"
 #include "ts_generator.hpp"
 
 
@@ -21,8 +19,9 @@ void gdextension_initialize(ModuleInitializationLevel p_level)
 	if (p_level == MODULE_INITIALIZATION_LEVEL_SCENE)
 	{
 		ClassDB::register_class<TSPostprocessing>();
-		ClassDB::register_class<TSTemplateSegment>();
-		ClassDB::register_class<TSTemplate>();
+		ClassDB::register_class<TSPPAbsolute>();
+		ClassDB::register_class<TSPPScaler>();
+		ClassDB::register_class<TSPPGaussianNoise>();
 
 		ClassDB::register_class<TSGenerator>();
 

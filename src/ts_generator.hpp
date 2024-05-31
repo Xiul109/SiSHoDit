@@ -3,8 +3,6 @@
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/core/class_db.hpp>
 
-#include "ts_template.hpp"
-
 using namespace godot;
 
 class TSGenerator : public RefCounted
@@ -16,7 +14,7 @@ protected:
 
 	double time = 0;
 	double sample_rate = 1.0;
-	Ref<TSTemplate> ts_template;
+	Variant ts_template;
 
 	int current_segment = 0;
 	double cum_segment_durs = 0.0;
@@ -25,6 +23,6 @@ public:
 	TSGenerator();
 	~TSGenerator();
 
-	void init(double sample_rate, Ref<TSTemplate> ts_template);
+	void init(double sample_rate, Variant ts_template);
 	PackedFloat32Array generate(double duration);
 };
