@@ -12,3 +12,12 @@
 
 # Editors
 .vscode/
+.editorconfig
+
+# Clang
+.clang*
+.cache
+compile_commands.json
+
+# Godot
+.godot

@@ -63,8 +63,7 @@ func _post_activation(value, delta: float) -> void:
 func _compute_and_log(duration: float, delta: float) -> void:
 	var data = generator.generate(duration)
 	# This approach is highly inefficient and should be improved in the future
-	for i in data.size():
-		simulable.log_event.emit(sensor_name, sensor_type, data[i], (i+1)*(period)-delta)
+	simulable.log_events.emit(sensor_name, sensor_type, data, period, 0.0)
 
 ## Creates a generator for the corresponding template in its activation value
 func _create_generator(activation_value) -> void:

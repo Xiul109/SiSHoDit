@@ -4,7 +4,6 @@
 #include <godot_cpp/core/class_db.hpp>
 
 #include "ts_template.hpp"
-#include "ts_postprocessing.hpp"
 
 using namespace godot;
 

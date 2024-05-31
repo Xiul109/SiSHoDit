@@ -6,6 +6,7 @@
 #include <godot_cpp/classes/engine.hpp>
 #include <godot_cpp/godot.hpp>
 
+#include "events_dict_creator.hpp"
 #include "ts_postprocessing.hpp"
 #include "ts_template_segment.hpp"
 #include "ts_template.hpp"
@@ -24,6 +25,8 @@ void gdextension_initialize(ModuleInitializationLevel p_level)
 		ClassDB::register_class<TSTemplate>();
 
 		ClassDB::register_class<TSGenerator>();
+
+		ClassDB::register_class<EventsDictCreator>();
 	}
 }
 

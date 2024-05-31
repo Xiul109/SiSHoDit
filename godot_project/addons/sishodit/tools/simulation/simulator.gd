@@ -13,10 +13,15 @@ const base_name = "SiSHoDiT"
 
 ## Number of seconds elapsed since the beggining of the simulation. It can be modified before
 ## starting the simulation to include an offset in the time.
-@export var elapsed_seconds : float = 0
+@export var elapsed_seconds : float = 0.0
+
+
 
 ## Reference to the [FileManager] that produces the logs.
 var file_manager : FileManager
+## Stores log data for the frame before saving it
+var _temp_log_data : Array[Dictionary] = []
+
 ## Simulation context including variables relevant to [Simulable] entities, mainly [Agent]s.
 var context = {}
 
@@ -35,6 +40,7 @@ func _ready():
 			push_warning("Only objects of type Simulable should belong to 'simulable' group.")
 			continue
 		node.log_event.connect(log_event)
+		node.log_events.connect(log_events)
 		node.waiting_started.connect(_on_entity_waiting)
 		node.context = context
 		_simulable_entities.append(node)
@@ -53,16 +59,24 @@ func _ready():
 
 func _physics_process(delta: float):
 	_simulate(delta)
-
+	if not _temp_log_data.is_empty():
+		var line = JSON.stringify(_temp_log_data)
+		line = line.replace("},","},\n")
+		file_manager.store_line(line.strip_edges().substr(1, line.length()-2) + ", ")
+		_temp_log_data.clear()
 
 # Public Methods
 ## Called when adding a new line to the log file
 func log_event(from, type, value, delta : float = 0.0):
 	var log_data = {"time": elapsed_seconds + delta, "from": from, 
 					"type": type, "value": value}
-	
-	file_manager.store_line(JSON.stringify(log_data) + ", ")
+	_temp_log_data.append((log_data))
 
+## Logs multiple events at once with a constant time difference between them equals to [param period].
+func log_events(from: String, type : String, values : PackedFloat32Array,
+				period : float, time_offset : float = 0.0):
+	_temp_log_data.append_array(EventsDictCreator.create_dict(  from, type, values, period,
+																elapsed_seconds + time_offset))
 
 # Private methods
 func _simulate(delta: float):
