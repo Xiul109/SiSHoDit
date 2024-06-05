@@ -47,7 +47,7 @@ func _simulate(delta: float):
 	# Each activation must finish the computation of the previous one and create a new generator
 	for activation in activations:
 		_compute_and_log(activation.x, delta)
-		delta -= snapped(activation.x, period) + period
+		delta -= snapped(activation.x, period)
 		_create_generator(activation.y)
 	# Finish computing the rest of the time series
 	_compute_and_log(delta, delta)
@@ -62,8 +62,7 @@ func _post_activation(value, delta: float) -> void:
 ## Computes the values of the time series and logs each of them.
 func _compute_and_log(duration: float, delta: float) -> void:
 	var data = generator.generate(duration)
-	# This approach is highly inefficient and should be improved in the future
-	simulable.log_events.emit(sensor_name, sensor_type, data, period, 0.0)
+	simulable.log_events.emit(sensor_name, sensor_type, data, period, -delta + period)
 
 ## Creates a generator for the corresponding template in its activation value
 func _create_generator(activation_value) -> void:
