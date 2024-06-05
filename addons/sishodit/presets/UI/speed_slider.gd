@@ -29,6 +29,8 @@ extends VSlider
 func _ready():
 	resized.connect(_update_values)
 	_update_values()
+	_on_SpeedSlider_value_changed(value)
+	
 
 # Private methods
 func _update_values():
@@ -61,6 +63,8 @@ func _update_values():
 
 # Callbacks
 func _on_SpeedSlider_value_changed(val):
+	if Engine.is_editor_hint():
+		return
 	if val == min_value:
 		val = 0
 	Engine.time_scale = val
