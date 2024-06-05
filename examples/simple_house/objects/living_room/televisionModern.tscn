@@ -44,7 +44,7 @@ duration = 20.0
 script = ExtResource("4_pqkx0")
 segments = Array[ExtResource("5_sehq6")]([SubResource("Resource_i1cfv")])
 postprocessings = Array[Resource("res://addons/sishodit/time_series/postprocessing/ts_postprocessing.gd")]([SubResource("Resource_wnron"), SubResource("Resource_c6w4c")])
-random = true
+random = false
 loop = false
 
 [node name="televisionModern" groups=["tv"] instance=ExtResource("1")]
@@ -65,7 +65,7 @@ sensor_type = "device"
 
 [node name="EnergySensor" type="Node" parent="SwitchUsable" index="1"]
 script = ExtResource("3_v5tjd")
-sample_rate = 100.0
+sample_rate = 0.25
 activations_templates = {
 0.0: SubResource("Resource_jrskj"),
 1.0: SubResource("Resource_i1opy")
