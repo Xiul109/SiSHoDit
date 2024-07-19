@@ -5,6 +5,8 @@ extends State
 var state_time_left : float = 0.0
 ## A reference to the information of the step associated with the state
 var current_step : Step
+### True when an interruption has happened
+var interrupted = false
 
 
 func on_process(delta: float):
@@ -18,8 +20,7 @@ func on_process(delta: float):
 		transitioned_to.emit("CheckNextStep")
 	# If is interrupted
 	elif state_time_left <= 0:
-		if current_step.info.cancel_on_interruption:
-			_abort_need()
+		interrupted = true
 		_console_log_finish(true)
 		my_agent.log_event("activity_interrupted",
 							my_agent.current_solutions.back().info.resource_name)
@@ -35,7 +36,11 @@ func on_enter():
 
 func on_exit():
 	current_step.stop(my_agent)
+	if interrupted and current_step.info.cancel_on_interruption:
+		_abort_need()
 	current_step = null
+	interrupted = false
+	
 
 ## Deletes every element related with the current need
 func _abort_need():
