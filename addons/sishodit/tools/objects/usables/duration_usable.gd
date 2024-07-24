@@ -18,6 +18,7 @@ func _ready():
 	super()
 	_simulable = Simulable.new()
 	_simulable.timer_finished.connect(_on_timer_timeout)
+	_simulable.priority = 1
 	add_child(_simulable)
 
 func trigger():
