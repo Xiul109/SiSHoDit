@@ -66,7 +66,7 @@ func do(delta:float, agent:Agent) -> bool:
 ## Called when Step is stopped, either because it is finished or because it is interrupted
 func stop(agent:Agent):
 	agent.object_user.finish_using()
-	if usable != null:
+	if usable != null and info.use_object:
 		usable.finish_using(agent)
 
 ## Returns an adequate object from the [code]tree[/code] for this step attending to
