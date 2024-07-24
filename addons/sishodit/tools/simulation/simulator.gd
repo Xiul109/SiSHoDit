@@ -74,6 +74,7 @@ func log_events(from: String, type : String, values : PackedFloat32Array, period
 	for i in values.size():
 		_temp_log_data.append({"time": elapsed_seconds + delta + period*i, "from": from, 
 						   "type": type, "value": values[i]})
+
 # Private methods
 func _simulate(delta: float):
 	elapsed_seconds += delta

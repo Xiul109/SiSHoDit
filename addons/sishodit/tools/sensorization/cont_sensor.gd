@@ -46,23 +46,29 @@ func _simulate(delta: float):
 		return
 	# Each activation must finish the computation of the previous one and create a new generator
 	for activation in activations:
-		_compute_and_log(activation.x, delta)
-		delta -= snapped(activation.x, period)
+		# Activation.x should be always negative or zero
+		var duration = snapped(delta + activation.x, period)
+		if duration > 0:
+			_compute_and_log(duration, delta)
 		_create_generator(activation.y)
-	# Finish computing the rest of the time series
-	_compute_and_log(delta, delta)
-	remaining = fmod(delta, period)
+		delta -= duration
 	activations.clear()
+	# Finish computing the rest of the time series
+	if delta >= period: # Checking for not doing useless logging
+		_compute_and_log(delta, 
+						 delta)
+	remaining = fmod(delta, period)
+	
 
-func _post_activation(value, delta: float) -> void:
+func _post_activation(value, since: float) -> void:
 	# The activation is stored to produce the value when data is simulated
-	activations.append(Vector2(delta, value))
+	activations.append(Vector2(since, value))
 
 # Private methods
 ## Computes the values of the time series and logs each of them.
 func _compute_and_log(duration: float, delta: float) -> void:
 	var data = generator.generate(duration)
-	simulable.log_events.emit(sensor_name, sensor_type, data, period, -delta + period)
+	simulable.log_events.emit(sensor_name, sensor_type, data, period, (-delta) + period)
 
 ## Creates a generator for the corresponding template in its activation value
 func _create_generator(activation_value) -> void:

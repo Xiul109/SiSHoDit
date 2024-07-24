@@ -76,5 +76,5 @@ func _compute_wrong_activations(delta: float):
 		_time_until_wrong_trigger += _get_time_until_wrong_trigger()
 
 ## Called after activation errors have been computed
-func _post_activation(value, delta: float) -> void:
-	simulable.log_event.emit(sensor_name, sensor_type, value, delta)
+func _post_activation(value, since: float) -> void:
+	simulable.log_event.emit(sensor_name, sensor_type, value, since)

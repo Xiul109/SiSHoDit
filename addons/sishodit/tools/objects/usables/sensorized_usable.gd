@@ -28,4 +28,4 @@ func _ready():
 ## Activates every sensor with the same value
 func activate_sensors(value, delta: float = 0) -> void:
 	for sensor in _sensors:
-		sensor.activate(value)
+		sensor.activate(value, delta)
