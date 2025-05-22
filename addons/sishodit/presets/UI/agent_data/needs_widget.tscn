@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5vk4fni4oqxw"]
 
 [ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="1_txv8x"]
-[ext_resource type="Script" path="res://addons/sishodit/presets/UI/agent_data/needs_widget.gd" id="2_08jkg"]
+[ext_resource type="Script" uid="uid://c08le3a3abwjm" path="res://addons/sishodit/presets/UI/agent_data/needs_widget.gd" id="2_08jkg"]
 
 [node name="needs_widget" type="VBoxContainer"]
 offset_right = 40.0

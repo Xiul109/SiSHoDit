@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bb3xpgmnwp4l2"]
 
-[ext_resource type="Script" path="res://addons/sishodit/presets/UI/speed_slider.gd" id="1"]
+[ext_resource type="Script" uid="uid://c8nyipy0ysyiy" path="res://addons/sishodit/presets/UI/speed_slider.gd" id="1"]
 [ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="2"]
 
 [node name="SpeedSlider" type="VSlider"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://de5p4oothref7"]
 
-[ext_resource type="Script" path="res://addons/sishodit/presets/UI/agent_data/stack_widget.gd" id="1_6mxvp"]
+[ext_resource type="Script" uid="uid://bmv4j3v4egwbk" path="res://addons/sishodit/presets/UI/agent_data/stack_widget.gd" id="1_6mxvp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r37lr"]
 font_size = 20

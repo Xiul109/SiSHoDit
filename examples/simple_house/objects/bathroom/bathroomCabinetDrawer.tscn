@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://k4ae80wepepx"]
 
 [ext_resource type="PackedScene" uid="uid://4mrn048nhj30" path="res://examples/assets/furnitures_kenney/bathroomCabinetDrawer.glb" id="1"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_mxvby"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_5isdh"]
+[ext_resource type="Script" uid="uid://ul1alqsi51c5" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_mxvby"]
+[ext_resource type="Script" uid="uid://s7vqgxx0ojik" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_5isdh"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xndt1"]
 points = PackedVector3Array(0, 0.582419, -4.5, 4.3, 0.582419, -4.5, 0, 0.582419, -1.5, 0, 4.59994, -4.5, 4.3, 0.582419, -1.5, 4.3, 4.59994, -4.5, 0, 4.59994, -1.5, 1.99974, 5.3, -3.861, 1.99974, 5.29723, -3.90006, 1.99974, 5.28938, -3.93853, 1.99974, 5.27691, -3.97582, 1.99974, 5.25936, -4.01106, 1.99974, 5.23766, -4.04366, 1.99974, 5.2118, -4.07302, 1.99974, 5.18225, -4.09886, 4.3, 4.59994, -1.5, 2.29984, 5.18225, -4.09886, 2.29984, 5.2118, -4.07302, 2.29984, 5.23766, -4.04366, 2.29984, 5.25936, -4.01106, 2.29984, 5.27691, -3.97582, 2.29984, 5.28938, -3.93853, 2.29984, 5.29723, -3.90006, 2.29984, 5.3, -3.861, 1.99974, 5.27691, -3.14624, 1.99974, 5.28938, -3.18324, 1.99974, 5.29723, -3.22171, 1.99974, 5.3, -3.26106, 2.29984, 5.3, -3.26106, 2.29984, 5.29723, -3.22171, 2.29984, 5.28938, -3.18324, 2.29984, 5.27691, -3.14624)

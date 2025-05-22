@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b35hv8bx1xjpa"]
 
 [ext_resource type="PackedScene" uid="uid://bce48n6llfqrg" path="res://examples/assets/furnitures_kenney/kitchenFridge.glb" id="1_17anb"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_rl8vo"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_mgav5"]
+[ext_resource type="Script" uid="uid://ul1alqsi51c5" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_rl8vo"]
+[ext_resource type="Script" uid="uid://s7vqgxx0ojik" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_mgav5"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4mxun"]
 points = PackedVector3Array(0, 0, -2.81934, 4.3, 0, -2.81934, 0, 0, -0.400245, 0, 9.2, -2.81934, 4.3, 0, -0.400245, 4.3, 9.2, -2.81934, 0, 0.599765, -0.2, 0, 9.2, -0.2, 4.3, 0.599765, -0.2, 4.3, 9.2, -0.2)

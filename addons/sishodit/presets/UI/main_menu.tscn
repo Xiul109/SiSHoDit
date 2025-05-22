@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://es8li1ldqc7f"]
 
-[ext_resource type="Script" path="res://addons/sishodit/presets/UI/main_menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://bk3oheqo7jhpg" path="res://addons/sishodit/presets/UI/main_menu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="1_4yi8w"]
 [ext_resource type="PackedScene" uid="uid://c8q3u3hcnq0pi" path="res://addons/sishodit/presets/UI/seed_widget.tscn" id="3"]
 

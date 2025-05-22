@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://di7stiugmkiq"]
 
-[ext_resource type="Script" path="res://addons/sishodit/presets/enviroment.gd" id="1"]
+[ext_resource type="Script" uid="uid://yhea1baudkoc" path="res://addons/sishodit/presets/enviroment.gd" id="1"]
 [ext_resource type="Theme" uid="uid://cob5u7dwe35gl" path="res://addons/sishodit/presets/UI/theme.tres" id="2_kfmev"]
 [ext_resource type="PackedScene" uid="uid://bs07qyfk3gkry" path="res://addons/sishodit/presets/UI/agent_data/multi_agent_data_widget.tscn" id="5_oukf0"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulator.gd" id="6_6d2lx"]
+[ext_resource type="Script" uid="uid://cb8i5d8d8y1kn" path="res://addons/sishodit/tools/simulation/simulator.gd" id="6_6d2lx"]
 [ext_resource type="PackedScene" uid="uid://b72mu3g3hihh" path="res://addons/sishodit/presets/UI/time_widget.tscn" id="14"]
 [ext_resource type="PackedScene" uid="uid://bb3xpgmnwp4l2" path="res://addons/sishodit/presets/UI/speed_slider.tscn" id="40"]
 

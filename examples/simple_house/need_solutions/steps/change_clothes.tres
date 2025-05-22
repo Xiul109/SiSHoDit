@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StepInfo" load_steps=2 format=3 uid="uid://csegns5rmqljt"]
 
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/step_info.gd" id="1"]
+[ext_resource type="Script" uid="uid://c8ei27myxu6y6" path="res://addons/sishodit/tools/agent/step_info.gd" id="1"]
 
 [resource]
 resource_name = "change_clothes"

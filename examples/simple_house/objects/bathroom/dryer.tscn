@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnem6vdxoep7u"]
 
 [ext_resource type="PackedScene" uid="uid://v4ms3f7e75j3" path="res://examples/assets/furnitures_kenney/dryer.glb" id="1_j4pjb"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/objects/usables/duration_usable.gd" id="2_tryyv"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_jn7ck"]
+[ext_resource type="Script" uid="uid://3c2ay5lln4q4" path="res://addons/sishodit/tools/objects/usables/duration_usable.gd" id="2_tryyv"]
+[ext_resource type="Script" uid="uid://s7vqgxx0ojik" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_jn7ck"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1tk2e"]
 points = PackedVector3Array(0, 0, -3.5, 3.9, 0, -3.5, 0, 0, -0.200078, 0, 4.69954, -3.5, 3.9, 0, -0.200078, 3.9, 4.69954, -3.5, 0, 0.625225, 0, 0, 4.69954, -0.192199, 3.9, 0.625225, 0, 3.9, 4.69954, -0.192199, 0, 3.88983, 0, 2.29816, 4.23948, -0.0829091, 0.169117, 4.05453, -0.0390563, 3.9, 3.88983, 0, 3.7305, 4.05453, -0.0390563)

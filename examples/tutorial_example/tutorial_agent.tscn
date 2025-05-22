@@ -1,11 +1,11 @@
 [gd_scene load_steps=34 format=3 uid="uid://djp4ch7kn0sod"]
 
 [ext_resource type="PackedScene" uid="uid://0wamgrgrd18i" path="res://addons/sishodit/presets/agent.tscn" id="1_uyd1n"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/need_info.gd" id="2_rdxx0"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_info.gd" id="3_8gh8k"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/step_info.gd" id="4_rwrq2"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/context/context_condition.gd" id="5_uhcs4"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/context/condition_manager.gd" id="6_a1anv"]
+[ext_resource type="Script" uid="uid://b1cqsfewep7t" path="res://addons/sishodit/tools/agent/need_info.gd" id="2_rdxx0"]
+[ext_resource type="Script" uid="uid://d1o70688m6g30" path="res://addons/sishodit/tools/agent/solution_info.gd" id="3_8gh8k"]
+[ext_resource type="Script" uid="uid://c8ei27myxu6y6" path="res://addons/sishodit/tools/agent/step_info.gd" id="4_rwrq2"]
+[ext_resource type="Script" uid="uid://bcmuux3u0b5q3" path="res://addons/sishodit/tools/context/context_condition.gd" id="5_uhcs4"]
+[ext_resource type="Script" uid="uid://tvhii7qfcc51" path="res://addons/sishodit/tools/context/condition_manager.gd" id="6_a1anv"]
 
 [sub_resource type="Resource" id="Resource_6pjvs"]
 resource_name = "pee"

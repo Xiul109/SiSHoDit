@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvrhedc6wtr1n"]
 
-[ext_resource type="Script" path="res://addons/sishodit/presets/UI/enviroment_launcher.gd" id="1_rqyml"]
+[ext_resource type="Script" uid="uid://dc27e28bf0l4i" path="res://addons/sishodit/presets/UI/enviroment_launcher.gd" id="1_rqyml"]
 
 [node name="EnvironmentLauncher" type="Button"]
 offset_right = 230.0

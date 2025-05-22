@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="SolutionInfo" load_steps=4 format=3 uid="uid://b84c586ijc5lq"]
+[gd_resource type="Resource" script_class="SolutionInfo" load_steps=5 format=3 uid="uid://b84c586ijc5lq"]
 
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/solution_info.gd" id="1"]
+[ext_resource type="Script" uid="uid://d1o70688m6g30" path="res://addons/sishodit/tools/agent/solution_info.gd" id="1"]
 [ext_resource type="Resource" uid="uid://8pj3lbsrudsf" path="res://examples/simple_house/need_solutions/steps/get_food.tres" id="2"]
+[ext_resource type="Script" uid="uid://c8ei27myxu6y6" path="res://addons/sishodit/tools/agent/step_info.gd" id="2_nn2my"]
 [ext_resource type="Resource" uid="uid://li57eyuncham" path="res://examples/simple_house/need_solutions/steps/sit_to_eat.tres" id="3"]
 
 [resource]
 resource_name = "get_something_to_eat"
 script = ExtResource("1")
-steps = Array[Resource("res://addons/sishodit/tools/agent/step_info.gd")]([ExtResource("2"), ExtResource("3")])
+steps = Array[ExtResource("2_nn2my")]([ExtResource("2"), ExtResource("3")])
 weight = 1.0

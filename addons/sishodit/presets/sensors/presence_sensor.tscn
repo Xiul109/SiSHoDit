@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://hq5uocajsxb"]
 
-[ext_resource type="Script" path="res://addons/sishodit/presets/sensors/presence_sensor.gd" id="1_1shht"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="2_aqh8n"]
-[ext_resource type="Script" path="res://addons/sishodit/presets/sensors/shapes/cone_shape_3d.gd" id="2_m6xwy"]
+[ext_resource type="Script" uid="uid://coih15fa64w15" path="res://addons/sishodit/presets/sensors/presence_sensor.gd" id="1_1shht"]
+[ext_resource type="Script" uid="uid://s7vqgxx0ojik" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="2_aqh8n"]
+[ext_resource type="Script" uid="uid://c600ti2ba5xkw" path="res://addons/sishodit/presets/sensors/shapes/cone_shape_3d.gd" id="2_m6xwy"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ntafg"]
 points = PackedVector3Array(0, 0, 0, 0, 2, 1, 0.382683, 2, 0.92388, 0.707107, 2, 0.707107, 0.92388, 2, 0.382683, 1, 2, 6.12323e-17, 0.92388, 2, -0.382683, 0.707107, 2, -0.707107, 0.382683, 2, -0.92388, 1.22465e-16, 2, -1, -0.382683, 2, -0.92388, -0.707107, 2, -0.707107, -0.92388, 2, -0.382683, -1, 2, -1.83697e-16, -0.92388, 2, 0.382683, -0.707107, 2, 0.707107, -0.382683, 2, 0.92388)

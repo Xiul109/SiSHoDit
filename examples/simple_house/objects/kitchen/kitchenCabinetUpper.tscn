@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cpki6sum4e8hf"]
 
 [ext_resource type="PackedScene" uid="uid://2gpd8pf4rvm0" path="res://examples/assets/furnitures_kenney/kitchenCabinetUpper.glb" id="1"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_vf447"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_7khrj"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/ranges/binary_value_range.gd" id="3_vcpew"]
+[ext_resource type="Script" uid="uid://ul1alqsi51c5" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_vf447"]
+[ext_resource type="Script" uid="uid://s7vqgxx0ojik" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_7khrj"]
+[ext_resource type="Script" uid="uid://cv43owsxpqby8" path="res://addons/sishodit/tools/sensorization/ranges/binary_value_range.gd" id="3_vcpew"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_knqko"]
 points = PackedVector3Array(4.3, 3.9, 0, 4.3, 0, 0, 4.3, 3.9, -2.1, 0, 3.9, 0, 4.3, 0, -2.1, 0, 0, 0, 0, 3.9, -2.1, 0, 0, -2.1)

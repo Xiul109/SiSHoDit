@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="NeedInfo" load_steps=3 format=3 uid="uid://cqb3cc7kjfqkl"]
+[gd_resource type="Resource" script_class="NeedInfo" load_steps=4 format=3 uid="uid://cqb3cc7kjfqkl"]
 
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/need_info.gd" id="1"]
+[ext_resource type="Script" uid="uid://b1cqsfewep7t" path="res://addons/sishodit/tools/agent/need_info.gd" id="1"]
 [ext_resource type="Resource" uid="uid://curmklcl7kwrs" path="res://examples/simple_house/need_solutions/take_a_shower.tres" id="2_2dm2v"]
+[ext_resource type="Script" uid="uid://d1o70688m6g30" path="res://addons/sishodit/tools/agent/solution_info.gd" id="2_ebd3m"]
 
 [resource]
 script = ExtResource("1")
 need_key = "dirty"
-solutions = Array[Resource("res://addons/sishodit/tools/agent/solution_info.gd")]([ExtResource("2_2dm2v")])
+solutions = Array[ExtResource("2_ebd3m")]([ExtResource("2_2dm2v")])
 time_to_fill_level = 86400.0
 initial_level = 0.0
 min_level_before_solve = 0.8

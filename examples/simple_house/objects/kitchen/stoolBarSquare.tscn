@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfef3hc7voxur"]
 
 [ext_resource type="PackedScene" uid="uid://c8ae66r75188a" path="res://examples/assets/furnitures_kenney/stoolBarSquare.glb" id="1"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_05x4q"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_o34vr"]
+[ext_resource type="Script" uid="uid://ul1alqsi51c5" path="res://addons/sishodit/tools/objects/usables/basic_usable.gd" id="2_05x4q"]
+[ext_resource type="Script" uid="uid://s7vqgxx0ojik" path="res://addons/sishodit/tools/sensorization/sensor.gd" id="3_o34vr"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ygv38"]
 points = PackedVector3Array(0.5597, 3.5497, -1.88751, 0.5597, 3.5497, -0.411269, 0.5597, 4.05, -1.88751, 2.0947, 3.5497, -1.88751, 0.659619, 0, -1.78751, 2.0947, 3.5497, -0.411269, 0.5597, 4.05, -0.411269, 0.659619, 0, -0.511409, 2.0947, 4.05, -1.88751, 1.99463, 0, -1.78751, 2.0947, 4.05, -0.411269, 1.99463, 0, -0.511409)

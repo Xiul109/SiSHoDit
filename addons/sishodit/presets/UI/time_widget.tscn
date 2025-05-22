@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b72mu3g3hihh"]
 
-[ext_resource type="Script" path="res://addons/sishodit/presets/UI/time_widget.gd" id="1"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulable.gd" id="2_3rbwk"]
+[ext_resource type="Script" uid="uid://cx8sahm1nmn6l" path="res://addons/sishodit/presets/UI/time_widget.gd" id="1"]
+[ext_resource type="Script" uid="uid://b6flp2m07hiks" path="res://addons/sishodit/tools/simulation/simulable.gd" id="2_3rbwk"]
 
 [node name="time_widget" type="VBoxContainer"]
 offset_right = 40.0

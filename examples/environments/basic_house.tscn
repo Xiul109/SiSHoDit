@@ -1,6 +1,6 @@
 [gd_scene load_steps=78 format=3 uid="uid://dkavkunxsgev"]
 
-[ext_resource type="Script" path="res://addons/sishodit/presets/enviroment.gd" id="1_haif5"]
+[ext_resource type="Script" uid="uid://yhea1baudkoc" path="res://addons/sishodit/presets/enviroment.gd" id="1_haif5"]
 [ext_resource type="PackedScene" uid="uid://chu817n6kjhnr" path="res://examples/simple_house/objects/structure/floorFull.tscn" id="2_uhpb2"]
 [ext_resource type="PackedScene" uid="uid://pw7yk20j03n8" path="res://examples/simple_house/objects/structure/floorCorner.tscn" id="3_ue50l"]
 [ext_resource type="PackedScene" uid="uid://ym5tf4vkdgoq" path="res://examples/simple_house/objects/structure/floorHalf.tscn" id="4_hx40y"]
@@ -60,8 +60,8 @@
 [ext_resource type="PackedScene" uid="uid://bb3xpgmnwp4l2" path="res://addons/sishodit/presets/UI/speed_slider.tscn" id="58_8f3rl"]
 [ext_resource type="PackedScene" uid="uid://b72mu3g3hihh" path="res://addons/sishodit/presets/UI/time_widget.tscn" id="59_4gdj1"]
 [ext_resource type="PackedScene" uid="uid://bs07qyfk3gkry" path="res://addons/sishodit/presets/UI/agent_data/multi_agent_data_widget.tscn" id="60_2tx0f"]
-[ext_resource type="Script" path="res://addons/sishodit/tools/simulation/simulator.gd" id="61_kg1fo"]
-[ext_resource type="Script" path="res://addons/sishodit/presets/context_managers/calendar.gd" id="62_w6pid"]
+[ext_resource type="Script" uid="uid://cb8i5d8d8y1kn" path="res://addons/sishodit/tools/simulation/simulator.gd" id="61_kg1fo"]
+[ext_resource type="Script" uid="uid://h4huyjuvxgne" path="res://addons/sishodit/presets/context_managers/calendar.gd" id="62_w6pid"]
 
 [sub_resource type="Gradient" id="Gradient_mhk06"]
 colors = PackedColorArray(0, 0.221838, 0, 1, 0.0266823, 0.487345, 0.159609, 1)

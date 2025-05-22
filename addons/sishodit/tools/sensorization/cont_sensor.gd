@@ -12,10 +12,10 @@ extends Sensor
 		period = 1/sample_rate
 ## The [TSTemplate]s (values) asociated with each activation value (key). This will change in
 ## the future to manage complex activations
-@export var activations_templates : Dictionary
+@export var activations_templates : Dictionary[float, TSTemplate]
 ## This is considered the default activation value that will be used to select the initial 
-## [TSTemplate]. It is the index of the prefered key.
 @export var default_activation_index : int = 0
+
 
 ## Used for registering the activations before procesing them
 var activations : PackedVector2Array = PackedVector2Array()

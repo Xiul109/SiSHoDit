@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="NeedInfo" load_steps=5 format=3 uid="uid://cgiwyismn1dgo"]
+[gd_resource type="Resource" script_class="NeedInfo" load_steps=6 format=3 uid="uid://cgiwyismn1dgo"]
 
-[ext_resource type="Script" path="res://addons/sishodit/tools/agent/need_info.gd" id="1"]
+[ext_resource type="Script" uid="uid://b1cqsfewep7t" path="res://addons/sishodit/tools/agent/need_info.gd" id="1"]
 [ext_resource type="Resource" uid="uid://ce8umxuusgt23" path="res://examples/simple_house/need_solutions/watch_tv.tres" id="2"]
+[ext_resource type="Script" uid="uid://d1o70688m6g30" path="res://addons/sishodit/tools/agent/solution_info.gd" id="2_0s1ij"]
 [ext_resource type="Resource" uid="uid://l1o5m0lo3wjg" path="res://examples/simple_house/need_solutions/read_book.tres" id="3"]
 [ext_resource type="Resource" uid="uid://cykjtqdjkqku8" path="res://examples/simple_house/need_solutions/play_videogames.tres" id="4"]
 
 [resource]
 script = ExtResource("1")
 need_key = "bored"
-solutions = Array[Resource("res://addons/sishodit/tools/agent/solution_info.gd")]([ExtResource("4"), ExtResource("3"), ExtResource("2")])
+solutions = Array[ExtResource("2_0s1ij")]([ExtResource("4"), ExtResource("3"), ExtResource("2")])
 time_to_fill_level = 7200.0
 initial_level = 0.0
 min_level_before_solve = -0.01
