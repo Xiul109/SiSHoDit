@@ -16,7 +16,6 @@ extends Sensor
 ## This is considered the default activation value that will be used to select the initial 
 @export var default_activation_index : int = 0
 
-
 ## Used for registering the activations before procesing them
 var activations : PackedVector2Array = PackedVector2Array()
 

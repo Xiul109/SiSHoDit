@@ -16,6 +16,6 @@ needs_solved = {
 needs_increased = {
 "dirty_hands": 1.0
 }
-needs_with_modified_rate = {}
+needs_with_modified_rate = Dictionary[String, float]({})
 priority = 10
 cancel_on_interruption = false

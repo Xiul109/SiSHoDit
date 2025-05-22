@@ -33,11 +33,11 @@ enum ObjectSelectionCriteria {
 ## Needs that are solved by the step by a certain value. The dictionary expected entries are:
 ## [code]"need_key":rate[/code], where "need_key" should be the need_key of an existing [Need]
 ## and rate must be a float that will multiply the default filling rate of the Need.
-@export var needs_solved : Dictionary
+@export var needs_solved : Dictionary[String, float]
 ## Needs that are increased during the step over the normal filling.
-@export var needs_increased : Dictionary
+@export var needs_increased : Dictionary[String, float]
 ## Needs whose filling rate is modified during the step.
-@export var needs_with_modified_rate: Dictionary
+@export var needs_with_modified_rate: Dictionary[String, float]
 
 @export_group("Step fine tuning")
 ## Steps can only be interrupted by [Need]s with higher priority than them. The final value
