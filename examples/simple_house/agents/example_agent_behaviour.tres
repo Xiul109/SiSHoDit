@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AgentBehaviour" load_steps=13 format=3 uid="uid://12tvrxf55g51"]
+
+[ext_resource type="Script" uid="uid://b1cqsfewep7t" path="res://addons/sishodit/tools/agent/need_info.gd" id="1_yxaws"]
+[ext_resource type="Resource" uid="uid://c7038fb31jj2o" path="res://examples/simple_house/needs_list/number_1.tres" id="2_lhikl"]
+[ext_resource type="Script" uid="uid://cv0lsrlmyyald" path="res://addons/sishodit/tools/agent/agent_behaviour.gd" id="2_urrvg"]
+[ext_resource type="Resource" uid="uid://cre0wptshohrc" path="res://examples/simple_house/needs_list/number_2.tres" id="3_rqjds"]
+[ext_resource type="Resource" uid="uid://c8b50r4llbpyy" path="res://examples/simple_house/needs_list/thirsty.tres" id="4_7tgy5"]
+[ext_resource type="Resource" uid="uid://bf1ecrssv6no8" path="res://examples/simple_house/needs_list/hungry.tres" id="5_1oka0"]
+[ext_resource type="Resource" uid="uid://dmla2rjuor066" path="res://examples/simple_house/needs_list/sleepy.tres" id="6_vgsdw"]
+[ext_resource type="Resource" uid="uid://cqb3cc7kjfqkl" path="res://examples/simple_house/needs_list/dirty.tres" id="7_cc4qm"]
+[ext_resource type="Resource" uid="uid://4mrbam1umk6g" path="res://examples/simple_house/needs_list/tired.tres" id="8_p2dn1"]
+[ext_resource type="Resource" uid="uid://dog3qgb4x5yb8" path="res://examples/simple_house/needs_list/dirty_hands.tres" id="9_wyy4f"]
+[ext_resource type="Resource" uid="uid://e0etjd0o04d8" path="res://examples/simple_house/needs_list/dirty_clothes.tres" id="10_4b2ko"]
+[ext_resource type="Resource" uid="uid://cgiwyismn1dgo" path="res://examples/simple_house/needs_list/bored.tres" id="11_5xuru"]
+
+[resource]
+script = ExtResource("2_urrvg")
+needs_info = Array[ExtResource("1_yxaws")]([ExtResource("2_lhikl"), ExtResource("3_rqjds"), ExtResource("4_7tgy5"), ExtResource("5_1oka0"), ExtResource("6_vgsdw"), ExtResource("7_cc4qm"), ExtResource("8_p2dn1"), ExtResource("9_wyy4f"), ExtResource("10_4b2ko"), ExtResource("11_5xuru")])
+metadata/_custom_type_script = "uid://cv0lsrlmyyald"

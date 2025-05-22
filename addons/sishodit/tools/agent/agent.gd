@@ -20,8 +20,8 @@ signal current_step_poped(step: Step)
 @export_range(0, 20, 0.001, "or_greater")
 var speed: float = 10
 
-## The list of information of each need of the agent.
-@export var needs_info : Array[NeedInfo]
+## Defines the behaviour of the agent.
+@export var behaviour: AgentBehaviour
 
 ## The list of needs of the agent.
 var needs : Array[Need]
@@ -57,7 +57,7 @@ var current_steps : Array[Step] = []
 func _ready():
 	# Finding and deleting unsolvable needs
 	var unsolvable_needs = []
-	for need_info in needs_info:
+	for need_info in behaviour.needs_info:
 		var need = Need.new(need_info, get_tree())
 		if not need.feasible_solutions.is_empty():
 			needs.append(need)

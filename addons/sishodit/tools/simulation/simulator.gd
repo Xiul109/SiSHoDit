@@ -18,7 +18,7 @@ const base_name = "SiSHoDiT"
 ## Reference to the [FileManager] that produces the logs.
 var file_manager : FileManager
 ## Simulation context including variables relevant to [Simulable] entities, mainly [Agent]s.
-var context = {}
+var context : Dictionary = {}
 
 # Simulation variables
 ## A list of every [Simulable] node of the simulation.
@@ -95,4 +95,3 @@ func _on_entity_waiting():
 			return
 		times.append(entity.wait_time)
 	_simulate(times.min())
-

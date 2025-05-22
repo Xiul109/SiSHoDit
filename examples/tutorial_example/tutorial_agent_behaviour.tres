@@ -1,0 +1,317 @@
+[gd_resource type="Resource" script_class="AgentBehaviour" load_steps=34 format=3 uid="uid://32n4snx5n7do"]
+
+[ext_resource type="Script" uid="uid://b1cqsfewep7t" path="res://addons/sishodit/tools/agent/need_info.gd" id="1_bknbp"]
+[ext_resource type="Script" uid="uid://cv0lsrlmyyald" path="res://addons/sishodit/tools/agent/agent_behaviour.gd" id="2_a8a2t"]
+[ext_resource type="Script" uid="uid://d1o70688m6g30" path="res://addons/sishodit/tools/agent/solution_info.gd" id="2_a71h2"]
+[ext_resource type="Script" uid="uid://c8ei27myxu6y6" path="res://addons/sishodit/tools/agent/step_info.gd" id="3_l6ugy"]
+[ext_resource type="Script" uid="uid://bcmuux3u0b5q3" path="res://addons/sishodit/tools/context/context_condition.gd" id="4_vjdww"]
+[ext_resource type="Script" uid="uid://tvhii7qfcc51" path="res://addons/sishodit/tools/context/condition_manager.gd" id="5_5kv88"]
+
+[sub_resource type="Resource" id="Resource_6pjvs"]
+resource_name = "pee"
+script = ExtResource("3_l6ugy")
+object_group = "toilet"
+object_selection_criterion = 0
+use_object = true
+min_duration = 60.0
+max_duration = 90.0
+needs_solved = Dictionary[String, float]({
+"pee": 1.0
+})
+needs_increased = Dictionary[String, float]({
+"dirty_hands": 1.0
+})
+needs_with_modified_rate = Dictionary[String, float]({})
+priority = 0
+cancel_on_interruption = false
+
+[sub_resource type="Resource" id="Resource_mkgh3"]
+resource_name = "pee"
+script = ExtResource("2_a71h2")
+steps = Array[ExtResource("3_l6ugy")]([SubResource("Resource_6pjvs")])
+weight = 1.0
+
+[sub_resource type="Resource" id="Resource_i0sct"]
+resource_name = "Pee"
+script = ExtResource("1_bknbp")
+need_key = "pee"
+solutions = Array[ExtResource("2_a71h2")]([SubResource("Resource_mkgh3")])
+time_to_fill_level = 21600.0
+initial_level = 0.8
+min_level_before_solve = 0.6
+priority = 5
+urgent_level = 0.9
+
+[sub_resource type="Resource" id="Resource_1k3w3"]
+resource_name = "Wash hands"
+script = ExtResource("3_l6ugy")
+object_group = "tap"
+object_selection_criterion = 1
+use_object = true
+min_duration = 30.0
+max_duration = 60.0
+needs_solved = Dictionary[String, float]({
+"dirty_hands": 1.0
+})
+needs_increased = Dictionary[String, float]({})
+needs_with_modified_rate = Dictionary[String, float]({})
+priority = 0
+cancel_on_interruption = false
+
+[sub_resource type="Resource" id="Resource_bqbhs"]
+resource_name = "Wash hands"
+script = ExtResource("2_a71h2")
+steps = Array[ExtResource("3_l6ugy")]([SubResource("Resource_1k3w3")])
+weight = 1.0
+
+[sub_resource type="Resource" id="Resource_iwtm8"]
+resource_name = "Dirty hands"
+script = ExtResource("1_bknbp")
+need_key = "dirty_hands"
+solutions = Array[ExtResource("2_a71h2")]([SubResource("Resource_bqbhs")])
+time_to_fill_level = 50400.0
+initial_level = 0.0
+min_level_before_solve = 0.7
+priority = 4
+urgent_level = 1.0
+
+[sub_resource type="Resource" id="Resource_40efr"]
+resource_name = "Get fresh food"
+script = ExtResource("3_l6ugy")
+object_group = "fresh_food"
+object_selection_criterion = 0
+use_object = true
+min_duration = 20.0
+max_duration = 60.0
+needs_solved = Dictionary[String, float]({})
+needs_increased = Dictionary[String, float]({})
+needs_with_modified_rate = Dictionary[String, float]({})
+priority = 0
+cancel_on_interruption = false
+
+[sub_resource type="Resource" id="Resource_gthh4"]
+resource_name = "Eat"
+script = ExtResource("3_l6ugy")
+object_group = "eat_place"
+object_selection_criterion = 0
+use_object = true
+min_duration = 450.0
+max_duration = 800.0
+needs_solved = Dictionary[String, float]({
+"hungry": 0.4
+})
+needs_increased = Dictionary[String, float]({})
+needs_with_modified_rate = Dictionary[String, float]({})
+priority = 0
+cancel_on_interruption = false
+
+[sub_resource type="Resource" id="Resource_quk3r"]
+resource_name = "Eat something"
+script = ExtResource("2_a71h2")
+steps = Array[ExtResource("3_l6ugy")]([SubResource("Resource_40efr"), SubResource("Resource_gthh4")])
+weight = 1.0
+
+[sub_resource type="Resource" id="Resource_l7g34"]
+resource_name = "Hungry"
+script = ExtResource("1_bknbp")
+need_key = "hungry"
+solutions = Array[ExtResource("2_a71h2")]([SubResource("Resource_quk3r")])
+time_to_fill_level = 28800.0
+initial_level = 0.3
+min_level_before_solve = 0.4
+priority = 2
+urgent_level = 0.9
+
+[sub_resource type="Resource" id="Resource_hrt2l"]
+script = ExtResource("4_vjdww")
+key = "hour"
+comparison = 5
+comparison_value = 22.0
+
+[sub_resource type="Resource" id="Resource_fokmi"]
+script = ExtResource("4_vjdww")
+key = "hour"
+comparison = 3
+comparison_value = 6.0
+
+[sub_resource type="Resource" id="Resource_4k8oy"]
+script = ExtResource("5_5kv88")
+conditions = Array[ExtResource("4_vjdww")]([SubResource("Resource_hrt2l"), SubResource("Resource_fokmi")])
+evaluation_mode = 0
+
+[sub_resource type="Resource" id="Resource_kyu1t"]
+resource_name = "Put pajamas"
+script = ExtResource("3_l6ugy")
+object_group = "wardrove"
+object_selection_criterion = 0
+use_object = true
+min_duration = 120.0
+max_duration = 240.0
+needs_solved = Dictionary[String, float]({})
+needs_increased = Dictionary[String, float]({})
+needs_with_modified_rate = Dictionary[String, float]({})
+priority = 0
+cancel_on_interruption = false
+
+[sub_resource type="Resource" id="Resource_0r42g"]
+resource_name = "Sleep"
+script = ExtResource("3_l6ugy")
+object_group = "sleep"
+object_selection_criterion = 0
+use_object = true
+min_duration = 21600.0
+max_duration = 28800.0
+needs_solved = Dictionary[String, float]({
+"sleepy": 1.0,
+"tired": 1.0
+})
+needs_increased = Dictionary[String, float]({})
+needs_with_modified_rate = Dictionary[String, float]({
+"hungry": 0.5
+})
+priority = 3
+cancel_on_interruption = false
+
+[sub_resource type="Resource" id="Resource_8duvi"]
+resource_name = "Put normal clothes"
+script = ExtResource("3_l6ugy")
+object_group = "wardrove"
+object_selection_criterion = 0
+use_object = true
+min_duration = 120.0
+max_duration = 240.0
+needs_solved = Dictionary[String, float]({})
+needs_increased = Dictionary[String, float]({})
+needs_with_modified_rate = Dictionary[String, float]({})
+priority = 0
+cancel_on_interruption = false
+
+[sub_resource type="Resource" id="Resource_oaa7l"]
+resource_name = "Sleep"
+script = ExtResource("2_a71h2")
+steps = Array[ExtResource("3_l6ugy")]([SubResource("Resource_kyu1t"), SubResource("Resource_0r42g"), SubResource("Resource_8duvi")])
+weight = 4.0
+condition_manager = SubResource("Resource_4k8oy")
+
+[sub_resource type="Resource" id="Resource_uxqip"]
+resource_name = "Nap"
+script = ExtResource("3_l6ugy")
+object_group = "nap"
+object_selection_criterion = 0
+use_object = true
+min_duration = 1800.0
+max_duration = 4200.0
+needs_solved = Dictionary[String, float]({
+"sleepy": 0.2,
+"tired": 0.4
+})
+needs_increased = Dictionary[String, float]({})
+needs_with_modified_rate = Dictionary[String, float]({})
+priority = 0
+cancel_on_interruption = false
+
+[sub_resource type="Resource" id="Resource_pnuh7"]
+resource_name = "Nap"
+script = ExtResource("2_a71h2")
+steps = Array[ExtResource("3_l6ugy")]([SubResource("Resource_uxqip")])
+weight = 1.0
+
+[sub_resource type="Resource" id="Resource_7smpu"]
+resource_name = "Sleepy"
+script = ExtResource("1_bknbp")
+need_key = "sleepy"
+solutions = Array[ExtResource("2_a71h2")]([SubResource("Resource_oaa7l"), SubResource("Resource_pnuh7")])
+time_to_fill_level = 64800.0
+initial_level = 0.1
+min_level_before_solve = 0.85
+priority = 1
+urgent_level = 1.0
+
+[sub_resource type="Resource" id="Resource_aj68p"]
+resource_name = "sit"
+script = ExtResource("3_l6ugy")
+object_group = "sit"
+object_selection_criterion = 1
+use_object = true
+min_duration = 1800.0
+max_duration = 3600.0
+needs_solved = Dictionary[String, float]({
+"tired": 1.0
+})
+needs_increased = Dictionary[String, float]({})
+needs_with_modified_rate = Dictionary[String, float]({})
+priority = 0
+cancel_on_interruption = true
+
+[sub_resource type="Resource" id="Resource_326m7"]
+resource_name = "Sit"
+script = ExtResource("2_a71h2")
+steps = Array[ExtResource("3_l6ugy")]([SubResource("Resource_aj68p")])
+weight = 1.0
+
+[sub_resource type="Resource" id="Resource_24x1u"]
+resource_name = "Reach rest object"
+script = ExtResource("3_l6ugy")
+object_group = "rest"
+object_selection_criterion = 0
+use_object = false
+min_duration = 1.0
+max_duration = 1.0
+needs_solved = Dictionary[String, float]({})
+needs_increased = Dictionary[String, float]({})
+needs_with_modified_rate = Dictionary[String, float]({})
+priority = 0
+cancel_on_interruption = false
+
+[sub_resource type="Resource" id="Resource_ddxf4"]
+resource_local_to_scene = true
+resource_name = "Strech"
+script = ExtResource("3_l6ugy")
+object_group = ""
+object_selection_criterion = 0
+use_object = false
+min_duration = 120.0
+max_duration = 300.0
+needs_solved = Dictionary[String, float]({})
+needs_increased = Dictionary[String, float]({})
+needs_with_modified_rate = Dictionary[String, float]({})
+priority = 0
+cancel_on_interruption = false
+
+[sub_resource type="Resource" id="Resource_y0qvk"]
+resource_name = "Rest"
+script = ExtResource("3_l6ugy")
+object_group = "rest"
+object_selection_criterion = 1
+use_object = true
+min_duration = 1200.0
+max_duration = 2400.0
+needs_solved = Dictionary[String, float]({
+"tired": 1.0
+})
+needs_increased = Dictionary[String, float]({})
+needs_with_modified_rate = Dictionary[String, float]({})
+priority = 0
+cancel_on_interruption = true
+
+[sub_resource type="Resource" id="Resource_qos7q"]
+resource_name = "Strech and rest"
+script = ExtResource("2_a71h2")
+steps = Array[ExtResource("3_l6ugy")]([SubResource("Resource_24x1u"), SubResource("Resource_ddxf4"), SubResource("Resource_y0qvk")])
+weight = 1.0
+
+[sub_resource type="Resource" id="Resource_cddjj"]
+resource_name = "Tired"
+script = ExtResource("1_bknbp")
+need_key = "tired"
+solutions = Array[ExtResource("2_a71h2")]([SubResource("Resource_326m7"), SubResource("Resource_qos7q")])
+time_to_fill_level = 7200.0
+initial_level = 0.2
+min_level_before_solve = -0.01
+priority = 0
+urgent_level = 1.0
+
+[resource]
+script = ExtResource("2_a8a2t")
+needs_info = Array[ExtResource("1_bknbp")]([SubResource("Resource_i0sct"), SubResource("Resource_iwtm8"), SubResource("Resource_l7g34"), SubResource("Resource_7smpu"), SubResource("Resource_cddjj")])
+metadata/_custom_type_script = "uid://cv0lsrlmyyald"
