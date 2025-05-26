@@ -35,8 +35,9 @@ func _update_groups() -> void:
 	var nodes : Array[Node] = []
 	for scene_path in EditorInterface.get_open_scenes():
 		nodes.append(load(scene_path).instantiate())
-		
-	groups = SishoditUtils.find_groups(nodes)
+	
+	groups = [""]
+	groups.append_array(SishoditUtils.find_groups(nodes))
 	groups = groups.filter(func(g): return not g.begins_with("_"))
 	groups.sort() # Sorted for easy finding
 	
