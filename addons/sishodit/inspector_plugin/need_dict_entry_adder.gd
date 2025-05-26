@@ -1,14 +1,18 @@
 ## His duty is to provide the user interface for adding entrys to the dictionary
 extends PanelContainer
 
-var Entry = preload("res://addons/sishodit/inspector_plugin/need_dict_entry.gd")
+const Entry = preload("res://addons/sishodit/inspector_plugin/need_dict_entry.gd")
 
 var container = VBoxContainer.new()
-var entry = Entry.new()
+var entry : Entry
 var add_entry_button = Button.new()
 
 signal entry_added(key: String, value: float)
 
+
+func _init(need_list: Array[String]) -> void:
+	entry = Entry.new("", 1, need_list)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Changing background

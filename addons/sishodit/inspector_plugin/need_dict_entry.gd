@@ -3,8 +3,11 @@ extends HBoxContainer
 var is_for_display : bool = true :
 	set(val):
 		is_for_display = val
-		key_editor.editable = not is_for_display
 		erase_button.visible = is_for_display
+		if key_editor is LineEdit:
+			key_editor.editable = not is_for_display
+		else:
+			key_editor.disabled = is_for_display
 
 var range_low : float :
 	set(val):
@@ -14,16 +17,23 @@ var range_high : float :
 	set(val):
 		range_high = val
 		value_editor.max_value = range_high
+var need_list : Array[String]
 
-var key_editor = LineEdit.new()
+var key_editor
 var value_editor = EditorSpinSlider.new()
 var erase_button = Button.new()
 
 var key : String :
 	get:
-		return key_editor.text
+		if key_editor is LineEdit:
+			return key_editor.text
+		else:
+			return key_editor.get_item_text(key_editor.selected)
 	set(new_key):
-		key_editor.text = new_key
+		if key_editor is LineEdit:
+			key_editor.text = new_key
+		else:
+			key_editor.select(need_list.find(new_key))
 
 var value: float :
 	get:
@@ -35,8 +45,10 @@ signal value_changed(key, value)
 signal entry_erased(key)
 
 func _init(p_key: String = "", p_value: float = 1.0,
+			p_need_list: Array[String] = [],
 			p_range_low : bool = 0.0, p_range_high : bool = 1.0):
 	# Key related fields initialization
+	need_list = p_need_list
 	_init_key_editor()
 	key = p_key
 	add_child(key_editor)
@@ -61,8 +73,17 @@ func default_entry():
 
 # Auxiliar methods
 func _init_key_editor():
+	if need_list == null or need_list.is_empty():
+		key_editor = LineEdit.new()
+		key_editor.editable = false
+		
+	else:
+		key_editor = OptionButton.new()
+		for need in need_list:
+			key_editor.add_item(need)
+		key_editor.disabled = true
 	key_editor.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	key_editor.editable = false
+	
 
 func _init_value_editor():
 	value_editor.value_changed.connect(_on_value_changed)

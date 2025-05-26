@@ -1,7 +1,7 @@
 extends EditorProperty
 
-var EntryAdder = preload("res://addons/sishodit/inspector_plugin/need_dict_entry_adder.gd")
-var DictDisplay = preload("res://addons/sishodit/inspector_plugin/need_dict_display.gd")
+const EntryAdder = preload("res://addons/sishodit/inspector_plugin/need_dict_entry_adder.gd")
+const DictDisplay = preload("res://addons/sishodit/inspector_plugin/need_dict_display.gd")
 
 # Dict reference
 var dict : Dictionary
@@ -11,10 +11,11 @@ var property_control = Button.new()
 
 # Bottom editor
 var bottom_container = VBoxContainer.new()
-var entry_adder = EntryAdder.new()
+var entry_adder : EntryAdder
 var dict_display = DictDisplay.new()
 
-func _init(obj_dict: Dictionary):
+#region overrides
+func _init(obj_dict: Dictionary, need_list: Array[String]):
 	dict = obj_dict
 	
 	# Property control
@@ -25,6 +26,7 @@ func _init(obj_dict: Dictionary):
 	
 	# Bottom editor
 	add_child(bottom_container)
+	entry_adder = EntryAdder.new(need_list)
 	bottom_container.add_child(entry_adder)
 	entry_adder.entry_added.connect(_on_entry_added)
 	bottom_container.add_child(dict_display)
@@ -33,7 +35,12 @@ func _init(obj_dict: Dictionary):
 	dict_display.entry_erased.connect(_on_entry_erased)
 	set_bottom_editor(bottom_container)
 
-# Callbacks
+func _update_property():
+	dict = get_edited_object()[get_edited_property()]
+	dict_display.load_dict(dict)
+#endregion
+
+#region callbacks
 func _on_button_pressed():
 	bottom_container.visible = not bottom_container.visible
 
@@ -59,6 +66,4 @@ func _on_entry_added(key, value):
 	
 	emit_changed(get_edited_property(), dict, "", true)
 
-func _update_property():
-	dict = get_edited_object()[get_edited_property()]
-	dict_display.load_dict(dict)
+#endregion

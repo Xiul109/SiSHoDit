@@ -14,7 +14,6 @@ func _ready():
 
 
 # Public methods
-
 func add_entry(key, value):
 	var entry = Entry.new(key, value)
 	container.add_child(entry)
