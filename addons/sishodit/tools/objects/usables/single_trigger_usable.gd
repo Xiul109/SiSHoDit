@@ -7,6 +7,7 @@ enum TriggerMode {START, END}
 
 ## Value that will be produced when triggered.
 @export var trigger_value : float = 1
+
 ## The trigger will be activated when starting using the object or when finishing.
 @export var trigger_on : TriggerMode = TriggerMode.START
 

@@ -8,6 +8,7 @@ enum EvaluationMode {
 
 ## List of conditions to be evaluated.
 @export var conditions : Array[ContextCondition]
+
 ## The requirements that should be met to consider the evaluation correct.
 @export var evaluation_mode : EvaluationMode = EvaluationMode.ALL
 

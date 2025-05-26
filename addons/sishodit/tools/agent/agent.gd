@@ -3,26 +3,36 @@ extends CharacterBody3D
 
 ## An agent is an entity in the simulation that emulates the bahaviour of a person.
 
+#region signals
 ## Emmitted when a new [Need] is chosen
 signal new_current_need(need : Need)
-## Emmited when a [Need] is poped from the stack
-signal current_need_poped(need: Need)
-## Emmited when a new [Solution] is chosen
-signal new_current_solution(solution: Solution)
-## Emmited when a [Solution] is poped from the stack
-signal current_solution_poped(solution: Solution)
-## Emmited when a new [Step] is chosen
-signal new_current_step(step: Step)
-## Emmithed when a [Step] is poped from the stack
-signal current_step_poped(step: Step)
 
+## Emmitted when a [Need] is poped from the stack
+signal current_need_poped(need: Need)
+
+## Emmitted when a new [Solution] is chosen
+signal new_current_solution(solution: Solution)
+
+## Emmitted when a [Solution] is poped from the stack
+signal current_solution_poped(solution: Solution)
+
+## Emmitted when a new [Step] is chosen
+signal new_current_step(step: Step)
+
+## Emmitted when a [Step] is poped from the stack
+signal current_step_poped(step: Step)
+#endregion
+
+#region exported_properties
 ## The agent speed in units per second.
 @export_range(0, 20, 0.001, "or_greater")
 var speed: float = 10
 
 ## Defines the behaviour of the agent.
 @export var behaviour: AgentBehaviour
+#endregion
 
+#region general_properties
 ## The list of needs of the agent.
 var needs : Array[Need]
 
@@ -43,16 +53,21 @@ var current_solutions: Array[Solution] = []
 ## List of steps that are pending to be solved or being solved. The last one is always being solved
 ## at that moment.
 var current_steps : Array[Step] = []
+#endregion
 
+#region onready_properties
 ## The state_machine is used for helping to model the behaviour of the agent and for distributing
 ## the code between specialized nodes, which makes it easier to maintain.
 @onready var state_machine : StateMachinePlayer = $StateMachinePlayer
+
 ## Helps in the communication with the [code] Simulator [/code]
 @onready var simulable : Simulable = $Simulable
+
 ## Used for agent pathfinding
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 
 @onready var object_user : ObjectUser = $ObjectUser
+#endregion
 
 func _ready():
 	# Finding and deleting unsolvable needs

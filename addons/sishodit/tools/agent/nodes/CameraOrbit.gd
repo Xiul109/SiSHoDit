@@ -8,10 +8,6 @@ var mouse_delta : Vector2 = Vector2()
 
 @onready var player = get_parent()
 
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-#	$Camera3D.add_exception(get_parent())
-
 
 func _input(event):
 	if event is InputEventMouseMotion:

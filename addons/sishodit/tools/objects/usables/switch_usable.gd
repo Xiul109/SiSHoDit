@@ -7,10 +7,13 @@ extends SensorizedUsable
 
 ## State of the device
 @export var is_switched : bool
+
 ## Value produced when the device is switched on
 @export var switch_on_value : float = 1
+
 ## Value produced when the device is switched off
 @export var switch_off_value : float = 0
+
 ## The trigger will be activated when starting using the object or when finishing.
 @export var trigger_on: SingleTriggerUsable.TriggerMode = SingleTriggerUsable.TriggerMode.START
 

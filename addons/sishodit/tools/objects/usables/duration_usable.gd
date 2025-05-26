@@ -6,6 +6,7 @@ extends SingleTriggerUsable
 
 ## The time until the second trigger.
 @export var duration : float
+
 ## The value produced by the second trigger.
 @export var end_duration_value : float = 0
 

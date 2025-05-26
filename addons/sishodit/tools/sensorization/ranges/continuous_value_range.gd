@@ -5,6 +5,7 @@ extends ValueRange
 
 ## Upper limit of the range
 @export var upper_limit : float
+
 ## Lower limit of the range
 @export var lower_limit : float
 

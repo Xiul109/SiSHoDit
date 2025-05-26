@@ -5,28 +5,36 @@ extends Node
 ## for sensor triggers. By default, it should be used by manually calling [method activate], but
 ## more complex behaviours can be included by creating classes that inheriths from it.
 
+#region export_properties
 ## Sensor name that will appear in the logs.
 @export var sensor_name : String = "sensor"
+
 ## Sensor type that will appear in the logs.
 @export var sensor_type: String = "generic"
 
 
 ## Parameters to specify different froms of malfunction for a sensor
 @export_group("Malfunction parameters")
+
 ## Used for specifying what range of values can produce a sensor, which is useful for simulating
 ## correctly the wrong triggers.
 @export var value_range : ValueRange = BinaryValueRange.new()
+
 ## Probability of not being triggered when it should.
 @export_range(0,1) var not_triggered_prob : float = 0
+
 ## Probability of producing a wrong value when triggered.
 @export_range(0,1) var wrong_value_prob: float = 0
+
 ## For simulating the triggering of a sensor when it should not, it is assumed that those triggers
 ## appear after a random amount of time that follows a normal distribution for which this and
 ## [member std_time_between_wrong_triggers] parameters are used. If it is 0 or lesser, the sensor
 ## won't produce wrong triggers.
 @export var average_time_between_wrong_triggers: float = 0
+
 ## See [member average_time_between_wrong_triggers]
 @export var std_time_between_wrong_triggers: float = 0
+#endregion
 
 ## A simulable instance to inform the [Simulator] that sensors needs to be simulated
 var simulable : Simulable

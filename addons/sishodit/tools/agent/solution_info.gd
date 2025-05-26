@@ -4,10 +4,13 @@ extends Resource
 
 ## Encapsulates the sequence of [StepInfo]s needed for solving a [Need]
 
+
 ## Sequence of [StepInfo]s that must be followed to finish the solution
 @export var steps : Array[StepInfo]
+
 ## Solutions with higher weights are more probable to be chosen
 @export var weight : float = 1.0
+
 ## Manager of conditions stablished for selecting a solution for a need.
 @export var condition_manager : ConditionManager
 

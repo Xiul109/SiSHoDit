@@ -6,6 +6,7 @@ extends SensorizedUsable
 
 ## Value produced when the [Agent] starts using the object.
 @export var start_event_value : float = 1
+
 ## Value produced when the [Agent] finish using the object.
 @export var end_event_value : float = 0
 

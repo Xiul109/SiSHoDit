@@ -15,8 +15,10 @@ enum ComparisonMode {
 
 ## The key identifier for the context variable to be compared
 @export var key : String
+
 ## The kind of comparison to be made
 @export var comparison : ComparisonMode
+
 ## Value compared to the context variable. Only float allowed due to Godot restrictions. That may
 ## change in the future
 @export var comparison_value: float

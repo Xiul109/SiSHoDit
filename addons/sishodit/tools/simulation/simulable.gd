@@ -6,27 +6,38 @@ class_name Simulable
 ## time has advanced since the last simulation update, so the parent should avoid using _process
 ## or _physic_process functions.
 
+#region signals
 ## Emitted just before the first simulation step is executed
 signal simulation_start
+
 ## Emitted when waiting is requested.
 signal waiting_started
+
 ## Emitted in each simulation step.
 signal simulated(delta: float)
+
 ## Emitted for requesting to the [Simulator] to log an event.
 signal log_event(from : String, type : String, value : Variant, delta : float)
+
 ## Emitted for requesting to the [Simulator] to log multiple events at once with a constant time
 ## difference between them equals to [param period].
 signal log_events(from: String, type : String,
 				  values : PackedFloat32Array, period : float, delta : float)
+				
 ## Emitted when the timer has finished while indicating how many time within the simulated segment
 ## has passed since that occured
 signal timer_finished(since: float)
+#endregion
 
+#region export_properties
 ## If true, simulation steps will coincide with _physic_process, unless waiting is requested.
 @export var requires_real_time = false
+
 ## Higher values will be simulated before lower ones in the same tick
 @export var priority : int = 0
+#endregion
 
+#region general_properties
 ## Initialized with the context variable provided by the [Simulator]
 var context : Dictionary
 
@@ -34,13 +45,17 @@ var context : Dictionary
 ## waiting during [member wait_time], which means that during that simulation time, it won't require
 ## real time.
 var is_waiting : bool = false
+
 ## See [member is_waiting].
 var wait_time : float = 0.0
 
+
 ## If true, then a timer is setted up and will emmit a signal once finished
 var is_timer_set_up : bool = false
+
 ## Time in seconds that must advance for the timer to finish
 var timer_time: float = 0.0
+#endregion
 
 #Overriden methods
 func _init():

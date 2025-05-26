@@ -1,7 +1,7 @@
 extends RayCast3D
 
-
-@export var close_door_rate = 1.0 # (float, 1)
+## Probability of closing the door each time
+@export_range(0, 1) var close_door_rate : float = 1.0
 
 var current_door
 

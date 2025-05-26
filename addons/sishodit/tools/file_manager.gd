@@ -5,12 +5,16 @@ extends Node
 
 ## Directory where the file will be saved.
 var dir : String = ""
+
 ## Complete path for the directory where the file will be stored.
 var full_dir : String 
+
 ## Name of the file where contents will be saved.
 var file_name : String
+
 ## Reference for managing the file
 var file : FileAccess
+
 ## Timer used for autosaving
 var timer
 

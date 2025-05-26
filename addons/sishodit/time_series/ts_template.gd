@@ -5,14 +5,20 @@ extends Resource
 
 ## Sequence of segments of the template
 @export var segments : Array[TSTemplateSegment]
+
+## List of postprocessings applied to the result in order
 @export var postprocessings : Array[TSPostprocessing]
 
+
 @export_group("Advanced chosing")
+
 ## If true the segment is selected randomly
 @export var random : bool = false
+
 ## Only relevant if random is false. If true, once the last segment is generated, the first will be
 ## the next to be generated
 @export var loop : bool = false
+
 
 # These two members are used for ensuring that a segment random value is consistent when keeping
 # the same. This should be changed to ensure different sensors using the same template to work

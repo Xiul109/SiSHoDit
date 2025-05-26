@@ -5,13 +5,16 @@ extends RefCounted
 
 ## How much time has been generated
 var time := 0.0
+
 ## Sample rate of the generated data
 var _sample_rate := 1.0
+
 ## Template of how the time series must be generated
 var _template : TSTemplate
 
 ## Current segment index
 var _current_segment := 0
+
 ## How much time has been generated from previous segments
 var _cum_segment_durs := 0.0
 

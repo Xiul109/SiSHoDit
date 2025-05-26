@@ -2,6 +2,7 @@
 class_name SishoditUtils
 extends Object
 
+## Returns all the groups in each node of [param nodes] and their childrens
 static func find_groups(nodes : Array[Node]) -> Array[String]:
 	if nodes == null:
 		return []

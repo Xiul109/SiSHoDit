@@ -5,30 +5,39 @@ class_name Simulator
 ## that requires active simulation, such as [Agent]s or some [Sensor]s. Only one should be added to
 ## the scene and it should be the last child to ensure every other node has been added to the tree.
 
-# Paths
+#region paths
 ## Directory for storing the logs of the simulator.
 const log_dir = "sim_log/"
 ## Base name of the log files.
 const base_name = "SiSHoDiT"
+#endregion
 
+#region exports
 ## Number of seconds elapsed since the beggining of the simulation. It can be modified before
 ## starting the simulation to include an offset in the time.
 @export var elapsed_seconds : float = 0
+#endregion
 
+#region general_properties
 ## Reference to the [FileManager] that produces the logs.
 var file_manager : FileManager
+
 ## Simulation context including variables relevant to [Simulable] entities, mainly [Agent]s.
 var context : Dictionary = {}
+#endregion
 
+#region private_properties
 # Simulation variables
 ## A list of every [Simulable] node of the simulation.
 var _simulable_entities : Array[Simulable] = []
+
 ## A list of [Simulable] nodes that require real time simulation.
 var _real_time_entities : Array[Simulable] = []
 
 # Log temporal data
 ## Used for keeping in memory the data to store before logging it
 var _temp_log_data = []
+#endregion
 
 # Overriden methods
 func _ready():

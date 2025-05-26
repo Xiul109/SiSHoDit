@@ -13,10 +13,10 @@ object_selection_criterion = 0
 use_object = true
 min_duration = 180.0
 max_duration = 1200.0
-needs_solved = {
+needs_solved = Dictionary[String, float]({
 "bored": 1.0,
 "tired": 0.0
-}
+})
 needs_increased = Dictionary[String, float]({})
 needs_with_modified_rate = Dictionary[String, float]({})
 priority = 0
@@ -30,10 +30,10 @@ object_selection_criterion = 0
 use_object = true
 min_duration = 600.0
 max_duration = 2400.0
-needs_solved = {
+needs_solved = Dictionary[String, float]({
 "bored": 1.0,
 "tired": 0.0
-}
+})
 needs_increased = Dictionary[String, float]({})
 needs_with_modified_rate = Dictionary[String, float]({})
 priority = 0

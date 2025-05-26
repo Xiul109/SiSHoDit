@@ -8,6 +8,7 @@ extends Node
 
 ## Emitted when an [Agent] starts using the object
 signal using_started
+
 ## Emitted when an [Agent] finishes using the object
 signal using_finished
 
