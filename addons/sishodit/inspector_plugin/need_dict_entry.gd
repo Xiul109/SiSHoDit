@@ -1,5 +1,6 @@
 extends HBoxContainer
 
+#region properties
 var is_for_display : bool = true :
 	set(val):
 		is_for_display = val
@@ -33,6 +34,7 @@ var key : String :
 		if key_editor is LineEdit:
 			key_editor.text = new_key
 		else:
+			print(new_key, need_list.find(new_key))
 			key_editor.select(need_list.find(new_key))
 
 var value: float :
@@ -40,10 +42,14 @@ var value: float :
 		return value_editor.value
 	set(new_value):
 		value_editor.value = new_value
+#endregion
 
+#region signals
 signal value_changed(key, value)
 signal entry_erased(key)
+#endregion
 
+#region overrides
 func _init(p_key: String = "", p_value: float = 1.0,
 			p_need_list: Array[String] = [],
 			p_range_low : bool = 0.0, p_range_high : bool = 1.0):
@@ -65,25 +71,29 @@ func _ready():
 	erase_button.icon = get_theme_icon("Remove", "EditorIcons")
 	erase_button.pressed.connect(_on_erase_button_pressed)
 	add_child(erase_button)
+#endregion
 
-# Public methods
+#region public
 func default_entry():
-	key = ""
+	if need_list == null or need_list.is_empty():
+		key = ""
+	else:
+		key = need_list[0]
+	print(key)
 	value = 1.0
+#endregion
 
-# Auxiliar methods
+#region private
 func _init_key_editor():
 	if need_list == null or need_list.is_empty():
 		key_editor = LineEdit.new()
 		key_editor.editable = false
-		
 	else:
 		key_editor = OptionButton.new()
 		for need in need_list:
 			key_editor.add_item(need)
 		key_editor.disabled = true
 	key_editor.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	
 
 func _init_value_editor():
 	value_editor.value_changed.connect(_on_value_changed)
@@ -91,11 +101,13 @@ func _init_value_editor():
 	value_editor.allow_greater = true
 	value_editor.allow_lesser = true
 	value_editor.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+#endregion
 
-# Callbacks
+#region callbacks
 func _on_value_changed(new_value: float):
 	value_changed.emit(key, value)
 
 func _on_erase_button_pressed():
 	entry_erased.emit(key)
 	queue_free()
+#endregion

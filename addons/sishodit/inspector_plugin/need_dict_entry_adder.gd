@@ -27,9 +27,12 @@ func _ready():
 	
 	# Adding elements
 	add_child(container)
+	
 	# Entry
 	container.add_child(entry)
 	entry.is_for_display = false
+	entry.default_entry()
+	
 	# Button
 	add_entry_button.text = "Add entry"
 	add_entry_button.pressed.connect(_on_entry_add_button_pressed)
