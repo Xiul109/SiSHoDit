@@ -1,6 +1,6 @@
 extends PanelContainer
 
-var Entry = preload("res://addons/sishodit/inspector_plugin/need_dict_entry.gd")
+var Entry = preload("res://addons/sishodit/inspector_plugin/ui/need_dict_entry.gd")
 
 var container = VBoxContainer.new()
 var entries = {}

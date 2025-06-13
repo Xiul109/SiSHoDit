@@ -7,6 +7,7 @@ class_name Simulable
 ## or _physic_process functions.
 
 #region signals
+
 ## Emitted just before the first simulation step is executed
 signal simulation_start
 
@@ -23,13 +24,14 @@ signal log_event(from : String, type : String, value : Variant, delta : float)
 ## difference between them equals to [param period].
 signal log_events(from: String, type : String,
 				  values : PackedFloat32Array, period : float, delta : float)
-				
+
 ## Emitted when the timer has finished while indicating how many time within the simulated segment
 ## has passed since that occured
 signal timer_finished(since: float)
 #endregion
 
 #region export_properties
+
 ## If true, simulation steps will coincide with _physic_process, unless waiting is requested.
 @export var requires_real_time = false
 
@@ -38,6 +40,7 @@ signal timer_finished(since: float)
 #endregion
 
 #region general_properties
+
 ## Initialized with the context variable provided by the [Simulator]
 var context : Dictionary
 
@@ -65,6 +68,7 @@ func _to_string() -> String:
 	return "[Simulable] (%s)"%get_parent()
 
 # Public methods
+
 ## Called by [Simulator] whenever the simulation advances. The method is called after the internal
 ## time of the simulation is updated.
 func simulate(delta: float) -> void:

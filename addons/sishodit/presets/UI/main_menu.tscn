@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4yi8w")
 script = ExtResource("1")
+enviroments_path = null
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0

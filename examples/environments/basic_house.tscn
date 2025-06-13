@@ -61,7 +61,7 @@
 [ext_resource type="PackedScene" uid="uid://b72mu3g3hihh" path="res://addons/sishodit/presets/UI/time_widget.tscn" id="59_4gdj1"]
 [ext_resource type="PackedScene" uid="uid://bs07qyfk3gkry" path="res://addons/sishodit/presets/UI/agent_data/multi_agent_data_widget.tscn" id="60_2tx0f"]
 [ext_resource type="Script" uid="uid://cb8i5d8d8y1kn" path="res://addons/sishodit/tools/simulation/simulator.gd" id="61_kg1fo"]
-[ext_resource type="Script" uid="uid://h4huyjuvxgne" path="res://addons/sishodit/presets/context_managers/calendar.gd" id="62_w6pid"]
+[ext_resource type="Script" uid="uid://h4huyjuvxgne" path="res://addons/sishodit/presets/context_providers/calendar.gd" id="62_w6pid"]
 
 [sub_resource type="Gradient" id="Gradient_mhk06"]
 colors = PackedColorArray(0, 0.221838, 0, 1, 0.0266823, 0.487345, 0.159609, 1)
@@ -729,3 +729,4 @@ script = ExtResource("61_kg1fo")
 [node name="CalendarManager" type="Node" parent="Simulator"]
 script = ExtResource("62_w6pid")
 priority = 10
+metadata/_custom_type_script = "uid://3j2bicj3iic4"

@@ -1,7 +1,7 @@
 extends EditorProperty
 
-const EntryAdder = preload("res://addons/sishodit/inspector_plugin/need_dict_entry_adder.gd")
-const DictDisplay = preload("res://addons/sishodit/inspector_plugin/need_dict_display.gd")
+const EntryAdder = preload("res://addons/sishodit/inspector_plugin/ui/need_dict_entry_adder.gd")
+const DictDisplay = preload("res://addons/sishodit/inspector_plugin/ui/need_dict_display.gd")
 
 # Dict reference
 var dict : Dictionary

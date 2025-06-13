@@ -1,7 +1,7 @@
 ## His duty is to provide the user interface for adding entrys to the dictionary
 extends PanelContainer
 
-const Entry = preload("res://addons/sishodit/inspector_plugin/need_dict_entry.gd")
+const Entry = preload("res://addons/sishodit/inspector_plugin/ui/need_dict_entry.gd")
 
 var container = VBoxContainer.new()
 var entry : Entry

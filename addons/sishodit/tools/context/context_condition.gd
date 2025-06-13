@@ -13,7 +13,8 @@ enum ComparisonMode {
 	GREATER_EQUAL,
 }
 
-## The key identifier for the context variable to be compared
+## The key identifier for the context variable to be compared. It is retrieved from ContextProviders
+## of any other opened scene in the editor.
 @export var key : String
 
 ## The kind of comparison to be made

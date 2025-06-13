@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dprgtb5on2v0a" path="res://examples/simple_house/objects/structure/wallDoorway.tscn" id="24_mi2po"]
 [ext_resource type="PackedScene" uid="uid://cfqufgudbqxm4" path="res://examples/simple_house/objects/structure/doorway.tscn" id="25_37sqw"]
 [ext_resource type="PackedScene" uid="uid://djp4ch7kn0sod" path="res://examples/tutorial_example/tutorial_agent.tscn" id="26_rddk3"]
-[ext_resource type="Script" uid="uid://h4huyjuvxgne" path="res://addons/sishodit/presets/context_managers/calendar.gd" id="27_1582k"]
+[ext_resource type="Script" uid="uid://h4huyjuvxgne" path="res://addons/sishodit/presets/context_providers/calendar.gd" id="27_1582k"]
 
 [sub_resource type="Resource" id="Resource_7x7go"]
 script = ExtResource("12_3nfg5")

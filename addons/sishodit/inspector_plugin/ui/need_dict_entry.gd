@@ -34,7 +34,6 @@ var key : String :
 		if key_editor is LineEdit:
 			key_editor.text = new_key
 		else:
-			print(new_key, need_list.find(new_key))
 			key_editor.select(need_list.find(new_key))
 
 var value: float :
@@ -79,7 +78,6 @@ func default_entry():
 		key = ""
 	else:
 		key = need_list[0]
-	print(key)
 	value = 1.0
 #endregion
 
