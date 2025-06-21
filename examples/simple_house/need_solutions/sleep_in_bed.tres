@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://d1o70688m6g30" path="res://addons/sishodit/tools/agent/solution_info.gd" id="2"]
 [ext_resource type="Script" uid="uid://tvhii7qfcc51" path="res://addons/sishodit/tools/context/condition_manager.gd" id="2_i0f6e"]
 [ext_resource type="Resource" uid="uid://csegns5rmqljt" path="res://examples/simple_house/need_solutions/steps/change_clothes.tres" id="3"]
-[ext_resource type="Script" uid="uid://c8ei27myxu6y6" path="res://addons/sishodit/tools/agent/step_info.gd" id="4_4hns5"]
+[ext_resource type="Script" uid="uid://cg5fawxinhlex" path="res://addons/sishodit/tools/agent/step_setting.gd" id="4_3534j"]
 
 [sub_resource type="Resource" id="Resource_6vadx"]
 resource_name = "hour ≥ 23.00"
@@ -29,6 +29,6 @@ evaluation_mode = 0
 [resource]
 resource_name = "sleep_in_bed"
 script = ExtResource("2")
-steps = Array[ExtResource("4_4hns5")]([ExtResource("3"), ExtResource("1"), ExtResource("3")])
+steps = Array[ExtResource("4_3534j")]([ExtResource("3"), ExtResource("1"), ExtResource("3")])
 weight = 1.0
 condition_manager = SubResource("Resource_f10di")

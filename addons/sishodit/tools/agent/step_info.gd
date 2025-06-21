@@ -1,6 +1,6 @@
 @icon("res://addons/sishodit/assets/icons/step.png")
 class_name StepInfo
-extends Resource
+extends StepSetting
 
 ## Representation of each of the steps needed to apply a [Solution]. A step can modify the
 ## state of [Need]s or not.
@@ -74,3 +74,6 @@ func generate_duration(std_streching : float = .25):
 	var std_duration = std_streching*(max_duration-min_duration)/2
 	return clamp(randfn(mean_duration, std_duration),
 					min_duration, max_duration)
+
+func get_step_infos() -> Array[StepInfo]:
+	return  [self]

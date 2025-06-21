@@ -10,10 +10,8 @@ object_selection_criterion = 0
 use_object = true
 min_duration = 60.0
 max_duration = 120.0
-needs_solved = {
-"asd": 1.0
-}
-needs_increased = {}
-needs_with_modified_rate = {}
+needs_solved = Dictionary[String, float]({})
+needs_increased = Dictionary[String, float]({})
+needs_with_modified_rate = Dictionary[String, float]({})
 priority = 0
 cancel_on_interruption = false

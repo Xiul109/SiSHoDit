@@ -24,19 +24,20 @@ func reset():
 ## Returns the next step and increases in 1 [member current_step]
 func get_next_step(min_priority : int, context: Dictionary):
 	current_step += 1
-	while  (current_step < info.steps.size() and 
-			info.steps[current_step].condition_manager != null and
-			not info.steps[current_step].condition_manager.evaluate(context)):
+	var steps = info.get_step_infos()
+	while  (current_step < steps.size() and 
+			steps[current_step].condition_manager != null and
+			not steps[current_step].condition_manager.evaluate(context)):
 				current_step += 1
-	if current_step >= info.steps.size():
+	if current_step >= steps.size():
 		current_step = -1
 		return null
-	return Step.new(info.steps[current_step], min_priority)
+	return Step.new(steps[current_step], min_priority)
 
 ## Getter for [member needs_solved]. If empty, it is also initialized.
 func _get_needs_solved_by_steps():
 	if needs_solved.is_empty():
-		for step in info.steps:
+		for step in info.get_step_infos():
 			for need in step.needs_solved:
 				if need not in needs_solved:
 					needs_solved.append(need)

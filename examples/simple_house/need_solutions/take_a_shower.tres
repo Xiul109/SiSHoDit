@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d1o70688m6g30" path="res://addons/sishodit/tools/agent/solution_info.gd" id="1_fq1yt"]
 [ext_resource type="Resource" uid="uid://csegns5rmqljt" path="res://examples/simple_house/need_solutions/steps/change_clothes.tres" id="2_dx0o2"]
-[ext_resource type="Script" uid="uid://c8ei27myxu6y6" path="res://addons/sishodit/tools/agent/step_info.gd" id="2_qr3w6"]
+[ext_resource type="Script" uid="uid://cg5fawxinhlex" path="res://addons/sishodit/tools/agent/step_setting.gd" id="2_qr3w6"]
 [ext_resource type="Resource" uid="uid://bghra6ohspjdr" path="res://examples/simple_house/need_solutions/steps/take_a_shower.tres" id="3_jby8o"]
 
 [resource]

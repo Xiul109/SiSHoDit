@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="SolutionInfo" load_steps=4 format=3 uid="uid://cckbj1kxyc617"]
 
 [ext_resource type="Script" uid="uid://d1o70688m6g30" path="res://addons/sishodit/tools/agent/solution_info.gd" id="1_h3ca3"]
-[ext_resource type="Script" uid="uid://c8ei27myxu6y6" path="res://addons/sishodit/tools/agent/step_info.gd" id="2_7r01j"]
 [ext_resource type="Resource" uid="uid://dnh2bah3qfnks" path="res://examples/simple_house/need_solutions/steps/number_1.tres" id="2_i7oii"]
+[ext_resource type="Script" uid="uid://cg5fawxinhlex" path="res://addons/sishodit/tools/agent/step_setting.gd" id="2_lrypq"]
 
 [resource]
 resource_name = "pee_and_wash_hands"
 script = ExtResource("1_h3ca3")
-steps = Array[ExtResource("2_7r01j")]([ExtResource("2_i7oii")])
+steps = Array[ExtResource("2_lrypq")]([ExtResource("2_i7oii")])
 weight = 1.0

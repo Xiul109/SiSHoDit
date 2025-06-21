@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="SolutionInfo" load_steps=7 format=3 uid="uid://conkfypyimu7g"]
+[gd_resource type="Resource" script_class="SolutionInfo" load_steps=8 format=3 uid="uid://conkfypyimu7g"]
 
 [ext_resource type="Script" uid="uid://d1o70688m6g30" path="res://addons/sishodit/tools/agent/solution_info.gd" id="1_vlbl3"]
+[ext_resource type="Script" uid="uid://cg5fawxinhlex" path="res://addons/sishodit/tools/agent/step_setting.gd" id="2_ekyof"]
 [ext_resource type="Resource" uid="uid://8pj3lbsrudsf" path="res://examples/simple_house/need_solutions/steps/get_food.tres" id="2_kqcuv"]
 [ext_resource type="Script" uid="uid://c8ei27myxu6y6" path="res://addons/sishodit/tools/agent/step_info.gd" id="3_lprb6"]
 [ext_resource type="Resource" uid="uid://i3gd3scvja01" path="res://examples/simple_house/need_solutions/steps/get_drink.tres" id="4_iooj0"]
@@ -42,5 +43,5 @@ cancel_on_interruption = false
 [resource]
 resource_name = "full_meal"
 script = ExtResource("1_vlbl3")
-steps = Array[ExtResource("3_lprb6")]([ExtResource("2_kqcuv"), SubResource("1"), ExtResource("4_iooj0"), SubResource("2")])
+steps = Array[ExtResource("2_ekyof")]([ExtResource("2_kqcuv"), SubResource("1"), ExtResource("4_iooj0"), SubResource("2")])
 weight = 1.0
