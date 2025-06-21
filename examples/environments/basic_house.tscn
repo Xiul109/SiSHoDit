@@ -726,7 +726,7 @@ grow_horizontal = 0
 [node name="Simulator" type="Node" parent="."]
 script = ExtResource("61_kg1fo")
 
-[node name="CalendarManager" type="Node" parent="Simulator"]
+[node name="CalendarManager" type="Node" parent="Simulator" groups=["simulable"]]
 script = ExtResource("62_w6pid")
 priority = 10
 metadata/_custom_type_script = "uid://3j2bicj3iic4"
