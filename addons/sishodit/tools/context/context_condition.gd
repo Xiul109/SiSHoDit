@@ -33,7 +33,6 @@ const COMPARISON_SYMBOLS : Dictionary[ComparisonMode, String] = {
 ## The kind of comparison to be made
 @export var comparison : ComparisonMode :
 	set(new_comp_mode):
-		print(comparison)
 		comparison = new_comp_mode
 		_update_resource_name()
 
