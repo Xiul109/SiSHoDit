@@ -1,6 +1,6 @@
 @tool
 class_name ContextCondition
-extends Resource
+extends EvaluableCondition
 
 ## Tool for defining boolean conditions that are assesed against a [member Simulator.context].
 
@@ -43,8 +43,9 @@ const COMPARISON_SYMBOLS : Dictionary[ComparisonMode, String] = {
 		comparison_value = new_comp_value
 		_update_resource_name()
 
-## Compares the context variable asociated with [member key] with [member comparison_value]
-func compare(context: Dictionary) -> bool:
+## Compares the context variable asociated with [member key] to [member comparison_value]
+func evaluate(context: Dictionary) -> bool:
+	print(resource_name)
 	if key not in context:
 		push_warning("Key '", key,"' is not in context.")
 		return false

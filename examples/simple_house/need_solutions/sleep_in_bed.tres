@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="SolutionInfo" load_steps=10 format=3 uid="uid://brirdvk484vol"]
+[gd_resource type="Resource" script_class="SolutionInfo" load_steps=11 format=3 uid="uid://brirdvk484vol"]
 
 [ext_resource type="Resource" uid="uid://lnacciljud5u" path="res://examples/simple_house/need_solutions/steps/sleep_in_bed.tres" id="1"]
+[ext_resource type="Script" uid="uid://uptvngye77lr" path="res://addons/sishodit/tools/context/evaluable_condition.gd" id="1_ecvlr"]
 [ext_resource type="Script" uid="uid://bcmuux3u0b5q3" path="res://addons/sishodit/tools/context/context_condition.gd" id="1_lc13u"]
 [ext_resource type="Script" uid="uid://d1o70688m6g30" path="res://addons/sishodit/tools/agent/solution_info.gd" id="2"]
 [ext_resource type="Script" uid="uid://tvhii7qfcc51" path="res://addons/sishodit/tools/context/condition_manager.gd" id="2_i0f6e"]
@@ -23,8 +24,8 @@ comparison_value = 7.0
 
 [sub_resource type="Resource" id="Resource_f10di"]
 script = ExtResource("2_i0f6e")
-conditions = Array[ExtResource("1_lc13u")]([SubResource("Resource_6vadx"), SubResource("Resource_1xk2f")])
 evaluation_mode = 0
+conditions = Array[ExtResource("1_ecvlr")]([SubResource("Resource_6vadx"), SubResource("Resource_1xk2f")])
 
 [resource]
 resource_name = "sleep_in_bed"
