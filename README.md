@@ -1,4 +1,9 @@
 # SiSHoDiT
+
+⚠️**IMPORTANT**⚠️: This project has been migrated to [codeberg](https://codeberg.org/xiul/SiSHoDit) and it won't receive more updates here. There are lots of reasons, most related to fly away from big tech platforms and their abusive practices.
+
+-------
+
 SiShoDiT (**Si**mulator of **S**mart **Ho**uses **Di**gital **T**wins) is a fully automated simulator for Activities of Daily Living (ADLs) in smart homes environments that allows emergent behaviour. It is build as an addon to work inside Godot Engine 4.1 editor, but the tools provided with it can be used to generate a standalone executable.
 
 ![GIF](docs/figures/simulation.gif)
